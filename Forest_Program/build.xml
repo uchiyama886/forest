@@ -29,6 +29,8 @@
 			encoding="UTF-8"
 			deprecation="on"
 			verbose="false">
+			<src path="./forest"/>
+			<src path="./mvc"/>
 			<compilerarg value="-J-Dfile.encoding=UTF8" />
 			<compilerarg value="-Xlint:all" />
 			<classpath>
@@ -99,7 +101,7 @@
 		<mkdir dir="${docdir}" />
 		<javadoc
 			locale="ja_JP"
-			sourcepath="${basedir}"
+			sourcepath="forest:mvc"
 			destdir="${docdir}"
 			packagenames="${packagenames}"
 			author="true"
