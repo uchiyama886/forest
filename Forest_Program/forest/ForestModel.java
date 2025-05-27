@@ -7,7 +7,7 @@ package forest;
  * 
  */
 
-pulic class ForestModel  extends mvc.Model
+public class ForestModel  extends mvc.Model
 {
 
 
