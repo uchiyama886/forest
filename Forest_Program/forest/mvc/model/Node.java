@@ -1,4 +1,4 @@
-package model;
+package mvc.model;
 
 public class Node {
     private int no;

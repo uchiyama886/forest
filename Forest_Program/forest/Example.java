@@ -1,9 +1,13 @@
 package forest;
 
+import mvc.model.*;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import javax.swing.JFrame;
+
+import java.util.*;
 
 /**
  * 樹状整列の例題クラス：使い方の典型を示すのが目的のプログラムです。<br>
@@ -38,8 +42,15 @@ public class Example extends Object
 			System.exit(1);
 		}
 
-		
-		///* 
+		FileRead aRead = new FileRead();
+		aRead.read(aFile);
+
+		List<Tree> aTree = aRead.getTrees();
+		for(Tree tmp: aTree) {
+			tmp.show();
+		}
+
+		/* 
 		// MVCを作成する。
 		ForestModel aModel = new ForestModel(aFile);
 		ForestView aView = new ForestView(aModel);

@@ -3,7 +3,7 @@
 <project name="Forest" default="all" basedir=".">
 
 	<property name="package" value="forest" />
-	<property name="mvc" value="mvc" />
+	<!-- <property name="mvc" value="mvc" /> -->
 	<property name="packagenames" value="${package},${mvc}" />
 	<property name="destdir" value="./Classes" />
 	<property name="docdir" value="./JavaDoc" />
@@ -30,7 +30,7 @@
 			deprecation="on"
 			verbose="false">
 			<src path="./forest"/>
-			<src path="./mvc"/>
+			<!-- <src path="./mvc"/> -->
 			<compilerarg value="-J-Dfile.encoding=UTF8" />
 			<compilerarg value="-Xlint:all" />
 			<classpath>
@@ -46,7 +46,7 @@
 			jarfile="${package}.jar"
 			basedir="${destdir}"
 			manifest="${package}.mf">
-			<zipfileset src="${mvc}.jar" />
+			<!-- <zipfileset src="${mvc}.jar" /> -->
 		</jar>
 		<exec executable="date" spawn="false" />
 	</target>

@@ -1,4 +1,4 @@
-package model;
+package mvc.model;
 
 import java.io.*;
 import java.util.List;

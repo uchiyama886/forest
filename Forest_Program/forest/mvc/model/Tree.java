@@ -1,4 +1,4 @@
-package model;
+package mvc.model;
 
 public class Tree {
     private int treeNum;
@@ -18,4 +18,8 @@ public class Tree {
         return name;
     }
     //--------------------------
+
+    public void show() {
+        System.out.println(treeNum+", "+name);
+    }
 }
