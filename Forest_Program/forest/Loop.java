@@ -1,3 +1,4 @@
+
 import java.util.function.Supplier;
 
 public class Loop {

@@ -1,3 +1,4 @@
+
 import java.util.function.Supplier;
 
 //条件分岐をメッセージで行うためのクラス

@@ -3,7 +3,6 @@ package mvc.model;
 import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.function.Supplier;
 
 
 public class FileRead {
@@ -38,8 +37,6 @@ public class FileRead {
         boolean isBranch = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
-            Loop loop;
-            
             while((line = reader.readLine()) != null) {
                 switch(line.trim()) {
                     case "trees:":
