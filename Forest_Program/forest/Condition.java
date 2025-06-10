@@ -10,6 +10,13 @@ public class Condition {
         this.condition = conditionPassage;
     }
 
+    /** 
+    *
+    *
+    *
+    * @param thenPassage trueなら実行されるラムダ式
+    * @param elsePassage falseなら実行されるラムダ式
+    */
     public void ifThenElse(Runnable thenPassage, Runnable elsePassage) {
         if(this.condition.get()) 
             thenPassage.run();
