@@ -24,5 +24,7 @@ public class TreeNode {
     }
     //-------------------------------------
 
-    
+    public void addChild(TreeNode child) {
+        children.add(child);
+    }
 }
