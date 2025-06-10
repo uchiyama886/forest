@@ -1,3 +1,4 @@
+package forest.utility;
 
 import java.util.function.Supplier;
 
@@ -6,14 +7,11 @@ public class Condition {
     
     private Supplier<Boolean> condition = null;
 
-    public Condition(Supplier<Boolean> conditionPassage) {
-        this.condition = conditionPassage;
+    public Condition(Supplier<Boolean> supplier) {
+        this.condition = supplier;
     }
 
     /** 
-    *
-    *
-    *
     * @param thenPassage trueなら実行されるラムダ式
     * @param elsePassage falseなら実行されるラムダ式
     */
@@ -24,7 +22,7 @@ public class Condition {
             elsePassage.run();
     }
 
-    public void ifThen(Runnable thenPassage) {
+    public void ifTrue(Runnable thenPassage) {
         this.ifThenElse(thenPassage, () -> {;});
     }
 
@@ -36,7 +34,7 @@ public class Condition {
         new Condition(aCondition).ifThenElse(thenPassage, elsePassage);
     }
 
-    public static void ifThen(Supplier<Boolean> aCondition, Runnable thenPassage) {
+    public static void ifTrue(Supplier<Boolean> aCondition, Runnable thenPassage) {
         Condition.ifThenElse(aCondition, thenPassage, () -> {;});
     }
 
