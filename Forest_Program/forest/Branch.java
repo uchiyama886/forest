@@ -15,13 +15,13 @@ public class Branch {
 
     }
 
-    public Node end() [
+    public Node end() {
 
-    ]
+    }
 
-    public Node strat() [
-
-    ]
+    public Node strat() {
+        
+    }
 
     public String toString() {
 
