@@ -2,9 +2,10 @@
 
 <project name="Forest" default="all" basedir=".">
 
-	<property name="package" value="forest" />
-	<!-- <property name="mvc" value="mvc" /> -->
-	<property name="packagenames" value="${package},${mvc}" />
+	<property name="package" value="./forest" />
+	<property name="destdir" value="./Classes" />
+
+	<property name="packagenames" value="${package}" />
 	<property name="destdir" value="./Classes" />
 	<property name="docdir" value="./JavaDoc" />
 	<property name="instdir" value="./${ant.project.name}.app/Contents/Resources/Java" />
@@ -30,7 +31,6 @@
 			deprecation="on"
 			verbose="false">
 			<src path="./forest"/>
-			<!-- <src path="./mvc"/> -->
 			<compilerarg value="-J-Dfile.encoding=UTF8" />
 			<compilerarg value="-Xlint:all" />
 			<classpath>
