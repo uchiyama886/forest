@@ -1,7 +1,5 @@
 package forest;
 
-import mvc.model.*;
-
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
@@ -42,6 +40,7 @@ public class Example extends Object
 			System.exit(1);
 		}
 
+		/*
 		FileRead aRead = new FileRead();
 		aRead.read(aFile);
 
@@ -49,6 +48,7 @@ public class Example extends Object
 		for(Tree tmp: aTree) {
 			tmp.show();
 		}
+			*/
 
 		/* 
 		// MVCを作成する。
