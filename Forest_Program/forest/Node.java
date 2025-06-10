@@ -32,9 +32,9 @@ public class Node {
 
     }
 
-    public String getName() [
-
-    ]
+    public String getName() {
+        
+    }
 
     public Integer getStatus() {
 
@@ -65,6 +65,6 @@ public class Node {
     }
 
     public String toString() {
-        
+
     }
 }
