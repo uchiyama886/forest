@@ -1,16 +1,14 @@
 package forest;
 
-<<<<<<<< HEAD:Forest_Program/src/main/java/forest/Example.java
-========
-import java.awt.Dimension;
-import java.awt.Point;
->>>>>>>> 3b684d8c518047a0a5e077d6699cd35e4cf25860:Forest_Program/forest/Example.java
 import java.io.File;
-import java.util.*;
+import java.util.List;
+
+import forest.ForestModel;
 
 /**
  * 樹状整列の例題クラス：使い方の典型を示すのが目的のプログラムです。<br>
  * Makefileを用いた実行方法は以下の通りです。<br>
+ * $ make test # 全ての木・森・亜格子状の森を整列描画<br>
  * $ make tree  # 木を整列描画<br>
  * $ make forest  # 森を整列描画<br>
  * $ make semilattice  # 亜格子状の森を整列描画<br>
@@ -41,7 +39,6 @@ public class Example extends Object
 			System.exit(1);
 		}
 
-		/*
 		FileRead aRead = new FileRead();
 		aRead.read(aFile);
 
@@ -49,9 +46,7 @@ public class Example extends Object
 		for(Tree tmp: aTree) {
 			tmp.show();
 		}
-			*/
 
-		/* 
 		// MVCを作成する。
 		ForestModel aModel = new ForestModel(aFile);
 		ForestView aView = new ForestView(aModel);
@@ -67,7 +62,6 @@ public class Example extends Object
 
 		// 樹状整列のアニメーションを行う。
 		aModel.animate();
-		// */
 		
 
 		return;

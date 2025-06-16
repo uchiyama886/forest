@@ -1,20 +1,60 @@
 package forest;
 
-public class Branch {
-    private Node parent;
-    private Node child;
+import java.awt.Graphics;
 
-    public Branch(Node parent, Node child) {
-        this.parent = parent;
-        this.child = child;
+/**
+ * 樹状整列におけるブランチ（枝）を担うクラスになります。
+ */
+public class Branch extends Object {
+    /**
+     * ブランチ（枝）の終点となるノードを記憶するフィールドです。
+     */
+    private Node end;
+
+    /**
+     * ブランチ（枝）の始点となるノードを記憶するフィールドです。
+     */
+    private Node start;
+
+    /**
+     * このクラスのインスタンスを生成するコンストラクタです。
+     */
+    public Branch(Node from, Node to) {
+        super();
     }
 
-    // ゲッター ----------------------------
-    public Node getParent() {
-        return parent;
+    /**
+     * ブランチ（枝）を描画するメソッドです。
+     */
+    public void draw(Graphics aGraphics) {
+        //未実装
     }
-    public Node getChild() {
-        return child;
+
+    /**
+     * ブランチ（枝）の終点となるノードを応答するメソッドです。
+     */
+    public Node end() {
+        return this.end;
     }
-    //------------------------------------
+
+    /**
+     * ブランチ（枝）の始点となるノードを応答するメソッドです。
+     */
+    public Node start() {
+        return this.start;
+    }
+
+    /**
+     * 自分自身を文字列に変換するメソッドです。
+     */
+    @Override
+    public String toString() {
+        StringBuffer aBuffer = new StringBuffer();
+        Class<?> aClass = this.getClass();
+        aBuffer.append(aClass.getName());
+        aBuffer.append("[");
+        aBuffer.append(this);
+        aBuffer.append("]");
+        return aBuffer.toString();
+    }
 }
