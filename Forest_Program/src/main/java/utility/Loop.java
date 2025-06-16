@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:Forest_Program/src/main/java/utility/Loop.java
 package utility;
-========
-package forest.utility;
->>>>>>>> 3b684d8c518047a0a5e077d6699cd35e4cf25860:Forest_Program/forest/utility/Loop.java
 
 import java.util.function.Supplier;
 

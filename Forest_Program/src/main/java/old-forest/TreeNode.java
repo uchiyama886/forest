@@ -3,7 +3,9 @@ package forest;
 import java.util.ArrayList;
 import java.util.List;
 
-//ツリー構造のクラス
+/**
+ * ツリー構造を司るクラス
+ */
 public class TreeNode {
     private String name;
     private List<TreeNode> children;
