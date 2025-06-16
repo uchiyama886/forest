@@ -1,4 +1,4 @@
-package mvc.model;
+package forest;
 
 import java.io.*;
 import java.util.List;

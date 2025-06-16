@@ -1,7 +1,7 @@
-package mvc.model;
+package forest;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 //ツリー構造のクラス
 public class TreeNode {
