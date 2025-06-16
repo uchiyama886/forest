@@ -1,4 +1,4 @@
-package mvc.model;
+package forest;
 
 public class Node {
     private int no;
