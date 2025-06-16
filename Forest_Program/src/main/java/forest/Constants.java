@@ -14,58 +14,58 @@ public class Constants extends Object
     /**
      * 樹状整列データファイル中のタグ「ツリー」を表します。
      */
-    public static final String TagofTrees;
+    public static final String TagofTrees = null;
 
     /**
      * 樹状整列データファイル中のタグ「ノード」を表します。
      */
-    public static final String TagOfBranches;
+    public static final String TagOfBranches = null;
 
     /**
      * ノードを描く際のラベルの文字色を表します。
      */
-    public static final Color ForegroundColor;
+    public static final Color ForegroundColor = null;
 
     /**
      * ノードを描く際のラベルの背景色を表します。
      */
-    public static final Color BackgroundColor;
+    public static final Color BackgroundColor = null;
 
     /**
      * ノードを描く際のラベルのフォントを表します。
      */
-    public static final Font DefaultFont;
+    public static final Font DefaultFont = null;
 
     /**
      * ノードにおいてラベルを描く際の枠縁から余裕（マージン）を表します。
      */
-    public static final Point Margin;
+    public static final Point Margin = null;
 
     /**
      * ノード群を樹状に整列させる際にノード同士の間隔を表します。
      */
-    public static final Point Interval;
+    public static final Point Interval = null;
 
     /**
      * ノード群を深さ優先にたどる際の状態「未定」を表します。
      */
-    public static final Integer UnKnown;
+    public static final Integer UnKnown = null;
 
     /**
      * ノード群を深さ優先にたどる際の状態「未訪問」を表します。
      */
-    public static final Integer UnVisited;
+    public static final Integer UnVisited = null;
 
     /**
      * ノード群を深さ優先にたどる際の状態「訪問済」を表します。
      */
-    public static final Integer Visited;
+    public static final Integer Visited = null;
 
     /**
      * 樹状整列アニメーションのチックタック：時間間隔：スピードを表します。
      */
 
-    public static final Integer SleepTick;
+    public static final Integer SleepTick = null;
 
     public Constants(){}
 

@@ -1,9 +1,9 @@
 package forest;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.util.List;
-
-import forest.ForestModel;
+import javax.swing.JFrame;
 
 /**
  * 樹状整列の例題クラス：使い方の典型を示すのが目的のプログラムです。<br>
