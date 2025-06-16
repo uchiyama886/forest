@@ -1,7 +1,7 @@
 package forest;
 
 public class Tree {
-    private int treeNum;
+    private int depth;
     private String name;
 
     public Tree(int no, String name) {
@@ -10,8 +10,8 @@ public class Tree {
     }
 
     // ゲッター　-------------------
-    public int getTreeNum() {
-        return treeNum;
+    public int getDepth() {
+        return depth;
     }
 
     public String getName() {
