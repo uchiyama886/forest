@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicReference;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -39,6 +40,7 @@ public class ForestModel extends Object {
     public ForestModel(java.io.File aFile)
     {
         forest = new Forest();
+        dependants = new ArrayList<>();
         this.read(aFile);
     }
 
@@ -48,7 +50,7 @@ public class ForestModel extends Object {
      */
     public void addDependent(ForestView aView)
     {
-        //未実装
+        dependants.add(aView);
     }
 
     /**
@@ -72,7 +74,7 @@ public class ForestModel extends Object {
      */
     public void changed()
     {
-        //未実装
+        dependants.forEach(view -> view.update());
     }
 
     /**
@@ -88,6 +90,7 @@ public class ForestModel extends Object {
      */
     protected BufferedImage picture()
     {
+        //未実装
         return this.picture;
     }
 
@@ -158,8 +161,10 @@ public class ForestModel extends Object {
     */
     public Node root()
     {
-        //未実装
-        return null;
+        ArrayList<Node> rootNodes = roots();
+        AtomicReference<Node> result = new AtomicReference<>(rootNodes.get(0));
+        new Condition(() -> rootNodes.isEmpty()).ifTrue(() -> {result.set(null);});
+        return result.get();
     }
 
     /**
