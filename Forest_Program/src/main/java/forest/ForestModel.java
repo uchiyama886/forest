@@ -2,7 +2,13 @@ package forest;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+import utility.*;
 
 
 /**
@@ -89,7 +95,60 @@ public class ForestModel extends Object {
      */
     protected void read(File aFile)
     {
-        //未実装
+        try (BufferedReader reader = new BufferedReader(new FileReader(aFile))) 
+        {
+            HashMap<Integer, Node> nodeMap = new HashMap<>();
+            boolean[] isNode = {false};
+            boolean[] isBranch = {false};
+
+            final String[] lineHolder = new String[1];
+            new Condition(() -> {
+                try {
+                    lineHolder[0] = reader.readLine();
+                    return lineHolder[0] != null;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+            }).whileTrue(() -> {
+                String line = lineHolder[0].trim();
+                Runnable nodeContents = () -> {
+                    String parts[] = line.split(",");
+                    int id = Integer.parseInt(parts[0]);
+                    String name = parts[1].trim();
+                    Node aNode = new Node(name);
+                    forest.addNode(aNode);
+                    nodeMap.put(id, aNode);
+                };
+                Runnable branchContents = () -> {
+                    String parts[] = line.split(",");
+                    int startId = Integer.parseInt(parts[0].trim());
+                    int endId = Integer.parseInt(parts[1].trim());
+                    Node start = nodeMap.get(startId);
+                    Node end = nodeMap.get(endId);
+                    new Condition(() -> (start != null && end != null)).ifTrue(() -> {
+                        forest.addBranch(new Branch(start, end));
+                    });
+                };
+                new Condition.Switch()
+                    .addCase(() -> line.isEmpty(), () -> {})
+                    .addCase(() -> line.equalsIgnoreCase(Constants.TagOfNodes), () -> {
+                        isNode[0] = true;
+                        isBranch[0] = false;
+                    })
+                    .addCase(() -> line.equalsIgnoreCase(Constants.TagOfBranches), () -> {
+                        isNode[0] = false;
+                        isBranch[0] = true;
+                    })
+                    .defaultCase(() -> {
+                        new Condition(() -> isNode[0]).ifTrue(nodeContents);
+                        new Condition(() -> isBranch[0]).ifTrue(branchContents);
+                    })
+                    .evaluate();    
+            });
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 
     /** 
