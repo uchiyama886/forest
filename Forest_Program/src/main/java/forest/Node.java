@@ -47,7 +47,21 @@ public class Node extends Component {
      */
     public void draw(Graphics aGraphics)
     {
-        //未実装
+        int x = this.location.x;
+        int y = this.location.y;
+        int dx = this.extent.x;
+        int dy = this.extent.y;
+
+        //背景色を塗りつぶす
+        aGraphics.setColor(Constants.BackgroundColor);
+        aGraphics.fillRect(x, y, dx, dy);
+
+        //枠線を書く
+        aGraphics.setColor(Constants.ForegroundColor);
+        aGraphics.drawRect(x, y, dx, dy);
+
+        //ノード名を書く
+        aGraphics.drawString(this.name, Constants.Margin.x, Constants.Margin.y);
     }
 
     /**
