@@ -21,6 +21,8 @@ public class Branch extends Object {
      */
     public Branch(Node from, Node to) {
         super();
+        this.start = from;
+        this.end = to;
     }
 
     /**
