@@ -77,7 +77,7 @@ public class Forest extends Object
         Consumer<Node> aConsumer = (Node root) -> {
             Point newPoint = new Point(x.get(), y.get());
             Point subTreeBottomRight = arrange(root, newPoint, aModel);
-            //y.set(subTreeBottomRight.x + Constants.Interval.x);
+            y.set(subTreeBottomRight.y + Constants.Interval.y);
         };
         roots.forEach(aConsumer);
     }
@@ -144,7 +144,7 @@ public class Forest extends Object
             roots.remove(aBranch.end());
         };
         branches.forEach(aConsumer);
-        return this.nodes;
+        return roots;
     }
 
     /**
