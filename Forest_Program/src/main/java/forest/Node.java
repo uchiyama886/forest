@@ -55,8 +55,7 @@ public class Node extends Component {
      */
     public Rectangle getBounds()
     {
-        //未実装
-        return null;
+        return new Rectangle(location.x, location.y, extent.x, extent.y);
     }
 
     /**
@@ -64,8 +63,7 @@ public class Node extends Component {
      */
     public Point getExtent()
     {
-        //未実装
-        return null;
+        return extent;
     }
 
     /**
@@ -74,7 +72,7 @@ public class Node extends Component {
     public Point getLocation()
     {
         //未実装
-        return null;
+        return location;
     }
 
     /**
@@ -82,8 +80,7 @@ public class Node extends Component {
      */
     public String getName()
     {
-        //未実装
-        return null;
+        return name;
     }
 
     /**
@@ -91,8 +88,7 @@ public class Node extends Component {
      */
     public Integer getStatus()
     {
-        //未実装
-        return null;
+        return status;
     }
 
     /**
@@ -101,7 +97,7 @@ public class Node extends Component {
      */
     public void setExtent(Point aPoint)
     {
-        //未実装
+        extent = aPoint;
     }
 
     /**
@@ -111,7 +107,7 @@ public class Node extends Component {
     @Override
     public void setLocation(Point aPoint)
     {
-        //未実装
+        location = aPoint;
     }
 
     /**
@@ -129,7 +125,7 @@ public class Node extends Component {
      */
     public void setStatus(Integer anInteger)
     {
-        //未実装
+        status = anInteger;
     }
 
     /**
