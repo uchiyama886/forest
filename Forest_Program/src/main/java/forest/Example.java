@@ -2,7 +2,6 @@ package forest;
 
 import java.awt.Dimension;
 import java.io.File;
-import java.util.List;
 import javax.swing.JFrame;
 
 /**
@@ -37,14 +36,6 @@ public class Example extends Object
 		{
 			System.err.println("'" + aFile + "' does not exist.");
 			System.exit(1);
-		}
-
-		FileRead aRead = new FileRead();
-		aRead.read(aFile);
-
-		List<Tree> aTree = aRead.getTrees();
-		for(Tree tmp: aTree) {
-			tmp.show();
 		}
 
 		// MVCを作成する。

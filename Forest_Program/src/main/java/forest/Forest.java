@@ -1,8 +1,14 @@
 package forest;
 
+import utility.Condition;
+import utility.ValueHolder;
+
+import java.util.function.Consumer;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 樹状整列におけるフォレスト（木・林・森・亜格子状の森）を担うクラスになります。
@@ -29,7 +35,8 @@ public class Forest extends Object
      */
     public Forest()
     {
-        //未実装
+        nodes =  new ArrayList<>();
+        branches = new ArrayList<>();
     }
 
     /**
@@ -38,7 +45,7 @@ public class Forest extends Object
      */
     public void addBranch(Branch aBranch)
     {
-        //未実装
+        branches.add(aBranch);
     }
 
     /**
@@ -47,7 +54,7 @@ public class Forest extends Object
      */
     public void addNode(Node aNode)
     {
-        //未実装
+        nodes.add(aNode);
     }
 
     /**
@@ -55,7 +62,7 @@ public class Forest extends Object
      */
     public void arrange()
     {
-        //未実装
+        arrange(null);
     }
 
     /**
@@ -64,7 +71,15 @@ public class Forest extends Object
      */
     public void arrange(ForestModel aModel)
     {
-        //未実装
+        ArrayList<Node> roots = this.sortNodes(this.rootNodes());
+        AtomicInteger x = new AtomicInteger(0);
+        AtomicInteger y = new AtomicInteger(0);
+        Consumer<Node> aConsumer = (Node root) -> {
+            Point newPoint = new Point(x.get(), y.get());
+            Point subTreeBottomRight = arrange(root, newPoint, aModel);
+            //y.set(subTreeBottomRight.x + Constants.Interval.x);
+        };
+        roots.forEach(aConsumer);
     }
 
     /**
@@ -73,9 +88,15 @@ public class Forest extends Object
      * @param aPoint ノードの位置（座標）
      * @param aModel モデル（nullのときはアニメーションを行わない）
      */
-    protected Point arrange(Node aNode, Point aPoint,ForestModel aModel)
+    protected Point arrange(Node aNode, Point aPoint, ForestModel aModel)
     {
-        //未実装
+        ArrayList<Node> subNodes = this.subNodes(aNode);
+        AtomicInteger cnt = new AtomicInteger(0);
+        Consumer<Node> aConsumer = (Node sub) -> {
+            Point newPoint = new Point(aPoint.x + aNode.stringWidth(aNode.getName()) + Constants.Interval.x, aPoint.y + aNode.stringHeight(aNode.getName())*cnt.getAndIncrement() + Constants.Interval.y);
+            arrange(sub, newPoint, aModel);
+        };
+        subNodes.forEach(aConsumer);
         return aPoint;
     }
 
@@ -118,7 +139,11 @@ public class Forest extends Object
      */
     public ArrayList<Node> rootNodes()
     {
-        //未実装
+        ArrayList<Node> roots = new ArrayList<>(nodes);
+        Consumer<Branch> aConsumer = (Branch aBranch) -> {
+            roots.remove(aBranch.end());
+        };
+        branches.forEach(aConsumer);
         return this.nodes;
     }
 
@@ -128,8 +153,8 @@ public class Forest extends Object
      */
     protected ArrayList<Node> sortNodes(ArrayList<Node> nodeCollection)
     {
-        //未実装
-        return this.nodes;
+        nodeCollection.sort(Comparator.comparing(Node::getName));
+        return nodeCollection;
     }
 
     /**
@@ -138,8 +163,17 @@ public class Forest extends Object
      */
     public ArrayList<Node> subNodes(Node aNode)
     {
-        //未実装
-        return this.nodes;
+        ValueHolder<ArrayList<Node>> aSubNodes = new ValueHolder<>(new ArrayList<>());
+        Consumer<Branch> aConsumer = (Branch aBranch) -> {
+            // Runnable truePassage = ()-> {aSubNodes.get().add(aBranch.end())};
+            // Supplier<Boolean> aSupplier = () ->  (aBranch.start() == aNode);
+            // ifTrue(aSupplier, truePassage);
+            new Condition(() ->  (aBranch.start() == aNode)).ifTrue(()-> {
+                aSubNodes.get().add(aBranch.end());
+            });
+        };
+        branches.forEach(aConsumer);
+        return aSubNodes.get();
     }
 
     /**
@@ -147,8 +181,17 @@ public class Forest extends Object
      */
     public ArrayList<Node> superNodes(Node aNode)
     {
-        //未実装
-        return this.nodes;
+        ValueHolder<ArrayList<Node>> aSuperNodes = new ValueHolder<>(new ArrayList<>());
+        Consumer<Branch> aConsumer = (Branch aBranch) -> {
+            // Runnable truePassage = ()-> {aSubNodes.get().add(aBranch.end())};
+            // Supplier<Boolean> aSupplier = () ->  (aBranch.start() == aNode);
+            // ifTrue(aSupplier, truePassage);
+            new Condition(() ->  (aBranch.end() == aNode)).ifTrue(()-> {
+                aSuperNodes.get().add(aBranch.start());
+            });
+        };
+        branches.forEach(aConsumer);
+        return aSuperNodes.get();
     }
 
     /**
