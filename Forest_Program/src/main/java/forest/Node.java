@@ -180,7 +180,12 @@ public class Node extends Component {
     @Override
     public String toString()
     {
-        //未実装
-        return null;
+        StringBuffer aBuffer = new StringBuffer();
+        Class<?> aClass = this.getClass();
+        aBuffer.append(aClass.getName());
+        aBuffer.append("[");
+        aBuffer.append(this);
+        aBuffer.append("]");
+        return aBuffer.toString();
     }
 }
