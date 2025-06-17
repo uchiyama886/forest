@@ -56,7 +56,7 @@ public class ForestModel extends Object {
      */
     public void arrange()
     {
-        //未実装
+        forest.arrange();
     }
 
     /**
@@ -72,8 +72,7 @@ public class ForestModel extends Object {
      */
     public Forest forest()
     {
-        //未実装
-        return null;
+        return this.forest;
     }
 
     /**
@@ -81,7 +80,6 @@ public class ForestModel extends Object {
      */
     protected BufferedImage picture()
     {
-        //未実装
         return this.picture;
     }
 
