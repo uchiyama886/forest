@@ -4,7 +4,9 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-
+/**
+ * 樹状整列におけるフォレスト（木・林・森・亜格子状の森）を担うクラスになります。
+ */
 public class Forest extends Object
 {
     /**

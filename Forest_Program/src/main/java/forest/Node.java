@@ -1,10 +1,13 @@
 package forest;
 
 import java.awt.Component;
-import java.awt.Point;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.Rectangle;
 
+/**
+ * 樹状整列におけるノード（節）を担うクラスになります。
+ */
 public class Node extends Component {
     
     /**
