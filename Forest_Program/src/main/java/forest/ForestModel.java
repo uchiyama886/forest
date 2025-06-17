@@ -106,8 +106,7 @@ public class ForestModel extends Object {
      */
     public ArrayList<Node> roots()
     {
-        //未実装
-        return null;
+        return forest.rootNodes();
     }
 
     /**
