@@ -32,7 +32,7 @@ public class ForestView extends JPanel
      */
     public ForestView(ForestModel aModel)
     {
-        //未実装
+        model = aModel;
     }
 
     /**
@@ -42,7 +42,9 @@ public class ForestView extends JPanel
     @Override
     public void paintComponent(Graphics aGraphics)
     {
-        //未実装
+        super.paintComponent(aGraphics);
+
+        this.model.forest().draw(aGraphics);
     }
 
     /**

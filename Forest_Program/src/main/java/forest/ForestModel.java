@@ -1,5 +1,6 @@
 package forest;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +39,7 @@ public class ForestModel extends Object {
     public ForestModel(java.io.File aFile)
     {
         forest = new Forest();
+        this.read(aFile);
     }
 
     /**
@@ -54,7 +56,7 @@ public class ForestModel extends Object {
      */
     public void animate()
     {
-        //未実装
+        
     }
 
     /**
