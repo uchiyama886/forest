@@ -41,7 +41,7 @@ public class Constants extends Object
     /**
      * ノードを描く際のラベルのフォントを表します。
      */
-    public static final Font DefaultFont = new FontUIResource("PLAIN", 1, 2);
+    public static final Font DefaultFont = new FontUIResource("Serif", Font.PLAIN, 12);
 
     /**
      * ノードにおいてラベルを描く際の枠縁から余裕（マージン）を表します。
@@ -51,7 +51,7 @@ public class Constants extends Object
     /**
      * ノード群を樹状に整列させる際にノード同士の間隔を表します。
      */
-    public static final Point Interval = new Point(2,2);
+    public static final Point Interval = new Point(25,2);
 
     /**
      * ノード群を深さ優先にたどる際の状態「未定」を表します。
