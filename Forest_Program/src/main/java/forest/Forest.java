@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * 樹状整列におけるフォレスト（木・林・森・亜格子状の森）を担うクラスになります。
@@ -90,6 +91,7 @@ public class Forest extends Object
      */
     protected Point arrange(Node aNode, Point aPoint, ForestModel aModel)
     {
+        aNode.setLocation(aPoint);
         ArrayList<Node> subNodes = this.subNodes(aNode);
         AtomicInteger cnt = new AtomicInteger(0);
         Consumer<Node> aConsumer = (Node sub) -> {
@@ -105,7 +107,33 @@ public class Forest extends Object
      */
     public Rectangle bounds()
     {
-        //未実装
+        AtomicReference<Rectangle> result = new AtomicReference<>();
+
+        Runnable notEmptyNodes = () -> {
+            AtomicInteger minX = new AtomicInteger(Integer.MAX_VALUE);
+            AtomicInteger minY = new AtomicInteger(Integer.MAX_VALUE);
+            AtomicInteger maxX = new AtomicInteger(Integer.MIN_VALUE);
+            AtomicInteger maxY = new AtomicInteger(Integer.MIN_VALUE);
+
+            Consumer<Node> aConsumer = (Node aNode) -> {
+                Point loc = aNode.getLocation();
+                Point ext = aNode.getExtent();
+
+                minX.set(Math.min(minX.get(), loc.x));
+                minY.set(Math.min(minY.get(), loc.y));
+                maxX.set(Math.max(maxX.get(), loc.x + ext.x));
+                maxY.set(Math.max(maxY.get(), loc.y + ext.y));
+            };
+            nodes.forEach(aConsumer);
+
+            result.set(new Rectangle(minX.get(), minY.get(), maxX.get() - minX.get(), maxY.get() - minY.get()));
+        };
+
+        new Condition(() -> nodes.isEmpty()).ifThenElse(() -> {
+            result.set(new Rectangle(0, 0, 0, 0));
+        }, notEmptyNodes);
+
+        this.bounds = result.get();
         return this.bounds;
     }
 
@@ -114,7 +142,17 @@ public class Forest extends Object
      */
     public void draw(java.awt.Graphics aGraphics)
     {
-        //未実装
+        //ノードを書く
+        Consumer<Node> writeNodes = (Node node) -> {
+            node.draw(aGraphics);
+        };
+        nodes.forEach(writeNodes);
+
+        //枝を描く
+        Consumer<Branch> writeBranchs = (Branch branch) -> {
+            branch.draw(aGraphics);
+        };
+        branches.forEach(writeBranchs);
     }
 
     /**
@@ -122,7 +160,12 @@ public class Forest extends Object
      */
     public void flushBounds()
     {
-        //未実装
+        Consumer<Node> aConsumer = (Node aNode) -> {
+            aNode.setLocation(new Point(0, 0));
+            aNode.setExtent(new Point(0, 0));
+        };
+        nodes.forEach(aConsumer);
+        this.bounds = null;
     }
 
     /**
@@ -131,7 +174,15 @@ public class Forest extends Object
      */
     protected void propagate(ForestModel aModel)
     {
-        //未実装
+        new Condition(() -> aModel == null).ifTrue(() -> {return;});
+
+        try {
+            Thread.sleep(Constants.SleepTick);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        aModel.changed();
     }
 
     /**
@@ -215,7 +266,14 @@ public class Forest extends Object
      */
     public Node whichOfNodes(Point aPoint)
     {
-        //未実装
-        return null;
+        AtomicReference<Node> result = new AtomicReference<>(null);
+        Consumer<Node> aConsumer = (Node aNode) -> {
+            Rectangle rect = new Rectangle(aNode.getLocation().x, aNode.getLocation().y, aNode.getExtent().x, aNode.getExtent().y);
+            new Condition(() -> rect.contains(aPoint)).ifTrue(() -> {
+                result.set(aNode);
+            });
+        };
+        nodes.forEach(aConsumer);
+        return result.get();
     }
 }
