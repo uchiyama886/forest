@@ -1,9 +1,11 @@
 package forest;
 
 import java.awt.Component;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 /**
  * 樹状整列におけるノード（節）を担うクラスになります。
@@ -36,7 +38,7 @@ public class Node extends Component {
      */
     public Node(String aString)
     {
-        //未実装
+        this.name = aString;
     }
 
     /**
@@ -118,7 +120,7 @@ public class Node extends Component {
     @Override
     public void setName(String aString)
     {
-        //未実装
+        this.name = aString;
     }
 
     /**
@@ -136,8 +138,14 @@ public class Node extends Component {
      */
     protected int stringHeight(String string)
     {
-        //未実装
-        return 0;
+        BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = img.createGraphics();
+        g.setFont(Constants.DefaultFont);
+
+        FontMetrics aMetrics = g.getFontMetrics();
+        int height = aMetrics.getHeight();
+
+        return height;
     }
 
     /**
@@ -146,8 +154,14 @@ public class Node extends Component {
      */
     protected int stringWidth(String string)
     {
-        //未実装
-        return 0;
+        BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = img.createGraphics();
+        g.setFont(Constants.DefaultFont);
+
+        FontMetrics aMetrics = g.getFontMetrics();
+        int width = aMetrics.stringWidth(string);
+
+        return width;
     }
 
     /**
