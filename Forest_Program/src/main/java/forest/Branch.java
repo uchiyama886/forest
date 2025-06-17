@@ -29,7 +29,13 @@ public class Branch extends Object {
      * ブランチ（枝）を描画するメソッドです。
      */
     public void draw(Graphics aGraphics) {
-        //未実装
+        int fromX = this.start.getX() + this.start.getWidth();
+        int fromY = (this.start.getY() + this.start.getHeight()) / 2;
+        int toX = this.end.getX();
+        int toY = (this.end.getY() + this.end.getHeight()) / 2;
+
+        aGraphics.setColor(Constants.ForegroundColor);
+        aGraphics.drawLine(fromX, fromY, toX, toY);
     }
 
     /**
