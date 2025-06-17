@@ -37,7 +37,7 @@ public class ForestModel extends Object {
      */
     public ForestModel(java.io.File aFile)
     {
-        //未実装
+        forest = new Forest();
     }
 
     /**
