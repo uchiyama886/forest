@@ -72,6 +72,9 @@ public class Forest extends Object
      */
     public void arrange(ForestModel aModel)
     {
+        nodes.forEach(node -> {
+            node.setStatus(Constants.UnVisited);
+        });
         ArrayList<Node> roots = this.sortNodes(this.rootNodes());
         AtomicInteger x = new AtomicInteger(0);
         AtomicInteger y = new AtomicInteger(0);
@@ -91,11 +94,16 @@ public class Forest extends Object
      */
     protected Point arrange(Node aNode, Point aPoint, ForestModel aModel)
     {
+        if(aNode.getStatus() == Constants.Visited) return aPoint; 
+        aNode.setStatus(Constants.Visited);
         aNode.setLocation(aPoint);
         ArrayList<Node> subNodes = this.subNodes(aNode);
         AtomicInteger cnt = new AtomicInteger(0);
         Consumer<Node> aConsumer = (Node sub) -> {
-            Point newPoint = new Point(aPoint.x + aNode.stringWidth(aNode.getName()) + Constants.Interval.x, aPoint.y + aNode.stringHeight(aNode.getName())*cnt.getAndIncrement() + Constants.Interval.y);
+            Point newPoint = new Point(
+                aPoint.x + aNode.stringWidth(aNode.getName()) + Constants.Interval.x, 
+                aPoint.y + aNode.stringHeight(aNode.getName())*cnt.getAndIncrement() + Constants.Interval.y
+            );
             arrange(sub, newPoint, aModel);
         };
         subNodes.forEach(aConsumer);
@@ -220,6 +228,13 @@ public class Forest extends Object
             // Supplier<Boolean> aSupplier = () ->  (aBranch.start() == aNode);
             // ifTrue(aSupplier, truePassage);
             new Condition(() ->  (aBranch.start() == aNode)).ifTrue(()-> {
+                /*ArrayList<Node> aSupreNodes = superNodes(aBranch.end());
+                Consumer<Node> consumer = (Node aSupreNode) -> {
+                    new Condition(() -> (aBranch.start() == aSupreNode)).ifTrue(() -> {
+                        aSubNodes.get().add(aBranch.end());
+                    });
+                };
+                aSupreNodes.forEach(consumer);*/
                 aSubNodes.get().add(aBranch.end());
             });
         };
