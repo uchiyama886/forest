@@ -39,6 +39,7 @@ public class Node extends Component {
     public Node(String aString)
     {
         this.name = aString;
+        this.status = Constants.UnKnown;
     }
 
     /**
