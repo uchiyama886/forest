@@ -92,7 +92,6 @@ public class ForestView extends JPanel
      */
     public Node whichOfNodes(Point aPoint)
     {
-        //未実装
-        return null;
+        return model.forest().whichOfNodes(aPoint);
     }
 }
