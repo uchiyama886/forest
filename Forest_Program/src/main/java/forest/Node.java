@@ -40,6 +40,8 @@ public class Node extends Component {
     {
         this.name = aString;
         this.status = Constants.UnKnown;
+        this.extent.x = this.stringWidth(aString) + Constants.Margin.x * 2;
+        this.extent.y = this.stringHeight(aString) + Constants.Margin.y * 2;
     }
 
     /**
@@ -112,7 +114,8 @@ public class Node extends Component {
      */
     public void setExtent(Point aPoint)
     {
-        extent = aPoint;
+        Point setPoint = new Point(aPoint.x + Constants.Margin.x*2, aPoint.y + Constants.Margin.y*2);
+        extent = setPoint;
     }
 
     /**
