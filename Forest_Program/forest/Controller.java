@@ -53,18 +53,44 @@ public class Controller extends MouseInputAdapter implements MouseWheelListener
 	}
 
 	/**
-	 * 指定されたマウスイベントからマウスカーサの位置を獲得して、
-	 * モデル座標系でのクリック位置を割り出して標準出力に出力する。
-	 * @param aMouseEvent マウスイベント
-	 */
-	@Override
-	public void mouseClicked(MouseEvent aMouseEvent)
-	{
-		Point aPoint = aMouseEvent.getPoint();
-		aPoint.translate(view.scrollAmount().x, view.scrollAmount().y);
-		System.out.println(aPoint);
-		return;
-	}
+     * 指定されたマウスイベントからマウスカーサの位置を獲得して、
+     * モデル座標系でのクリック位置を割り出して標準出力に出力する。
+     * さらに、クリックされたノードまたはリーフの名前を標準出力に出力する。
+     * @param aMouseEvent マウスイベント
+     */
+    @Override
+    public void mouseClicked(MouseEvent aMouseEvent)
+    {
+        // 画面上のクリック位置を取得
+        Point screenPoint = aMouseEvent.getPoint();
+
+        // ビューのスクロール量を考慮してモデル座標に変換
+        Point modelPoint = new Point(screenPoint.x + view.scrollAmount().x,
+                                     screenPoint.y + view.scrollAmount().y);
+
+        // デバッグ用にモデル座標を出力
+        System.out.println("Clicked at Model Coordinates: " + modelPoint);
+
+        // Viewがnullでないことを確認し、その後の処理を実行
+        // Condition.ifTrue() を使って this.view が null でない場合に処理を実行
+        Condition.ifTrue(() -> this.view != null, () -> {
+            // ViewクラスにgetNodeOrLeafNameAtメソッドが実装されていることを想定
+            java.util.Optional<String> nodeOrLeafName = this.view.getNodeOrLeafNameAt(modelPoint);
+
+            // 名前が見つかった場合と見つからなかった場合の処理
+            Condition.ifThenElse(() -> nodeOrLeafName.isPresent(),
+                // 名前が見つかった場合
+                () -> {
+                    System.out.println("Node/Leaf Clicked: " + nodeOrLeafName.get());
+                },
+                // 名前が見つからなかった場合
+                () -> {
+                    System.out.println("No Node/Leaf found at this location.");
+                }
+            );
+        });
+        return;
+    }
 
 	/**
 	 * マウスカーサの形状を移動の形に変化させ、指定されたマウスイベントからマウスカーサの位置を獲得して、
