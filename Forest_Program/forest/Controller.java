@@ -9,49 +9,50 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
 import javax.swing.event.MouseInputAdapter;
-import javax.swing.text.View;
 
-import utility.*;
+import forest.utility.*;
+import condition.ValueHolder;
 
 /**
- * 樹状整列におけるMVCのコントローラ（C）を担うクラスになります。
+ * コントローラ。制御まわりを専門に行う。
  */
-public class ForestController extends MouseInputAdapter implements MouseWheelListener
+public class Controller extends MouseInputAdapter implements MouseWheelListener
 {
-    /**
-     * 樹状整列におけるMVCのモデル（M）を記憶するフィールドです。
-     */
-    private ForestModel model;
+	/**
+	 * 情報を握っているModelのインスタンスを束縛する。
+	 */
+	protected Model model;
 
-    /**
-     * 樹状整列におけるMVCのビュー（V）を記憶するフィールドです。
-     */
-    private ForestView view;
+	/**
+	 * 表示を司るViewのインスタンスを束縛する。
+	 */
+	protected View view;
 
-    /**
-     * マウスの直近の位置を記憶するフィールドです。
-     */
-    private Point previous;
+	/**
+	 * 以前にマウスのボタンが押下された場所をPointのインスタンスとして束縛する。
+	 */
+	private Point previous;
 
-    /**
-     * マウスの現在の位置を記憶するフィールドです。
-     */
-    private Point current;
+	/**
+	 * 現在にマウスのボタンが押下された場所をPointのインスタンスとして束縛する。
+	 */
+	private Point current;
 
-    /**
-     * このクラスのインスタンスを生成するコンストラクタです。
-     */
-    public ForestController()
-    {
-        super();
-        this.model = null;
+	/**
+	 * インスタンスを生成して応答する。
+	 * すべてのインスタンス変数（model, view, previous, current）をnull化する。
+	 */
+	public Controller()
+	{
+		super();
+		this.model = null;
 		this.view = null;
 		this.previous = null;
 		this.current = null;
 		return;
-    }
+	}
 
-    /**
+	/**
      * 指定されたマウスイベントからマウスカーサの位置を獲得して、
      * モデル座標系でのクリック位置を割り出して標準出力に出力する。
      * さらに、クリックされたノードまたはリーフの名前を標準出力に出力する。
@@ -91,7 +92,7 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
         return;
     }
 
-    /**
+	/**
 	 * マウスカーサの形状を移動の形に変化させ、指定されたマウスイベントからマウスカーサの位置を獲得して、
 	 * インスタンス変数currentに設定すると共に、以前のマウスカーサの位置からの差分を計算する。
 	 * そして、その差分だけビューに対してスクロールを依頼し、その後にビューの再描画を依頼する。
@@ -113,7 +114,7 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
 		return;
 	}
 
-    /**
+	/**
 	 * 何もしない。
 	 * @param aMouseEvent マウスイベント
 	 */
@@ -123,7 +124,7 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
 		return;
 	}
 
-    /**
+	/**
 	 * 何もしない。
 	 * @param aMouseEvent マウスイベント
 	 */
@@ -133,7 +134,7 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
 		return;
 	}
 
-    /**
+	/**
 	 * 何もしない。
 	 * @param aMouseEvent マウスイベント
 	 */
@@ -143,7 +144,7 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
 		return;
 	}
 
-    /**
+	/**
 	 * マウスカーサの形状を十字に変化させ、指定されたマウスイベントからマウスカーサの位置を獲得して、
 	 * インスタンス変数currentに設定する共にインスタンス変数previousをインスタンス変数currentに更新する。
 	 * @param aMouseEvent マウスイベント
@@ -159,7 +160,7 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
 		return;
 	}
 
-    /**
+	/**
 	 * マウスカーサの形状をデフォルトに戻し、指定されたマウスイベントからマウスカーサの位置を獲得して、
 	 * インスタンス変数currentに設定する共にインスタンス変数previousをインスタンス変数currentに更新する。
 	 * @param aMouseEvent マウスイベント
@@ -175,7 +176,7 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
 		return;
 	}
 
-    /**
+	/**
 	 * マウスホィールで、縦（垂直）方向のスクロールを行う。
 	 * その際に、何らかの修飾があれば、横（水平）方向のスクロールも行う。
 	 * @param aMouseWheelEvent マウスホィールイベント
@@ -194,7 +195,7 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
 		return;
 	}
 
-    /**
+	/**
 	 * スクロール量を指定された座標分だけ相対スクロールして、ビューを再描画する。
 	 * その際に、シフトキーが押下されていたら、モデルの依存物となっている全てのビューを連動させて、
 	 * 相対（それぞれのビューのスクロール量に見合う分の）スクロールを行う。
@@ -232,22 +233,22 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
 		return;
 	}
 
-    /**
+	/**
 	 * 指定されたモデルをインスタンス変数modelに設定する。
 	 * @param aModel このコントローラのモデル
 	 */
-	public void setModel(ForestModel aModel)
+	public void setModel(Model aModel)
 	{
 		this.model = aModel;
 		return;
 	}
 
-    /**
+	/**
 	 * 指定されたビューをインスタンス変数viewに設定し、
 	 * ビューのマウスのリスナおよびモーションリスナそしてホイールリスナをこのコントローラにする。
 	 * @param aView このコントローラのビュー
 	 */
-	public void setView(ForestView aView)
+	public void setView(View aView)
 	{
 		this.view = aView;
 		this.view.addMouseListener(this);
@@ -256,20 +257,21 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
 		return;
 	}
 
-    /**
-     * 自分自身を文字列に変換するメソッドです。
-     */
-    @Override
-    public java.lang.String toString()
-    {
-        StringBuffer aBuffer = new StringBuffer();
-        Class<?> aClass = this.getClass();
-        aBuffer.append(aClass.getName());
-        aBuffer.append("[");
-        aBuffer.append(this);
-        aBuffer.append("]");
-        return aBuffer.toString();
-    }
-
-
+	/**
+	 * このインスタンスを文字列にして応答する。
+	 * @return 自分自身を表す文字列
+	 */
+	@Override
+	public String toString()
+	{
+		StringBuffer aBuffer = new StringBuffer();
+		Class<?> aClass = this.getClass();
+		aBuffer.append(aClass.getName());
+		aBuffer.append("[model=");
+		aBuffer.append(this.model);
+		aBuffer.append(",view=");
+		aBuffer.append(this.view);
+		aBuffer.append("]");
+		return aBuffer.toString();
+	}
 }
