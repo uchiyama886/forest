@@ -90,7 +90,11 @@ public class ForestModel extends Object {
      */
     protected BufferedImage picture()
     {
-        //未実装
+        int width = this.forest.bounds().width;
+        int height = this.forest.bounds().height;
+        this.picture = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = picture.createGraphics();
+        forest.draw(g);
         return this.picture;
     }
 

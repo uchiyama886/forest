@@ -64,7 +64,7 @@ public class Node extends Component {
         aGraphics.drawRect(x, y, dx, dy);
 
         //ノード名を書く
-        aGraphics.drawString(this.name, Constants.Margin.x, Constants.Margin.y);
+        aGraphics.drawString(this.name, x+Constants.Margin.x, y+Constants.Margin.y);
     }
 
     /**
