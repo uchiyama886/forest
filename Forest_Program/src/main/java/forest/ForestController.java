@@ -73,7 +73,6 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
         // Viewがnullでないことを確認し、その後の処理を実行
         // Condition.ifTrue() を使って this.view が null でない場合に処理を実行
         Condition.ifTrue(() -> this.view != null, () -> {
-            // ViewクラスにgetNodeOrLeafNameAtメソッドが実装されていることを想定
             java.util.Optional<Node> nodeOrLeafName = this.view.whichOfNodes(modelPoint);
 
             // 名前が見つかった場合と見つからなかった場合の処理
