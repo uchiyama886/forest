@@ -39,6 +39,7 @@ public class ForestModel extends Object {
      */
     public ForestModel(java.io.File aFile)
     {
+        super();
         forest = new Forest();
         dependants = new ArrayList<>();
         this.read(aFile);
@@ -72,9 +73,9 @@ public class ForestModel extends Object {
     /**
      * 自分自身が変化したことを依存物たちに放送（updateを依頼）するメソッドです。
      */
-    public void changed()
+    public void changed() 
     {
-        dependants.forEach(view -> view.update());
+        this.dependants.forEach(view -> view.update());
     }
 
     /**

@@ -1,6 +1,11 @@
 package forest;
 
 import javax.swing.JPanel;
+
+import utility.Condition;
+
+import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.awt.Point;
 import java.awt.Graphics;
 import java.lang.String;
@@ -32,7 +37,14 @@ public class ForestView extends JPanel
      */
     public ForestView(ForestModel aModel)
     {
-        model = aModel;
+        super();
+        this.model = aModel;
+        this.model.addDependent(this);
+        this.controller = new ForestController();
+        this.controller.setModel(this.model);
+        this.controller.setView(this);
+        this.offset = new Point(0, 0);
+        return;
     }
 
     /**
@@ -42,9 +54,17 @@ public class ForestView extends JPanel
     @Override
     public void paintComponent(Graphics aGraphics)
     {
-        super.paintComponent(aGraphics);
-
-        this.model.forest().draw(aGraphics);
+        Integer width = this.getWidth();
+        Integer height = this.getHeight();
+        aGraphics.setColor(Color.lightGray);
+		aGraphics.fillRect(0, 0, width, height);
+		try { new Condition(() -> this.model == null).ifTrue(() -> { throw new RuntimeException(); }); }
+		catch(RuntimeException anException) { return; }
+		BufferedImage anImage = this.model.picture();
+		try { new Condition(() -> anImage == null).ifTrue(() -> { throw new RuntimeException(); }); }
+		catch(RuntimeException anException) { return; }
+		aGraphics.drawImage(anImage, this.offset.x, this.offset.y, null);
+		return;
     }
 
     /**
@@ -53,7 +73,10 @@ public class ForestView extends JPanel
      */
     public void scrollBy(Point aPoint)
     {
-        //未実装
+        Integer x = this.offset.x + aPoint.x;
+        Integer y = this.offset.y + aPoint.y;
+        this.scrollTo(new Point(x, y));
+        return;
     }
 
     /**
@@ -61,7 +84,8 @@ public class ForestView extends JPanel
      */
     public void scrollTo(Point aPoint)
     {
-        //未実装
+        this.offset = aPoint;
+        return;
     }
 
     /**
@@ -83,7 +107,8 @@ public class ForestView extends JPanel
      */
     public void update()
     {
-        //未実装
+        this.repaint(0, 0, this.getWidth(), this.getHeight());
+        return;
     }
 
     /**
