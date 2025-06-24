@@ -9,7 +9,7 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
 import javax.swing.event.MouseInputAdapter;
-import javax.swing.text.View;
+//import javax.swing.text.View;
 
 import utility.*;
 
@@ -74,13 +74,13 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
         // Viewがnullでないことを確認し、その後の処理を実行
         // Condition.ifTrue() を使って this.view が null でない場合に処理を実行
         Condition.ifTrue(() -> this.view != null, () -> {
-            java.util.Optional<Node> nodeOrLeafName = this.view.whichOfNodes(modelPoint);
+            Node nodeOrLeafName = this.view.whichOfNodes(modelPoint);
 			//Node nodeOrLeafName = this.view.whichOfNodes(screenPoint);
             // 名前が見つかった場合と見つからなかった場合の処理
-            Condition.ifThenElse(() -> nodeOrLeafName.isPresent(), /*nodeOrLeafName == null,*/
+            Condition.ifThenElse(() -> nodeOrLeafName != null, /*nodeOrLeafName == null,*/
                 // 名前が見つかった場合
                 () -> {
-                    System.out.println("Node/Leaf Clicked: " + nodeOrLeafName.get());
+                    System.out.println("Node/Leaf Clicked: " + nodeOrLeafName);
                 },
                 // 名前が見つからなかった場合
                 () -> {
@@ -220,7 +220,7 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
 		                            | InputEvent.META_DOWN_MASK
 		                            ;
 		Boolean altORctrlORmetaDown = (someModifiers & altORctrlORmetaMask) != 0;
-		view.model.dependents.forEach((View aView) ->
+			this.model.getDependents().forEach((ForestView aView) ->
 		{
 			new Condition(() -> aView != this.view).ifTrue(() ->
 			{
