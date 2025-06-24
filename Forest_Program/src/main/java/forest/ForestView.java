@@ -15,16 +15,17 @@ import java.lang.String;
  */
 public class ForestView extends JPanel
 {
+    private static final long serialVersionUID = 1L;
 
     /**
      * 樹状整列におけるMVCのモデル（M）を記憶するフィールドです。
      */
-    private ForestModel model;
+    private transient ForestModel model;
 
     /**
      * 樹状整列におけるMVCのコントローラ（C）を記憶するフィールドです。
      */
-    private ForestController controller;
+    private transient ForestController controller;
 
     /**
      * スクロール量（どこから描き出すのかを表す座標）を記憶するフィールドです。
@@ -66,6 +67,17 @@ public class ForestView extends JPanel
 		aGraphics.drawImage(anImage, this.offset.x, this.offset.y, null);
 		return;
     }
+
+	/**
+	 * スクロール量（offsetの逆向きの大きさ）を応答する。
+	 * @return X軸とY軸のスクロール量を表す座標
+	 */
+	public Point scrollAmount()
+	{
+		Integer x = 0 - this.offset.x;
+		Integer y = 0 - this.offset.y;
+		return (new Point(x, y));
+	}
 
     /**
      * 相対スクロールを行うメソッドです。
