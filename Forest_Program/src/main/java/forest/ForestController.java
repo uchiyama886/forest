@@ -66,6 +66,7 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
         // ビューのスクロール量を考慮してモデル座標に変換
         Point modelPoint = new Point(screenPoint.x + view.scrollAmount().x,
                                      screenPoint.y + view.scrollAmount().y);
+		
 
         // デバッグ用にモデル座標を出力
         System.out.println("Clicked at Model Coordinates: " + modelPoint);
@@ -74,9 +75,9 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
         // Condition.ifTrue() を使って this.view が null でない場合に処理を実行
         Condition.ifTrue(() -> this.view != null, () -> {
             java.util.Optional<Node> nodeOrLeafName = this.view.whichOfNodes(modelPoint);
-
+			//Node nodeOrLeafName = this.view.whichOfNodes(screenPoint);
             // 名前が見つかった場合と見つからなかった場合の処理
-            Condition.ifThenElse(() -> nodeOrLeafName.isPresent(),
+            Condition.ifThenElse(() -> nodeOrLeafName.isPresent(), /*nodeOrLeafName == null,*/
                 // 名前が見つかった場合
                 () -> {
                     System.out.println("Node/Leaf Clicked: " + nodeOrLeafName.get());
@@ -107,7 +108,8 @@ public class ForestController extends MouseInputAdapter implements MouseWheelLis
 		Integer x = this.current.x - this.previous.x;
 		Integer y = this.current.y - this.previous.y;
 		Point aPoint = new Point(x, y);
-		this.scrollBy(aPoint, aMouseEvent);
+		//this.scrollBy(aPoint, aMouseEvent);
+		view.scrollBy(aPoint);
 		this.previous = this.current;
 		return;
 	}

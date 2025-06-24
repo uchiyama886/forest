@@ -56,7 +56,7 @@ public class ForestView extends JPanel
     {
         Integer width = this.getWidth();
         Integer height = this.getHeight();
-        aGraphics.setColor(Color.lightGray);
+        aGraphics.setColor(Constants.BackgroundColor);
 		aGraphics.fillRect(0, 0, width, height);
 		try { new Condition(() -> this.model == null).ifTrue(() -> { throw new RuntimeException(); }); }
 		catch(RuntimeException anException) { return; }
