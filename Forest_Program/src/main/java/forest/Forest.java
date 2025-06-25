@@ -6,6 +6,7 @@ import utility.ValueHolder;
 import java.util.function.Consumer;
 import java.awt.Point;
 import java.awt.Rectangle;
+//import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -38,6 +39,7 @@ public class Forest extends Object
     {
         nodes =  new ArrayList<>();
         branches = new ArrayList<>();
+        bounds = new Rectangle();
     }
 
     /**
@@ -97,6 +99,9 @@ public class Forest extends Object
         if(aNode.getStatus() == Constants.Visited) return aPoint; 
         aNode.setStatus(Constants.Visited);
         aNode.setLocation(aPoint);
+
+        this.propagate(aModel);
+
         ArrayList<Node> subNodes = this.subNodes(aNode);
         AtomicInteger cnt = new AtomicInteger(0);
         Consumer<Node> aConsumer = (Node sub) -> {
@@ -184,13 +189,10 @@ public class Forest extends Object
     {
         new Condition(() -> aModel == null).ifTrue(() -> {return;});
 
-        try {
-            Thread.sleep(Constants.SleepTick);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-
-        aModel.changed();
+        new javax.swing.Timer(Constants.SleepTick, e -> {
+            aModel.changed();
+            ((javax.swing.Timer) e.getSource()).stop();
+        }).start();
     }
 
     /**

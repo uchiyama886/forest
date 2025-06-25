@@ -6,7 +6,7 @@ import java.awt.Point;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
+//import java.awt.event.MouseWheelListener;
 
 import javax.swing.event.MouseInputAdapter;
 //import javax.swing.text.View;
@@ -16,7 +16,7 @@ import utility.*;
 /**
  * 樹状整列におけるMVCのコントローラ（C）を担うクラスになります。
  */
-public class ForestController extends MouseInputAdapter implements MouseWheelListener
+public class ForestController extends MouseInputAdapter //implements MouseWheelListener
 {
     /**
      * 樹状整列におけるMVCのモデル（M）を記憶するフィールドです。
