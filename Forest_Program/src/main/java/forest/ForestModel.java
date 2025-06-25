@@ -34,6 +34,18 @@ public class ForestModel extends Object {
     private BufferedImage picture;
 
     /**
+     * このモデルに依存するビューのリストを応答します。
+     * このメソッドは、内部の依存リストのコピーを返すことで、
+     * 外部からの直接的なリストの変更を防ぎ、モデルのカプセル化を維持します。
+     * 返されるリストは変更不可能ではありませんが、元の内部リストとは異なるオブジェクトです。
+     *
+     * @return このモデルに登録されているForestViewオブジェクトの新しいリストのコピー。
+     */
+    public java.util.List<ForestView> getDependents() {
+        return new ArrayList<>(this.dependants);
+    }
+
+    /**
      * このクラスのインスタンスを生成するコンストラクタです。
      * @param aFile 樹状整列データファイル
      */
