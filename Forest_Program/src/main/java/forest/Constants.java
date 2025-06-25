@@ -46,7 +46,7 @@ public class Constants extends Object
     /**
      * ノードにおいてラベルを描く際の枠縁から余裕（マージン）を表します。
      */
-    public static final Point Margin = new Point(5,5);
+    public static final Point Margin = new Point(1,1);
 
     /**
      * ノード群を樹状に整列させる際にノード同士の間隔を表します。

@@ -78,8 +78,8 @@ public class Forest extends Object
             node.setStatus(Constants.UnVisited);
         });
         ArrayList<Node> roots = this.sortNodes(this.rootNodes());
-        AtomicInteger x = new AtomicInteger(0);
-        AtomicInteger y = new AtomicInteger(0);
+        AtomicInteger x = new AtomicInteger(5);
+        AtomicInteger y = new AtomicInteger(5);
         Consumer<Node> aConsumer = (Node root) -> {
             Point newPoint = new Point(x.get(), y.get());
             Point subTreeBottomRight = arrange(root, newPoint, aModel);
@@ -106,8 +106,8 @@ public class Forest extends Object
         AtomicInteger cnt = new AtomicInteger(0);
         Consumer<Node> aConsumer = (Node sub) -> {
             Point newPoint = new Point(
-                aPoint.x + aNode.stringWidth(aNode.getName()) + Constants.Interval.x, 
-                aPoint.y + aNode.stringHeight(aNode.getName())*cnt.getAndIncrement() + Constants.Interval.y
+                aPoint.x + aNode.getExtent().x + Constants.Interval.x, 
+                aPoint.y + aNode.getExtent().y*cnt.getAndIncrement() + Constants.Interval.y
             );
             arrange(sub, newPoint, aModel);
         };
@@ -174,8 +174,8 @@ public class Forest extends Object
     public void flushBounds()
     {
         Consumer<Node> aConsumer = (Node aNode) -> {
-            aNode.setLocation(new Point(0, 0));
-            aNode.setExtent(new Point(0, 0));
+            aNode.setLocation(new Point(5, 5));
+            //aNode.setExtent(new Point(0, 0));
         };
         nodes.forEach(aConsumer);
         this.bounds = null;

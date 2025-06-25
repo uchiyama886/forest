@@ -38,12 +38,15 @@ public class Node extends Component {
      */
     public Node(String aString)
     {
+        System.out.println( "Nodeコンストラクタ");
         this.name = aString;
         this.status = Constants.UnKnown;
         this.location = new Point(0,0);
         this.extent = new Point(0,0);
         this.extent.x = this.stringWidth(aString) + Constants.Margin.x * 2;
         this.extent.y = this.stringHeight(aString) + Constants.Margin.y * 2;
+
+        System.out.printf("%d %d%n", extent.x, extent.y);
     }
 
     /**
@@ -57,6 +60,8 @@ public class Node extends Component {
         int dx = this.extent.x;
         int dy = this.extent.y;
 
+        System.out.printf("%s: x: %d, y: %d, dx: %d, dy: %d%n", this.name, x, y, dx, dy);
+
         //背景色を塗りつぶす
         aGraphics.setColor(Constants.BackgroundColor);
         aGraphics.fillRect(x, y, dx, dy);
@@ -66,7 +71,9 @@ public class Node extends Component {
         aGraphics.drawRect(x, y, dx, dy);
 
         //ノード名を書く
-        aGraphics.drawString(this.name, x+Constants.Margin.x, y+Constants.Margin.y);
+        FontMetrics aMetrics = aGraphics.getFontMetrics();
+        aGraphics.setFont(Constants.DefaultFont);
+        aGraphics.drawString(this.name, x+Constants.Margin.x, y + aMetrics.getAscent()+Constants.Margin.y);
     }
 
     /**
