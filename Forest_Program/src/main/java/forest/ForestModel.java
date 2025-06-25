@@ -54,6 +54,7 @@ public class ForestModel extends Object {
         super();
         forest = new Forest();
         dependants = new ArrayList<>();
+        //picture = new BufferedImage(0, 0, 0);
         this.read(aFile);
     }
 
@@ -71,7 +72,11 @@ public class ForestModel extends Object {
      */
     public void animate()
     {
-        
+        System.out.println(11);
+        forest.flushBounds();
+        forest.arrange(this);
+
+        this.changed();
     }
 
     /**

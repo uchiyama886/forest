@@ -40,6 +40,8 @@ public class Node extends Component {
     {
         this.name = aString;
         this.status = Constants.UnKnown;
+        this.location = new Point(0,0);
+        this.extent = new Point(0,0);
         this.extent.x = this.stringWidth(aString) + Constants.Margin.x * 2;
         this.extent.y = this.stringHeight(aString) + Constants.Margin.y * 2;
     }

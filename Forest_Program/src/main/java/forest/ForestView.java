@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 
 import utility.Condition;
 
-import java.awt.Color;
+//import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.Point;
 import java.awt.Graphics;

@@ -1,7 +1,7 @@
 package utility;
 
 import java.util.function.Function;
-import java.util.function.Consumer;
+//import java.util.function.Consumer;
 
 /**
  * ジェネリクスを活用する例題クラス:形式型<V>を用いて、ある値を保持する
