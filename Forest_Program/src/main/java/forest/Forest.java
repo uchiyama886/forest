@@ -4,6 +4,9 @@ import utility.Condition;
 import utility.ValueHolder;
 
 import java.util.function.Consumer;
+
+import javax.swing.SwingUtilities;
+
 import java.awt.Point;
 import java.awt.Rectangle;
 //import java.awt.Graphics;
@@ -98,20 +101,31 @@ public class Forest extends Object
     {
         if(aNode.getStatus() == Constants.Visited) return aPoint; 
         aNode.setStatus(Constants.Visited);
-        aNode.setLocation(aPoint);
-
-        this.propagate(aModel);
+        //aNode.setLocation(aPoint);
 
         ArrayList<Node> subNodes = this.subNodes(aNode);
+        ArrayList<Point> subPoints = new ArrayList<>();
         AtomicInteger cnt = new AtomicInteger(0);
         Consumer<Node> aConsumer = (Node sub) -> {
             Point newPoint = new Point(
                 aPoint.x + aNode.getExtent().x + Constants.Interval.x, 
-                aPoint.y + aNode.getExtent().y*cnt.getAndIncrement() + Constants.Interval.y
+                aPoint.y + (aNode.getExtent().y + Constants.Interval.y) * cnt.getAndIncrement()
             );
-            arrange(sub, newPoint, aModel);
+            Point result = arrange(sub, newPoint, aModel);
+            subPoints.add(result);
         };
         subNodes.forEach(aConsumer);
+
+        int[] y = {0};
+        new Condition(() -> !subPoints.isEmpty()).ifThenElse(() -> {
+            int minY = subPoints.stream().mapToInt(p -> p.y).min().orElse(aPoint.y);
+            int maxY = subPoints.stream().mapToInt(p -> p.y).max().orElse(aPoint.y);
+            y[0] = (minY + maxY) / 2;
+        }, () -> {
+            y[0] = aPoint.y
+;        });
+        aNode.setLocation(new Point(aPoint.x, y[0]));
+        this.propagate(aModel);
         return aPoint;
     }
 
@@ -173,8 +187,9 @@ public class Forest extends Object
      */
     public void flushBounds()
     {
+        AtomicInteger cnt = new AtomicInteger(1);
         Consumer<Node> aConsumer = (Node aNode) -> {
-            aNode.setLocation(new Point(5, 5));
+            aNode.setLocation(new Point(5, 5*cnt.getAndIncrement()));
             //aNode.setExtent(new Point(0, 0));
         };
         nodes.forEach(aConsumer);
@@ -189,10 +204,13 @@ public class Forest extends Object
     {
         new Condition(() -> aModel == null).ifTrue(() -> {return;});
 
-        new javax.swing.Timer(Constants.SleepTick, e -> {
-            aModel.changed();
-            ((javax.swing.Timer) e.getSource()).stop();
-        }).start();
+        try {
+            Thread.sleep(Constants.SleepTick);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        SwingUtilities.invokeLater(() -> aModel.changed());
     }
 
     /**
