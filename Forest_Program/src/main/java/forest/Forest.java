@@ -301,8 +301,8 @@ public class Forest extends Object
         StringBuffer aBuffer = new StringBuffer();
         Class<?> aClass = this.getClass();
         aBuffer.append(aClass.getName());
-        aBuffer.append("[");
-        aBuffer.append(this);
+        aBuffer.append("[bounds=");
+        aBuffer.append(this.bounds);
         aBuffer.append("]");
         return aBuffer.toString();
     }

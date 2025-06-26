@@ -205,8 +205,8 @@ public class ForestModel extends Object {
         StringBuffer aBuffer = new StringBuffer();
         Class<?> aClass = this.getClass();
         aBuffer.append(aClass.getName());
-        aBuffer.append("[");
-        aBuffer.append(this);
+        aBuffer.append("[picture=");
+        aBuffer.append(this.picture);
         aBuffer.append("]");
         return aBuffer.toString();
     }

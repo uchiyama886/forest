@@ -109,8 +109,10 @@ public class ForestView extends JPanel
         StringBuffer aBuffer = new StringBuffer();
         Class<?> aClass = this.getClass();
         aBuffer.append(aClass.getName());
-        aBuffer.append("[");
-        aBuffer.append(this);
+        aBuffer.append("[model=");
+        aBuffer.append(this.model);
+        aBuffer.append(",offset=");
+        aBuffer.append(this.offset);
         aBuffer.append("]");
         return aBuffer.toString();
     }

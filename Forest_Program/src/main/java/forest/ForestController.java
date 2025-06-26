@@ -266,8 +266,10 @@ public class ForestController extends MouseInputAdapter //implements MouseWheelL
         StringBuffer aBuffer = new StringBuffer();
         Class<?> aClass = this.getClass();
         aBuffer.append(aClass.getName());
-        aBuffer.append("[");
-        aBuffer.append(this);
+        aBuffer.append("[model=");
+        aBuffer.append(this.model);
+		aBuffer.append(",view=");
+		aBuffer.append(this.view);
         aBuffer.append("]");
         return aBuffer.toString();
     }

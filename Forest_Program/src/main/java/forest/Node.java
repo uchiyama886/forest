@@ -191,8 +191,8 @@ public class Node extends Component {
         StringBuffer aBuffer = new StringBuffer();
         Class<?> aClass = this.getClass();
         aBuffer.append(aClass.getName());
-        aBuffer.append("[");
-        aBuffer.append(this);
+        aBuffer.append("[node=");
+        aBuffer.append(this.name);
         aBuffer.append("]");
         return aBuffer.toString();
     }

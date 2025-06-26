@@ -60,8 +60,10 @@ public class Branch extends Object {
         StringBuffer aBuffer = new StringBuffer();
         Class<?> aClass = this.getClass();
         aBuffer.append(aClass.getName());
-        aBuffer.append("[");
-        aBuffer.append(this);
+        aBuffer.append("[start=");
+        aBuffer.append(this.start);
+        aBuffer.append(",end=");
+        aBuffer.append(this.end);
         aBuffer.append("]");
         return aBuffer.toString();
     }
