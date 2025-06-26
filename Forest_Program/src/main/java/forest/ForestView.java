@@ -55,6 +55,7 @@ public class ForestView extends JPanel
     @Override
     public void paintComponent(Graphics aGraphics)
     {
+        super.paintComponent(aGraphics);
         Integer width = this.getWidth();
         Integer height = this.getHeight();
         aGraphics.setColor(Constants.BackgroundColor);
@@ -119,7 +120,7 @@ public class ForestView extends JPanel
      */
     public void update()
     {
-        this.repaint(0, 0, this.getWidth(), this.getHeight());
+        this.repaint();
         return;
     }
 
