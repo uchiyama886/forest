@@ -81,12 +81,12 @@ public class Forest extends Object
             node.setStatus(Constants.UnVisited);
         });
         ArrayList<Node> roots = this.sortNodes(this.rootNodes());
-        AtomicInteger x = new AtomicInteger(5);
-        AtomicInteger y = new AtomicInteger(5);
+        AtomicInteger x = new AtomicInteger(0);
+        AtomicInteger y = new AtomicInteger(0);
         Consumer<Node> aConsumer = (Node root) -> {
             Point newPoint = new Point(x.get(), y.get());
             Point subTreeBottomRight = arrange(root, newPoint, aModel);
-            y.set(subTreeBottomRight.y + Constants.Interval.y);
+            y.set(root.getExtent().y + subTreeBottomRight.y + Constants.Interval.y);
         };
         roots.forEach(aConsumer);
     }
@@ -101,32 +101,44 @@ public class Forest extends Object
     {
         if(aNode.getStatus() == Constants.Visited) return aPoint; 
         aNode.setStatus(Constants.Visited);
-        //aNode.setLocation(aPoint);
 
         ArrayList<Node> subNodes = this.subNodes(aNode);
-        ArrayList<Point> subPoints = new ArrayList<>();
-        AtomicInteger cnt = new AtomicInteger(0);
+
+        int[] subX = {aPoint.x + aNode.getExtent().x + Constants.Interval.x};
+        int[] nextY = {aPoint.y};
+
+        int[] minY = {Integer.MAX_VALUE};
+        int[] maxY = {Integer.MIN_VALUE};
+
         Consumer<Node> aConsumer = (Node sub) -> {
-            Point newPoint = new Point(
-                aPoint.x + aNode.getExtent().x + Constants.Interval.x, 
-                aPoint.y + (aNode.getExtent().y + Constants.Interval.y) * cnt.getAndIncrement()
-            );
-            Point result = arrange(sub, newPoint, aModel);
-            subPoints.add(result);
+            Point subPoint = new Point(subX[0], nextY[0]);
+            sub.setLocation(subPoint);
+            this.propagate(aModel);
+
+            Point next = arrange(sub, subPoint, aModel);
+
+            int subBottom = next.y;
+            int subTop = sub.getLocation().y;
+
+            minY[0] = Math.min(minY[0], subTop);
+            maxY[0] = Math.max(maxY[0], subBottom);
+
+            nextY[0] = subBottom + Constants.Interval.y + sub.getExtent().y;
         };
         subNodes.forEach(aConsumer);
 
         int[] y = {0};
-        new Condition(() -> !subPoints.isEmpty()).ifThenElse(() -> {
-            int minY = subPoints.stream().mapToInt(p -> p.y).min().orElse(aPoint.y);
-            int maxY = subPoints.stream().mapToInt(p -> p.y).max().orElse(aPoint.y);
-            y[0] = (minY + maxY) / 2;
+        new Condition(() -> (!subNodes.isEmpty())).ifThenElse(() -> {    
+            y[0] = (minY[0] + maxY[0]) / 2;// - aNode.getExtent().y / 2;
         }, () -> {
-            y[0] = aPoint.y
+            y[0] = aPoint.y;
+            maxY[0] = aPoint.y;
 ;        });
         aNode.setLocation(new Point(aPoint.x, y[0]));
+        //System.out.printf("%s: x:%d, y:%d%n", aNode.getName(), aNode.getLocation().x, aNode.getLocation().y);
         this.propagate(aModel);
-        return aPoint;
+
+        return new Point(aPoint.x, maxY[0]);
     }
 
     /**
