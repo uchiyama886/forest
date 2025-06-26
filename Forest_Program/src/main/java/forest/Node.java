@@ -44,6 +44,7 @@ public class Node extends Component {
         this.extent = new Point(0,0);
         this.extent.x = this.stringWidth(aString) + Constants.Margin.x * 2;
         this.extent.y = this.stringHeight(aString) + Constants.Margin.y * 2;
+        return;
     }
 
     /**
@@ -69,6 +70,7 @@ public class Node extends Component {
         FontMetrics aMetrics = aGraphics.getFontMetrics();
         aGraphics.setFont(Constants.DefaultFont);
         aGraphics.drawString(this.name, x+Constants.Margin.x, y + aMetrics.getAscent()+Constants.Margin.y);
+        return;
     }
 
     /**
@@ -92,7 +94,6 @@ public class Node extends Component {
      */
     public Point getLocation()
     {
-        //未実装
         return location;
     }
 
@@ -118,8 +119,8 @@ public class Node extends Component {
      */
     public void setExtent(Point aPoint)
     {
-        Point setPoint = new Point(aPoint.x + Constants.Margin.x*2, aPoint.y + Constants.Margin.y*2);
-        extent = setPoint;
+        extent = new Point(aPoint.x + Constants.Margin.x*2, aPoint.y + Constants.Margin.y*2);
+        return;
     }
 
     /**
@@ -130,6 +131,7 @@ public class Node extends Component {
     public void setLocation(Point aPoint)
     {
         location = aPoint;
+        return;
     }
 
     /**
@@ -139,6 +141,7 @@ public class Node extends Component {
     public void setName(String aString)
     {
         this.name = aString;
+        return;
     }
 
     /**
@@ -148,6 +151,7 @@ public class Node extends Component {
     public void setStatus(Integer anInteger)
     {
         status = anInteger;
+        return;
     }
 
     /**

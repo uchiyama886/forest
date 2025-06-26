@@ -65,6 +65,7 @@ public class ForestModel extends Object {
     public void addDependent(ForestView aView)
     {
         dependants.add(aView);
+        return;
     }
 
     /**
@@ -77,6 +78,7 @@ public class ForestModel extends Object {
         forest.arrange(this);
 
         this.changed();
+        return;
     }
 
     /**
@@ -85,6 +87,7 @@ public class ForestModel extends Object {
     public void arrange()
     {
         forest.arrange();
+        return;
     }
 
     /**
@@ -93,6 +96,7 @@ public class ForestModel extends Object {
     public void changed() 
     {
         this.dependants.forEach(view -> view.update());
+        return;
     }
 
     /**
@@ -110,7 +114,7 @@ public class ForestModel extends Object {
     {
         int width = this.forest.bounds().width;
         int height = this.forest.bounds().height;
-        this.picture = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        this.picture = new BufferedImage(width+1, height+1, BufferedImage.TYPE_INT_ARGB);
         Graphics g = picture.createGraphics();
         forest.draw(g);
         return this.picture;
@@ -176,6 +180,7 @@ public class ForestModel extends Object {
         } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
         }
+        return;
     }
 
     /** 
