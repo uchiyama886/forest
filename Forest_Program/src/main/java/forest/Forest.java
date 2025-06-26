@@ -181,17 +181,17 @@ public class Forest extends Object
      */
     public void draw(java.awt.Graphics aGraphics)
     {
-        //ノードを書く
-        Consumer<Node> writeNodes = (Node node) -> {
-            node.draw(aGraphics);
-        };
-        nodes.forEach(writeNodes);
-
         //枝を描く
         Consumer<Branch> writeBranchs = (Branch branch) -> {
             branch.draw(aGraphics);
         };
         branches.forEach(writeBranchs);
+
+        //ノードを書く
+        Consumer<Node> writeNodes = (Node node) -> {
+            node.draw(aGraphics);
+        };
+        nodes.forEach(writeNodes);
     }
 
     /**
