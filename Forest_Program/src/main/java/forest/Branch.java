@@ -36,6 +36,7 @@ public class Branch extends Object {
 
         aGraphics.setColor(Constants.ForegroundColor);
         aGraphics.drawLine(fromX, fromY, toX, toY);
+        return;
     }
 
     /**

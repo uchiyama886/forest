@@ -15,7 +15,7 @@ public class Constants extends Object
     /**
      * 樹状整列データファイル中のタグ「ツリー」を表します。
      */
-    public static final String TagofTrees = "trees";
+    public static final String TagofTrees = "trees:";
 
     /**
      * 樹状整列データファイル中のタグ「ノード」を表します。

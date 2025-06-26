@@ -9,7 +9,6 @@ import javax.swing.SwingUtilities;
 
 import java.awt.Point;
 import java.awt.Rectangle;
-//import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -52,6 +51,7 @@ public class Forest extends Object
     public void addBranch(Branch aBranch)
     {
         branches.add(aBranch);
+        return;
     }
 
     /**
@@ -61,6 +61,7 @@ public class Forest extends Object
     public void addNode(Node aNode)
     {
         nodes.add(aNode);
+        return;
     }
 
     /**
@@ -69,6 +70,7 @@ public class Forest extends Object
     public void arrange()
     {
         arrange(null);
+        return;
     }
 
     /**
@@ -89,6 +91,7 @@ public class Forest extends Object
             y.set(root.getExtent().y + subTreeBottomRight.y + Constants.Interval.y);
         };
         roots.forEach(aConsumer);
+        return;
     }
 
     /**
@@ -133,9 +136,8 @@ public class Forest extends Object
         }, () -> {
             y[0] = aPoint.y;
             maxY[0] = aPoint.y;
-;        });
+;       });
         aNode.setLocation(new Point(aPoint.x, y[0]));
-        //System.out.printf("%s: x:%d, y:%d%n", aNode.getName(), aNode.getLocation().x, aNode.getLocation().y);
         this.propagate(aModel);
 
         return new Point(aPoint.x, maxY[0]);
@@ -192,6 +194,7 @@ public class Forest extends Object
             node.draw(aGraphics);
         };
         nodes.forEach(writeNodes);
+        return;
     }
 
     /**
@@ -201,11 +204,11 @@ public class Forest extends Object
     {
         AtomicInteger cnt = new AtomicInteger(1);
         Consumer<Node> aConsumer = (Node aNode) -> {
-            aNode.setLocation(new Point(5, 5*cnt.getAndIncrement()));
-            //aNode.setExtent(new Point(0, 0));
+            aNode.setLocation(new Point(0, 10*cnt.getAndIncrement()));
         };
         nodes.forEach(aConsumer);
         this.bounds = null;
+        return;
     }
 
     /**
@@ -223,6 +226,7 @@ public class Forest extends Object
         }
 
         SwingUtilities.invokeLater(() -> aModel.changed());
+        return;
     }
 
     /**
@@ -256,17 +260,7 @@ public class Forest extends Object
     {
         ValueHolder<ArrayList<Node>> aSubNodes = new ValueHolder<>(new ArrayList<>());
         Consumer<Branch> aConsumer = (Branch aBranch) -> {
-            // Runnable truePassage = ()-> {aSubNodes.get().add(aBranch.end())};
-            // Supplier<Boolean> aSupplier = () ->  (aBranch.start() == aNode);
-            // ifTrue(aSupplier, truePassage);
             new Condition(() ->  (aBranch.start() == aNode)).ifTrue(()-> {
-                /*ArrayList<Node> aSupreNodes = superNodes(aBranch.end());
-                Consumer<Node> consumer = (Node aSupreNode) -> {
-                    new Condition(() -> (aBranch.start() == aSupreNode)).ifTrue(() -> {
-                        aSubNodes.get().add(aBranch.end());
-                    });
-                };
-                aSupreNodes.forEach(consumer);*/
                 aSubNodes.get().add(aBranch.end());
             });
         };
@@ -281,9 +275,6 @@ public class Forest extends Object
     {
         ValueHolder<ArrayList<Node>> aSuperNodes = new ValueHolder<>(new ArrayList<>());
         Consumer<Branch> aConsumer = (Branch aBranch) -> {
-            // Runnable truePassage = ()-> {aSubNodes.get().add(aBranch.end())};
-            // Supplier<Boolean> aSupplier = () ->  (aBranch.start() == aNode);
-            // ifTrue(aSupplier, truePassage);
             new Condition(() ->  (aBranch.end() == aNode)).ifTrue(()-> {
                 aSuperNodes.get().add(aBranch.start());
             });
