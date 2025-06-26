@@ -30,9 +30,9 @@ public class Branch extends Object {
      */
     public void draw(Graphics aGraphics) {
         int fromX = this.start.getLocation().x + this.start.getExtent().x;
-        int fromY = (this.start.getLocation().y + this.start.getExtent().y) / 2;
+        int fromY = this.start.getLocation().y + this.start.getExtent().y / 2;
         int toX = this.end.getLocation().x;
-        int toY = (this.end.getLocation().y + this.end.getExtent().y) / 2;
+        int toY = this.end.getLocation().y + this.end.getExtent().y / 2;
 
         aGraphics.setColor(Constants.ForegroundColor);
         aGraphics.drawLine(fromX, fromY, toX, toY);
