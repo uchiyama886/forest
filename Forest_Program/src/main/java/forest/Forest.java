@@ -102,7 +102,7 @@ public class Forest extends Object
      */
     protected Point arrange(Node aNode, Point aPoint, ForestModel aModel)
     {
-        if(aNode.getStatus() == Constants.Visited) return aPoint; 
+        if(aNode.getStatus() == Constants.Visited) {return aPoint;} 
         aNode.setStatus(Constants.Visited);
 
         ArrayList<Node> subNodes = this.sortNodes(this.subNodes(aNode));
@@ -115,32 +115,37 @@ public class Forest extends Object
 
         Consumer<Node> aConsumer = (Node sub) -> {
             Point[] subPoint = {new Point(0,0)};
-            new Condition(() -> sub.getStatus() == Constants.Visited).ifThenElse(() -> {
-                subPoint[0] = new Point(sub.getLocation().x, sub.getLocation().y);
-            }, () -> {
+            new Condition(() -> sub.getStatus() != Constants.Visited).ifTrue(() -> {
+            
                 subPoint[0] = new Point(subX[0], nextY[0]);
+                sub.setLocation(subPoint[0]);
+           
+                this.propagate(aModel);
+                
+                Point next = arrange(sub, subPoint[0], aModel);
+
+                int subBottom = next.y;
+                int subTop = sub.getLocation().y;
+
+                minY[0] = Math.min(minY[0], subTop);
+                maxY[0] = Math.max(maxY[0], subBottom);
+
+                nextY[0] = subBottom + Constants.Interval.y + sub.getExtent().y;
             });
-            sub.setLocation(subPoint[0]);
-            this.propagate(aModel);
-
-            Point next = arrange(sub, subPoint[0], aModel);
-
-            int subBottom = next.y;
-            int subTop = sub.getLocation().y;
-
-            minY[0] = Math.min(minY[0], subTop);
-            maxY[0] = Math.max(maxY[0], subBottom);
-
-            nextY[0] = subBottom + Constants.Interval.y + sub.getExtent().y;
+            
         };
         subNodes.forEach(aConsumer);
-        
 
         int[] y = {0};
-        new Condition(() -> (!subNodes.isEmpty())).ifThenElse(() -> {    
-            y[0] = (minY[0] + maxY[0]) / 2;// - aNode.getExtent().y / 2;
+        new Condition(() -> (!subNodes.isEmpty() && minY[0] != Integer.MAX_VALUE && maxY[0] != Integer.MIN_VALUE)).ifThenElse(() -> {    
+            new Condition(() -> (subNodes.size() == 1)).ifThenElse(() -> {
+                y[0] = subNodes.get(0).getLocation().y;
+            }, () -> {
+                y[0] = (minY[0] + maxY[0]) / 2;
+            });
         }, () -> {
             y[0] = aPoint.y;
+            minY[0] = aPoint.y;
             maxY[0] = aPoint.y;
 ;       });
         aNode.setLocation(new Point(aPoint.x, y[0]));
@@ -254,8 +259,9 @@ public class Forest extends Object
      */
     protected ArrayList<Node> sortNodes(ArrayList<Node> nodeCollection)
     {
-        nodeCollection.sort(Comparator.comparing(Node::getName));
-        return nodeCollection;
+        ArrayList<Node> sorted = new ArrayList<>(nodeCollection);
+        sorted.sort(Comparator.comparing(Node::getName));
+        return sorted;
     }
 
     /**
