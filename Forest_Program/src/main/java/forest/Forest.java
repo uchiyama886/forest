@@ -105,7 +105,7 @@ public class Forest extends Object
         if(aNode.getStatus() == Constants.Visited) return aPoint; 
         aNode.setStatus(Constants.Visited);
 
-        ArrayList<Node> subNodes = this.subNodes(aNode);
+        ArrayList<Node> subNodes = this.sortNodes(this.subNodes(aNode));
 
         int[] subX = {aPoint.x + aNode.getExtent().x + Constants.Interval.x};
         int[] nextY = {aPoint.y};
@@ -114,11 +114,16 @@ public class Forest extends Object
         int[] maxY = {Integer.MIN_VALUE};
 
         Consumer<Node> aConsumer = (Node sub) -> {
-            Point subPoint = new Point(subX[0], nextY[0]);
-            sub.setLocation(subPoint);
+            Point[] subPoint = {new Point(0,0)};
+            new Condition(() -> sub.getStatus() == Constants.Visited).ifThenElse(() -> {
+                subPoint[0] = new Point(sub.getLocation().x, sub.getLocation().y);
+            }, () -> {
+                subPoint[0] = new Point(subX[0], nextY[0]);
+            });
+            sub.setLocation(subPoint[0]);
             this.propagate(aModel);
 
-            Point next = arrange(sub, subPoint, aModel);
+            Point next = arrange(sub, subPoint[0], aModel);
 
             int subBottom = next.y;
             int subTop = sub.getLocation().y;
@@ -129,6 +134,7 @@ public class Forest extends Object
             nextY[0] = subBottom + Constants.Interval.y + sub.getExtent().y;
         };
         subNodes.forEach(aConsumer);
+        
 
         int[] y = {0};
         new Condition(() -> (!subNodes.isEmpty())).ifThenElse(() -> {    
@@ -183,17 +189,17 @@ public class Forest extends Object
      */
     public void draw(java.awt.Graphics aGraphics)
     {
-        //枝を描く
-        Consumer<Branch> writeBranchs = (Branch branch) -> {
-            branch.draw(aGraphics);
-        };
-        branches.forEach(writeBranchs);
-
         //ノードを書く
         Consumer<Node> writeNodes = (Node node) -> {
             node.draw(aGraphics);
         };
         nodes.forEach(writeNodes);
+
+        //枝を描く
+        Consumer<Branch> writeBranchs = (Branch branch) -> {
+            branch.draw(aGraphics);
+        };
+        branches.forEach(writeBranchs);
         return;
     }
 
@@ -204,7 +210,7 @@ public class Forest extends Object
     {
         AtomicInteger cnt = new AtomicInteger(1);
         Consumer<Node> aConsumer = (Node aNode) -> {
-            aNode.setLocation(new Point(0, 10*cnt.getAndIncrement()));
+            aNode.setLocation(new Point(0, aNode.getExtent().y*cnt.getAndIncrement()));
         };
         nodes.forEach(aConsumer);
         this.bounds = null;
