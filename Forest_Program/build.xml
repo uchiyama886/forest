@@ -98,6 +98,7 @@
 
 	<target name="test" depends="all" description="test">
 		<exec executable="java" spawn="false">
+			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar ${srcdir}/../resources/data/test.txt" />
 			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar ${srcdir}/../resources/data/tree.txt" />
 			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar ${srcdir}/../resources/data/forest.txt" />
 			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar ${srcdir}/../resources/data/semilattice.txt" />
@@ -149,21 +150,20 @@
 
 	<target name="tree" depends="all" description="tree">
 		<exec executable="java" spawn="false">
-			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${package}.jar ${srcdir}/../resource/data/tree.txt" />
-		</exec>
-		<exec executable="date" spawn="false" />
+			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar ${srcdir}/../resources/data/tree.txt" />
+		</exec> <exec executable="date" spawn="false" />
 	</target>
 
 	<target name="forest" depends="all" description="forest">
 		<exec executable="java" spawn="false">
-			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${package}.jar ${srcdir}/../resource/data/forest.txt" />
+			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar ${srcdir}/../resources/data/forest.txt" />		
 		</exec>
 		<exec executable="date" spawn="false" />
 	</target>
 
 	<target name="semilattice" depends="all" description="semilattice">
 		<exec executable="java" spawn="false">
-			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${package}.jar ${srcdir}/../resource/data/semilattice.txt" />
+			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar ${srcdir}/../resources/data/semilattice.txt" />		
 		</exec>
 		<exec executable="date" spawn="false" />
 	</target>
@@ -173,9 +173,6 @@
 			file="${basedir}/${destdir}/${ant.project.name}.jar" 
 			todir="${instdir}"
 		/>
-		<exec executable="chmod">
-			<arg line="755 ${instdir}/../../MacOS/Automator\ Application\ Stub" />
-		</exec>
 		<exec executable="date" spawn="false" />
 	</target>
 

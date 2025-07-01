@@ -1,0 +1,60 @@
+trees:
+Object
+|-- Magnitude
+|-- |-- ArithmeticValue
+|-- |-- |-- Number
+|-- |-- |-- |-- Integer
+|-- |-- |-- |-- |-- SmallInteger
+|-- |-- Character
+Object
+|-- Collection
+|-- |-- SequenceableCollection
+|-- |-- |-- ArrayedCollection
+|-- |-- |-- |-- Array
+|-- |-- |-- |-- String
+|-- |-- Set
+|-- |-- |-- Dictionary
+Object
+|-- Stream
+|-- |-- PositionableStream
+|-- |-- |-- InternalStream
+|-- |-- |-- |-- ReadStream
+nodes:
+1, Magnitude
+2, ArithmeticValue
+3, Number
+4, Integer
+5, SmallInteger
+6, Character
+7, Collection
+8, SequenceableCollection
+9, ArrayedCollection
+10, Array
+11, String
+12, Set
+13, Dictionary
+14, Stream
+15, PositionableStream
+16, InternalStream
+17, ReadStream
+18, Object
+19, Object
+20, Object
+branches:
+18, 1
+1, 2
+1, 6
+2, 3
+3, 4
+4, 5
+19, 7
+7, 8
+7, 12
+8, 9
+9, 10
+9, 11
+12, 13
+20, 14
+14, 15
+15, 16
+16, 17
