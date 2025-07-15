@@ -101,6 +101,7 @@ public class ForestModel extends Object {
 
     /**
      * 樹状整列それ自身を応答するメソッドです。
+     * @return このモデルが保持する {@code Forest} オブジェクト。
      */
     public Forest forest()
     {
@@ -109,6 +110,7 @@ public class ForestModel extends Object {
 
     /**
      * 樹状整列それ自身を画像化したもの（ピクチャ：BufferedImage）を応答するメソッドです。
+     * @return 描画されたフォレストを含む {@code BufferedImage} オブジェクト。
      */
     protected BufferedImage picture()
     {
@@ -185,6 +187,7 @@ public class ForestModel extends Object {
 
     /** 
      * 樹状整列の根元（ルート）になるノードを探し出して応答するメソッドです。
+     * @return このフォレストのルートノードの一つ、または {@code null}。
     */
     public Node root()
     {
@@ -196,6 +199,8 @@ public class ForestModel extends Object {
 
     /**
      *  樹状整列の根元（ルート）になるノードたちを探し出して応答するメソッドです。
+     * @return このフォレスト内のすべてのルートノードの {@code ArrayList<Node>}。
+     * @see Forest#rootNodes()
      */
     public ArrayList<Node> roots()
     {
@@ -204,6 +209,7 @@ public class ForestModel extends Object {
 
     /**
      * 自分自身を文字列に変換するメソッドです。
+     * @return このオブジェクトを表す文字列。
      */
     @Override
     public String toString() {

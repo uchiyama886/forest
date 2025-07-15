@@ -4,12 +4,20 @@ import java.util.function.Function;
 //import java.util.function.Consumer;
 
 /**
- * ジェネリクスを活用する例題クラス:形式型<V>を用いて、ある値を保持する
+ * ジェネリクスを活用する例題クラス: ある値を保持します。
+ * クラス宣言の {@code <V>} は「形式型パラメータ」と呼ばれ、
+ * {@code ValueHolder} クラスが任意の型の値を保持できることを示します。
+ * 例えば、{@code ValueHolder<String>} は文字列を、{@code ValueHolder<Integer>} は整数を保持できます。
+ * @param <V> このValueHolderが保持する値の型。
  */
 public class ValueHolder<V> extends Object
 {
-    // 形式型<V>という「formal type parameter」で値を保持するフィールドを宣言する
+    /**
+     * 形式型 {@code <V>} で宣言された、この {@code ValueHolder} が保持する値のフィールド。
+     * このフィールドの型は、{@code ValueHolder} オブジェクトが生成される際に指定される型によって決定されます。
+     */
     private V value;
+
     /**
      * コンストラクタ
      */
@@ -21,7 +29,7 @@ public class ValueHolder<V> extends Object
 
     /**
      * 受け取った値で初期化するコンストラクタ
-     * @param initialValue
+     * @param initialValue この {@code ValueHolder} に初期値として設定される、型 {@code V} の値。
      */
     public ValueHolder(V initialValue)
     {
@@ -31,7 +39,7 @@ public class ValueHolder<V> extends Object
 
     /**
      * 保持してオブジェクトの値
-     * @return 保持している形式型<V>の値
+     * @return この {@code ValueHolder} が保持している、形式型 {@code <V>} の値。
      */
     public V get()
     {
@@ -39,8 +47,8 @@ public class ValueHolder<V> extends Object
     }
     /**
      * 引数で渡された値を保持する
-     * @param anObject 保持される形式型<V>の値
-     * @return 以前に保持していた形式型<V>の値
+     * @param anObject 新しく保持される、形式型 {@code <V>} の値。
+     * @return 値が更新される前に以前に保持していた、形式型 {@code <V>} の値。
      */
     public V set(V anObject)
     {

@@ -75,6 +75,7 @@ public class Node extends Component {
 
     /**
      * ノード（節）の描画領域を応答するメソッドです。
+     * @return このノードの境界を表す {@code Rectangle} オブジェクト。
      */
     public Rectangle getBounds()
     {
@@ -83,6 +84,7 @@ public class Node extends Component {
 
     /**
      * ノード（節）の大きさを応答するメソッドです。
+     * @return ノードの大きさを表す {@code Point} オブジェクト（{@code x} が幅、{@code y} が高さ）。
      */
     public Point getExtent()
     {
@@ -91,6 +93,7 @@ public class Node extends Component {
 
     /**
      * ノード（節）の位置を応答するメソッドです。
+     * @return ノードの位置を表す {@code Point} オブジェクト。
      */
     public Point getLocation()
     {
@@ -99,6 +102,7 @@ public class Node extends Component {
 
     /**
      * ノード（節）の名前を応答するメソッドです。
+     * @return ノードの名前を表す文字列。
      */
     public String getName()
     {
@@ -107,6 +111,10 @@ public class Node extends Component {
 
     /**
      * ノード（節）の状態を応答するメソッドです。
+     * @return ノードの状態を表す {@code Integer} 値。
+     * @see Constants#UnKnown
+     * @see Constants#UnVisited
+     * @see Constants#Visited
      */
     public Integer getStatus()
     {
@@ -115,7 +123,7 @@ public class Node extends Component {
 
     /**
      * ノード（節）の大きさを設定するメソッドです。
-     * @param ノードの大きさ（幅と高さ）
+     * @param aPoint ノードの新しい大きさを表す {@code Point} オブジェクト（{@code x} が幅、{@code y} が高さ）。
      */
     public void setExtent(Point aPoint)
     {
@@ -136,6 +144,7 @@ public class Node extends Component {
 
     /**
      * ノード（節）の名前を設定するメソッドです。
+     * @param aString ノードに設定する新しい名前を表す文字列。
      */
     @Override
     public void setName(String aString)
@@ -147,6 +156,9 @@ public class Node extends Component {
     /**
      * ノード（節）の状態を設定するメソッドです。
      * @param anInteger ノードの状態
+     * @see Constants#UnKnown
+     * @see Constants#UnVisited
+     * @see Constants#Visited
      */
     public void setStatus(Integer anInteger)
     {
@@ -157,6 +169,7 @@ public class Node extends Component {
     /**
      * 文字列の高さを応答するメソッドです。
      * @param string 文字列
+     * @return 文字列の描画に必要な高さ（ピクセル単位）。
      */
     protected int stringHeight(String string)
     {
@@ -173,6 +186,7 @@ public class Node extends Component {
     /**
      * 文字列の幅を応答するメソッドです。
      * @param string 文字列
+     * @return 文字列の描画に必要な幅（ピクセル単位）。
      */
     protected int stringWidth(String string)
     {
@@ -188,6 +202,7 @@ public class Node extends Component {
 
     /**
      * 自分自身を文字列に変換するメソッドです。
+     * @return このオブジェクトを表す文字列。
      */
     @Override
     public String toString()
