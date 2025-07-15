@@ -149,22 +149,19 @@
 
 	<target name="tree" depends="all" description="tree">
 		<exec executable="java" spawn="false">
-			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${package}.jar ${srcdir}/../resource/data/tree.txt" />
-		</exec>
+			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${package}.jar ${srcdir}/../resources/data/tree.txt" /> </exec>
 		<exec executable="date" spawn="false" />
 	</target>
 
 	<target name="forest" depends="all" description="forest">
 		<exec executable="java" spawn="false">
-			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${package}.jar ${srcdir}/../resource/data/forest.txt" />
-		</exec>
+			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${package}.jar ${srcdir}/../resources/data/forest.txt" /> </exec>
 		<exec executable="date" spawn="false" />
 	</target>
 
 	<target name="semilattice" depends="all" description="semilattice">
 		<exec executable="java" spawn="false">
-			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${package}.jar ${srcdir}/../resource/data/semilattice.txt" />
-		</exec>
+			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${package}.jar ${srcdir}/../resources/data/semilattice.txt" /> </exec>
 		<exec executable="date" spawn="false" />
 	</target>
 

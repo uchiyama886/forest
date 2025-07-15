@@ -206,9 +206,22 @@ public class Condition extends Object
      * Case文の追加、Default Case、
      */
     public static class Case {
+        /**
+         * このCaseの条件を表す{@code Supplier<Boolean>}。
+         */
         private Supplier<Boolean> condition;
+
+        /**
+         * このCaseが選択されたときに実行されるアクション。
+         */
         private Runnable action;
 
+        /**
+         * Case文の選択肢を表す内部クラス
+         * このクラスは、特定の条件と、その条件が真であった場合に実行されるアクションを保持します。
+         * @param condition このケースの条件を表す {@code Supplier<Boolean>}。
+         * @param action このケースが選択されたときに実行する {@code Runnable} （コードブロック）。
+         */
         public Case(final Supplier<Boolean> condition, final Runnable action) {
             this.condition = condition;
             this.action = action;
@@ -234,10 +247,26 @@ public class Condition extends Object
      * 複数の条件とそれに対応するアクションを処理するためのクラスです。
      */
     public static class Switch {
+        /**
+         * 登録されたCaseオブジェクトのリスト。
+         */
         private List<Case> cases;
+
+        /**
+         * どのケースもマッチしなかった場合に実行されるデフォルトアクション。
+         */
         private Runnable defaultAction;
+
+        /**
+         * いずれかのケースが実行されたかどうかを追跡するフラグ。
+         */
         private boolean executed; // 最初のマッチしたケースが実行されたかを追跡する
 
+        /**
+         * 複数の条件とそれに対応するアクションを処理するためのクラス
+         * 従来の {@code switch} 文に似た機能を提供しますが、より柔軟な条件指定が可能です。
+         * 最初に見つかった真の条件に対応するアクションが実行されます。
+         */
         public Switch() {
             this.cases = new ArrayList<>();
             this.defaultAction = () -> {};

@@ -99,6 +99,7 @@ public class Forest extends Object
      * @param aNode ノード（このノードから再帰的にたどって下位のものたちも整列する）
      * @param aPoint ノードの位置（座標）
      * @param aModel モデル（nullのときはアニメーションを行わない）
+     * @return 整列されたサブツリーの右下隅の座標。
      */
     protected Point arrange(Node aNode, Point aPoint, ForestModel aModel)
     {
@@ -156,6 +157,8 @@ public class Forest extends Object
 
     /**
      * フォレスト（木・林・森・亜格子状の森）の領域（矩形）を応答するメソッドです。
+     * @return フォレストの境界を表す {@code Rectangle} オブジェクト。
+     * ノードが一つも存在しない場合は、幅と高さが0の矩形を返します。
      */
     public Rectangle bounds()
     {
@@ -191,6 +194,7 @@ public class Forest extends Object
 
     /**
      * フォレスト（木・林・森・亜格子状の森）を描画するメソッドです。
+     * @param aGraphics 描画を行うための {@code Graphics} オブジェクト。
      */
     public void draw(java.awt.Graphics aGraphics)
     {
@@ -242,6 +246,7 @@ public class Forest extends Object
 
     /**
      * フォレストの根元（ルート）となるノード群を応答するメソッドです。
+     * @return フォレスト内のルートノードの {@code ArrayList<Node>}。
      */
     public ArrayList<Node> rootNodes()
     {
@@ -256,6 +261,7 @@ public class Forest extends Object
     /**
      * 引数で指定されたノード群をノード名でソート（並び替えを）するメソッドです。
      * @param nodeCollection ノード群
+     * @return ノード名でソートされた新しい {@code ArrayList<Node>}。元のコレクションは変更されません。
      */
     protected ArrayList<Node> sortNodes(ArrayList<Node> nodeCollection)
     {
@@ -267,6 +273,7 @@ public class Forest extends Object
     /**
      * 引数で指定されたノードのサブノード群を応答するメソッドです。
      * @param aNode ノード
+     * @return 指定されたノードの直接の子ノードの {@code ArrayList<Node>}。
      */
     public ArrayList<Node> subNodes(Node aNode)
     {
@@ -282,6 +289,8 @@ public class Forest extends Object
 
     /**
      * 引数で指定されたノードのスーパーノード群を応答するメソッドです。
+     * @param aNode 親ノードを検索する対象の子ノード。
+     * @return 指定されたノードの直接の親ノードの {@code ArrayList<Node>}。
      */
     public ArrayList<Node> superNodes(Node aNode)
     {
@@ -297,6 +306,7 @@ public class Forest extends Object
 
     /**
      * 自分自身を文字列に変換するメソッドです。
+     * @return このオブジェクトを表す文字列。
      */
     @Override
     public String toString()
@@ -313,6 +323,7 @@ public class Forest extends Object
     /**
      * 指定された位置（座標）にノードが存在するかを調べるメソッドです。
      * @param aPoint 位置（モデル座標）
+     * @return 指定された位置に存在する {@code Node} オブジェクト。存在しない場合は {@code null} を返します。
      */
     public Node whichOfNodes(Point aPoint)
     {

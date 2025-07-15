@@ -15,6 +15,16 @@ import javax.swing.JFrame;
 public class Example extends Object
 {
 	/**
+     * {@code Example} クラスのプライベートコンストラクタ。
+     * このクラスはユーティリティクラスであり、すべてのメソッドが静的であるため、
+     * インスタンス化されることを意図していません。
+     * したがって、デフォルトコンストラクタをプライベートにすることで、
+     * 外部からの誤ったインスタンス化を防ぎます。
+     */
+    private Example() {
+    }
+
+	/**
 	 * 第1引数で樹状整列データファイルを受け取って樹状整列を実行します。<br>
 	 * $ java -Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar forest.jar resources/data/tree.txt<br>
 	 * $ java -Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar forest.jar resources/data/forest.txt<br>

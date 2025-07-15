@@ -15,6 +15,10 @@ import java.lang.String;
  */
 public class ForestView extends JPanel
 {
+    /**
+     * シリアル化の際に使用されるバージョンUIDです。
+     * クラスの互換性を保証するために定義されます。
+     */
     private static final long serialVersionUID = 1L;
 
     /**
@@ -94,6 +98,7 @@ public class ForestView extends JPanel
 
     /**
      * 絶対スクロールを行うメソッドです。
+     * @param aPoint スクロール先の絶対位置（描画オフセット）。
      */
     public void scrollTo(Point aPoint)
     {
@@ -103,6 +108,7 @@ public class ForestView extends JPanel
 
     /**
      * 自分自身を文字列に変換するメソッドです。
+     * @return このオブジェクトを表す文字列。
      */
     @Override
     public String toString() {
@@ -129,6 +135,7 @@ public class ForestView extends JPanel
     /**
      * 指定された位置（座標）にノードが存在するかを調べるメソッドです。
      * @param aPoint 位置（ビュー座標）
+     * @return 指定された位置に存在する {@code Node} オブジェクト。存在しない場合は {@code null} を返します。
      */
     public Node whichOfNodes(Point aPoint)
     {
