@@ -3,7 +3,7 @@
 <project name="Forest" default="all" basedir=".">
 
 	<property name="srcdir" value="src/main/java" />
-	<property name="package" value="forest" />
+    <property name="resourcedir" value="src/main/resources" /> <property name="package" value="forest" />
 	<property name="mvc" value="mvc" />
 	<property name="utility" value="utility" />
 	<property name="packagenames" value="${package},${mvc},${utility}" />
@@ -165,16 +165,54 @@
 		<exec executable="date" spawn="false" />
 	</target>
 
-	<target name="install" depends="all" description="install into application">
-		<copy 
-			file="${basedir}/${destdir}/${ant.project.name}.jar" 
-			todir="${instdir}"
-		/>
-		<exec executable="chmod">
-			<arg line="755 ${instdir}/../../MacOS/Automator\ Application\ Stub" />
-		</exec>
-		<exec executable="date" spawn="false" />
-	</target>
+<target name="install" depends="all" description="install into application">
+        <mkdir dir="${ant.project.name}.app/Contents/MacOS" />
+        <mkdir dir="${ant.project.name}.app/Contents/Resources/Java" />
+        <mkdir dir="${ant.project.name}.app/Contents/Resources/data" /> <copy
+            file="${basedir}/${destdir}/${ant.project.name}.jar"
+            todir="${instdir}"
+        />
+
+        <copy
+            file="${resourcedir}/data/tree.txt"
+            todir="${ant.project.name}.app/Contents/Resources/data/"
+        />
+
+        <echo file="${ant.project.name}.app/Contents/Info.plist">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+    &lt;key&gt;CFBundleExecutable&lt;/key&gt;
+    &lt;string&gt;${ant.project.name}&lt;/string&gt;
+    &lt;key&gt;CFBundleIdentifier&lt;/key&gt;
+    &lt;string&gt;com.example.${ant.project.name}&lt;/string&gt;
+    &lt;key&gt;CFBundleName&lt;/key&gt;
+    &lt;string&gt;${ant.project.name}&lt;/string&gt;
+    &lt;key&gt;CFBundlePackageType&lt;/key&gt;
+    &lt;string&gt;APPL&lt;/string&gt;
+    &lt;key&gt;CFBundleShortVersionString&lt;/key&gt;
+    &lt;string&gt;1.0&lt;/string&gt;
+    &lt;key&gt;CFBundleVersion&lt;/key&gt;
+    &lt;string&gt;1&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;</echo>
+
+        <echo file="${ant.project.name}.app/Contents/MacOS/${ant.project.name}">#!/bin/bash
+cd "$(dirname "$0")/../Resources/Java"
+
+DEFAULT_DATA_FILE="../data/tree.txt" # MacOSから見た相対パス
+
+if [ "$#" -eq 0 ]; then
+    java -Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${ant.project.name}.jar "$DEFAULT_DATA_FILE"
+else
+    java -Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${ant.project.name}.jar "$@"
+fi
+</echo>
+
+        <chmod file="${ant.project.name}.app/Contents/MacOS/${ant.project.name}" perm="755" />
+
+        <exec executable="date" spawn="false" />
+    </target>
 
 	<target name="doc" depends="all" description="make document (javadoc)">
 		<mkdir dir="${docdir}" />
