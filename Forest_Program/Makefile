@@ -9,13 +9,13 @@ clean:
 test:
 	$(ANT) test
 
-tree: clean
+tree:
 	$(ANT) tree
 
-forest: clean
+forest:
 	$(ANT) forest
 
-semilattice: clean
+semilattice:
 	$(ANT) semilattice
 
 install:
