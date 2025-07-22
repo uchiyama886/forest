@@ -71,9 +71,8 @@ public class BranchTest {
         assertEquals("終点ノードが正しく設定されていること", endNode, branch.end());
     }
 
-    ---
 
-    ### `start()` メソッドのテスト
+    /// `start()` メソッドのテスト
     /**
      * {@code start()} メソッドが、コンストラクタで設定された始点ノードを正しく返すかをテストします。
      */
@@ -82,7 +81,6 @@ public class BranchTest {
         assertEquals("start() メソッドが正しい始点ノードを返すこと", startNode, branch.start());
     }
 
-    ---
 
     ### `end()` メソッドのテスト
     /**
@@ -93,9 +91,9 @@ public class BranchTest {
         assertEquals("end() メソッドが正しい終点ノードを返すこと", endNode, branch.end());
     }
 
-    ---
 
-    ### `toString()` メソッドのテスト
+
+    /// `toString()` メソッドのテスト
     /**
      * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すかをテストします。
      * Node の toString() も呼び出されるため、Node モックの getName() の戻り値が反映されることを確認します。
@@ -114,9 +112,8 @@ public class BranchTest {
         assertEquals("toString() メソッドが期待される文字列を返すこと", expectedString, branch.toString());
     }
 
-    ---
 
-    ### `draw()` メソッドのテスト
+    /// `draw()` メソッドのテスト
     /**
      * {@code draw()} メソッドが、{@code Graphics} オブジェクトのメソッドを正しく呼び出すかをテストします。
      * 特に、線を描画するための {@code setColor} と {@code drawLine} が正しい引数で呼び出されるかを確認します。
