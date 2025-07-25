@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project name="Forest" default="all" basedir=".">
 
 	<property name="srcdir" value="src/main/java" />
-    <property name="resourcedir" value="src/main/resources" /> <property name="package" value="forest" />
+    <property name="resourcedir" value="src/main/resources" />
+    <property name="package" value="forest" />
 	<property name="mvc" value="mvc" />
 	<property name="utility" value="utility" />
 	<property name="packagenames" value="${package},${mvc},${utility}" />
@@ -15,9 +15,10 @@
 	<property name="zipname" value="${ant.project.name}" />
 	<property name="doc-title" value="Forest Documant" />
 
-	<property name="junitdir" value="./Junit" />
-	<property name="junitjar" value="junit-4.13.1.jar" />
+	<property name="libdir" value="./lib" /> <property name="junitjar" value="junit-4.13.1.jar" />
 	<property name="hamcrestjar" value="hamcrest-core-1.3.jar" />
+    <property name="mockitojar" value="mockito-core-5.18.0.jar" />
+
 	<property name="reportdir" value="./test-report" />
 
 	<fail message="Apache Ant 1.10.4+ is required.">
@@ -28,34 +29,52 @@
 		</condition>
 	</fail>
 
+    <path id="classpath.test">
+        <pathelement location="${destdir}"/> <fileset dir="${libdir}"> <include name="${junitjar}"/>
+            <include name="${hamcrestjar}"/>
+            <include name="${mockitojar}"/>
+        </fileset>
+    </path>
+
+
 	<target name="all" depends="jar" description="build all">
 		<exec executable="date" spawn="false" />
 	</target>
 
-	<target name="prepare" depends="" description="prepare to compile">
+	<target name="prepare" description="prepare to compile">
 		<mkdir dir="${destdir}" />
 		<exec executable="date" spawn="false" />
 	</target>
 
-	<target name="compile" depends="prepare" description="compile all sources">
+	<target name="compile" depends="prepare" description="compile all main sources">
 		<javac
 			fork="true"
 			srcdir="${srcdir}"
 			destdir="${destdir}"
-			includeAntRuntime="true"
+			includeAntRuntime="false"
 			encoding="UTF-8"
 			deprecation="on"
 			verbose="false">
 			<compilerarg value="-J-Dfile.encoding=UTF8" />
 			<compilerarg value="-Xlint:all" />
-			<classpath>
-				<pathelement location="." />
-				<pathelement location="${junitjar}" />
-				<pathelement location="${hamcrestjar}" />
-			</classpath>
 		</javac>
 		<exec executable="date" spawn="false" />
 	</target>
+
+    <target name="compile-test" depends="compile" description="compile all test sources">
+        <mkdir dir="${destdir}" />
+        <javac
+            fork="true"
+            srcdir="src/test/java" destdir="${destdir}"
+            includeAntRuntime="false"
+            encoding="UTF-8"
+            deprecation="on"
+            verbose="false">
+            <compilerarg value="-J-Dfile.encoding=UTF8" />
+            <compilerarg value="-Xlint:all" />
+            <classpath refid="classpath.test"/> </javac>
+        <exec executable="date" spawn="false" />
+    </target>
 
 	<target name="jar" depends="compile" description="make jar file">
 		<jar
@@ -79,9 +98,6 @@
 				<include name="**/*.txt" />
 			</fileset>
 
-			<zipfileset src="${junitdir}/${junitjar}" />
-			<zipfileset src="${junitdir}/${hamcrestjar}" />
-
 		</jar>
 		<exec executable="date" spawn="false" />
 	</target>
@@ -91,46 +107,31 @@
 		<delete dir="${docdir}" />
 		<delete dir="${instdir}" />
 		<delete file="../${zipname}.zip" />
-		<delete file="${junitjar}" />
 		<delete dir="${reportdir}" />
 		<exec executable="date" spawn="false" />
 	</target>
 
 	<target name="test" depends="all" description="test">
-		<exec executable="java" spawn="false">
-			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar ${srcdir}/../resources/data/tree.txt" />
-			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar ${srcdir}/../resources/data/forest.txt" />
-			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar ${srcdir}/../resources/data/semilattice.txt" />
-		</exec>
-		<exec executable="date" spawn="false" />
-	</target>
+        <exec executable="java" spawn="false">
+            <arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar" />
+            <arg value="${srcdir}/../resources/data/tree.txt" />
+            <arg value="${srcdir}/../resources/data/forest.txt" />
+            <arg value="${srcdir}/../resources/data/semilattice.txt" />
+        </exec>
+        <exec executable="date" spawn="false" />
+    </target>
 
-	<target name="unittest.junit.launcher" depends="all" description="junit launcher">
+    <target name="unittest" depends="compile-test" description="run unit tests">
 		<delete dir="${reportdir}" />
-		<junitlauncher haltOnFailure="true" printSummary="true">
-			<classpath>
-				<pathelement location="." />
-				<pathelement location="${junitjar}" />
-			</classpath>
-			<testclasses outputdir="${reportdir}">
-				<fileset dir="${destdir}">
-					<include name="*Test.class" />
-				</fileset>
-				<listener type="legacy-xml" sendSysOut="true" sendSysErr="true" />
-				<listener type="legacy-plain" sendSysOut="true" />
-			</testclasses>
-		</junitlauncher>
-		<exec executable="date" spawn="false" />
-	</target>
-
-	<target name="unittest.console.launcher" depends="all" description="console launcher">
-		<java classpath="${package}.jar" classname="org.junit.platform.console.ConsoleLauncher"
-			fork="true" failonerror="false">
-			<arg value="--scan-class-path=${destdir}" />
-			<arg line="--reports-dir ${reportdir}" />
-			<jvmarg value="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k" />
-		</java>
-		<junitreport todir="${reportdir}">
+		<mkdir dir="${reportdir}"/>
+		<junit printsummary="yes" haltonfailure="no" showoutput="true"> <classpath refid="classpath.test"/>
+			<formatter type="xml"/> <formatter type="plain" usefile="false"/> <batchtest fork="yes" todir="${reportdir}">
+                <fileset dir="${destdir}">
+                    <include name="forest/*Test.class" />
+                </fileset>
+			</batchtest>
+		</junit>
+        <junitreport todir="${reportdir}">
 			<fileset dir="${reportdir}">
 				<include name="TEST-*.xml" />
 			</fileset>
@@ -141,11 +142,6 @@
 		</exec>
 		<exec executable="date" spawn="false" />
 	</target>
-
-	<target name="unittest" depends="unittest.junit.launcher, unittest.console.launcher">
-		<exec executable="date" spawn="false" />
-	</target>
-
 
 	<target name="tree" depends="all" description="tree">
 		<exec executable="java" spawn="false">
@@ -233,11 +229,10 @@ fi
 			<bottom>${copyright}</bottom>
 			<classpath>
 				<pathelement location="." />
-				<pathelement location="${junitjar}" />
 			</classpath>
 		</javadoc>
 		<exec executable="open">
-			<arg line="-a /Applications/Safari.app ${docdir}/index.html" />
+			<arg line="-a 'Safari' ${docdir}/index.html" />
 		</exec>
 		<exec executable="date" spawn="false" />
 	</target>
