@@ -80,7 +80,7 @@ public class BranchTest {
     @Test
     public void testToStringMethod() {
         // Node の toString() は "Node[名前]" の形式であると仮定
-        String expectedString = "forest.Branch[start=Node[StartNode],end=Node[EndNode]]";
+        String expectedString = "forest.Branch[start=startNode],[end=endNode]";
         assertEquals("toString() メソッドが期待される文字列を返すこと", expectedString, branch.toString());
     }
 

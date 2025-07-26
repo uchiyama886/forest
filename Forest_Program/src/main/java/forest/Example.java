@@ -20,8 +20,10 @@ public class Example extends Object
      * インスタンス化されることを意図していません。
      * したがって、デフォルトコンストラクタをプライベートにすることで、
      * 外部からの誤ったインスタンス化を防ぎます。
+	 * また、リフレクションによるインスタンス化も防ぐために例外をスローします。
      */
     private Example() {
+		throw new UnsupportedOperationException("Example クラスはインスタンス化できません。");
     }
 
 	/**

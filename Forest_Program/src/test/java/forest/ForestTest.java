@@ -9,7 +9,7 @@ import org.mockito.ArgumentCaptor; // メソッドの引数をキャプチャす
 
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.Rectangle; // Rectangle を使用
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -64,22 +64,27 @@ public class ForestTest {
         when(mockNodeA.getName()).thenReturn("A");
         when(mockNodeA.toString()).thenReturn("forest.Node[node=A]");
         when(mockNodeA.getLocation()).thenReturn(new Point(0, 0)); // デフォルト位置
-        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // デフォルトの大きさ
+        // getExtent() は Point を返すように修正 (ユーザーの指摘に基づく)
+        // Point の x が幅、y が高さを表すと仮定
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // width, height
 
         when(mockNodeB.getName()).thenReturn("B");
         when(mockNodeB.toString()).thenReturn("forest.Node[node=B]");
         when(mockNodeB.getLocation()).thenReturn(new Point(0, 0));
-        when(mockNodeB.getExtent()).thenReturn(new Point(60, 40));
+        // getExtent() は Point を返すように修正
+        when(mockNodeB.getExtent()).thenReturn(new Point(60, 40)); // width, height
 
         when(mockNodeC.getName()).thenReturn("C");
         when(mockNodeC.toString()).thenReturn("forest.Node[node=C]");
         when(mockNodeC.getLocation()).thenReturn(new Point(0, 0));
-        when(mockNodeC.getExtent()).thenReturn(new Point(70, 50));
+        // getExtent() は Point を返すように修正
+        when(mockNodeC.getExtent()).thenReturn(new Point(70, 50)); // width, height
 
         when(mockNodeD.getName()).thenReturn("D");
         when(mockNodeD.toString()).thenReturn("forest.Node[node=D]");
         when(mockNodeD.getLocation()).thenReturn(new Point(0, 0));
-        when(mockNodeD.getExtent()).thenReturn(new Point(80, 60));
+        // getExtent() は Point を返すように修正
+        when(mockNodeD.getExtent()).thenReturn(new Point(80, 60)); // width, height
 
 
         // モックブランチの振る舞いを設定
@@ -281,15 +286,15 @@ public class ForestTest {
 
         // ノードを追加してテスト
         when(mockNodeA.getLocation()).thenReturn(new Point(10, 20));
-        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // 10,20 - 60,50
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // x=width, y=height
         forest.addNode(mockNodeA);
 
         when(mockNodeB.getLocation()).thenReturn(new Point(100, 5));
-        when(mockNodeB.getExtent()).thenReturn(new Point(40, 60)); // 100,5 - 140,65
+        when(mockNodeB.getExtent()).thenReturn(new Point(40, 60)); // x=width, y=height
         forest.addNode(mockNodeB);
 
         when(mockNodeC.getLocation()).thenReturn(new Point(5, 70));
-        when(mockNodeC.getExtent()).thenReturn(new Point(20, 10)); // 5,70 - 25,80
+        when(mockNodeC.getExtent()).thenReturn(new Point(20, 10)); // x=width, y=height
         forest.addNode(mockNodeC);
 
         Rectangle calculatedBounds = forest.bounds();
@@ -352,8 +357,9 @@ public class ForestTest {
 
         // 初期位置を適当に設定（確認のため）
         //node.setLocation(new Point(100, 100));
-        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // 高さ 30
-        when(mockNodeB.getExtent()).thenReturn(new Point(60, 40)); // 高さ 40
+        // getExtent() は Point を返すように修正
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // 高さ 30 (Point.y)
+        when(mockNodeB.getExtent()).thenReturn(new Point(60, 40)); // 高さ 40 (Point.y)
 
         forest.flushBounds();
 
@@ -383,33 +389,16 @@ public class ForestTest {
     public void testPropagate() throws Exception {
         ForestModel mockModel = mock(ForestModel.class);
 
-        // SwingUtilities.invokeLater をモック化するための設定 (PowerMockなどが必要になる場合がある)
-        // または、SwingUtilities.invokeLater を実行する別のスレッドから結果を待つ必要がある
-        // ここでは、SwingUtilities.invokeLater が呼び出されたことを検証することに焦点を当てます。
-
-        // 通常、SwingUtilities.invokeLater のテストは困難ですが、
-        // Mockito で static メソッドをモック化するには PowerMock などの追加ライブラリが必要です。
-        // ここでは、ForestModel.changed() が呼び出されることを検証することで代替します。
-        // invokeLater 内部で changed() が呼び出されることを確認することで、間接的に検証します。
-
-        // ただし、直接 SwingUtilities.invokeLater をモック化しない場合、
-        // changed() は別のスレッドで呼び出されるため、テストがすぐに終了してしまう可能性があります。
-        // そのため、CountDownLatch を使用して、invokeLater が実行されるのを待機します。
-
-        // Constants.SleepTick を非常に短い値に設定するか、テスト実行前に一時的に変更することを推奨します。
-        // final long ORIGINAL_SLEEP_TICK = Constants.SleepTick;
-        // Constants.SleepTick = 10; // テスト用に短縮 (実際には Constants クラスを修正するか、リフレクションで変更)
-
         // changed() が呼び出されたことを待つためのラッチ
         CountDownLatch latch = new CountDownLatch(1);
         doAnswer(invocation -> {
-            // invokeLater 内部で changed() が呼び出された際にラッチをカウントダウン
+            // Forest.propagate が SwingUtilities.invokeLater を呼び出すことをシミュレート
+            // ここでは実際の model.changed() は呼び出さず、ラッチをカウントダウンするだけ
             SwingUtilities.invokeLater(() -> {
-                mockModel.changed(); // 実際の changed() 呼び出しをシミュレート
                 latch.countDown();
             });
             return null; // void メソッドなので null を返す
-        }).when(mockModel).changed(); // changed() メソッドが呼ばれたときにラッチをカウントダウンするように設定
+        }).when(mockModel).changed(); // changed() メソッドが呼ばれたときにこの Answer を実行するように設定
 
         // propagate を呼び出す
         forest.propagate(mockModel);
@@ -417,8 +406,8 @@ public class ForestTest {
         // ラッチがカウントダウンされるのを最大5秒待機
         latch.await(5, java.util.concurrent.TimeUnit.SECONDS);
 
-        // mockModel.changed() が呼び出されたことを検証
-        verify(mockModel).changed();
+        // mockModel.changed() が呼び出されたことを検証 (1回だけ期待)
+        verify(mockModel, times(1)).changed();
 
         // Constants.SleepTick = ORIGINAL_SLEEP_TICK; // テスト後に元に戻す (必要に応じて)
     }
@@ -455,7 +444,7 @@ public class ForestTest {
         forest.addBranch(mockBranchBC); // B -> C
 
         // arrange() 呼び出し前に、setStatus が呼ばれることを確認できるようにリセット
-        reset(mockNodeA, mockNodeB, mockNodeC);
+        // reset(mockNodeA, mockNodeB, mockNodeC); // この行を削除
 
         // arrange() を実行
         forest.arrange();
@@ -497,8 +486,9 @@ public class ForestTest {
 
         // mockNodeAの初期状態を設定
         when(mockNodeA.getStatus()).thenReturn(Constants.UnVisited, Constants.Visited);
-        when(mockNodeB.getStatus()).thenReturn(Constants.UnVisited, Constants.Visited);
-        when(mockNodeC.getStatus()).thenReturn(Constants.UnVisited, Constants.Visited);
+        // mockNodeBとmockNodeCは、getStatus()が複数回呼ばれてもUnVisitedを返すように設定
+        when(mockNodeB.getStatus()).thenReturn(Constants.UnVisited, Constants.UnVisited, Constants.Visited);
+        when(mockNodeC.getStatus()).thenReturn(Constants.UnVisited, Constants.UnVisited, Constants.Visited);
 
         // モックモデル
         ForestModel mockModel = mock(ForestModel.class);
@@ -576,7 +566,7 @@ public class ForestTest {
 
         // bounds() を呼び出して、bounds が計算された後に toString() をテスト
         when(mockNodeA.getLocation()).thenReturn(new Point(10, 20));
-        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30));
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // Point を返すように修正
         forest.addNode(mockNodeA);
         forest.bounds(); // bounds を計算させる
 

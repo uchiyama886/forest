@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="8" failures="0" hostname="tampnend.local" name="forest.ForestViewTest" skipped="0" tests="8" time="4.928" timestamp="2025-07-26T15:41:55">
+<testsuite errors="0" failures="0" hostname="tampnend.local" name="forest.ForestViewTest" skipped="0" tests="9" time="6.564" timestamp="2025-07-26T23:21:34">
   <properties>
     <property name="ant.library.dir" value="/usr/local/ant/lib" />
     <property name="mockitojar" value="mockito-core-5.18.0.jar" />
@@ -20,7 +20,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="user.country" value="JP" />
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestViewTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestViewTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher8717826140663806776.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit14034131456814275049.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestViewTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestViewTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher17241181290142213075.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit1540242906428522272.properties" />
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
     <property name="jdk.debug" value="release" />
     <property name="package" value="forest" />
@@ -86,142 +86,15 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
     <property name="ant.project.default-target" value="all" />
   </properties>
-  <testcase classname="forest.ForestViewTest" name="testToString" time="2.932">
-    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
-Argument passed to verify() is of type ForestView and is not a mock!
-Make sure you place the parenthesis correctly!
-See the examples of correct verifications:
-    verify(mock).someMethod();
-    verify(mock, times(10)).someMethod();
-    verify(mock, atLeastOnce()).someMethod();
-	at forest.ForestViewTest.setUp(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</error>
-  </testcase>
-  <testcase classname="forest.ForestViewTest" name="testPaintComponent" time="0.021">
-    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
-Argument passed to verify() is of type ForestView and is not a mock!
-Make sure you place the parenthesis correctly!
-See the examples of correct verifications:
-    verify(mock).someMethod();
-    verify(mock, times(10)).someMethod();
-    verify(mock, atLeastOnce()).someMethod();
-	at forest.ForestViewTest.setUp(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</error>
-  </testcase>
-  <testcase classname="forest.ForestViewTest" name="testScrollAmount" time="0.033">
-    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
-Argument passed to verify() is of type ForestView and is not a mock!
-Make sure you place the parenthesis correctly!
-See the examples of correct verifications:
-    verify(mock).someMethod();
-    verify(mock, times(10)).someMethod();
-    verify(mock, atLeastOnce()).someMethod();
-	at forest.ForestViewTest.setUp(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</error>
-  </testcase>
-  <testcase classname="forest.ForestViewTest" name="testConstructorInitialization" time="0.02">
-    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
-Argument passed to verify() is of type ForestView and is not a mock!
-Make sure you place the parenthesis correctly!
-See the examples of correct verifications:
-    verify(mock).someMethod();
-    verify(mock, times(10)).someMethod();
-    verify(mock, atLeastOnce()).someMethod();
-	at forest.ForestViewTest.setUp(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</error>
-  </testcase>
-  <testcase classname="forest.ForestViewTest" name="testWhichOfNodes" time="0.01">
-    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
-Argument passed to verify() is of type ForestView and is not a mock!
-Make sure you place the parenthesis correctly!
-See the examples of correct verifications:
-    verify(mock).someMethod();
-    verify(mock, times(10)).someMethod();
-    verify(mock, atLeastOnce()).someMethod();
-	at forest.ForestViewTest.setUp(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</error>
-  </testcase>
-  <testcase classname="forest.ForestViewTest" name="testScrollBy" time="0.021">
-    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
-Argument passed to verify() is of type ForestView and is not a mock!
-Make sure you place the parenthesis correctly!
-See the examples of correct verifications:
-    verify(mock).someMethod();
-    verify(mock, times(10)).someMethod();
-    verify(mock, atLeastOnce()).someMethod();
-	at forest.ForestViewTest.setUp(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</error>
-  </testcase>
-  <testcase classname="forest.ForestViewTest" name="testScrollTo" time="0.031">
-    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
-Argument passed to verify() is of type ForestView and is not a mock!
-Make sure you place the parenthesis correctly!
-See the examples of correct verifications:
-    verify(mock).someMethod();
-    verify(mock, times(10)).someMethod();
-    verify(mock, atLeastOnce()).someMethod();
-	at forest.ForestViewTest.setUp(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</error>
-  </testcase>
-  <testcase classname="forest.ForestViewTest" name="testUpdate" time="0.013">
-    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
-Argument passed to verify() is of type ForestView and is not a mock!
-Make sure you place the parenthesis correctly!
-See the examples of correct verifications:
-    verify(mock).someMethod();
-    verify(mock, times(10)).someMethod();
-    verify(mock, atLeastOnce()).someMethod();
-	at forest.ForestViewTest.setUp(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</error>
-  </testcase>
+  <testcase classname="forest.ForestViewTest" name="testConstructorInteractions" time="4.438" />
+  <testcase classname="forest.ForestViewTest" name="testToString" time="0.083" />
+  <testcase classname="forest.ForestViewTest" name="testPaintComponent" time="0.053" />
+  <testcase classname="forest.ForestViewTest" name="testScrollAmount" time="0.013" />
+  <testcase classname="forest.ForestViewTest" name="testConstructorInitialization" time="0.008" />
+  <testcase classname="forest.ForestViewTest" name="testWhichOfNodes" time="0.047" />
+  <testcase classname="forest.ForestViewTest" name="testScrollBy" time="0.005" />
+  <testcase classname="forest.ForestViewTest" name="testScrollTo" time="0.014" />
+  <testcase classname="forest.ForestViewTest" name="testUpdate" time="0.018" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
 WARNING: A Java agent has been loaded dynamically (/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar)

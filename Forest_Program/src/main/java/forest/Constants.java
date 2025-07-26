@@ -77,6 +77,8 @@ public class Constants extends Object
      * Constantsクラスのプライベートコンストラクタ。
      * 外部からのインスタンス化を防ぐためにプライベートに宣言されています。
      */
-    public Constants(){;}
+    private Constants() {
+        throw new UnsupportedOperationException("Constants クラスはインスタンス化できません。");
+    }
 
 } 
