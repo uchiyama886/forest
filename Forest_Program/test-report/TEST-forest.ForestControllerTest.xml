@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="1" hostname="tampnend.local" name="forest.ForestControllerTest" skipped="0" tests="12" time="6.514" timestamp="2025-07-26T15:41:29">
+<testsuite errors="0" failures="0" hostname="tampnend.local" name="forest.ForestControllerTest" skipped="0" tests="13" time="6.202" timestamp="2025-07-26T23:21:09">
   <properties>
     <property name="ant.library.dir" value="/usr/local/ant/lib" />
     <property name="mockitojar" value="mockito-core-5.18.0.jar" />
@@ -20,7 +20,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="user.country" value="JP" />
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestControllerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestControllerTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher16747113933113770087.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit16300786892881681511.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestControllerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestControllerTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher12430603359297468469.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit14783558962834085369.properties" />
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
     <property name="jdk.debug" value="release" />
     <property name="package" value="forest" />
@@ -86,39 +86,19 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
     <property name="ant.project.default-target" value="all" />
   </properties>
-  <testcase classname="forest.ForestControllerTest" name="testMouseReleased" time="4.406" />
-  <testcase classname="forest.ForestControllerTest" name="testMousePressed" time="0.015" />
-  <testcase classname="forest.ForestControllerTest" name="testToString" time="0.007" />
-  <testcase classname="forest.ForestControllerTest" name="testMouseClicked" time="0.058" />
-  <testcase classname="forest.ForestControllerTest" name="testMouseClickedWithNullView" time="0.05">
-    <failure message="view が null の場合に NullPointerException が発生しました" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: view が null の場合に NullPointerException が発生しました
-	at forest.ForestControllerTest.testMouseClickedWithNullView(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</failure>
-  </testcase>
-  <testcase classname="forest.ForestControllerTest" name="testScrollBy" time="0.1">
-    <error message="Cannot read field &quot;x&quot; because &quot;&lt;local5&gt;&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot read field &quot;x&quot; because &quot;&lt;local5&gt;&quot; is null
-	at forest.ForestController.scrollBy(Unknown Source)
-	at forest.ForestControllerTest.testScrollBy(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</error>
-  </testcase>
+  <testcase classname="forest.ForestControllerTest" name="testMouseReleased" time="3.949" />
+  <testcase classname="forest.ForestControllerTest" name="testMousePressed" time="0.024" />
+  <testcase classname="forest.ForestControllerTest" name="testToString" time="0.009" />
+  <testcase classname="forest.ForestControllerTest" name="testMouseClicked" time="0.067" />
+  <testcase classname="forest.ForestControllerTest" name="testScrollBy_NoShiftKey" time="0.071" />
   <testcase classname="forest.ForestControllerTest" name="testMouseDragged" time="0.02" />
-  <testcase classname="forest.ForestControllerTest" name="testMouseWheelMoved" time="0.02" />
-  <testcase classname="forest.ForestControllerTest" name="testSetView" time="0.02" />
-  <testcase classname="forest.ForestControllerTest" name="testEmptyMouseMethods" time="0.009" />
-  <testcase classname="forest.ForestControllerTest" name="testConstructor" time="0.009" />
-  <testcase classname="forest.ForestControllerTest" name="testSetModel" time="0.018" />
+  <testcase classname="forest.ForestControllerTest" name="testMouseWheelMoved" time="0.023" />
+  <testcase classname="forest.ForestControllerTest" name="testScrollBy_ShiftKeyOnly" time="0.034" />
+  <testcase classname="forest.ForestControllerTest" name="testScrollBy_ShiftAltCtrlMetaKeys" time="0.045" />
+  <testcase classname="forest.ForestControllerTest" name="testSetView" time="0.017" />
+  <testcase classname="forest.ForestControllerTest" name="testEmptyMouseMethods" time="0.014" />
+  <testcase classname="forest.ForestControllerTest" name="testConstructor" time="0.011" />
+  <testcase classname="forest.ForestControllerTest" name="testSetModel" time="0.01" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
 WARNING: A Java agent has been loaded dynamically (/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar)

@@ -74,7 +74,6 @@ public class ForestModel extends Object {
     public void animate()
     {
         forest.flushBounds();
-        this.changed();
         forest.arrange(this);
 
         this.changed();

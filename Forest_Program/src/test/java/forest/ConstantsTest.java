@@ -134,7 +134,8 @@ public class ConstantsTest {
      * {@code Constants} クラスのコンストラクタがプライベートであり、
      * 外部からインスタンス化できないことを確認します。
      * リフレクションを使ってプライベートコンストラクタへのアクセスを試み、
-     * {@code IllegalAccessException} が発生することを確認することで、
+     * {@code InvocationTargetException} が発生し、その原因が
+     * {@code UnsupportedOperationException} であることを確認することで、
      * このクラスが意図的にインスタンス化不可能に設計されていることを検証します。
      */
     @Test
@@ -155,15 +156,17 @@ public class ConstantsTest {
             // ここに到達した場合はテスト失敗 (例外がスローされるべき)
             fail("Constants クラスはインスタンス化されるべきではありません。");
         } catch (InvocationTargetException e) {
-            // コンストラクタが例外をスローした場合 (例えば、意図的に RuntimeException をスローする場合)
-            // このケースでは、コンストラクタが空なので発生しないはず。
-            // もし何らかの例外がコンストラクタ内でスローされたら、このブロックに入る。
-            assertNotNull(e.getTargetException()); // 内部の例外があることを確認
+            // コンストラクタが例外をスローした場合
+            // 期待されるのは UnsupportedOperationException
+            Throwable cause = e.getTargetException();
+            assertNotNull("InvocationTargetException の原因が null でないこと", cause);
+            assertTrue("原因が UnsupportedOperationException であること",
+                       cause instanceof UnsupportedOperationException);
+            assertEquals("UnsupportedOperationException のメッセージが正しいこと",
+                         "Constants クラスはインスタンス化できません。", cause.getMessage());
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException e) {
-            // インスタンス化の禁止やアクセス違反が発生した場合
-            // IllegalAccessException が期待される。
-            assertTrue("Constants クラスのインスタンス化は IllegalAccessException をスローするべき",
-                       e instanceof IllegalAccessException || e instanceof InstantiationException || e instanceof NoSuchMethodException);
+            // その他のリフレクション関連の例外が発生した場合、テスト失敗
+            fail("予期せぬリフレクション例外が発生しました: " + e.getMessage());
         }
     }
 }

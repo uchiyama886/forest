@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="2" hostname="tampnend.local" name="forest.ForestTest" skipped="0" tests="16" time="6.881" timestamp="2025-07-26T15:41:46">
+<testsuite errors="0" failures="0" hostname="tampnend.local" name="forest.ForestTest" skipped="0" tests="16" time="7.185" timestamp="2025-07-26T23:21:26">
   <properties>
     <property name="ant.library.dir" value="/usr/local/ant/lib" />
     <property name="mockitojar" value="mockito-core-5.18.0.jar" />
@@ -20,7 +20,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="user.country" value="JP" />
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher12091986996843793609.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit1541443416641523709.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher5328051060347771629.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit4924697151568612346.properties" />
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
     <property name="jdk.debug" value="release" />
     <property name="package" value="forest" />
@@ -86,104 +86,83 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
     <property name="ant.project.default-target" value="all" />
   </properties>
-  <testcase classname="forest.ForestTest" name="testFlushBounds" time="1.7" />
-  <testcase classname="forest.ForestTest" name="testAddNode" time="0.028" />
-  <testcase classname="forest.ForestTest" name="testSubNodes" time="0.024" />
-  <testcase classname="forest.ForestTest" name="testDraw" time="0.439" />
-  <testcase classname="forest.ForestTest" name="testPropagateWithNullModel" time="1.795" />
-  <testcase classname="forest.ForestTest" name="testToString" time="0.073" />
-  <testcase classname="forest.ForestTest" name="testArrangeNoModel" time="0.099">
-    <error message="Cannot read field &quot;x&quot; because the return value of &quot;forest.Node.getExtent()&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot read field &quot;x&quot; because the return value of &quot;forest.Node.getExtent()&quot; is null
-	at forest.Forest.arrange(Unknown Source)
-	at forest.Forest.lambda$arrange$1(Unknown Source)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at forest.Forest.arrange(Unknown Source)
-	at forest.Forest.arrange(Unknown Source)
-	at forest.ForestTest.testArrangeNoModel(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</error>
-  </testcase>
+  <testcase classname="forest.ForestTest" name="testFlushBounds" time="1.698" />
+  <testcase classname="forest.ForestTest" name="testAddNode" time="0.029" />
+  <testcase classname="forest.ForestTest" name="testSubNodes" time="0.026" />
+  <testcase classname="forest.ForestTest" name="testDraw" time="0.527" />
+  <testcase classname="forest.ForestTest" name="testPropagateWithNullModel" time="1.341" />
+  <testcase classname="forest.ForestTest" name="testToString" time="0.063" />
+  <testcase classname="forest.ForestTest" name="testArrangeNoModel" time="0.637" />
   <testcase classname="forest.ForestTest" name="testRootNodes" time="0.02" />
-  <testcase classname="forest.ForestTest" name="testPropagate" time="0.334">
-    <failure message="&#xa;forestModel.changed();&#xa;Wanted 1 time:&#xa;-&gt; at forest.ForestModel.changed(Unknown Source)&#xa;But was 7 times:&#xa;-&gt; at forest.Forest.lambda$propagate$2(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
-forestModel.changed();
-Wanted 1 time:
--&gt; at forest.ForestModel.changed(Unknown Source)
-But was 7 times:
--&gt; at forest.Forest.lambda$propagate$2(Unknown Source)
--&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
--&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
--&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
--&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
--&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
--&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
-
-
-	at forest.ForestModel.changed(Unknown Source)
-	at forest.ForestTest.testPropagate(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</failure>
-  </testcase>
-  <testcase classname="forest.ForestTest" name="testAddBranch" time="0.023" />
-  <testcase classname="forest.ForestTest" name="testWhichOfNodes" time="0.034" />
-  <testcase classname="forest.ForestTest" name="testSortNodes" time="0.024" />
-  <testcase classname="forest.ForestTest" name="testBounds" time="0.016" />
-  <testcase classname="forest.ForestTest" name="testSuperNodes" time="0.021" />
-  <testcase classname="forest.ForestTest" name="testArrangeRecursiveLogic" time="0.281">
-    <failure message="&#xa;Wanted but not invoked:&#xa;mockNodeB.setStatus(1);&#xa;-&gt; at forest.Node.setStatus(Unknown Source)&#xa;&#xa;However, there were exactly 6 interactions with this mock:&#xa;mockNodeB.getStatus();&#xa;-&gt; at forest.Forest.lambda$arrange$3(Unknown Source)&#xa;&#xa;mockNodeB.setLocation(&#xa;    java.awt.Point[x=75,y=0]&#xa;);&#xa;-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)&#xa;&#xa;mockNodeB.getStatus();&#xa;-&gt; at forest.Forest.arrange(Unknown Source)&#xa;&#xa;mockNodeB.getLocation();&#xa;-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)&#xa;&#xa;mockNodeB.getExtent();&#xa;-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)&#xa;&#xa;mockNodeB.getLocation();&#xa;-&gt; at forest.Forest.lambda$arrange$8(Unknown Source)&#xa;&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
-Wanted but not invoked:
-mockNodeB.setStatus(1);
--&gt; at forest.Node.setStatus(Unknown Source)
-
-However, there were exactly 6 interactions with this mock:
-mockNodeB.getStatus();
--&gt; at forest.Forest.lambda$arrange$3(Unknown Source)
-
-mockNodeB.setLocation(
-    java.awt.Point[x=75,y=0]
-);
--&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
-
-mockNodeB.getStatus();
--&gt; at forest.Forest.arrange(Unknown Source)
-
-mockNodeB.getLocation();
--&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
-
-mockNodeB.getExtent();
--&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
-
-mockNodeB.getLocation();
--&gt; at forest.Forest.lambda$arrange$8(Unknown Source)
-
-
-	at forest.Node.setStatus(Unknown Source)
-	at forest.ForestTest.testArrangeRecursiveLogic(Unknown Source)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
-	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
-	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
-	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-</failure>
-  </testcase>
-  <testcase classname="forest.ForestTest" name="testConstructor" time="0.025" />
+  <testcase classname="forest.ForestTest" name="testPropagate" time="0.245" />
+  <testcase classname="forest.ForestTest" name="testAddBranch" time="0.013" />
+  <testcase classname="forest.ForestTest" name="testWhichOfNodes" time="0.026" />
+  <testcase classname="forest.ForestTest" name="testSortNodes" time="0.017" />
+  <testcase classname="forest.ForestTest" name="testBounds" time="0.022" />
+  <testcase classname="forest.ForestTest" name="testSuperNodes" time="0.023" />
+  <testcase classname="forest.ForestTest" name="testArrangeRecursiveLogic" time="0.551" />
+  <testcase classname="forest.ForestTest" name="testConstructor" time="0.017" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
 WARNING: A Java agent has been loaded dynamically (/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
+Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException: Cannot invoke "forest.ForestModel.changed()" because "<parameter1>" is null
+	at forest.Forest.lambda$propagate$2(Unknown Source)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException: Cannot invoke "forest.ForestModel.changed()" because "<parameter1>" is null
+	at forest.Forest.lambda$propagate$2(Unknown Source)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException: Cannot invoke "forest.ForestModel.changed()" because "<parameter1>" is null
+	at forest.Forest.lambda$propagate$2(Unknown Source)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException: Cannot invoke "forest.ForestModel.changed()" because "<parameter1>" is null
+	at forest.Forest.lambda$propagate$2(Unknown Source)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException: Cannot invoke "forest.ForestModel.changed()" because "<parameter1>" is null
+	at forest.Forest.lambda$propagate$2(Unknown Source)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
 Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException: Cannot invoke "forest.ForestModel.changed()" because "<parameter1>" is null
 	at forest.Forest.lambda$propagate$2(Unknown Source)
 	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
