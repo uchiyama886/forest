@@ -19,7 +19,7 @@
 	<property name="hamcrestjar" value="hamcrest-core-1.3.jar" />
     <property name="mockitojar" value="mockito-core-5.18.0.jar" />
 	<property name="bytebuddyjar" value="byte-buddy-1.17.6.jar" />
-	<propert name="objenesisjar" value="objenesis-3.4.jar" />
+	<property name="objenesisjar" value="objenesis-3.4.jar" />
 
 	<property name="reportdir" value="./test-report" />
 
