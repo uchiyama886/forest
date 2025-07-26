@@ -69,10 +69,10 @@ public class ForestControllerTest {
     @Test
     public void testConstructor() {
         ForestController newController = new ForestController(); // 新しいインスタンスをテスト
-        assertNull("model が null で初期化されること", newController.model);
-        assertNull("view が null で初期化されること", newController.view);
-        assertNull("previous が null で初期化されること", newController.previous);
-        assertNull("current が null で初期化されること", newController.current);
+        assertNull("model が null で初期化されること", newController.getModel());
+        assertNull("view が null で初期化されること", newController.getView());
+        assertNull("previous が null で初期化されること", newController.getPrevious());
+        assertNull("current が null で初期化されること", newController.getCurrent());
     }
 
     
@@ -85,7 +85,7 @@ public class ForestControllerTest {
     public void testSetModel() {
         ForestModel anotherMockModel = mock(ForestModel.class);
         controller.setModel(anotherMockModel);
-        assertEquals("setModel() がモデルを正しく設定すること", anotherMockModel, controller.model);
+        assertEquals("setModel() がモデルを正しく設定すること", anotherMockModel, controller.getModel());
     }
 
     
@@ -100,7 +100,7 @@ public class ForestControllerTest {
         ForestView anotherMockView = mock(ForestView.class);
         controller.setView(anotherMockView); // 新しいビューを設定
 
-        assertEquals("setView() がビューを正しく設定すること", anotherMockView, controller.view);
+        assertEquals("setView() がビューを正しく設定すること", anotherMockView, controller.getView());
         // 各リスナーがビューに追加されたことを検証
         verify(anotherMockView).addMouseListener(controller);
         verify(anotherMockView).addMouseMotionListener(controller);
@@ -207,7 +207,7 @@ public class ForestControllerTest {
         verify(mockView).scrollBy(new Point(10, 10));
 
         // 3. previous が current (10,10) に更新されたことを検証
-        assertEquals("previous が current に更新されていること", new Point(10, 10), controller.previous);
+        assertEquals("previous が current に更新されていること", new Point(10, 10), controller.getPrevious());
     }
 
     
@@ -250,8 +250,8 @@ public class ForestControllerTest {
         verify(mockComponent).setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 
         // 2. current と previous が正しい位置に設定されたことを検証
-        assertEquals("current が正しい位置に設定されていること", pressPoint, controller.current);
-        assertEquals("previous が current と同じ位置に設定されていること", pressPoint, controller.previous);
+        assertEquals("current が正しい位置に設定されていること", pressPoint, controller.getCurrent());
+        assertEquals("previous が current と同じ位置に設定されていること", pressPoint, controller.getPrevious());
     }
 
     
@@ -273,8 +273,8 @@ public class ForestControllerTest {
         verify(mockComponent).setCursor(Cursor.getDefaultCursor());
 
         // 2. current と previous が正しい位置に設定されたことを検証
-        assertEquals("current が正しい位置に設定されていること", releasePoint, controller.current);
-        assertEquals("previous が current と同じ位置に設定されていること", releasePoint, controller.previous);
+        assertEquals("current が正しい位置に設定されていること", releasePoint, controller.getCurrent());
+        assertEquals("previous が current と同じ位置に設定されていること", releasePoint, controller.getPrevious());
     }
 
     

@@ -316,7 +316,7 @@ public class Forest extends Object
      * ブランチ（枝）群（たち）を記憶するフィールドを返すメソッドです。
      * @return ブランチ（枝）群（たち）を記憶するフィールド {@code ArrayList<Branch>}
      */
-    public ArrayList<Branch> getBranchs() {
+    public ArrayList<Branch> getBranches() {
         return this.branches;
     }
 

@@ -117,7 +117,7 @@ public class ForestModelTest {
         // Forest オブジェクトが初期化されていること (setUp でモックに置き換えられていることを前提)
         assertNotNull("Forest オブジェクトが null でないこと", forestModel.forest());
         // 依存リストが初期化され、空であること
-        assertNotNull("dependants リストが null でないこと", forestModel.dependants);
+        assertNotNull("dependants リストが null でないこと", forestModel.getDependants());
         assertTrue("dependants リストが空であること", forestModel.dependants.isEmpty());
 
         // コンストラクタ内でread()が呼ばれることを検証するには、ForestModel自体をspy化し、
@@ -141,23 +141,23 @@ public class ForestModelTest {
     public void testAddAndGetDependents() {
         // addDependent でビューを追加
         forestModel.addDependent(mockView1);
-        assertEquals("ビューが1つ追加されていること", 1, forestModel.dependants.size());
-        assertTrue("追加したビューが含まれていること", forestModel.dependants.contains(mockView1));
+        assertEquals("ビューが1つ追加されていること", 1, forestModel.getDependants().size());
+        assertTrue("追加したビューが含まれていること", forestModel.getDependants().contains(mockView1));
 
         forestModel.addDependent(mockView2);
-        assertEquals("ビューが2つ追加されていること", 2, forestModel.dependants.size());
-        assertTrue("追加した2つ目のビューが含まれていること", forestModel.dependants.contains(mockView2));
+        assertEquals("ビューが2つ追加されていること", 2, forestModel.getDependants().size());
+        assertTrue("追加した2つ目のビューが含まれていること", forestModel.getDependants().contains(mockView2));
 
         // getDependents がリストのコピーを返すことを確認
         java.util.List<ForestView> retrievedDependents = forestModel.getDependents();
         assertEquals("getDependents が正しいサイズのリストを返すこと", 2, retrievedDependents.size());
         assertTrue("取得したリストにビュー1が含まれていること", retrievedDependents.contains(mockView1));
         assertTrue("取得したリストにビュー2が含まれていること", retrievedDependents.contains(mockView2));
-        assertNotSame("取得したリストが元のリストのコピーであること", forestModel.dependants, retrievedDependents);
+        assertNotSame("取得したリストが元のリストのコピーであること", forestModel.getDependants(), retrievedDependents);
 
         // コピーをクリアしても元のリストには影響しないことを確認
         retrievedDependents.clear();
-        assertEquals("元のリストのサイズが変わらないこと", 2, forestModel.dependants.size());
+        assertEquals("元のリストのサイズが変わらないこと", 2, forestModel.getDependants().size());
     }
 
     

@@ -60,7 +60,7 @@ public class NodeTest {
         // ノード名が正しく設定されていることを確認
         assertEquals("ノード名が正しく設定されていること", testNodeName, node.getName());
         // 初期状態が Constants.UnKnown であることを確認
-        assertEquals("初期状態がConstants.UnKnownであること", Constants.UnKnown, (int)node.getStatus()); // Integer の比較に注意
+        assertEquals("初期状態がConstants.UnKnownであること", (int)Constants.UnKnown, (int)node.getStatus()); // Integer の比較に注意
         // 初期位置が (0,0) であることを確認
         assertEquals("初期位置が(0,0)であること", new Point(0, 0), node.getLocation());
 
@@ -134,13 +134,13 @@ public class NodeTest {
      */
     @Test
     public void testGetAndSetStatus() {
-        assertEquals("初期状態がConstants.UnKnownであること", Constants.UnKnown, (int)node.getStatus());
+        assertEquals("初期状態がConstants.UnKnownであること", (int)Constants.UnKnown, (int)node.getStatus());
 
         node.setStatus(Constants.Visited); // 状態を設定
-        assertEquals("setStatus() でノードの状態が更新されること", Constants.Visited, (int)node.getStatus());
+        assertEquals("setStatus() でノードの状態が更新されること", (int)Constants.Visited, (int)node.getStatus());
 
         node.setStatus(Constants.UnVisited); // 別の状態に更新
-        assertEquals("setStatus() でノードの状態がさらに更新されること", Constants.UnVisited, (int)node.getStatus());
+        assertEquals("setStatus() でノードの状態がさらに更新されること", (int)Constants.UnVisited, (int)node.getStatus());
     }
 
     

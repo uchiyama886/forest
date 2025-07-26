@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="1" hostname="tampnend.local" name="forest.ConstantsTest" skipped="0" tests="13" time="0.528" timestamp="2025-07-26T15:12:34">
+  <properties>
+    <property name="ant.library.dir" value="/usr/local/ant/lib" />
+    <property name="mockitojar" value="mockito-core-5.18.0.jar" />
+    <property name="copyright" value="Copyright 2025 TEAM JavaGrove. All Rights Reserved." />
+    <property name="ant.file.type" value="file" />
+    <property name="java.specification.version" value="24" />
+    <property name="ant.project.name" value="Forest" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="java.class.path" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="ant.file.type.Forest" value="file" />
+    <property name="java.vendor.url" value="https://java.oracle.com/" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="java.vm.specification.version" value="24" />
+    <property name="srcdir" value="src/main/java" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="user.country" value="JP" />
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ConstantsTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ConstantsTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher10615899429487669192.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit1031122279197563308.properties" />
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="jdk.debug" value="release" />
+    <property name="package" value="forest" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="user.home" value="/Users/tamp" />
+    <property name="user.language" value="ja" />
+    <property name="packagenames" value="forest,mvc,utility" />
+    <property name="reportdir" value="./test-report" />
+    <property name="instdir" value="./Forest.app/Contents/Resources/Java" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="libdir" value="./lib" />
+    <property name="resourcedir" value="src/main/resources" />
+    <property name="java.version.date" value="2025-03-18" />
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home" />
+    <property name="basedir" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program" />
+    <property name="file.separator" value="/" />
+    <property name="java.vm.compressedOopsMode" value="Zero based" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="ant.java.version" value="24" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.file.Forest" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml" />
+    <property name="docdir" value="./JavaDoc" />
+    <property name="apple.awt.application.name" value="JUnitTestRunner" />
+    <property name="junitjar" value="junit-4.13.1.jar" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="hamcrestjar" value="hamcrest-core-1.3.jar" />
+    <property name="doc-title" value="Forest Documant" />
+    <property name="java.runtime.version" value="24+36-3646" />
+    <property name="utility" value="utility" />
+    <property name="user.name" value="tamp" />
+    <property name="ant.file" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml" />
+    <property name="stdout.encoding" value="UTF-8" />
+    <property name="path.separator" value=":" />
+    <property name="os.version" value="15.4" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="ant.project.invoked-targets" value="unittest" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="mvc" value="mvc" />
+    <property name="ant.core.lib" value="/usr/local/ant/lib/ant.jar" />
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
+    <property name="java.io.tmpdir" value="/var/folders/15/8xpws36j4zx9cx_0h90s8cjh0000gn/T/" />
+    <property name="java.version" value="24" />
+    <property name="user.dir" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program" />
+    <property name="os.arch" value="x86_64" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.home" value="/usr/local/ant" />
+    <property name="zipname" value="Forest" />
+    <property name="native.encoding" value="UTF-8" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.10.15 compiled on August 25 2024" />
+    <property name="java.library.path" value="/Users/tamp/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="stderr.encoding" value="UTF-8" />
+    <property name="java.vm.info" value="mixed mode, sharing" />
+    <property name="java.vm.version" value="24+36-3646" />
+    <property name="destdir" value="./Classes" />
+    <property name="sun.io.unicode.encoding" value="UnicodeBig" />
+    <property name="java.class.version" value="68.0" />
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="ant.project.default-target" value="all" />
+  </properties>
+  <testcase classname="forest.ConstantsTest" name="testTagOfNodes" time="0.006" />
+  <testcase classname="forest.ConstantsTest" name="testTagOfTrees" time="0.001" />
+  <testcase classname="forest.ConstantsTest" name="testDefaultFont" time="0.188" />
+  <testcase classname="forest.ConstantsTest" name="testTagOfBranches" time="0.0" />
+  <testcase classname="forest.ConstantsTest" name="testForegroundColor" time="0.0" />
+  <testcase classname="forest.ConstantsTest" name="testUnKnown" time="0.0" />
+  <testcase classname="forest.ConstantsTest" name="testVisited" time="0.001" />
+  <testcase classname="forest.ConstantsTest" name="testUnVisited" time="0.0" />
+  <testcase classname="forest.ConstantsTest" name="testSleepTick" time="0.001" />
+  <testcase classname="forest.ConstantsTest" name="testPrivateConstructor" time="0.028">
+    <failure message="Constants クラスのコンストラクタはプライベートであるべき" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Constants クラスのコンストラクタはプライベートであるべき
+	at forest.ConstantsTest.testPrivateConstructor(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+</failure>
+  </testcase>
+  <testcase classname="forest.ConstantsTest" name="testBackgroundColor" time="0.002" />
+  <testcase classname="forest.ConstantsTest" name="testInterval" time="0.0" />
+  <testcase classname="forest.ConstantsTest" name="testMargin" time="0.0" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

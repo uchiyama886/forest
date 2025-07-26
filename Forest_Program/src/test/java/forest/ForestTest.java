@@ -104,14 +104,14 @@ public class ForestTest {
      */
     @Test
     public void testConstructor() {
-        assertNotNull("nodes リストが null でないこと", forest.nodes);
-        assertTrue("nodes リストが空であること", forest.nodes.isEmpty());
-        assertNotNull("branches リストが null でないこと", forest.branches);
-        assertTrue("branches リストが空であること", forest.branches.isEmpty());
-        assertNotNull("bounds オブジェクトが null でないこと", forest.bounds);
+        assertNotNull("nodes リストが null でないこと", forest.getNodes());
+        assertTrue("nodes リストが空であること", forest.getNodes().isEmpty());
+        assertNotNull("branches リストが null でないこと", forest.getBranches());
+        assertTrue("branches リストが空であること", forest.getBranches().isEmpty());
+        assertNotNull("bounds オブジェクトが null でないこと", forest.getBounds());
         // 初期状態では bounds の幅と高さが0であることを確認
-        assertEquals("初期 bounds の幅が0であること", 0, forest.bounds.width);
-        assertEquals("初期 bounds の高さが0であること", 0, forest.bounds.height);
+        assertEquals("初期 bounds の幅が0であること", 0, forest.getBounds().width);
+        assertEquals("初期 bounds の高さが0であること", 0, forest.getBounds().height);
     }
 
     
@@ -123,12 +123,12 @@ public class ForestTest {
     @Test
     public void testAddNode() {
         forest.addNode(mockNodeA);
-        assertEquals("ノードが1つ追加されていること", 1, forest.nodes.size());
-        assertTrue("追加したノードが含まれていること", forest.nodes.contains(mockNodeA));
+        assertEquals("ノードが1つ追加されていること", 1, forest.getNodes().size());
+        assertTrue("追加したノードが含まれていること", forest.getNodes().contains(mockNodeA));
 
         forest.addNode(mockNodeB);
-        assertEquals("ノードが2つ追加されていること", 2, forest.nodes.size());
-        assertTrue("追加した2つ目のノードが含まれていること", forest.nodes.contains(mockNodeB));
+        assertEquals("ノードが2つ追加されていること", 2, forest.getNodes().size());
+        assertTrue("追加した2つ目のノードが含まれていること", forest.getNodes().contains(mockNodeB));
     }
 
     
@@ -140,12 +140,12 @@ public class ForestTest {
     @Test
     public void testAddBranch() {
         forest.addBranch(mockBranchAB);
-        assertEquals("ブランチが1つ追加されていること", 1, forest.branches.size());
-        assertTrue("追加したブランチが含まれていること", forest.branches.contains(mockBranchAB));
+        assertEquals("ブランチが1つ追加されていること", 1, forest.getBranches().size());
+        assertTrue("追加したブランチが含まれていること", forest.getBranches().contains(mockBranchAB));
 
         forest.addBranch(mockBranchBC);
-        assertEquals("ブランチが2つ追加されていること", 2, forest.branches.size());
-        assertTrue("追加した2つ目のブランチが含まれていること", forest.branches.contains(mockBranchBC));
+        assertEquals("ブランチが2つ追加されていること", 2, forest.getBranches().size());
+        assertTrue("追加した2つ目のブランチが含まれていること", forest.getBranches().contains(mockBranchBC));
     }
 
     
@@ -307,7 +307,7 @@ public class ForestTest {
 
         // flushBoundsでboundsがnullになることも確認
         forest.flushBounds();
-        assertNull("flushBounds() 後に bounds が null であること", forest.bounds);
+        assertNull("flushBounds() 後に bounds が null であること", forest.getBounds());
     }
 
     
@@ -351,7 +351,7 @@ public class ForestTest {
         forest.addNode(mockNodeB);
 
         // 初期位置を適当に設定（確認のため）
-        node.setLocation(new Point(100, 100));
+        //node.setLocation(new Point(100, 100));
         when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // 高さ 30
         when(mockNodeB.getExtent()).thenReturn(new Point(60, 40)); // 高さ 40
 
@@ -363,7 +363,7 @@ public class ForestTest {
         // mockNodeB の新しい位置: (0, 40 * 2) = (0, 80)
         verify(mockNodeB).setLocation(new Point(0, 80));
 
-        assertNull("bounds が null に設定されていること", forest.bounds);
+        assertNull("bounds が null に設定されていること", forest.getBounds());
     }
 
     
