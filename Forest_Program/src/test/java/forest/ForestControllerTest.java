@@ -62,7 +62,7 @@ public class ForestControllerTest {
 
     // テストメソッド
 
-    /// コンストラクタのテスト
+    // コンストラクタのテスト
     /**
      * {@code ForestController} コンストラクタがフィールドを正しく初期化することを確認します。
      */
@@ -77,7 +77,7 @@ public class ForestControllerTest {
 
     
 
-    /// `setModel()` のテスト
+    // `setModel()` のテスト
     /**
      * {@code setModel()} メソッドがモデルを正しく設定することを確認します。
      */
@@ -90,7 +90,7 @@ public class ForestControllerTest {
 
     
 
-    /// `setView()` のテスト
+    // `setView()` のテスト
     /**
      * {@code setView()} メソッドがビューを正しく設定し、
      * マウスリスナー、マウスモーションリスナー、マウスホイールリスナーをビューに追加することを確認します。
@@ -109,7 +109,7 @@ public class ForestControllerTest {
 
     
 
-    /// `mouseClicked()` のテスト
+    // `mouseClicked()` のテスト
     /**
      * {@code mouseClicked()} メソッドが、クリックされた座標とノード情報を正しく処理し、標準出力に出力することを確認します。
      * ノードが見つかった場合と見つからなかった場合の両方をテストします。
@@ -184,7 +184,7 @@ public class ForestControllerTest {
 
     
 
-    /// `mouseDragged()` のテスト
+    // `mouseDragged()` のテスト
     /**
      * {@code mouseDragged()} メソッドが、マウスカーソルを移動カーソルに変更し、
      * ビューのスクロールを依頼し、その後にビューの再描画を依頼することを確認します。
@@ -212,7 +212,7 @@ public class ForestControllerTest {
 
     
 
-    /// `mouseEntered()`, `mouseExited()`, `mouseMoved()` のテスト
+    // `mouseEntered()`, `mouseExited()`, `mouseMoved()` のテスト
     /**
      * これらのメソッドが何もしないことを確認します。
      */
@@ -233,7 +233,7 @@ public class ForestControllerTest {
 
     
 
-    /// `mousePressed()` のテスト
+    // `mousePressed()` のテスト
     /**
      * {@code mousePressed()} メソッドが、マウスカーソルを十字カーソルに変更し、
      * {@code current} と {@code previous} の位置をイベントの位置に設定することを確認します。
@@ -256,7 +256,7 @@ public class ForestControllerTest {
 
     
 
-    /// `mouseReleased()` のテスト
+    // `mouseReleased()` のテスト
     /**
      * {@code mouseReleased()} メソッドが、マウスカーソルをデフォルトに戻し、
      * {@code current} と {@code previous} の位置をイベントの位置に設定することを確認します。
@@ -279,7 +279,7 @@ public class ForestControllerTest {
 
     
 
-    /// `mouseWheelMoved()` のテスト
+    // `mouseWheelMoved()` のテスト
     /**
      * {@code mouseWheelMoved()} メソッドが、マウスホイールの回転量に基づいて
      * ビューのスクロールを依頼し、ビューの再描画を依頼することを確認します。
@@ -322,7 +322,7 @@ public class ForestControllerTest {
 
     
 
-    /// `scrollBy()` のテスト
+    // `scrollBy()` のテスト
     /**
      * {@code scrollBy()} メソッドが、指定された量だけビューをスクロールし、
      * シフトキーの状態と他の修飾キーの状態に応じて、他のビューを連動スクロールすることを確認します。
@@ -393,7 +393,7 @@ public class ForestControllerTest {
 
     
 
-    /// `toString()` のテスト
+    // `toString()` のテスト
     /**
      * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すことを確認します。
      */

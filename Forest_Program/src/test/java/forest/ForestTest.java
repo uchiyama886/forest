@@ -97,7 +97,7 @@ public class ForestTest {
 
     // テストメソッド
 
-    /// コンストラクタのテスト
+    // コンストラクタのテスト
     /**
      * {@code Forest} コンストラクタが {@code nodes}, {@code branches}, {@code bounds}
      * フィールドを正しく初期化することを確認します。
@@ -116,7 +116,7 @@ public class ForestTest {
 
     
 
-    /// `addNode()` のテスト
+    // `addNode()` のテスト
     /**
      * {@code addNode()} メソッドがノードを {@code nodes} リストに正しく追加することを確認します。
      */
@@ -133,7 +133,7 @@ public class ForestTest {
 
     
 
-    /// `addBranch()` のテスト
+    // `addBranch()` のテスト
     /**
      * {@code addBranch()} メソッドがブランチを {@code branches} リストに正しく追加することを確認します。
      */
@@ -148,9 +148,9 @@ public class ForestTest {
         assertTrue("追加した2つ目のブランチが含まれていること", forest.branches.contains(mockBranchBC));
     }
 
-    -
+    
 
-    /// `rootNodes()` のテスト
+    // `rootNodes()` のテスト
     /**
      * {@code rootNodes()} メソッドが、終点ノードとして現れない（つまり親を持たない）ノードを
      * ルートノードとして正しく識別することを確認します。
@@ -181,7 +181,7 @@ public class ForestTest {
 
     
 
-    /// `subNodes()` のテスト
+    // `subNodes()` のテスト
     /**
      * {@code subNodes()} メソッドが、指定されたノードの直接の子ノードを正しく返すことを確認します。
      */
@@ -210,7 +210,7 @@ public class ForestTest {
 
     
 
-    /// `superNodes()` のテスト
+    // `superNodes()` のテスト
     /**
      * {@code superNodes()} メソッドが、指定されたノードの直接の親ノードを正しく返すことを確認します。
      */
@@ -236,7 +236,7 @@ public class ForestTest {
 
     
 
-    /// `sortNodes()` のテスト
+    // `sortNodes()` のテスト
     /**
      * {@code sortNodes()} メソッドが、ノードコレクションをノード名で昇順にソートすることを確認します。
      */
@@ -265,7 +265,7 @@ public class ForestTest {
 
     
 
-    /// `bounds()` のテスト
+    // `bounds()` のテスト
     /**
      * {@code bounds()} メソッドが、フォレスト内の全ノードを考慮した最小の矩形領域を正しく計算することを確認します。
      * ノードが存在しない場合は、幅と高さが0の矩形を返します。
@@ -312,7 +312,7 @@ public class ForestTest {
 
     
 
-    /// `draw()` のテスト
+    // `draw()` のテスト
     /**
      * {@code draw()} メソッドが、フォレスト内のすべてのノードとブランチの {@code draw} メソッドを
      * 正しい {@code Graphics} オブジェクトで呼び出すことを確認します。
@@ -339,7 +339,7 @@ public class ForestTest {
 
     
 
-    /// `flushBounds()` のテスト
+    // `flushBounds()` のテスト
     /**
      * {@code flushBounds()} メソッドが、すべてのノードの位置をリセットし、
      * フォレストの {@code bounds} を null に設定することを確認します。
@@ -368,7 +368,7 @@ public class ForestTest {
 
     
 
-    /// `propagate()` のテスト
+    // `propagate()` のテスト
     /**
      * {@code propagate()} メソッドが、{@code ForestModel} が {@code null} でない場合に
      * {@code Thread.sleep} を呼び出し、{@code SwingUtilities.invokeLater} 経由で {@code model.changed()} を
@@ -440,7 +440,7 @@ public class ForestTest {
 
     
 
-    /// `arrange()` メソッドのテスト (一部)
+    // `arrange()` メソッドのテスト (一部)
     /**
      * {@code arrange()} メソッド (オーバーロードなし) が、{@code nodes} の状態をリセットし、
      * ルートノードをソートして処理を開始することを確認します。
@@ -526,7 +526,7 @@ public class ForestTest {
 
     
 
-    /// `whichOfNodes()` のテスト
+    // `whichOfNodes()` のテスト
     /**
      * {@code whichOfNodes()} メソッドが、指定された座標にノードが存在する場合にそのノードを返し、
      * 存在しない場合は {@code null} を返すことを確認します。
@@ -563,7 +563,7 @@ public class ForestTest {
 
     
 
-    /// `toString()` のテスト
+    // `toString()` のテスト
     /**
      * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すかをテストします。
      * {@code bounds()} が一度呼び出されていれば、その結果が文字列に含まれることを確認します。

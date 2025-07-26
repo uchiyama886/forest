@@ -305,6 +305,30 @@ public class Forest extends Object
     }
 
     /**
+     * ノード（節）群（たち）を記憶するフィールドを返すメソッドです。
+     * @return ノード（節）群（たち）を記憶するフィールド {@code ArrayList<Node>}。
+     */
+    public ArrayList<Node> getNodes() {
+        return this.nodes;
+    }
+
+    /**
+     * ブランチ（枝）群（たち）を記憶するフィールドを返すメソッドです。
+     * @return ブランチ（枝）群（たち）を記憶するフィールド {@code ArrayList<Branch>}
+     */
+    public ArrayList<Branch> getBranchs() {
+        return this.branches;
+    }
+
+    /**
+     * 樹状整列したフォレスト（森）の領域（矩形）を記憶するフィールドを返すメソッドです。
+     * @return 樹状整列したフォレスト（森）の領域（矩形）を記憶するフィールド {@code Rectangle}
+     */
+    public Rectangle getBounds() {
+        return this.bounds;
+    }
+
+    /**
      * 自分自身を文字列に変換するメソッドです。
      * @return このオブジェクトを表す文字列。
      */

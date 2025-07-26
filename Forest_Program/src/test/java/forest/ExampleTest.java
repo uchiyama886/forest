@@ -119,7 +119,7 @@ public class ExampleTest {
 
     // `main` メソッドのテスト
 
-    /// 引数が少なすぎる場合のテスト
+    // 引数が少なすぎる場合のテスト
     /**
      * {@code main} メソッドが引数なしで呼び出されたときに、
      * エラーメッセージを標準エラーに出力し、{@code System.exit(1)} を呼び出すことを確認します。
@@ -137,7 +137,7 @@ public class ExampleTest {
         assertEquals("", outContent.toString());
     }
 
-    /// ファイルが存在しない場合のテスト
+    // ファイルが存在しない場合のテスト
     /**
      * {@code main} メソッドが、存在しないファイルパスを引数として受け取ったときに、
      * エラーメッセージを標準エラーに出力し、{@code System.exit(1)} を呼び出すことを確認します。
@@ -158,7 +158,7 @@ public class ExampleTest {
         assertEquals("", outContent.toString());
     }
 
-    /// 有効なファイルが指定された場合のテスト
+    // 有効なファイルが指定された場合のテスト
     /**
      * {@code main} メソッドが、有効なファイルパスを引数として受け取ったときに、
      * {@code System.exit(1)} が呼び出されず、エラー出力がないことを確認します。

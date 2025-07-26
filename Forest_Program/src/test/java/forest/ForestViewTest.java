@@ -85,7 +85,7 @@ public class ForestViewTest {
 
     // テストメソッド
 
-    /// コンストラクタのテスト
+    // コンストラクタのテスト
     /**
      * {@code ForestView} コンストラクタがモデルを設定し、自身をモデルの依存物として登録し、
      * コントローラを初期化してモデルとビューを設定することを確認します。
@@ -104,7 +104,7 @@ public class ForestViewTest {
 
     
 
-    /// `paintComponent()` のテスト
+    // `paintComponent()` のテスト
     /**
      * {@code paintComponent()} メソッドが、背景色でパネルを塗りつぶし、
      * モデルから画像を取得して、オフセットを考慮して描画することを確認します。
@@ -187,7 +187,7 @@ public class ForestViewTest {
 
     
 
-    /// `scrollAmount()` のテスト
+    // `scrollAmount()` のテスト
     /**
      * {@code scrollAmount()} メソッドが、現在のオフセットの逆向きの値を正しく返すことを確認します。
      */
@@ -207,7 +207,7 @@ public class ForestViewTest {
 
     
 
-    /// `scrollBy()` のテスト
+    // `scrollBy()` のテスト
     /**
      * {@code scrollBy()} メソッドが、現在のオフセットに指定された差分を加えて、
      * オフセットを相対的に変更することを確認します。
@@ -225,7 +225,7 @@ public class ForestViewTest {
 
     
 
-    /// `scrollTo()` のテスト
+    // `scrollTo()` のテスト
     /**
      * {@code scrollTo()} メソッドが、オフセットを指定された絶対位置に設定することを確認します。
      */
@@ -242,7 +242,7 @@ public class ForestViewTest {
 
     
 
-    /// `toString()` のテスト
+    // `toString()` のテスト
     /**
      * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すことを確認します。
      */
@@ -262,7 +262,7 @@ public class ForestViewTest {
 
     
 
-    /// `update()` のテスト
+    // `update()` のテスト
     /**
      * {@code update()} メソッドが、ビューの {@code repaint()} メソッドを呼び出すことを確認します。
      */
@@ -278,7 +278,7 @@ public class ForestViewTest {
 
     
 
-    /// `whichOfNodes()` のテスト
+    // `whichOfNodes()` のテスト
     /**
      * {@code whichOfNodes()} メソッドが、モデルの {@code Forest} オブジェクトの {@code whichOfNodes()} を呼び出し、
      * その結果をそのまま返すことを確認します。

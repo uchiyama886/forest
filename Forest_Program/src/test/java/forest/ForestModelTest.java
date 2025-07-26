@@ -97,7 +97,7 @@ public class ForestModelTest {
 
     // テストメソッド
 
-    /// コンストラクタのテスト
+    // コンストラクタのテスト
     /**
      * {@code ForestModel} のコンストラクタが、{@code Forest} オブジェクトと依存リストを
      * 正しく初期化することを確認します。また、{@code read} メソッドが呼び出されることも検証します。
@@ -132,7 +132,7 @@ public class ForestModelTest {
 
     
 
-    /// `addDependent()` および `getDependents()` のテスト
+    // `addDependent()` および `getDependents()` のテスト
     /**
      * {@code addDependent()} メソッドがビューを依存リストに正しく追加することと、
      * {@code getDependents()} がそのリストのコピーを返すことを確認します。
@@ -162,7 +162,7 @@ public class ForestModelTest {
 
     
 
-    /// `changed()` のテスト
+    // `changed()` のテスト
     /**
      * {@code changed()} メソッドが、登録されているすべての依存ビューの {@code update()} メソッドを呼び出すことを確認します。
      */
@@ -183,7 +183,7 @@ public class ForestModelTest {
 
     
 
-    /// `animate()` のテスト
+    // `animate()` のテスト
     /**
      * {@code animate()} メソッドが、{@code Forest} オブジェクトの {@code flushBounds()}、
      * {@code arrange(this)} を呼び出し、{@code changed()} を2回呼び出すことを確認します。
@@ -237,7 +237,7 @@ public class ForestModelTest {
 
     
 
-    /// `arrange()` のテスト (引数なし)
+    // `arrange()` のテスト (引数なし)
     /**
      * {@code arrange()} メソッド (引数なし) が、{@code Forest} オブジェクトの {@code arrange()} メソッドを
      * 引数なしで呼び出すことを確認します。
@@ -250,7 +250,7 @@ public class ForestModelTest {
 
     
 
-    /// `forest()` のテスト
+    // `forest()` のテスト
     /**
      * {@code forest()} メソッドが、このモデルが保持する {@code Forest} オブジェクトを返すことを確認します。
      */
@@ -262,7 +262,7 @@ public class ForestModelTest {
 
     
 
-    /// `picture()` のテスト
+    // `picture()` のテスト
     /**
      * {@code picture()} メソッドが、{@code Forest} の境界に基づいて新しい {@code BufferedImage} を作成し、
      * そのグラフィックスコンテキストに {@code Forest} を描画することを確認します。
@@ -293,7 +293,7 @@ public class ForestModelTest {
 
     
 
-    /// `read()` のテスト
+    // `read()` のテスト
     /**
      * {@code read()} メソッドが、指定されたファイルからノードとブランチのデータを正しく読み込み、
      * {@code Forest} オブジェクトに追加することを確認します。
@@ -372,7 +372,7 @@ public class ForestModelTest {
 
     
 
-    /// `root()` および `roots()` のテスト
+    // `root()` および `roots()` のテスト
     /**
      * {@code root()} メソッドが、{@code Forest} オブジェクトの {@code rootNodes()} を呼び出し、
      * その結果に基づいてルートノードを返すことを確認します。
@@ -404,7 +404,7 @@ public class ForestModelTest {
 
     
 
-    /// `toString()` のテスト
+    // `toString()` のテスト
     /**
      * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すことを確認します。
      * これは {@code picture} フィールドの状態に依存します。

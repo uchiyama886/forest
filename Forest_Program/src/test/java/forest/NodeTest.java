@@ -44,11 +44,11 @@ public class NodeTest {
         node = new Node(testNodeName);
     }
 
-    ---
+
 
     // テストメソッド
 
-    /// コンストラクタのテスト
+    // コンストラクタのテスト
     /**
      * {@code Node} クラスのコンストラクタが、引数として渡された名前と初期状態を
      * 正しく設定し、位置と大きさを初期化しているかをテストします。
@@ -72,7 +72,7 @@ public class NodeTest {
 
     
 
-    /// `getLocation()` / `setLocation()` のテスト
+    // `getLocation()` / `setLocation()` のテスト
     /**
      * {@code getLocation()} メソッドが正しい位置を返すこと、および
      * {@code setLocation()} メソッドがノードの位置を正しく更新することをテストします。
@@ -90,7 +90,7 @@ public class NodeTest {
 
     
 
-    /// `getName()` / `setName()` のテスト
+    // `getName()` / `setName()` のテスト
     /**
      * {@code getName()} メソッドが正しいノード名を返すこと、および
      * {@code setName()} メソッドがノード名を正しく更新することをテストします。
@@ -106,7 +106,7 @@ public class NodeTest {
 
     
 
-    /// `getExtent()` / `setExtent()` のテスト
+    // `getExtent()` / `setExtent()` のテスト
     /**
      * {@code getExtent()} メソッドが正しい大きさを返すこと、および
      * {@code setExtent()} メソッドがノードの大きさをマージンを考慮して正しく更新することをテストします。
@@ -127,7 +127,7 @@ public class NodeTest {
 
     
 
-    /// `getStatus()` / `setStatus()` のテスト
+    // `getStatus()` / `setStatus()` のテスト
     /**
      * {@code getStatus()} メソッドが正しい状態を返すこと、および
      * {@code setStatus()} メソッドがノードの状態を正しく更新することをテストします。
@@ -145,7 +145,7 @@ public class NodeTest {
 
     
 
-    /// `getBounds()` メソッドのテスト
+    // `getBounds()` メソッドのテスト
     /**
      * {@code getBounds()} メソッドがノードの正しい描画領域（{@code Rectangle}）を返すかをテストします。
      * これは位置と大きさから計算されるため、これらの setter/getter と連携して機能することを検証します。
@@ -164,7 +164,7 @@ public class NodeTest {
 
     
 
-    /// `toString()` メソッドのテスト
+    // `toString()` メソッドのテスト
     /**
      * {@code toString()} メソッドが、期待される文字列フォーマットで出力するかをテストします。
      */
@@ -177,7 +177,7 @@ public class NodeTest {
 
     
 
-    /// `draw()` メソッドのテスト
+    // `draw()` メソッドのテスト
     /**
      * {@code draw()} メソッドが {@code Graphics} オブジェクトのメソッド（色設定、塗りつぶし、枠線、文字列描画）を
      * 適切に呼び出すかをテストします。
@@ -228,7 +228,7 @@ public class NodeTest {
 
     
 
-    /// `stringWidth()` メソッドのテスト
+    // `stringWidth()` メソッドのテスト
     /**
      * {@code stringWidth()} メソッドが文字列の幅を正しく計算するかをテストします。
      * このメソッドは内部で Graphics オブジェクトを生成するため、Mockito でのモック化は行わず、
@@ -245,7 +245,7 @@ public class NodeTest {
 
     
 
-    /// `stringHeight()` メソッドのテスト
+    // `stringHeight()` メソッドのテスト
     /**
      * {@code stringHeight()} メソッドが文字列の高さを正しく計算するかをテストします。
      * このメソッドも内部で Graphics オブジェクトを生成するため、Mockito でのモック化は行わず、
