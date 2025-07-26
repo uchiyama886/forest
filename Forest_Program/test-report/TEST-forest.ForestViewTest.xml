@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="8" failures="0" hostname="tampnend.local" name="forest.ForestViewTest" skipped="0" tests="8" time="0.527" timestamp="2025-07-26T15:12:40">
+<testsuite errors="8" failures="0" hostname="tampnend.local" name="forest.ForestViewTest" skipped="0" tests="8" time="4.928" timestamp="2025-07-26T15:41:55">
   <properties>
     <property name="ant.library.dir" value="/usr/local/ant/lib" />
     <property name="mockitojar" value="mockito-core-5.18.0.jar" />
@@ -8,18 +8,19 @@
     <property name="java.specification.version" value="24" />
     <property name="ant.project.name" value="Forest" />
     <property name="sun.jnu.encoding" value="UTF-8" />
-    <property name="java.class.path" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar" />
+    <property name="java.class.path" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/objenesis-3.4.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar" />
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="sun.arch.data.model" value="64" />
     <property name="ant.file.type.Forest" value="file" />
     <property name="java.vendor.url" value="https://java.oracle.com/" />
-    <property name="os.name" value="Mac OS X" />
     <property name="java.vm.specification.version" value="24" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="bytebuddyagentjar" value="byte-buddy-agent-1.17.6.jar" />
     <property name="srcdir" value="src/main/java" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="user.country" value="JP" />
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestViewTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestViewTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher13573512573998627319.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit17579109474696444284.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestViewTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestViewTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher8717826140663806776.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit14034131456814275049.properties" />
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
     <property name="jdk.debug" value="release" />
     <property name="package" value="forest" />
@@ -34,6 +35,7 @@
     <property name="resourcedir" value="src/main/resources" />
     <property name="java.version.date" value="2025-03-18" />
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home" />
+    <property name="objenesisjar" value="objenesis-3.4.jar" />
     <property name="basedir" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program" />
     <property name="file.separator" value="/" />
     <property name="java.vm.compressedOopsMode" value="Zero based" />
@@ -41,6 +43,7 @@
     <property name="ant.java.version" value="24" />
     <property name="java.specification.name" value="Java Platform API Specification" />
     <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="bytebuddyjar" value="byte-buddy-1.17.6.jar" />
     <property name="ant.file.Forest" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml" />
     <property name="docdir" value="./JavaDoc" />
     <property name="apple.awt.application.name" value="JUnitTestRunner" />
@@ -83,534 +86,147 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
     <property name="ant.project.default-target" value="all" />
   </properties>
-  <testcase classname="forest.ForestViewTest" name="testToString" time="0.055">
-    <error message="Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
-	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
-	at jdk.proxy2/jdk.proxy2.$Proxy11.isTypeMockable(Unknown Source)
-	at org.mockito.internal.util.MockUtil.typeMockabilityOf(MockUtil.java:78)
-	at org.mockito.internal.util.MockCreationValidator.validateType(MockCreationValidator.java:22)
-	at org.mockito.internal.creation.MockSettingsImpl.validatedSettings(MockSettingsImpl.java:275)
-	at org.mockito.internal.creation.MockSettingsImpl.build(MockSettingsImpl.java:236)
-	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:82)
-	at org.mockito.Mockito.mock(Mockito.java:2198)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.processAnnotationForMock(MockAnnotationProcessor.java:79)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:28)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:25)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.createMockFor(IndependentAnnotationEngine.java:44)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.process(IndependentAnnotationEngine.java:72)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(InjectingAnnotationEngine.java:62)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.process(InjectingAnnotationEngine.java:47)
-	at org.mockito.MockitoAnnotations.openMocks(MockitoAnnotations.java:81)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:50)
+  <testcase classname="forest.ForestViewTest" name="testToString" time="2.932">
+    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();
+	at forest.ForestViewTest.setUp(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
 	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
 	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
 	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
 	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-Caused by: java.lang.IllegalStateException: Internal problem occurred, please report it. Mockito is unable to load the default implementation of class that is a part of Mockito distribution. Failed to load interface org.mockito.plugins.MockMaker
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:105)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.getDefaultPlugin(DefaultMockitoPlugins.java:79)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:75)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:49)
-	at org.mockito.internal.configuration.plugins.PluginRegistry.&lt;init&gt;(PluginRegistry.java:29)
-	at org.mockito.internal.configuration.plugins.Plugins.&lt;clinit&gt;(Plugins.java:26)
-	at org.mockito.internal.MockitoCore.&lt;clinit&gt;(MockitoCore.java:71)
-	at org.mockito.Mockito.&lt;clinit&gt;(Mockito.java:1777)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:38)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:74)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:103)
-Caused by: org.mockito.exceptions.base.MockitoInitializationException: 
-Could not initialize inline Byte Buddy mock maker.
-
-
-It seems like you are running Mockito with an incomplete or inconsistent class path. Byte Buddy Agent could not be loaded.
-
-Byte Buddy Agent is available on Maven Central as &apos;net.bytebuddy:byte-buddy-agent&apos; with the module name &apos;net.bytebuddy.agent&apos;.
-Normally, your IDE or build tool (such as Maven or Gradle) should take care of your class path completion but 
-Java               : 24
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 24+36-3646
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 24+36-3646
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 15.4
-
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;init&gt;(InlineDelegateByteBuddyMockMaker.java:275)
-	at org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker.&lt;init&gt;(InlineByteBuddyMockMaker.java:23)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/agent/Installer
-	at org.mockito.internal.PremainAttachAccess.getInstrumentation(PremainAttachAccess.java:35)
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;clinit&gt;(InlineDelegateByteBuddyMockMaker.java:138)
-Caused by: java.lang.ClassNotFoundException: net.bytebuddy.agent.Installer
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
 </error>
   </testcase>
-  <testcase classname="forest.ForestViewTest" name="testPaintComponent" time="0.015">
-    <error message="Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
-	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
-	at jdk.proxy2/jdk.proxy2.$Proxy11.isTypeMockable(Unknown Source)
-	at org.mockito.internal.util.MockUtil.typeMockabilityOf(MockUtil.java:78)
-	at org.mockito.internal.util.MockCreationValidator.validateType(MockCreationValidator.java:22)
-	at org.mockito.internal.creation.MockSettingsImpl.validatedSettings(MockSettingsImpl.java:275)
-	at org.mockito.internal.creation.MockSettingsImpl.build(MockSettingsImpl.java:236)
-	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:82)
-	at org.mockito.Mockito.mock(Mockito.java:2198)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.processAnnotationForMock(MockAnnotationProcessor.java:79)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:28)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:25)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.createMockFor(IndependentAnnotationEngine.java:44)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.process(IndependentAnnotationEngine.java:72)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(InjectingAnnotationEngine.java:62)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.process(InjectingAnnotationEngine.java:47)
-	at org.mockito.MockitoAnnotations.openMocks(MockitoAnnotations.java:81)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:50)
+  <testcase classname="forest.ForestViewTest" name="testPaintComponent" time="0.021">
+    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();
+	at forest.ForestViewTest.setUp(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
 	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
 	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
 	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
 	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-Caused by: java.lang.IllegalStateException: Internal problem occurred, please report it. Mockito is unable to load the default implementation of class that is a part of Mockito distribution. Failed to load interface org.mockito.plugins.MockMaker
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:105)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.getDefaultPlugin(DefaultMockitoPlugins.java:79)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:75)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:49)
-	at org.mockito.internal.configuration.plugins.PluginRegistry.&lt;init&gt;(PluginRegistry.java:29)
-	at org.mockito.internal.configuration.plugins.Plugins.&lt;clinit&gt;(Plugins.java:26)
-	at org.mockito.internal.MockitoCore.&lt;clinit&gt;(MockitoCore.java:71)
-	at org.mockito.Mockito.&lt;clinit&gt;(Mockito.java:1777)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:38)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:74)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:103)
-Caused by: org.mockito.exceptions.base.MockitoInitializationException: 
-Could not initialize inline Byte Buddy mock maker.
-
-
-It seems like you are running Mockito with an incomplete or inconsistent class path. Byte Buddy Agent could not be loaded.
-
-Byte Buddy Agent is available on Maven Central as &apos;net.bytebuddy:byte-buddy-agent&apos; with the module name &apos;net.bytebuddy.agent&apos;.
-Normally, your IDE or build tool (such as Maven or Gradle) should take care of your class path completion but 
-Java               : 24
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 24+36-3646
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 24+36-3646
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 15.4
-
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;init&gt;(InlineDelegateByteBuddyMockMaker.java:275)
-	at org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker.&lt;init&gt;(InlineByteBuddyMockMaker.java:23)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/agent/Installer
-	at org.mockito.internal.PremainAttachAccess.getInstrumentation(PremainAttachAccess.java:35)
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;clinit&gt;(InlineDelegateByteBuddyMockMaker.java:138)
-Caused by: java.lang.ClassNotFoundException: net.bytebuddy.agent.Installer
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
 </error>
   </testcase>
-  <testcase classname="forest.ForestViewTest" name="testScrollAmount" time="0.018">
-    <error message="Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
-	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
-	at jdk.proxy2/jdk.proxy2.$Proxy11.isTypeMockable(Unknown Source)
-	at org.mockito.internal.util.MockUtil.typeMockabilityOf(MockUtil.java:78)
-	at org.mockito.internal.util.MockCreationValidator.validateType(MockCreationValidator.java:22)
-	at org.mockito.internal.creation.MockSettingsImpl.validatedSettings(MockSettingsImpl.java:275)
-	at org.mockito.internal.creation.MockSettingsImpl.build(MockSettingsImpl.java:236)
-	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:82)
-	at org.mockito.Mockito.mock(Mockito.java:2198)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.processAnnotationForMock(MockAnnotationProcessor.java:79)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:28)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:25)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.createMockFor(IndependentAnnotationEngine.java:44)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.process(IndependentAnnotationEngine.java:72)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(InjectingAnnotationEngine.java:62)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.process(InjectingAnnotationEngine.java:47)
-	at org.mockito.MockitoAnnotations.openMocks(MockitoAnnotations.java:81)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:50)
+  <testcase classname="forest.ForestViewTest" name="testScrollAmount" time="0.033">
+    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();
+	at forest.ForestViewTest.setUp(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
 	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
 	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
 	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
 	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-Caused by: java.lang.IllegalStateException: Internal problem occurred, please report it. Mockito is unable to load the default implementation of class that is a part of Mockito distribution. Failed to load interface org.mockito.plugins.MockMaker
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:105)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.getDefaultPlugin(DefaultMockitoPlugins.java:79)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:75)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:49)
-	at org.mockito.internal.configuration.plugins.PluginRegistry.&lt;init&gt;(PluginRegistry.java:29)
-	at org.mockito.internal.configuration.plugins.Plugins.&lt;clinit&gt;(Plugins.java:26)
-	at org.mockito.internal.MockitoCore.&lt;clinit&gt;(MockitoCore.java:71)
-	at org.mockito.Mockito.&lt;clinit&gt;(Mockito.java:1777)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:38)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:74)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:103)
-Caused by: org.mockito.exceptions.base.MockitoInitializationException: 
-Could not initialize inline Byte Buddy mock maker.
-
-
-It seems like you are running Mockito with an incomplete or inconsistent class path. Byte Buddy Agent could not be loaded.
-
-Byte Buddy Agent is available on Maven Central as &apos;net.bytebuddy:byte-buddy-agent&apos; with the module name &apos;net.bytebuddy.agent&apos;.
-Normally, your IDE or build tool (such as Maven or Gradle) should take care of your class path completion but 
-Java               : 24
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 24+36-3646
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 24+36-3646
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 15.4
-
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;init&gt;(InlineDelegateByteBuddyMockMaker.java:275)
-	at org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker.&lt;init&gt;(InlineByteBuddyMockMaker.java:23)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/agent/Installer
-	at org.mockito.internal.PremainAttachAccess.getInstrumentation(PremainAttachAccess.java:35)
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;clinit&gt;(InlineDelegateByteBuddyMockMaker.java:138)
-Caused by: java.lang.ClassNotFoundException: net.bytebuddy.agent.Installer
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
 </error>
   </testcase>
-  <testcase classname="forest.ForestViewTest" name="testConstructorInitialization" time="0.021">
-    <error message="Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
-	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
-	at jdk.proxy2/jdk.proxy2.$Proxy11.isTypeMockable(Unknown Source)
-	at org.mockito.internal.util.MockUtil.typeMockabilityOf(MockUtil.java:78)
-	at org.mockito.internal.util.MockCreationValidator.validateType(MockCreationValidator.java:22)
-	at org.mockito.internal.creation.MockSettingsImpl.validatedSettings(MockSettingsImpl.java:275)
-	at org.mockito.internal.creation.MockSettingsImpl.build(MockSettingsImpl.java:236)
-	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:82)
-	at org.mockito.Mockito.mock(Mockito.java:2198)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.processAnnotationForMock(MockAnnotationProcessor.java:79)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:28)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:25)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.createMockFor(IndependentAnnotationEngine.java:44)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.process(IndependentAnnotationEngine.java:72)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(InjectingAnnotationEngine.java:62)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.process(InjectingAnnotationEngine.java:47)
-	at org.mockito.MockitoAnnotations.openMocks(MockitoAnnotations.java:81)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:50)
+  <testcase classname="forest.ForestViewTest" name="testConstructorInitialization" time="0.02">
+    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();
+	at forest.ForestViewTest.setUp(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
 	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
 	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
 	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
 	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-Caused by: java.lang.IllegalStateException: Internal problem occurred, please report it. Mockito is unable to load the default implementation of class that is a part of Mockito distribution. Failed to load interface org.mockito.plugins.MockMaker
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:105)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.getDefaultPlugin(DefaultMockitoPlugins.java:79)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:75)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:49)
-	at org.mockito.internal.configuration.plugins.PluginRegistry.&lt;init&gt;(PluginRegistry.java:29)
-	at org.mockito.internal.configuration.plugins.Plugins.&lt;clinit&gt;(Plugins.java:26)
-	at org.mockito.internal.MockitoCore.&lt;clinit&gt;(MockitoCore.java:71)
-	at org.mockito.Mockito.&lt;clinit&gt;(Mockito.java:1777)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:38)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:74)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:103)
-Caused by: org.mockito.exceptions.base.MockitoInitializationException: 
-Could not initialize inline Byte Buddy mock maker.
-
-
-It seems like you are running Mockito with an incomplete or inconsistent class path. Byte Buddy Agent could not be loaded.
-
-Byte Buddy Agent is available on Maven Central as &apos;net.bytebuddy:byte-buddy-agent&apos; with the module name &apos;net.bytebuddy.agent&apos;.
-Normally, your IDE or build tool (such as Maven or Gradle) should take care of your class path completion but 
-Java               : 24
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 24+36-3646
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 24+36-3646
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 15.4
-
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;init&gt;(InlineDelegateByteBuddyMockMaker.java:275)
-	at org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker.&lt;init&gt;(InlineByteBuddyMockMaker.java:23)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/agent/Installer
-	at org.mockito.internal.PremainAttachAccess.getInstrumentation(PremainAttachAccess.java:35)
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;clinit&gt;(InlineDelegateByteBuddyMockMaker.java:138)
-Caused by: java.lang.ClassNotFoundException: net.bytebuddy.agent.Installer
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
 </error>
   </testcase>
-  <testcase classname="forest.ForestViewTest" name="testWhichOfNodes" time="0.011">
-    <error message="Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
-	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
-	at jdk.proxy2/jdk.proxy2.$Proxy11.isTypeMockable(Unknown Source)
-	at org.mockito.internal.util.MockUtil.typeMockabilityOf(MockUtil.java:78)
-	at org.mockito.internal.util.MockCreationValidator.validateType(MockCreationValidator.java:22)
-	at org.mockito.internal.creation.MockSettingsImpl.validatedSettings(MockSettingsImpl.java:275)
-	at org.mockito.internal.creation.MockSettingsImpl.build(MockSettingsImpl.java:236)
-	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:82)
-	at org.mockito.Mockito.mock(Mockito.java:2198)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.processAnnotationForMock(MockAnnotationProcessor.java:79)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:28)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:25)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.createMockFor(IndependentAnnotationEngine.java:44)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.process(IndependentAnnotationEngine.java:72)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(InjectingAnnotationEngine.java:62)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.process(InjectingAnnotationEngine.java:47)
-	at org.mockito.MockitoAnnotations.openMocks(MockitoAnnotations.java:81)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:50)
+  <testcase classname="forest.ForestViewTest" name="testWhichOfNodes" time="0.01">
+    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();
+	at forest.ForestViewTest.setUp(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
 	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
 	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
 	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
 	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-Caused by: java.lang.IllegalStateException: Internal problem occurred, please report it. Mockito is unable to load the default implementation of class that is a part of Mockito distribution. Failed to load interface org.mockito.plugins.MockMaker
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:105)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.getDefaultPlugin(DefaultMockitoPlugins.java:79)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:75)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:49)
-	at org.mockito.internal.configuration.plugins.PluginRegistry.&lt;init&gt;(PluginRegistry.java:29)
-	at org.mockito.internal.configuration.plugins.Plugins.&lt;clinit&gt;(Plugins.java:26)
-	at org.mockito.internal.MockitoCore.&lt;clinit&gt;(MockitoCore.java:71)
-	at org.mockito.Mockito.&lt;clinit&gt;(Mockito.java:1777)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:38)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:74)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:103)
-Caused by: org.mockito.exceptions.base.MockitoInitializationException: 
-Could not initialize inline Byte Buddy mock maker.
-
-
-It seems like you are running Mockito with an incomplete or inconsistent class path. Byte Buddy Agent could not be loaded.
-
-Byte Buddy Agent is available on Maven Central as &apos;net.bytebuddy:byte-buddy-agent&apos; with the module name &apos;net.bytebuddy.agent&apos;.
-Normally, your IDE or build tool (such as Maven or Gradle) should take care of your class path completion but 
-Java               : 24
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 24+36-3646
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 24+36-3646
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 15.4
-
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;init&gt;(InlineDelegateByteBuddyMockMaker.java:275)
-	at org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker.&lt;init&gt;(InlineByteBuddyMockMaker.java:23)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/agent/Installer
-	at org.mockito.internal.PremainAttachAccess.getInstrumentation(PremainAttachAccess.java:35)
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;clinit&gt;(InlineDelegateByteBuddyMockMaker.java:138)
-Caused by: java.lang.ClassNotFoundException: net.bytebuddy.agent.Installer
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
 </error>
   </testcase>
-  <testcase classname="forest.ForestViewTest" name="testScrollBy" time="0.01">
-    <error message="Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
-	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
-	at jdk.proxy2/jdk.proxy2.$Proxy11.isTypeMockable(Unknown Source)
-	at org.mockito.internal.util.MockUtil.typeMockabilityOf(MockUtil.java:78)
-	at org.mockito.internal.util.MockCreationValidator.validateType(MockCreationValidator.java:22)
-	at org.mockito.internal.creation.MockSettingsImpl.validatedSettings(MockSettingsImpl.java:275)
-	at org.mockito.internal.creation.MockSettingsImpl.build(MockSettingsImpl.java:236)
-	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:82)
-	at org.mockito.Mockito.mock(Mockito.java:2198)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.processAnnotationForMock(MockAnnotationProcessor.java:79)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:28)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:25)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.createMockFor(IndependentAnnotationEngine.java:44)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.process(IndependentAnnotationEngine.java:72)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(InjectingAnnotationEngine.java:62)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.process(InjectingAnnotationEngine.java:47)
-	at org.mockito.MockitoAnnotations.openMocks(MockitoAnnotations.java:81)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:50)
+  <testcase classname="forest.ForestViewTest" name="testScrollBy" time="0.021">
+    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();
+	at forest.ForestViewTest.setUp(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
 	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
 	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
 	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
 	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-Caused by: java.lang.IllegalStateException: Internal problem occurred, please report it. Mockito is unable to load the default implementation of class that is a part of Mockito distribution. Failed to load interface org.mockito.plugins.MockMaker
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:105)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.getDefaultPlugin(DefaultMockitoPlugins.java:79)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:75)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:49)
-	at org.mockito.internal.configuration.plugins.PluginRegistry.&lt;init&gt;(PluginRegistry.java:29)
-	at org.mockito.internal.configuration.plugins.Plugins.&lt;clinit&gt;(Plugins.java:26)
-	at org.mockito.internal.MockitoCore.&lt;clinit&gt;(MockitoCore.java:71)
-	at org.mockito.Mockito.&lt;clinit&gt;(Mockito.java:1777)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:38)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:74)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:103)
-Caused by: org.mockito.exceptions.base.MockitoInitializationException: 
-Could not initialize inline Byte Buddy mock maker.
-
-
-It seems like you are running Mockito with an incomplete or inconsistent class path. Byte Buddy Agent could not be loaded.
-
-Byte Buddy Agent is available on Maven Central as &apos;net.bytebuddy:byte-buddy-agent&apos; with the module name &apos;net.bytebuddy.agent&apos;.
-Normally, your IDE or build tool (such as Maven or Gradle) should take care of your class path completion but 
-Java               : 24
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 24+36-3646
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 24+36-3646
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 15.4
-
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;init&gt;(InlineDelegateByteBuddyMockMaker.java:275)
-	at org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker.&lt;init&gt;(InlineByteBuddyMockMaker.java:23)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/agent/Installer
-	at org.mockito.internal.PremainAttachAccess.getInstrumentation(PremainAttachAccess.java:35)
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;clinit&gt;(InlineDelegateByteBuddyMockMaker.java:138)
-Caused by: java.lang.ClassNotFoundException: net.bytebuddy.agent.Installer
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
 </error>
   </testcase>
-  <testcase classname="forest.ForestViewTest" name="testScrollTo" time="0.008">
-    <error message="Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
-	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
-	at jdk.proxy2/jdk.proxy2.$Proxy11.isTypeMockable(Unknown Source)
-	at org.mockito.internal.util.MockUtil.typeMockabilityOf(MockUtil.java:78)
-	at org.mockito.internal.util.MockCreationValidator.validateType(MockCreationValidator.java:22)
-	at org.mockito.internal.creation.MockSettingsImpl.validatedSettings(MockSettingsImpl.java:275)
-	at org.mockito.internal.creation.MockSettingsImpl.build(MockSettingsImpl.java:236)
-	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:82)
-	at org.mockito.Mockito.mock(Mockito.java:2198)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.processAnnotationForMock(MockAnnotationProcessor.java:79)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:28)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:25)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.createMockFor(IndependentAnnotationEngine.java:44)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.process(IndependentAnnotationEngine.java:72)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(InjectingAnnotationEngine.java:62)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.process(InjectingAnnotationEngine.java:47)
-	at org.mockito.MockitoAnnotations.openMocks(MockitoAnnotations.java:81)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:50)
+  <testcase classname="forest.ForestViewTest" name="testScrollTo" time="0.031">
+    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();
+	at forest.ForestViewTest.setUp(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
 	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
 	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
 	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
 	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-Caused by: java.lang.IllegalStateException: Internal problem occurred, please report it. Mockito is unable to load the default implementation of class that is a part of Mockito distribution. Failed to load interface org.mockito.plugins.MockMaker
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:105)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.getDefaultPlugin(DefaultMockitoPlugins.java:79)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:75)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:49)
-	at org.mockito.internal.configuration.plugins.PluginRegistry.&lt;init&gt;(PluginRegistry.java:29)
-	at org.mockito.internal.configuration.plugins.Plugins.&lt;clinit&gt;(Plugins.java:26)
-	at org.mockito.internal.MockitoCore.&lt;clinit&gt;(MockitoCore.java:71)
-	at org.mockito.Mockito.&lt;clinit&gt;(Mockito.java:1777)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:38)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:74)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:103)
-Caused by: org.mockito.exceptions.base.MockitoInitializationException: 
-Could not initialize inline Byte Buddy mock maker.
-
-
-It seems like you are running Mockito with an incomplete or inconsistent class path. Byte Buddy Agent could not be loaded.
-
-Byte Buddy Agent is available on Maven Central as &apos;net.bytebuddy:byte-buddy-agent&apos; with the module name &apos;net.bytebuddy.agent&apos;.
-Normally, your IDE or build tool (such as Maven or Gradle) should take care of your class path completion but 
-Java               : 24
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 24+36-3646
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 24+36-3646
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 15.4
-
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;init&gt;(InlineDelegateByteBuddyMockMaker.java:275)
-	at org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker.&lt;init&gt;(InlineByteBuddyMockMaker.java:23)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/agent/Installer
-	at org.mockito.internal.PremainAttachAccess.getInstrumentation(PremainAttachAccess.java:35)
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;clinit&gt;(InlineDelegateByteBuddyMockMaker.java:138)
-Caused by: java.lang.ClassNotFoundException: net.bytebuddy.agent.Installer
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
 </error>
   </testcase>
-  <testcase classname="forest.ForestViewTest" name="testUpdate" time="0.008">
-    <error message="Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)
-	at org.mockito.internal.configuration.plugins.PluginLoader$1.invoke(PluginLoader.java:85)
-	at jdk.proxy2/jdk.proxy2.$Proxy11.isTypeMockable(Unknown Source)
-	at org.mockito.internal.util.MockUtil.typeMockabilityOf(MockUtil.java:78)
-	at org.mockito.internal.util.MockCreationValidator.validateType(MockCreationValidator.java:22)
-	at org.mockito.internal.creation.MockSettingsImpl.validatedSettings(MockSettingsImpl.java:275)
-	at org.mockito.internal.creation.MockSettingsImpl.build(MockSettingsImpl.java:236)
-	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:82)
-	at org.mockito.Mockito.mock(Mockito.java:2198)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.processAnnotationForMock(MockAnnotationProcessor.java:79)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:28)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:25)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.createMockFor(IndependentAnnotationEngine.java:44)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.process(IndependentAnnotationEngine.java:72)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(InjectingAnnotationEngine.java:62)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.process(InjectingAnnotationEngine.java:47)
-	at org.mockito.MockitoAnnotations.openMocks(MockitoAnnotations.java:81)
-	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:50)
+  <testcase classname="forest.ForestViewTest" name="testUpdate" time="0.013">
+    <error message="&#xa;Argument passed to verify() is of type ForestView and is not a mock!&#xa;Make sure you place the parenthesis correctly!&#xa;See the examples of correct verifications:&#xa;    verify(mock).someMethod();&#xa;    verify(mock, times(10)).someMethod();&#xa;    verify(mock, atLeastOnce()).someMethod();" type="org.mockito.exceptions.misusing.NotAMockException">org.mockito.exceptions.misusing.NotAMockException: 
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();
+	at forest.ForestViewTest.setUp(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
 	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
 	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
 	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
 	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
-Caused by: java.lang.IllegalStateException: Internal problem occurred, please report it. Mockito is unable to load the default implementation of class that is a part of Mockito distribution. Failed to load interface org.mockito.plugins.MockMaker
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:105)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.getDefaultPlugin(DefaultMockitoPlugins.java:79)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:75)
-	at org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(PluginLoader.java:49)
-	at org.mockito.internal.configuration.plugins.PluginRegistry.&lt;init&gt;(PluginRegistry.java:29)
-	at org.mockito.internal.configuration.plugins.Plugins.&lt;clinit&gt;(Plugins.java:26)
-	at org.mockito.internal.MockitoCore.&lt;clinit&gt;(MockitoCore.java:71)
-	at org.mockito.Mockito.&lt;clinit&gt;(Mockito.java:1777)
-	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:38)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:74)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
-	at org.mockito.internal.configuration.plugins.DefaultMockitoPlugins.create(DefaultMockitoPlugins.java:103)
-Caused by: org.mockito.exceptions.base.MockitoInitializationException: 
-Could not initialize inline Byte Buddy mock maker.
-
-
-It seems like you are running Mockito with an incomplete or inconsistent class path. Byte Buddy Agent could not be loaded.
-
-Byte Buddy Agent is available on Maven Central as &apos;net.bytebuddy:byte-buddy-agent&apos; with the module name &apos;net.bytebuddy.agent&apos;.
-Normally, your IDE or build tool (such as Maven or Gradle) should take care of your class path completion but 
-Java               : 24
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 24+36-3646
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 24+36-3646
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 15.4
-
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;init&gt;(InlineDelegateByteBuddyMockMaker.java:275)
-	at org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker.&lt;init&gt;(InlineByteBuddyMockMaker.java:23)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/agent/Installer
-	at org.mockito.internal.PremainAttachAccess.getInstrumentation(PremainAttachAccess.java:35)
-	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;clinit&gt;(InlineDelegateByteBuddyMockMaker.java:138)
-Caused by: java.lang.ClassNotFoundException: net.bytebuddy.agent.Installer
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
 </error>
   </testcase>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
 </testsuite>

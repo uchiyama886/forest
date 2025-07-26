@@ -19,6 +19,7 @@
 	<property name="hamcrestjar" value="hamcrest-core-1.3.jar" />
     <property name="mockitojar" value="mockito-core-5.18.0.jar" />
 	<property name="bytebuddyjar" value="byte-buddy-1.17.6.jar" />
+	<property name="bytebuddyagentjar" value="byte-buddy-agent-1.17.6.jar" />
 	<property name="objenesisjar" value="objenesis-3.4.jar" />
 
 	<property name="reportdir" value="./test-report" />
@@ -36,6 +37,7 @@
             <include name="${hamcrestjar}"/>
             <include name="${mockitojar}"/>
 			<include name="${bytebuddyjar}"/>
+			<include name="${bytebuddyagentjar}"/>
 			<include name="${objenesisjar}"/>
         </fileset>
     </path>
