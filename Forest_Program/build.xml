@@ -18,6 +18,8 @@
 	<property name="libdir" value="./lib" /> <property name="junitjar" value="junit-4.13.1.jar" />
 	<property name="hamcrestjar" value="hamcrest-core-1.3.jar" />
     <property name="mockitojar" value="mockito-core-5.18.0.jar" />
+	<property mame="bytebuddyjar" value="byte-buddy-1.17.6.jar" />
+	<propert name="objenesisjar" value="objenesis-3.4.jar" />
 
 	<property name="reportdir" value="./test-report" />
 
@@ -33,6 +35,8 @@
         <pathelement location="${destdir}"/> <fileset dir="${libdir}"> <include name="${junitjar}"/>
             <include name="${hamcrestjar}"/>
             <include name="${mockitojar}"/>
+			<include name="${bytebuddyjar}"/>
+			<include name="${objenesisjar}"/>
         </fileset>
     </path>
 
