@@ -85,7 +85,7 @@ public class ForestViewTest {
 
     // テストメソッド
 
-    /// コンストラクタのテスト
+    // コンストラクタのテスト
     /**
      * {@code ForestView} コンストラクタがモデルを設定し、自身をモデルの依存物として登録し、
      * コントローラを初期化してモデルとビューを設定することを確認します。
@@ -94,17 +94,17 @@ public class ForestViewTest {
     public void testConstructorInitialization() {
         // setUp() で既に検証済みのため、ここでは追加の検証は不要ですが、
         // model と offset が正しく設定されていることを確認します。
-        assertNotNull("モデルが null でないこと", forestView.model);
-        assertEquals("設定されたモデルが正しいこと", mockModel, forestView.model);
-        assertNotNull("オフセットが null でないこと", forestView.offset);
-        assertEquals("初期オフセットのX座標が0であること", 0, forestView.offset.x);
-        assertEquals("初期オフセットのY座標が0であること", 0, forestView.offset.y);
-        assertNotNull("コントローラが null でないこと", forestView.controller);
+        assertNotNull("モデルが null でないこと", forestView.getModel());
+        assertEquals("設定されたモデルが正しいこと", mockModel, forestView.getModel());
+        assertNotNull("オフセットが null でないこと", forestView.getOffset());
+        assertEquals("初期オフセットのX座標が0であること", 0, forestView.getOffset().x);
+        assertEquals("初期オフセットのY座標が0であること", 0, forestView.getOffset().y);
+        assertNotNull("コントローラが null でないこと", forestView.getController());
     }
 
     
 
-    /// `paintComponent()` のテスト
+    // `paintComponent()` のテスト
     /**
      * {@code paintComponent()} メソッドが、背景色でパネルを塗りつぶし、
      * モデルから画像を取得して、オフセットを考慮して描画することを確認します。
@@ -187,7 +187,7 @@ public class ForestViewTest {
 
     
 
-    /// `scrollAmount()` のテスト
+    // `scrollAmount()` のテスト
     /**
      * {@code scrollAmount()} メソッドが、現在のオフセットの逆向きの値を正しく返すことを確認します。
      */
@@ -207,7 +207,7 @@ public class ForestViewTest {
 
     
 
-    /// `scrollBy()` のテスト
+    // `scrollBy()` のテスト
     /**
      * {@code scrollBy()} メソッドが、現在のオフセットに指定された差分を加えて、
      * オフセットを相対的に変更することを確認します。
@@ -216,16 +216,16 @@ public class ForestViewTest {
     public void testScrollBy() {
         // 初期オフセット (0,0) から (10,5) だけスクロール
         forestView.scrollBy(new Point(10, 5));
-        assertEquals("スクロール後のオフセットが (10,5) であること", new Point(10, 5), forestView.offset);
+        assertEquals("スクロール後のオフセットが (10,5) であること", new Point(10, 5), forestView.getOffset());
 
         // 現在のオフセット (10,5) から (-5,15) だけスクロール
         forestView.scrollBy(new Point(-5, 15));
-        assertEquals("スクロール後のオフセットが (5,20) であること", new Point(5, 20), forestView.offset);
+        assertEquals("スクロール後のオフセットが (5,20) であること", new Point(5, 20), forestView.getOffset());
     }
 
     
 
-    /// `scrollTo()` のテスト
+    // `scrollTo()` のテスト
     /**
      * {@code scrollTo()} メソッドが、オフセットを指定された絶対位置に設定することを確認します。
      */
@@ -233,16 +233,16 @@ public class ForestViewTest {
     public void testScrollTo() {
         Point targetPoint1 = new Point(100, 200);
         forestView.scrollTo(targetPoint1);
-        assertEquals("オフセットが目標位置に設定されていること", targetPoint1, forestView.offset);
+        assertEquals("オフセットが目標位置に設定されていること", targetPoint1, forestView.getOffset());
 
         Point targetPoint2 = new Point(-50, -100);
         forestView.scrollTo(targetPoint2);
-        assertEquals("オフセットが新しい目標位置に設定されていること", targetPoint2, forestView.offset);
+        assertEquals("オフセットが新しい目標位置に設定されていること", targetPoint2, forestView.getOffset());
     }
 
     
 
-    /// `toString()` のテスト
+    // `toString()` のテスト
     /**
      * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すことを確認します。
      */
@@ -262,7 +262,7 @@ public class ForestViewTest {
 
     
 
-    /// `update()` のテスト
+    // `update()` のテスト
     /**
      * {@code update()} メソッドが、ビューの {@code repaint()} メソッドを呼び出すことを確認します。
      */
@@ -278,7 +278,7 @@ public class ForestViewTest {
 
     
 
-    /// `whichOfNodes()` のテスト
+    // `whichOfNodes()` のテスト
     /**
      * {@code whichOfNodes()} メソッドが、モデルの {@code Forest} オブジェクトの {@code whichOfNodes()} を呼び出し、
      * その結果をそのまま返すことを確認します。

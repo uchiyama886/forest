@@ -107,6 +107,30 @@ public class ForestView extends JPanel
     }
 
     /**
+     * 樹状整列におけるMVCのモデル（M）を返すメソッドです。
+     * @return 樹状整列におけるMVCのモデル（M） {@code ForestModel}。
+     */
+    public ForestModel getModel() {
+        return this.model;
+    }
+
+    /**
+     * 樹状整列におけるMVCのコントローラ（C）を返すメソッドです。
+     * @return 樹状整列におけるMVCのコントローラ（C） {@code ForestController}
+     */
+    public ForestController getController() {
+        return this.controller;
+    }
+
+    /**
+     * スクロール量（どこから描き出すのかを表す座標）を返すメソッドです。
+     * @return スクロール量（どこから描き出すのかを表す座標）{@code Point}。
+     */
+    public Point getOffset() {
+        return this.offset;
+    }
+
+    /**
      * 自分自身を文字列に変換するメソッドです。
      * @return このオブジェクトを表す文字列。
      */

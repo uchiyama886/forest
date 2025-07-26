@@ -208,6 +208,22 @@ public class ForestModel extends Object {
     }
 
     /**
+     * 自分の依存物（ビューたち）を返すメソッドです。
+     * @return 自分の依存物（ビューたち) {@code ArrayList<ForestView>}。
+     */
+    public ArrayList<ForestView> getDependants() {
+        return this.dependants;
+    }
+
+    /**
+     * 樹状整列それ自身の画像を返すメソッドです。
+     * @return 樹状整列それ自身の画像 {@code BufferdImage}。
+     */
+    public BufferedImage getPicture() {
+        return this.picture;
+    }
+
+    /**
      * 自分自身を文字列に変換するメソッドです。
      * @return このオブジェクトを表す文字列。
      */

@@ -97,7 +97,7 @@ public class ForestModelTest {
 
     // テストメソッド
 
-    /// コンストラクタのテスト
+    // コンストラクタのテスト
     /**
      * {@code ForestModel} のコンストラクタが、{@code Forest} オブジェクトと依存リストを
      * 正しく初期化することを確認します。また、{@code read} メソッドが呼び出されることも検証します。
@@ -117,7 +117,7 @@ public class ForestModelTest {
         // Forest オブジェクトが初期化されていること (setUp でモックに置き換えられていることを前提)
         assertNotNull("Forest オブジェクトが null でないこと", forestModel.forest());
         // 依存リストが初期化され、空であること
-        assertNotNull("dependants リストが null でないこと", forestModel.dependants);
+        assertNotNull("dependants リストが null でないこと", forestModel.getDependants());
         assertTrue("dependants リストが空であること", forestModel.dependants.isEmpty());
 
         // コンストラクタ内でread()が呼ばれることを検証するには、ForestModel自体をspy化し、
@@ -132,7 +132,7 @@ public class ForestModelTest {
 
     
 
-    /// `addDependent()` および `getDependents()` のテスト
+    // `addDependent()` および `getDependents()` のテスト
     /**
      * {@code addDependent()} メソッドがビューを依存リストに正しく追加することと、
      * {@code getDependents()} がそのリストのコピーを返すことを確認します。
@@ -141,28 +141,28 @@ public class ForestModelTest {
     public void testAddAndGetDependents() {
         // addDependent でビューを追加
         forestModel.addDependent(mockView1);
-        assertEquals("ビューが1つ追加されていること", 1, forestModel.dependants.size());
-        assertTrue("追加したビューが含まれていること", forestModel.dependants.contains(mockView1));
+        assertEquals("ビューが1つ追加されていること", 1, forestModel.getDependants().size());
+        assertTrue("追加したビューが含まれていること", forestModel.getDependants().contains(mockView1));
 
         forestModel.addDependent(mockView2);
-        assertEquals("ビューが2つ追加されていること", 2, forestModel.dependants.size());
-        assertTrue("追加した2つ目のビューが含まれていること", forestModel.dependants.contains(mockView2));
+        assertEquals("ビューが2つ追加されていること", 2, forestModel.getDependants().size());
+        assertTrue("追加した2つ目のビューが含まれていること", forestModel.getDependants().contains(mockView2));
 
         // getDependents がリストのコピーを返すことを確認
         java.util.List<ForestView> retrievedDependents = forestModel.getDependents();
         assertEquals("getDependents が正しいサイズのリストを返すこと", 2, retrievedDependents.size());
         assertTrue("取得したリストにビュー1が含まれていること", retrievedDependents.contains(mockView1));
         assertTrue("取得したリストにビュー2が含まれていること", retrievedDependents.contains(mockView2));
-        assertNotSame("取得したリストが元のリストのコピーであること", forestModel.dependants, retrievedDependents);
+        assertNotSame("取得したリストが元のリストのコピーであること", forestModel.getDependants(), retrievedDependents);
 
         // コピーをクリアしても元のリストには影響しないことを確認
         retrievedDependents.clear();
-        assertEquals("元のリストのサイズが変わらないこと", 2, forestModel.dependants.size());
+        assertEquals("元のリストのサイズが変わらないこと", 2, forestModel.getDependants().size());
     }
 
     
 
-    /// `changed()` のテスト
+    // `changed()` のテスト
     /**
      * {@code changed()} メソッドが、登録されているすべての依存ビューの {@code update()} メソッドを呼び出すことを確認します。
      */
@@ -183,7 +183,7 @@ public class ForestModelTest {
 
     
 
-    /// `animate()` のテスト
+    // `animate()` のテスト
     /**
      * {@code animate()} メソッドが、{@code Forest} オブジェクトの {@code flushBounds()}、
      * {@code arrange(this)} を呼び出し、{@code changed()} を2回呼び出すことを確認します。
@@ -237,7 +237,7 @@ public class ForestModelTest {
 
     
 
-    /// `arrange()` のテスト (引数なし)
+    // `arrange()` のテスト (引数なし)
     /**
      * {@code arrange()} メソッド (引数なし) が、{@code Forest} オブジェクトの {@code arrange()} メソッドを
      * 引数なしで呼び出すことを確認します。
@@ -250,7 +250,7 @@ public class ForestModelTest {
 
     
 
-    /// `forest()` のテスト
+    // `forest()` のテスト
     /**
      * {@code forest()} メソッドが、このモデルが保持する {@code Forest} オブジェクトを返すことを確認します。
      */
@@ -262,7 +262,7 @@ public class ForestModelTest {
 
     
 
-    /// `picture()` のテスト
+    // `picture()` のテスト
     /**
      * {@code picture()} メソッドが、{@code Forest} の境界に基づいて新しい {@code BufferedImage} を作成し、
      * そのグラフィックスコンテキストに {@code Forest} を描画することを確認します。
@@ -293,7 +293,7 @@ public class ForestModelTest {
 
     
 
-    /// `read()` のテスト
+    // `read()` のテスト
     /**
      * {@code read()} メソッドが、指定されたファイルからノードとブランチのデータを正しく読み込み、
      * {@code Forest} オブジェクトに追加することを確認します。
@@ -372,7 +372,7 @@ public class ForestModelTest {
 
     
 
-    /// `root()` および `roots()` のテスト
+    // `root()` および `roots()` のテスト
     /**
      * {@code root()} メソッドが、{@code Forest} オブジェクトの {@code rootNodes()} を呼び出し、
      * その結果に基づいてルートノードを返すことを確認します。
@@ -404,7 +404,7 @@ public class ForestModelTest {
 
     
 
-    /// `toString()` のテスト
+    // `toString()` のテスト
     /**
      * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すことを確認します。
      * これは {@code picture} フィールドの状態に依存します。

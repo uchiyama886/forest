@@ -97,60 +97,60 @@ public class ForestTest {
 
     // テストメソッド
 
-    /// コンストラクタのテスト
+    // コンストラクタのテスト
     /**
      * {@code Forest} コンストラクタが {@code nodes}, {@code branches}, {@code bounds}
      * フィールドを正しく初期化することを確認します。
      */
     @Test
     public void testConstructor() {
-        assertNotNull("nodes リストが null でないこと", forest.nodes);
-        assertTrue("nodes リストが空であること", forest.nodes.isEmpty());
-        assertNotNull("branches リストが null でないこと", forest.branches);
-        assertTrue("branches リストが空であること", forest.branches.isEmpty());
-        assertNotNull("bounds オブジェクトが null でないこと", forest.bounds);
+        assertNotNull("nodes リストが null でないこと", forest.getNodes());
+        assertTrue("nodes リストが空であること", forest.getNodes().isEmpty());
+        assertNotNull("branches リストが null でないこと", forest.getBranches());
+        assertTrue("branches リストが空であること", forest.getBranches().isEmpty());
+        assertNotNull("bounds オブジェクトが null でないこと", forest.getBounds());
         // 初期状態では bounds の幅と高さが0であることを確認
-        assertEquals("初期 bounds の幅が0であること", 0, forest.bounds.width);
-        assertEquals("初期 bounds の高さが0であること", 0, forest.bounds.height);
+        assertEquals("初期 bounds の幅が0であること", 0, forest.getBounds().width);
+        assertEquals("初期 bounds の高さが0であること", 0, forest.getBounds().height);
     }
 
     
 
-    /// `addNode()` のテスト
+    // `addNode()` のテスト
     /**
      * {@code addNode()} メソッドがノードを {@code nodes} リストに正しく追加することを確認します。
      */
     @Test
     public void testAddNode() {
         forest.addNode(mockNodeA);
-        assertEquals("ノードが1つ追加されていること", 1, forest.nodes.size());
-        assertTrue("追加したノードが含まれていること", forest.nodes.contains(mockNodeA));
+        assertEquals("ノードが1つ追加されていること", 1, forest.getNodes().size());
+        assertTrue("追加したノードが含まれていること", forest.getNodes().contains(mockNodeA));
 
         forest.addNode(mockNodeB);
-        assertEquals("ノードが2つ追加されていること", 2, forest.nodes.size());
-        assertTrue("追加した2つ目のノードが含まれていること", forest.nodes.contains(mockNodeB));
+        assertEquals("ノードが2つ追加されていること", 2, forest.getNodes().size());
+        assertTrue("追加した2つ目のノードが含まれていること", forest.getNodes().contains(mockNodeB));
     }
 
     
 
-    /// `addBranch()` のテスト
+    // `addBranch()` のテスト
     /**
      * {@code addBranch()} メソッドがブランチを {@code branches} リストに正しく追加することを確認します。
      */
     @Test
     public void testAddBranch() {
         forest.addBranch(mockBranchAB);
-        assertEquals("ブランチが1つ追加されていること", 1, forest.branches.size());
-        assertTrue("追加したブランチが含まれていること", forest.branches.contains(mockBranchAB));
+        assertEquals("ブランチが1つ追加されていること", 1, forest.getBranches().size());
+        assertTrue("追加したブランチが含まれていること", forest.getBranches().contains(mockBranchAB));
 
         forest.addBranch(mockBranchBC);
-        assertEquals("ブランチが2つ追加されていること", 2, forest.branches.size());
-        assertTrue("追加した2つ目のブランチが含まれていること", forest.branches.contains(mockBranchBC));
+        assertEquals("ブランチが2つ追加されていること", 2, forest.getBranches().size());
+        assertTrue("追加した2つ目のブランチが含まれていること", forest.getBranches().contains(mockBranchBC));
     }
 
-    -
+    
 
-    /// `rootNodes()` のテスト
+    // `rootNodes()` のテスト
     /**
      * {@code rootNodes()} メソッドが、終点ノードとして現れない（つまり親を持たない）ノードを
      * ルートノードとして正しく識別することを確認します。
@@ -181,7 +181,7 @@ public class ForestTest {
 
     
 
-    /// `subNodes()` のテスト
+    // `subNodes()` のテスト
     /**
      * {@code subNodes()} メソッドが、指定されたノードの直接の子ノードを正しく返すことを確認します。
      */
@@ -210,7 +210,7 @@ public class ForestTest {
 
     
 
-    /// `superNodes()` のテスト
+    // `superNodes()` のテスト
     /**
      * {@code superNodes()} メソッドが、指定されたノードの直接の親ノードを正しく返すことを確認します。
      */
@@ -236,7 +236,7 @@ public class ForestTest {
 
     
 
-    /// `sortNodes()` のテスト
+    // `sortNodes()` のテスト
     /**
      * {@code sortNodes()} メソッドが、ノードコレクションをノード名で昇順にソートすることを確認します。
      */
@@ -265,7 +265,7 @@ public class ForestTest {
 
     
 
-    /// `bounds()` のテスト
+    // `bounds()` のテスト
     /**
      * {@code bounds()} メソッドが、フォレスト内の全ノードを考慮した最小の矩形領域を正しく計算することを確認します。
      * ノードが存在しない場合は、幅と高さが0の矩形を返します。
@@ -307,12 +307,12 @@ public class ForestTest {
 
         // flushBoundsでboundsがnullになることも確認
         forest.flushBounds();
-        assertNull("flushBounds() 後に bounds が null であること", forest.bounds);
+        assertNull("flushBounds() 後に bounds が null であること", forest.getBounds());
     }
 
     
 
-    /// `draw()` のテスト
+    // `draw()` のテスト
     /**
      * {@code draw()} メソッドが、フォレスト内のすべてのノードとブランチの {@code draw} メソッドを
      * 正しい {@code Graphics} オブジェクトで呼び出すことを確認します。
@@ -339,7 +339,7 @@ public class ForestTest {
 
     
 
-    /// `flushBounds()` のテスト
+    // `flushBounds()` のテスト
     /**
      * {@code flushBounds()} メソッドが、すべてのノードの位置をリセットし、
      * フォレストの {@code bounds} を null に設定することを確認します。
@@ -351,7 +351,7 @@ public class ForestTest {
         forest.addNode(mockNodeB);
 
         // 初期位置を適当に設定（確認のため）
-        node.setLocation(new Point(100, 100));
+        //node.setLocation(new Point(100, 100));
         when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // 高さ 30
         when(mockNodeB.getExtent()).thenReturn(new Point(60, 40)); // 高さ 40
 
@@ -363,12 +363,12 @@ public class ForestTest {
         // mockNodeB の新しい位置: (0, 40 * 2) = (0, 80)
         verify(mockNodeB).setLocation(new Point(0, 80));
 
-        assertNull("bounds が null に設定されていること", forest.bounds);
+        assertNull("bounds が null に設定されていること", forest.getBounds());
     }
 
     
 
-    /// `propagate()` のテスト
+    // `propagate()` のテスト
     /**
      * {@code propagate()} メソッドが、{@code ForestModel} が {@code null} でない場合に
      * {@code Thread.sleep} を呼び出し、{@code SwingUtilities.invokeLater} 経由で {@code model.changed()} を
@@ -440,7 +440,7 @@ public class ForestTest {
 
     
 
-    /// `arrange()` メソッドのテスト (一部)
+    // `arrange()` メソッドのテスト (一部)
     /**
      * {@code arrange()} メソッド (オーバーロードなし) が、{@code nodes} の状態をリセットし、
      * ルートノードをソートして処理を開始することを確認します。
@@ -526,7 +526,7 @@ public class ForestTest {
 
     
 
-    /// `whichOfNodes()` のテスト
+    // `whichOfNodes()` のテスト
     /**
      * {@code whichOfNodes()} メソッドが、指定された座標にノードが存在する場合にそのノードを返し、
      * 存在しない場合は {@code null} を返すことを確認します。
@@ -563,7 +563,7 @@ public class ForestTest {
 
     
 
-    /// `toString()` のテスト
+    // `toString()` のテスト
     /**
      * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すかをテストします。
      * {@code bounds()} が一度呼び出されていれば、その結果が文字列に含まれることを確認します。

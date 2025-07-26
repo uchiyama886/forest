@@ -1,0 +1,2565 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:string="xalan://java.lang.String" xmlns:lxslt="http://xml.apache.org/xslt">
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Unit Test Results.</title>
+        <style type="text/css">
+      body {
+        font:normal 68% verdana,arial,helvetica;
+        color:#000000;
+      }
+      table tr td, table tr th {
+          font-size: 68%;
+      }
+      table.details tr th{
+        font-weight: bold;
+        text-align:left;
+        background:#a6caf0;
+      }
+      table.details tr td{
+        background:#eeeee0;
+      }
+
+      p {
+        line-height:1.5em;
+        margin-top:0.5em; margin-bottom:1.0em;
+      }
+      h1 {
+        margin: 0px 0px 5px; font: 165% verdana,arial,helvetica
+      }
+      h2 {
+        margin-top: 1em; margin-bottom: 0.5em; font: bold 125% verdana,arial,helvetica
+      }
+      h3 {
+        margin-bottom: 0.5em; font: bold 115% verdana,arial,helvetica
+      }
+      h4 {
+        margin-bottom: 0.5em; font: bold 100% verdana,arial,helvetica
+      }
+      h5 {
+        margin-bottom: 0.5em; font: bold 100% verdana,arial,helvetica
+      }
+      h6 {
+        margin-bottom: 0.5em; font: bold 100% verdana,arial,helvetica
+      }
+      .Error {
+        font-weight:bold; color:red;
+      }
+      .Failure {
+        font-weight:bold; color:purple;
+      }
+      .Properties {
+        text-align:right;
+      }
+      </style>
+        <script type="text/javascript" language="JavaScript">
+        var TestCases = new Array();
+        var cur;
+        
+    cur = TestCases['forest.BranchTest'] = new Array();
+    
+        cur['ant.core.lib'] = '/usr/local/ant/lib/ant.jar';
+    
+        cur['ant.file'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.Forest'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.type'] = 'file';
+    
+        cur['ant.file.type.Forest'] = 'file';
+    
+        cur['ant.home'] = '/usr/local/ant';
+    
+        cur['ant.java.version'] = '24';
+    
+        cur['ant.library.dir'] = '/usr/local/ant/lib';
+    
+        cur['ant.project.default-target'] = 'all';
+    
+        cur['ant.project.invoked-targets'] = 'unittest';
+    
+        cur['ant.project.name'] = 'Forest';
+    
+        cur['ant.version'] = 'Apache Ant(TM) version 1.10.15 compiled on August 25 2024';
+    
+        cur['apple.awt.application.name'] = 'JUnitTestRunner';
+    
+        cur['basedir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['bytebuddyagentjar'] = 'byte-buddy-agent-1.17.6.jar';
+    
+        cur['bytebuddyjar'] = 'byte-buddy-1.17.6.jar';
+    
+        cur['copyright'] = 'Copyright 2025 TEAM JavaGrove. All Rights Reserved.';
+    
+        cur['destdir'] = './Classes';
+    
+        cur['docdir'] = './JavaDoc';
+    
+        cur['doc-title'] = 'Forest Documant';
+    
+        cur['file.encoding'] = 'UTF-8';
+    
+        cur['file.separator'] = '/';
+    
+        cur['ftp.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['hamcrestjar'] = 'hamcrest-core-1.3.jar';
+    
+        cur['http.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['instdir'] = './Forest.app/Contents/Resources/Java';
+    
+        cur['java.class.path'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/objenesis-3.4.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar';
+    
+        cur['java.class.version'] = '68.0';
+    
+        cur['java.home'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home';
+    
+        cur['java.io.tmpdir'] = '/var/folders/15/8xpws36j4zx9cx_0h90s8cjh0000gn/T/';
+    
+        cur['java.library.path'] = '/Users/tamp/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.';
+    
+        cur['java.runtime.name'] = 'Java(TM) SE Runtime Environment';
+    
+        cur['java.runtime.version'] = '24+36-3646';
+    
+        cur['java.specification.name'] = 'Java Platform API Specification';
+    
+        cur['java.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.specification.version'] = '24';
+    
+        cur['java.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vendor.url'] = 'https://java.oracle.com/';
+    
+        cur['java.vendor.url.bug'] = 'https://bugreport.java.com/bugreport/';
+    
+        cur['java.version'] = '24';
+    
+        cur['java.version.date'] = '2025-03-18';
+    
+        cur['java.vm.compressedOopsMode'] = 'Zero based';
+    
+        cur['java.vm.info'] = 'mixed mode, sharing';
+    
+        cur['java.vm.name'] = 'Java HotSpot(TM) 64-Bit Server VM';
+    
+        cur['java.vm.specification.name'] = 'Java Virtual Machine Specification';
+    
+        cur['java.vm.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.specification.version'] = '24';
+    
+        cur['java.vm.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.version'] = '24+36-3646';
+    
+        cur['jdk.debug'] = 'release';
+    
+        cur['junitjar'] = 'junit-4.13.1.jar';
+    
+        cur['libdir'] = './lib';
+    
+        cur['line.separator'] = '\n';
+    
+        cur['mockitojar'] = 'mockito-core-5.18.0.jar';
+    
+        cur['mvc'] = 'mvc';
+    
+        cur['native.encoding'] = 'UTF-8';
+    
+        cur['objenesisjar'] = 'objenesis-3.4.jar';
+    
+        cur['os.arch'] = 'x86_64';
+    
+        cur['os.name'] = 'Mac OS X';
+    
+        cur['os.version'] = '15.4';
+    
+        cur['package'] = 'forest';
+    
+        cur['packagenames'] = 'forest,mvc,utility';
+    
+        cur['path.separator'] = ':';
+    
+        cur['reportdir'] = './test-report';
+    
+        cur['resourcedir'] = 'src/main/resources';
+    
+        cur['socksNonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['srcdir'] = 'src/main/java';
+    
+        cur['stderr.encoding'] = 'UTF-8';
+    
+        cur['stdout.encoding'] = 'UTF-8';
+    
+        cur['sun.arch.data.model'] = '64';
+    
+        cur['sun.boot.library.path'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib';
+    
+        cur['sun.cpu.endian'] = 'little';
+    
+        cur['sun.io.unicode.encoding'] = 'UnicodeBig';
+    
+        cur['sun.java.command'] = 'org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.BranchTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.BranchTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher14568089078298065001.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit9631712529702753000.properties';
+    
+        cur['sun.java.launcher'] = 'SUN_STANDARD';
+    
+        cur['sun.jnu.encoding'] = 'UTF-8';
+    
+        cur['sun.management.compiler'] = 'HotSpot 64-Bit Tiered Compilers';
+    
+        cur['user.country'] = 'JP';
+    
+        cur['user.dir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['user.home'] = '/Users/tamp';
+    
+        cur['user.language'] = 'ja';
+    
+        cur['user.name'] = 'tamp';
+    
+        cur['utility'] = 'utility';
+    
+        cur['zipname'] = 'Forest';
+    
+    cur = TestCases['forest.ConstantsTest'] = new Array();
+    
+        cur['ant.core.lib'] = '/usr/local/ant/lib/ant.jar';
+    
+        cur['ant.file'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.Forest'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.type'] = 'file';
+    
+        cur['ant.file.type.Forest'] = 'file';
+    
+        cur['ant.home'] = '/usr/local/ant';
+    
+        cur['ant.java.version'] = '24';
+    
+        cur['ant.library.dir'] = '/usr/local/ant/lib';
+    
+        cur['ant.project.default-target'] = 'all';
+    
+        cur['ant.project.invoked-targets'] = 'unittest';
+    
+        cur['ant.project.name'] = 'Forest';
+    
+        cur['ant.version'] = 'Apache Ant(TM) version 1.10.15 compiled on August 25 2024';
+    
+        cur['apple.awt.application.name'] = 'JUnitTestRunner';
+    
+        cur['basedir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['bytebuddyagentjar'] = 'byte-buddy-agent-1.17.6.jar';
+    
+        cur['bytebuddyjar'] = 'byte-buddy-1.17.6.jar';
+    
+        cur['copyright'] = 'Copyright 2025 TEAM JavaGrove. All Rights Reserved.';
+    
+        cur['destdir'] = './Classes';
+    
+        cur['docdir'] = './JavaDoc';
+    
+        cur['doc-title'] = 'Forest Documant';
+    
+        cur['file.encoding'] = 'UTF-8';
+    
+        cur['file.separator'] = '/';
+    
+        cur['ftp.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['hamcrestjar'] = 'hamcrest-core-1.3.jar';
+    
+        cur['http.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['instdir'] = './Forest.app/Contents/Resources/Java';
+    
+        cur['java.class.path'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/objenesis-3.4.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar';
+    
+        cur['java.class.version'] = '68.0';
+    
+        cur['java.home'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home';
+    
+        cur['java.io.tmpdir'] = '/var/folders/15/8xpws36j4zx9cx_0h90s8cjh0000gn/T/';
+    
+        cur['java.library.path'] = '/Users/tamp/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.';
+    
+        cur['java.runtime.name'] = 'Java(TM) SE Runtime Environment';
+    
+        cur['java.runtime.version'] = '24+36-3646';
+    
+        cur['java.specification.name'] = 'Java Platform API Specification';
+    
+        cur['java.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.specification.version'] = '24';
+    
+        cur['java.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vendor.url'] = 'https://java.oracle.com/';
+    
+        cur['java.vendor.url.bug'] = 'https://bugreport.java.com/bugreport/';
+    
+        cur['java.version'] = '24';
+    
+        cur['java.version.date'] = '2025-03-18';
+    
+        cur['java.vm.compressedOopsMode'] = 'Zero based';
+    
+        cur['java.vm.info'] = 'mixed mode, sharing';
+    
+        cur['java.vm.name'] = 'Java HotSpot(TM) 64-Bit Server VM';
+    
+        cur['java.vm.specification.name'] = 'Java Virtual Machine Specification';
+    
+        cur['java.vm.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.specification.version'] = '24';
+    
+        cur['java.vm.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.version'] = '24+36-3646';
+    
+        cur['jdk.debug'] = 'release';
+    
+        cur['junitjar'] = 'junit-4.13.1.jar';
+    
+        cur['libdir'] = './lib';
+    
+        cur['line.separator'] = '\n';
+    
+        cur['mockitojar'] = 'mockito-core-5.18.0.jar';
+    
+        cur['mvc'] = 'mvc';
+    
+        cur['native.encoding'] = 'UTF-8';
+    
+        cur['objenesisjar'] = 'objenesis-3.4.jar';
+    
+        cur['os.arch'] = 'x86_64';
+    
+        cur['os.name'] = 'Mac OS X';
+    
+        cur['os.version'] = '15.4';
+    
+        cur['package'] = 'forest';
+    
+        cur['packagenames'] = 'forest,mvc,utility';
+    
+        cur['path.separator'] = ':';
+    
+        cur['reportdir'] = './test-report';
+    
+        cur['resourcedir'] = 'src/main/resources';
+    
+        cur['socksNonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['srcdir'] = 'src/main/java';
+    
+        cur['stderr.encoding'] = 'UTF-8';
+    
+        cur['stdout.encoding'] = 'UTF-8';
+    
+        cur['sun.arch.data.model'] = '64';
+    
+        cur['sun.boot.library.path'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib';
+    
+        cur['sun.cpu.endian'] = 'little';
+    
+        cur['sun.io.unicode.encoding'] = 'UnicodeBig';
+    
+        cur['sun.java.command'] = 'org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ConstantsTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ConstantsTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher16735759551093737842.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit17128728781391961797.properties';
+    
+        cur['sun.java.launcher'] = 'SUN_STANDARD';
+    
+        cur['sun.jnu.encoding'] = 'UTF-8';
+    
+        cur['sun.management.compiler'] = 'HotSpot 64-Bit Tiered Compilers';
+    
+        cur['user.country'] = 'JP';
+    
+        cur['user.dir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['user.home'] = '/Users/tamp';
+    
+        cur['user.language'] = 'ja';
+    
+        cur['user.name'] = 'tamp';
+    
+        cur['utility'] = 'utility';
+    
+        cur['zipname'] = 'Forest';
+    
+    cur = TestCases['forest.ExampleTest'] = new Array();
+    
+        cur['ant.core.lib'] = '/usr/local/ant/lib/ant.jar';
+    
+        cur['ant.file'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.Forest'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.type'] = 'file';
+    
+        cur['ant.file.type.Forest'] = 'file';
+    
+        cur['ant.home'] = '/usr/local/ant';
+    
+        cur['ant.java.version'] = '24';
+    
+        cur['ant.library.dir'] = '/usr/local/ant/lib';
+    
+        cur['ant.project.default-target'] = 'all';
+    
+        cur['ant.project.invoked-targets'] = 'unittest';
+    
+        cur['ant.project.name'] = 'Forest';
+    
+        cur['ant.version'] = 'Apache Ant(TM) version 1.10.15 compiled on August 25 2024';
+    
+        cur['apple.awt.application.name'] = 'JUnitTestRunner';
+    
+        cur['basedir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['bytebuddyagentjar'] = 'byte-buddy-agent-1.17.6.jar';
+    
+        cur['bytebuddyjar'] = 'byte-buddy-1.17.6.jar';
+    
+        cur['copyright'] = 'Copyright 2025 TEAM JavaGrove. All Rights Reserved.';
+    
+        cur['destdir'] = './Classes';
+    
+        cur['docdir'] = './JavaDoc';
+    
+        cur['doc-title'] = 'Forest Documant';
+    
+        cur['file.encoding'] = 'UTF-8';
+    
+        cur['file.separator'] = '/';
+    
+        cur['ftp.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['hamcrestjar'] = 'hamcrest-core-1.3.jar';
+    
+        cur['http.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['instdir'] = './Forest.app/Contents/Resources/Java';
+    
+        cur['java.class.path'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/objenesis-3.4.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar';
+    
+        cur['java.class.version'] = '68.0';
+    
+        cur['java.home'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home';
+    
+        cur['java.io.tmpdir'] = '/var/folders/15/8xpws36j4zx9cx_0h90s8cjh0000gn/T/';
+    
+        cur['java.library.path'] = '/Users/tamp/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.';
+    
+        cur['java.runtime.name'] = 'Java(TM) SE Runtime Environment';
+    
+        cur['java.runtime.version'] = '24+36-3646';
+    
+        cur['java.specification.name'] = 'Java Platform API Specification';
+    
+        cur['java.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.specification.version'] = '24';
+    
+        cur['java.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vendor.url'] = 'https://java.oracle.com/';
+    
+        cur['java.vendor.url.bug'] = 'https://bugreport.java.com/bugreport/';
+    
+        cur['java.version'] = '24';
+    
+        cur['java.version.date'] = '2025-03-18';
+    
+        cur['java.vm.compressedOopsMode'] = 'Zero based';
+    
+        cur['java.vm.info'] = 'mixed mode, sharing';
+    
+        cur['java.vm.name'] = 'Java HotSpot(TM) 64-Bit Server VM';
+    
+        cur['java.vm.specification.name'] = 'Java Virtual Machine Specification';
+    
+        cur['java.vm.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.specification.version'] = '24';
+    
+        cur['java.vm.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.version'] = '24+36-3646';
+    
+        cur['jdk.debug'] = 'release';
+    
+        cur['junitjar'] = 'junit-4.13.1.jar';
+    
+        cur['libdir'] = './lib';
+    
+        cur['line.separator'] = '\n';
+    
+        cur['mockitojar'] = 'mockito-core-5.18.0.jar';
+    
+        cur['mvc'] = 'mvc';
+    
+        cur['native.encoding'] = 'UTF-8';
+    
+        cur['objenesisjar'] = 'objenesis-3.4.jar';
+    
+        cur['os.arch'] = 'x86_64';
+    
+        cur['os.name'] = 'Mac OS X';
+    
+        cur['os.version'] = '15.4';
+    
+        cur['package'] = 'forest';
+    
+        cur['packagenames'] = 'forest,mvc,utility';
+    
+        cur['path.separator'] = ':';
+    
+        cur['reportdir'] = './test-report';
+    
+        cur['resourcedir'] = 'src/main/resources';
+    
+        cur['socksNonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['srcdir'] = 'src/main/java';
+    
+        cur['stderr.encoding'] = 'UTF-8';
+    
+        cur['stdout.encoding'] = 'UTF-8';
+    
+        cur['sun.arch.data.model'] = '64';
+    
+        cur['sun.boot.library.path'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib';
+    
+        cur['sun.cpu.endian'] = 'little';
+    
+        cur['sun.io.unicode.encoding'] = 'UnicodeBig';
+    
+        cur['sun.java.command'] = 'org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ExampleTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ExampleTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher11885770634542241307.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit16074298021347449993.properties';
+    
+        cur['sun.java.launcher'] = 'SUN_STANDARD';
+    
+        cur['sun.jnu.encoding'] = 'UTF-8';
+    
+        cur['sun.management.compiler'] = 'HotSpot 64-Bit Tiered Compilers';
+    
+        cur['user.country'] = 'JP';
+    
+        cur['user.dir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['user.home'] = '/Users/tamp';
+    
+        cur['user.language'] = 'ja';
+    
+        cur['user.name'] = 'tamp';
+    
+        cur['utility'] = 'utility';
+    
+        cur['zipname'] = 'Forest';
+    
+    cur = TestCases['forest.ForestControllerTest'] = new Array();
+    
+        cur['ant.core.lib'] = '/usr/local/ant/lib/ant.jar';
+    
+        cur['ant.file'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.Forest'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.type'] = 'file';
+    
+        cur['ant.file.type.Forest'] = 'file';
+    
+        cur['ant.home'] = '/usr/local/ant';
+    
+        cur['ant.java.version'] = '24';
+    
+        cur['ant.library.dir'] = '/usr/local/ant/lib';
+    
+        cur['ant.project.default-target'] = 'all';
+    
+        cur['ant.project.invoked-targets'] = 'unittest';
+    
+        cur['ant.project.name'] = 'Forest';
+    
+        cur['ant.version'] = 'Apache Ant(TM) version 1.10.15 compiled on August 25 2024';
+    
+        cur['apple.awt.application.name'] = 'JUnitTestRunner';
+    
+        cur['basedir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['bytebuddyagentjar'] = 'byte-buddy-agent-1.17.6.jar';
+    
+        cur['bytebuddyjar'] = 'byte-buddy-1.17.6.jar';
+    
+        cur['copyright'] = 'Copyright 2025 TEAM JavaGrove. All Rights Reserved.';
+    
+        cur['destdir'] = './Classes';
+    
+        cur['docdir'] = './JavaDoc';
+    
+        cur['doc-title'] = 'Forest Documant';
+    
+        cur['file.encoding'] = 'UTF-8';
+    
+        cur['file.separator'] = '/';
+    
+        cur['ftp.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['hamcrestjar'] = 'hamcrest-core-1.3.jar';
+    
+        cur['http.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['instdir'] = './Forest.app/Contents/Resources/Java';
+    
+        cur['java.class.path'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/objenesis-3.4.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar';
+    
+        cur['java.class.version'] = '68.0';
+    
+        cur['java.home'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home';
+    
+        cur['java.io.tmpdir'] = '/var/folders/15/8xpws36j4zx9cx_0h90s8cjh0000gn/T/';
+    
+        cur['java.library.path'] = '/Users/tamp/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.';
+    
+        cur['java.runtime.name'] = 'Java(TM) SE Runtime Environment';
+    
+        cur['java.runtime.version'] = '24+36-3646';
+    
+        cur['java.specification.name'] = 'Java Platform API Specification';
+    
+        cur['java.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.specification.version'] = '24';
+    
+        cur['java.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vendor.url'] = 'https://java.oracle.com/';
+    
+        cur['java.vendor.url.bug'] = 'https://bugreport.java.com/bugreport/';
+    
+        cur['java.version'] = '24';
+    
+        cur['java.version.date'] = '2025-03-18';
+    
+        cur['java.vm.compressedOopsMode'] = 'Zero based';
+    
+        cur['java.vm.info'] = 'mixed mode, sharing';
+    
+        cur['java.vm.name'] = 'Java HotSpot(TM) 64-Bit Server VM';
+    
+        cur['java.vm.specification.name'] = 'Java Virtual Machine Specification';
+    
+        cur['java.vm.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.specification.version'] = '24';
+    
+        cur['java.vm.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.version'] = '24+36-3646';
+    
+        cur['jdk.debug'] = 'release';
+    
+        cur['junitjar'] = 'junit-4.13.1.jar';
+    
+        cur['libdir'] = './lib';
+    
+        cur['line.separator'] = '\n';
+    
+        cur['mockitojar'] = 'mockito-core-5.18.0.jar';
+    
+        cur['mvc'] = 'mvc';
+    
+        cur['native.encoding'] = 'UTF-8';
+    
+        cur['objenesisjar'] = 'objenesis-3.4.jar';
+    
+        cur['os.arch'] = 'x86_64';
+    
+        cur['os.name'] = 'Mac OS X';
+    
+        cur['os.version'] = '15.4';
+    
+        cur['package'] = 'forest';
+    
+        cur['packagenames'] = 'forest,mvc,utility';
+    
+        cur['path.separator'] = ':';
+    
+        cur['reportdir'] = './test-report';
+    
+        cur['resourcedir'] = 'src/main/resources';
+    
+        cur['socksNonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['srcdir'] = 'src/main/java';
+    
+        cur['stderr.encoding'] = 'UTF-8';
+    
+        cur['stdout.encoding'] = 'UTF-8';
+    
+        cur['sun.arch.data.model'] = '64';
+    
+        cur['sun.boot.library.path'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib';
+    
+        cur['sun.cpu.endian'] = 'little';
+    
+        cur['sun.io.unicode.encoding'] = 'UnicodeBig';
+    
+        cur['sun.java.command'] = 'org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestControllerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestControllerTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher16747113933113770087.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit16300786892881681511.properties';
+    
+        cur['sun.java.launcher'] = 'SUN_STANDARD';
+    
+        cur['sun.jnu.encoding'] = 'UTF-8';
+    
+        cur['sun.management.compiler'] = 'HotSpot 64-Bit Tiered Compilers';
+    
+        cur['user.country'] = 'JP';
+    
+        cur['user.dir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['user.home'] = '/Users/tamp';
+    
+        cur['user.language'] = 'ja';
+    
+        cur['user.name'] = 'tamp';
+    
+        cur['utility'] = 'utility';
+    
+        cur['zipname'] = 'Forest';
+    
+    cur = TestCases['forest.ForestModelTest'] = new Array();
+    
+        cur['ant.core.lib'] = '/usr/local/ant/lib/ant.jar';
+    
+        cur['ant.file'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.Forest'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.type'] = 'file';
+    
+        cur['ant.file.type.Forest'] = 'file';
+    
+        cur['ant.home'] = '/usr/local/ant';
+    
+        cur['ant.java.version'] = '24';
+    
+        cur['ant.library.dir'] = '/usr/local/ant/lib';
+    
+        cur['ant.project.default-target'] = 'all';
+    
+        cur['ant.project.invoked-targets'] = 'unittest';
+    
+        cur['ant.project.name'] = 'Forest';
+    
+        cur['ant.version'] = 'Apache Ant(TM) version 1.10.15 compiled on August 25 2024';
+    
+        cur['apple.awt.application.name'] = 'JUnitTestRunner';
+    
+        cur['basedir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['bytebuddyagentjar'] = 'byte-buddy-agent-1.17.6.jar';
+    
+        cur['bytebuddyjar'] = 'byte-buddy-1.17.6.jar';
+    
+        cur['copyright'] = 'Copyright 2025 TEAM JavaGrove. All Rights Reserved.';
+    
+        cur['destdir'] = './Classes';
+    
+        cur['docdir'] = './JavaDoc';
+    
+        cur['doc-title'] = 'Forest Documant';
+    
+        cur['file.encoding'] = 'UTF-8';
+    
+        cur['file.separator'] = '/';
+    
+        cur['ftp.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['hamcrestjar'] = 'hamcrest-core-1.3.jar';
+    
+        cur['http.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['instdir'] = './Forest.app/Contents/Resources/Java';
+    
+        cur['java.class.path'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/objenesis-3.4.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar';
+    
+        cur['java.class.version'] = '68.0';
+    
+        cur['java.home'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home';
+    
+        cur['java.io.tmpdir'] = '/var/folders/15/8xpws36j4zx9cx_0h90s8cjh0000gn/T/';
+    
+        cur['java.library.path'] = '/Users/tamp/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.';
+    
+        cur['java.runtime.name'] = 'Java(TM) SE Runtime Environment';
+    
+        cur['java.runtime.version'] = '24+36-3646';
+    
+        cur['java.specification.name'] = 'Java Platform API Specification';
+    
+        cur['java.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.specification.version'] = '24';
+    
+        cur['java.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vendor.url'] = 'https://java.oracle.com/';
+    
+        cur['java.vendor.url.bug'] = 'https://bugreport.java.com/bugreport/';
+    
+        cur['java.version'] = '24';
+    
+        cur['java.version.date'] = '2025-03-18';
+    
+        cur['java.vm.compressedOopsMode'] = 'Zero based';
+    
+        cur['java.vm.info'] = 'mixed mode, sharing';
+    
+        cur['java.vm.name'] = 'Java HotSpot(TM) 64-Bit Server VM';
+    
+        cur['java.vm.specification.name'] = 'Java Virtual Machine Specification';
+    
+        cur['java.vm.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.specification.version'] = '24';
+    
+        cur['java.vm.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.version'] = '24+36-3646';
+    
+        cur['jdk.debug'] = 'release';
+    
+        cur['junitjar'] = 'junit-4.13.1.jar';
+    
+        cur['libdir'] = './lib';
+    
+        cur['line.separator'] = '\n';
+    
+        cur['mockitojar'] = 'mockito-core-5.18.0.jar';
+    
+        cur['mvc'] = 'mvc';
+    
+        cur['native.encoding'] = 'UTF-8';
+    
+        cur['objenesisjar'] = 'objenesis-3.4.jar';
+    
+        cur['os.arch'] = 'x86_64';
+    
+        cur['os.name'] = 'Mac OS X';
+    
+        cur['os.version'] = '15.4';
+    
+        cur['package'] = 'forest';
+    
+        cur['packagenames'] = 'forest,mvc,utility';
+    
+        cur['path.separator'] = ':';
+    
+        cur['reportdir'] = './test-report';
+    
+        cur['resourcedir'] = 'src/main/resources';
+    
+        cur['socksNonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['srcdir'] = 'src/main/java';
+    
+        cur['stderr.encoding'] = 'UTF-8';
+    
+        cur['stdout.encoding'] = 'UTF-8';
+    
+        cur['sun.arch.data.model'] = '64';
+    
+        cur['sun.boot.library.path'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib';
+    
+        cur['sun.cpu.endian'] = 'little';
+    
+        cur['sun.io.unicode.encoding'] = 'UnicodeBig';
+    
+        cur['sun.java.command'] = 'org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestModelTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestModelTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher6173459241594678864.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit5791972129209015292.properties';
+    
+        cur['sun.java.launcher'] = 'SUN_STANDARD';
+    
+        cur['sun.jnu.encoding'] = 'UTF-8';
+    
+        cur['sun.management.compiler'] = 'HotSpot 64-Bit Tiered Compilers';
+    
+        cur['user.country'] = 'JP';
+    
+        cur['user.dir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['user.home'] = '/Users/tamp';
+    
+        cur['user.language'] = 'ja';
+    
+        cur['user.name'] = 'tamp';
+    
+        cur['utility'] = 'utility';
+    
+        cur['zipname'] = 'Forest';
+    
+    cur = TestCases['forest.ForestTest'] = new Array();
+    
+        cur['ant.core.lib'] = '/usr/local/ant/lib/ant.jar';
+    
+        cur['ant.file'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.Forest'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.type'] = 'file';
+    
+        cur['ant.file.type.Forest'] = 'file';
+    
+        cur['ant.home'] = '/usr/local/ant';
+    
+        cur['ant.java.version'] = '24';
+    
+        cur['ant.library.dir'] = '/usr/local/ant/lib';
+    
+        cur['ant.project.default-target'] = 'all';
+    
+        cur['ant.project.invoked-targets'] = 'unittest';
+    
+        cur['ant.project.name'] = 'Forest';
+    
+        cur['ant.version'] = 'Apache Ant(TM) version 1.10.15 compiled on August 25 2024';
+    
+        cur['apple.awt.application.name'] = 'JUnitTestRunner';
+    
+        cur['basedir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['bytebuddyagentjar'] = 'byte-buddy-agent-1.17.6.jar';
+    
+        cur['bytebuddyjar'] = 'byte-buddy-1.17.6.jar';
+    
+        cur['copyright'] = 'Copyright 2025 TEAM JavaGrove. All Rights Reserved.';
+    
+        cur['destdir'] = './Classes';
+    
+        cur['docdir'] = './JavaDoc';
+    
+        cur['doc-title'] = 'Forest Documant';
+    
+        cur['file.encoding'] = 'UTF-8';
+    
+        cur['file.separator'] = '/';
+    
+        cur['ftp.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['hamcrestjar'] = 'hamcrest-core-1.3.jar';
+    
+        cur['http.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['instdir'] = './Forest.app/Contents/Resources/Java';
+    
+        cur['java.class.path'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/objenesis-3.4.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar';
+    
+        cur['java.class.version'] = '68.0';
+    
+        cur['java.home'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home';
+    
+        cur['java.io.tmpdir'] = '/var/folders/15/8xpws36j4zx9cx_0h90s8cjh0000gn/T/';
+    
+        cur['java.library.path'] = '/Users/tamp/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.';
+    
+        cur['java.runtime.name'] = 'Java(TM) SE Runtime Environment';
+    
+        cur['java.runtime.version'] = '24+36-3646';
+    
+        cur['java.specification.name'] = 'Java Platform API Specification';
+    
+        cur['java.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.specification.version'] = '24';
+    
+        cur['java.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vendor.url'] = 'https://java.oracle.com/';
+    
+        cur['java.vendor.url.bug'] = 'https://bugreport.java.com/bugreport/';
+    
+        cur['java.version'] = '24';
+    
+        cur['java.version.date'] = '2025-03-18';
+    
+        cur['java.vm.compressedOopsMode'] = 'Zero based';
+    
+        cur['java.vm.info'] = 'mixed mode, sharing';
+    
+        cur['java.vm.name'] = 'Java HotSpot(TM) 64-Bit Server VM';
+    
+        cur['java.vm.specification.name'] = 'Java Virtual Machine Specification';
+    
+        cur['java.vm.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.specification.version'] = '24';
+    
+        cur['java.vm.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.version'] = '24+36-3646';
+    
+        cur['jdk.debug'] = 'release';
+    
+        cur['junitjar'] = 'junit-4.13.1.jar';
+    
+        cur['libdir'] = './lib';
+    
+        cur['line.separator'] = '\n';
+    
+        cur['mockitojar'] = 'mockito-core-5.18.0.jar';
+    
+        cur['mvc'] = 'mvc';
+    
+        cur['native.encoding'] = 'UTF-8';
+    
+        cur['objenesisjar'] = 'objenesis-3.4.jar';
+    
+        cur['os.arch'] = 'x86_64';
+    
+        cur['os.name'] = 'Mac OS X';
+    
+        cur['os.version'] = '15.4';
+    
+        cur['package'] = 'forest';
+    
+        cur['packagenames'] = 'forest,mvc,utility';
+    
+        cur['path.separator'] = ':';
+    
+        cur['reportdir'] = './test-report';
+    
+        cur['resourcedir'] = 'src/main/resources';
+    
+        cur['socksNonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['srcdir'] = 'src/main/java';
+    
+        cur['stderr.encoding'] = 'UTF-8';
+    
+        cur['stdout.encoding'] = 'UTF-8';
+    
+        cur['sun.arch.data.model'] = '64';
+    
+        cur['sun.boot.library.path'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib';
+    
+        cur['sun.cpu.endian'] = 'little';
+    
+        cur['sun.io.unicode.encoding'] = 'UnicodeBig';
+    
+        cur['sun.java.command'] = 'org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher12091986996843793609.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit1541443416641523709.properties';
+    
+        cur['sun.java.launcher'] = 'SUN_STANDARD';
+    
+        cur['sun.jnu.encoding'] = 'UTF-8';
+    
+        cur['sun.management.compiler'] = 'HotSpot 64-Bit Tiered Compilers';
+    
+        cur['user.country'] = 'JP';
+    
+        cur['user.dir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['user.home'] = '/Users/tamp';
+    
+        cur['user.language'] = 'ja';
+    
+        cur['user.name'] = 'tamp';
+    
+        cur['utility'] = 'utility';
+    
+        cur['zipname'] = 'Forest';
+    
+    cur = TestCases['forest.ForestViewTest'] = new Array();
+    
+        cur['ant.core.lib'] = '/usr/local/ant/lib/ant.jar';
+    
+        cur['ant.file'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.Forest'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.type'] = 'file';
+    
+        cur['ant.file.type.Forest'] = 'file';
+    
+        cur['ant.home'] = '/usr/local/ant';
+    
+        cur['ant.java.version'] = '24';
+    
+        cur['ant.library.dir'] = '/usr/local/ant/lib';
+    
+        cur['ant.project.default-target'] = 'all';
+    
+        cur['ant.project.invoked-targets'] = 'unittest';
+    
+        cur['ant.project.name'] = 'Forest';
+    
+        cur['ant.version'] = 'Apache Ant(TM) version 1.10.15 compiled on August 25 2024';
+    
+        cur['apple.awt.application.name'] = 'JUnitTestRunner';
+    
+        cur['basedir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['bytebuddyagentjar'] = 'byte-buddy-agent-1.17.6.jar';
+    
+        cur['bytebuddyjar'] = 'byte-buddy-1.17.6.jar';
+    
+        cur['copyright'] = 'Copyright 2025 TEAM JavaGrove. All Rights Reserved.';
+    
+        cur['destdir'] = './Classes';
+    
+        cur['docdir'] = './JavaDoc';
+    
+        cur['doc-title'] = 'Forest Documant';
+    
+        cur['file.encoding'] = 'UTF-8';
+    
+        cur['file.separator'] = '/';
+    
+        cur['ftp.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['hamcrestjar'] = 'hamcrest-core-1.3.jar';
+    
+        cur['http.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['instdir'] = './Forest.app/Contents/Resources/Java';
+    
+        cur['java.class.path'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/objenesis-3.4.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar';
+    
+        cur['java.class.version'] = '68.0';
+    
+        cur['java.home'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home';
+    
+        cur['java.io.tmpdir'] = '/var/folders/15/8xpws36j4zx9cx_0h90s8cjh0000gn/T/';
+    
+        cur['java.library.path'] = '/Users/tamp/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.';
+    
+        cur['java.runtime.name'] = 'Java(TM) SE Runtime Environment';
+    
+        cur['java.runtime.version'] = '24+36-3646';
+    
+        cur['java.specification.name'] = 'Java Platform API Specification';
+    
+        cur['java.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.specification.version'] = '24';
+    
+        cur['java.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vendor.url'] = 'https://java.oracle.com/';
+    
+        cur['java.vendor.url.bug'] = 'https://bugreport.java.com/bugreport/';
+    
+        cur['java.version'] = '24';
+    
+        cur['java.version.date'] = '2025-03-18';
+    
+        cur['java.vm.compressedOopsMode'] = 'Zero based';
+    
+        cur['java.vm.info'] = 'mixed mode, sharing';
+    
+        cur['java.vm.name'] = 'Java HotSpot(TM) 64-Bit Server VM';
+    
+        cur['java.vm.specification.name'] = 'Java Virtual Machine Specification';
+    
+        cur['java.vm.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.specification.version'] = '24';
+    
+        cur['java.vm.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.version'] = '24+36-3646';
+    
+        cur['jdk.debug'] = 'release';
+    
+        cur['junitjar'] = 'junit-4.13.1.jar';
+    
+        cur['libdir'] = './lib';
+    
+        cur['line.separator'] = '\n';
+    
+        cur['mockitojar'] = 'mockito-core-5.18.0.jar';
+    
+        cur['mvc'] = 'mvc';
+    
+        cur['native.encoding'] = 'UTF-8';
+    
+        cur['objenesisjar'] = 'objenesis-3.4.jar';
+    
+        cur['os.arch'] = 'x86_64';
+    
+        cur['os.name'] = 'Mac OS X';
+    
+        cur['os.version'] = '15.4';
+    
+        cur['package'] = 'forest';
+    
+        cur['packagenames'] = 'forest,mvc,utility';
+    
+        cur['path.separator'] = ':';
+    
+        cur['reportdir'] = './test-report';
+    
+        cur['resourcedir'] = 'src/main/resources';
+    
+        cur['socksNonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['srcdir'] = 'src/main/java';
+    
+        cur['stderr.encoding'] = 'UTF-8';
+    
+        cur['stdout.encoding'] = 'UTF-8';
+    
+        cur['sun.arch.data.model'] = '64';
+    
+        cur['sun.boot.library.path'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib';
+    
+        cur['sun.cpu.endian'] = 'little';
+    
+        cur['sun.io.unicode.encoding'] = 'UnicodeBig';
+    
+        cur['sun.java.command'] = 'org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestViewTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestViewTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher8717826140663806776.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit14034131456814275049.properties';
+    
+        cur['sun.java.launcher'] = 'SUN_STANDARD';
+    
+        cur['sun.jnu.encoding'] = 'UTF-8';
+    
+        cur['sun.management.compiler'] = 'HotSpot 64-Bit Tiered Compilers';
+    
+        cur['user.country'] = 'JP';
+    
+        cur['user.dir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['user.home'] = '/Users/tamp';
+    
+        cur['user.language'] = 'ja';
+    
+        cur['user.name'] = 'tamp';
+    
+        cur['utility'] = 'utility';
+    
+        cur['zipname'] = 'Forest';
+    
+    cur = TestCases['forest.NodeTest'] = new Array();
+    
+        cur['ant.core.lib'] = '/usr/local/ant/lib/ant.jar';
+    
+        cur['ant.file'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.Forest'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml';
+    
+        cur['ant.file.type'] = 'file';
+    
+        cur['ant.file.type.Forest'] = 'file';
+    
+        cur['ant.home'] = '/usr/local/ant';
+    
+        cur['ant.java.version'] = '24';
+    
+        cur['ant.library.dir'] = '/usr/local/ant/lib';
+    
+        cur['ant.project.default-target'] = 'all';
+    
+        cur['ant.project.invoked-targets'] = 'unittest';
+    
+        cur['ant.project.name'] = 'Forest';
+    
+        cur['ant.version'] = 'Apache Ant(TM) version 1.10.15 compiled on August 25 2024';
+    
+        cur['apple.awt.application.name'] = 'JUnitTestRunner';
+    
+        cur['basedir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['bytebuddyagentjar'] = 'byte-buddy-agent-1.17.6.jar';
+    
+        cur['bytebuddyjar'] = 'byte-buddy-1.17.6.jar';
+    
+        cur['copyright'] = 'Copyright 2025 TEAM JavaGrove. All Rights Reserved.';
+    
+        cur['destdir'] = './Classes';
+    
+        cur['docdir'] = './JavaDoc';
+    
+        cur['doc-title'] = 'Forest Documant';
+    
+        cur['file.encoding'] = 'UTF-8';
+    
+        cur['file.separator'] = '/';
+    
+        cur['ftp.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['hamcrestjar'] = 'hamcrest-core-1.3.jar';
+    
+        cur['http.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['instdir'] = './Forest.app/Contents/Resources/Java';
+    
+        cur['java.class.path'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/objenesis-3.4.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar';
+    
+        cur['java.class.version'] = '68.0';
+    
+        cur['java.home'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home';
+    
+        cur['java.io.tmpdir'] = '/var/folders/15/8xpws36j4zx9cx_0h90s8cjh0000gn/T/';
+    
+        cur['java.library.path'] = '/Users/tamp/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.';
+    
+        cur['java.runtime.name'] = 'Java(TM) SE Runtime Environment';
+    
+        cur['java.runtime.version'] = '24+36-3646';
+    
+        cur['java.specification.name'] = 'Java Platform API Specification';
+    
+        cur['java.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.specification.version'] = '24';
+    
+        cur['java.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vendor.url'] = 'https://java.oracle.com/';
+    
+        cur['java.vendor.url.bug'] = 'https://bugreport.java.com/bugreport/';
+    
+        cur['java.version'] = '24';
+    
+        cur['java.version.date'] = '2025-03-18';
+    
+        cur['java.vm.compressedOopsMode'] = 'Zero based';
+    
+        cur['java.vm.info'] = 'mixed mode, sharing';
+    
+        cur['java.vm.name'] = 'Java HotSpot(TM) 64-Bit Server VM';
+    
+        cur['java.vm.specification.name'] = 'Java Virtual Machine Specification';
+    
+        cur['java.vm.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.specification.version'] = '24';
+    
+        cur['java.vm.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.version'] = '24+36-3646';
+    
+        cur['jdk.debug'] = 'release';
+    
+        cur['junitjar'] = 'junit-4.13.1.jar';
+    
+        cur['libdir'] = './lib';
+    
+        cur['line.separator'] = '\n';
+    
+        cur['mockitojar'] = 'mockito-core-5.18.0.jar';
+    
+        cur['mvc'] = 'mvc';
+    
+        cur['native.encoding'] = 'UTF-8';
+    
+        cur['objenesisjar'] = 'objenesis-3.4.jar';
+    
+        cur['os.arch'] = 'x86_64';
+    
+        cur['os.name'] = 'Mac OS X';
+    
+        cur['os.version'] = '15.4';
+    
+        cur['package'] = 'forest';
+    
+        cur['packagenames'] = 'forest,mvc,utility';
+    
+        cur['path.separator'] = ':';
+    
+        cur['reportdir'] = './test-report';
+    
+        cur['resourcedir'] = 'src/main/resources';
+    
+        cur['socksNonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['srcdir'] = 'src/main/java';
+    
+        cur['stderr.encoding'] = 'UTF-8';
+    
+        cur['stdout.encoding'] = 'UTF-8';
+    
+        cur['sun.arch.data.model'] = '64';
+    
+        cur['sun.boot.library.path'] = '/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib';
+    
+        cur['sun.cpu.endian'] = 'little';
+    
+        cur['sun.io.unicode.encoding'] = 'UnicodeBig';
+    
+        cur['sun.java.command'] = 'org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.NodeTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.NodeTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher2578017133589043639.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit16216699503650775624.properties';
+    
+        cur['sun.java.launcher'] = 'SUN_STANDARD';
+    
+        cur['sun.jnu.encoding'] = 'UTF-8';
+    
+        cur['sun.management.compiler'] = 'HotSpot 64-Bit Tiered Compilers';
+    
+        cur['user.country'] = 'JP';
+    
+        cur['user.dir'] = '/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program';
+    
+        cur['user.home'] = '/Users/tamp';
+    
+        cur['user.language'] = 'ja';
+    
+        cur['user.name'] = 'tamp';
+    
+        cur['utility'] = 'utility';
+    
+        cur['zipname'] = 'Forest';
+    </script><script type="text/javascript" language="JavaScript">
+        function displayProperties (name) {
+          var win = window.open('','JUnitSystemProperties','scrollbars=1,resizable=1');
+          var doc = win.document;
+          doc.open();
+          doc.write("<html><head><title>Properties of " + name + "</title>");
+          doc.write("<style>")
+          doc.write("body {font:normal 68% verdana,arial,helvetica; color:#000000; }");
+          doc.write("table tr td, table tr th { font-size: 68%; }");
+          doc.write("table.properties { border-collapse:collapse; border-left:solid 1 #cccccc; border-top:solid 1 #cccccc; padding:5px; }");
+          doc.write("table.properties th { text-align:left; border-right:solid 1 #cccccc; border-bottom:solid 1 #cccccc; background-color:#eeeeee; }");
+          doc.write("table.properties td { font:normal; text-align:left; border-right:solid 1 #cccccc; border-bottom:solid 1 #cccccc; background-color:#fffffff; }");
+          doc.write("h3 { margin-bottom: 0.5em; font: bold 115% verdana,arial,helvetica }");
+          doc.write("</style>");
+          doc.write("</head><body>");
+          doc.write("<h3>Properties of " + name + "</h3>");
+          doc.write("<div align=\"right\"><a href=\"javascript:window.close();\">Close</a></div>");
+          doc.write("<table class='properties'>");
+          doc.write("<tr><th>Name</th><th>Value</th></tr>");
+          for (prop in TestCases[name]) {
+            doc.write("<tr><th>" + prop + "</th><td>" + TestCases[name][prop] + "</td></tr>");
+          }
+          doc.write("</table>");
+          doc.write("</body></html>");
+          doc.close();
+          win.focus();
+        }
+      
+      </script>
+    </head>
+    <body>
+        <a name="top"></a>
+        <h1>Unit Test Results.</h1>
+        <table width="100%">
+            <tr>
+                <td align="left"></td><td align="right">Designed for use with <a href="https://www.junit.org">JUnit</a> and <a href="https://ant.apache.org/ant">Ant</a>.</td>
+            </tr>
+        </table>
+        <hr size="1">
+        <h2>Summary</h2>
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th>Tests</th><th>Failures</th><th>Errors</th><th>Skipped</th><th>Success rate</th><th>Time</th>
+            </tr>
+            <tr valign="top" class="Failure">
+                <td>78</td><td>6</td><td>19</td><td>0</td><td>67.95%</td><td>36.174</td>
+            </tr>
+        </table>
+        <table border="0" width="95%">
+            <tr>
+                <td style="text-align: justify;">
+        Note: <i>failures</i> are anticipated and checked for with assertions while <i>errors</i> are unanticipated.
+        </td>
+            </tr>
+        </table>
+        <hr size="1" width="95%" align="left">
+        <h2>Packages</h2>
+                Note: package statistics are not computed recursively, they only sum up all of its testsuites numbers.
+        
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th width="80%">Name</th><th>Tests</th><th>Errors</th><th>Failures</th><th>Skipped</th><th nowrap>Time(s)</th><th nowrap>Time Stamp</th><th>Host</th>
+            </tr>
+            <tr valign="top" class="Failure">
+                <td><a href="#forest">forest</a></td><td>78</td><td>19</td><td>6</td><td>0</td><td>36.174</td><td>2025-07-26T15:41:21</td><td>tampnend.local</td>
+            </tr>
+        </table>
+        <hr size="1" width="95%" align="left">
+        <a name="forest"></a>
+        <h3>Package forest</h3>
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th width="80%">Name</th><th>Tests</th><th>Errors</th><th>Failures</th><th>Skipped</th><th nowrap>Time(s)</th><th nowrap>Time Stamp</th><th>Host</th>
+            </tr>
+            <tr valign="top" class="Failure">
+                <td><a href="#BranchTest">BranchTest</a></td><td>5</td><td>0</td><td>1</td><td>0</td><td>5.011</td><td>2025-07-26T15:41:21</td><td>tampnend.local</td>
+            </tr>
+            <tr valign="top" class="Failure">
+                <td><a href="#ConstantsTest">ConstantsTest</a></td><td>13</td><td>0</td><td>1</td><td>0</td><td>0.403</td><td>2025-07-26T15:41:27</td><td>tampnend.local</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td><a href="#ExampleTest">ExampleTest</a></td><td>4</td><td>8</td><td>0</td><td>0</td><td>0.426</td><td>2025-07-26T15:41:28</td><td>tampnend.local</td>
+            </tr>
+            <tr valign="top" class="Failure">
+                <td><a href="#ForestControllerTest">ForestControllerTest</a></td><td>12</td><td>1</td><td>1</td><td>0</td><td>6.514</td><td>2025-07-26T15:41:29</td><td>tampnend.local</td>
+            </tr>
+            <tr valign="top" class="Failure">
+                <td><a href="#ForestModelTest">ForestModelTest</a></td><td>10</td><td>1</td><td>1</td><td>0</td><td>6.949</td><td>2025-07-26T15:41:38</td><td>tampnend.local</td>
+            </tr>
+            <tr valign="top" class="Failure">
+                <td><a href="#ForestTest">ForestTest</a></td><td>16</td><td>1</td><td>2</td><td>0</td><td>6.881</td><td>2025-07-26T15:41:46</td><td>tampnend.local</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td><a href="#ForestViewTest">ForestViewTest</a></td><td>8</td><td>8</td><td>0</td><td>0</td><td>4.928</td><td>2025-07-26T15:41:55</td><td>tampnend.local</td>
+            </tr>
+            <tr valign="top" class="">
+                <td><a href="#NodeTest">NodeTest</a></td><td>10</td><td>0</td><td>0</td><td>0</td><td>5.062</td><td>2025-07-26T15:42:01</td><td>tampnend.local</td>
+            </tr>
+        </table>
+        <a href="#top">Back to top</a>
+        <p></p>
+        <p></p>
+        <hr size="1" width="95%" align="left">
+        <a name="BranchTest"></a>
+        <h3>TestCase BranchTest</h3>
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+            </tr>
+            <tr valign="top" class="">
+                <td>testDrawMethod</td><td>Success</td><td></td><td>2.173</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testStartMethod</td><td>Success</td><td></td><td>0.014</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testConstructor</td><td>Success</td><td></td><td>0.009</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testToStringMethod</td><td>Failure</td><td>toString() メソッドが期待される文字列を返すこと expected:&lt;forest.Branch[start=[Node[StartNode],end=Node[EndNode]]]&gt; but was:&lt;forest.Branch[start=[startNode,end=endNode]]&gt;<code>
+                        <br>
+                        <br>
+                        junit.framework.AssertionFailedError: toString() メソッドが期待される文字列を返すこと expected:&lt;forest.Branch[start=[Node[StartNode],end=Node[EndNode]]]&gt; but was:&lt;forest.Branch[start=[startNode,end=endNode]]&gt;
+                        <br>
+                        	at forest.BranchTest.testToStringMethod(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.046</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testEndMethod</td><td>Success</td><td></td><td>0.007</td>
+            </tr>
+        </table>
+        <div class="Properties">
+            <a href="javascript:displayProperties('forest.BranchTest');">
+                    Properties &raquo;
+                </a>
+        </div>
+        <p></p>
+        <a href="#top">Back to top</a><a name="ConstantsTest"></a>
+        <h3>TestCase ConstantsTest</h3>
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+            </tr>
+            <tr valign="top" class="">
+                <td>testTagOfNodes</td><td>Success</td><td></td><td>0.005</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testTagOfTrees</td><td>Success</td><td></td><td>0.000</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testDefaultFont</td><td>Success</td><td></td><td>0.035</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testTagOfBranches</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testForegroundColor</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testUnKnown</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testVisited</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testUnVisited</td><td>Success</td><td></td><td>0.002</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testSleepTick</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testPrivateConstructor</td><td>Failure</td><td>Constants クラスのコンストラクタはプライベートであるべき<code>
+                        <br>
+                        <br>
+                        junit.framework.AssertionFailedError: Constants クラスのコンストラクタはプライベートであるべき
+                        <br>
+                        	at forest.ConstantsTest.testPrivateConstructor(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                    </code></td><td>0.022</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testBackgroundColor</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testInterval</td><td>Success</td><td></td><td>0.000</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testMargin</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+        </table>
+        <div class="Properties">
+            <a href="javascript:displayProperties('forest.ConstantsTest');">
+                    Properties &raquo;
+                </a>
+        </div>
+        <p></p>
+        <a href="#top">Back to top</a><a name="ExampleTest"></a>
+        <h3>TestCase ExampleTest</h3>
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testMainTooFewArguments</td><td>Error</td><td>Setting a Security Manager is not supported<code>
+                        <br>
+                        <br>
+                        java.lang.UnsupportedOperationException: Setting a Security Manager is not supported
+                        <br>
+                        	at java.base/java.lang.System.setSecurityManager(System.java:286)
+                        <br>
+                        	at forest.ExampleTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                    </code>Setting a Security Manager is not supported<code>
+                        <br>
+                        <br>
+                        java.lang.UnsupportedOperationException: Setting a Security Manager is not supported
+                        <br>
+                        	at java.base/java.lang.System.setSecurityManager(System.java:286)
+                        <br>
+                        	at forest.ExampleTest.tearDown(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                    </code></td><td>0.104</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testMainValidFile</td><td>Error</td><td>Setting a Security Manager is not supported<code>
+                        <br>
+                        <br>
+                        java.lang.UnsupportedOperationException: Setting a Security Manager is not supported
+                        <br>
+                        	at java.base/java.lang.System.setSecurityManager(System.java:286)
+                        <br>
+                        	at forest.ExampleTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                    </code>Setting a Security Manager is not supported<code>
+                        <br>
+                        <br>
+                        java.lang.UnsupportedOperationException: Setting a Security Manager is not supported
+                        <br>
+                        	at java.base/java.lang.System.setSecurityManager(System.java:286)
+                        <br>
+                        	at forest.ExampleTest.tearDown(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                    </code></td><td>0.008</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testPrivateConstructor</td><td>Error</td><td>Setting a Security Manager is not supported<code>
+                        <br>
+                        <br>
+                        java.lang.UnsupportedOperationException: Setting a Security Manager is not supported
+                        <br>
+                        	at java.base/java.lang.System.setSecurityManager(System.java:286)
+                        <br>
+                        	at forest.ExampleTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                    </code>Setting a Security Manager is not supported<code>
+                        <br>
+                        <br>
+                        java.lang.UnsupportedOperationException: Setting a Security Manager is not supported
+                        <br>
+                        	at java.base/java.lang.System.setSecurityManager(System.java:286)
+                        <br>
+                        	at forest.ExampleTest.tearDown(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                    </code></td><td>0.010</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testMainFileDoesNotExist</td><td>Error</td><td>Setting a Security Manager is not supported<code>
+                        <br>
+                        <br>
+                        java.lang.UnsupportedOperationException: Setting a Security Manager is not supported
+                        <br>
+                        	at java.base/java.lang.System.setSecurityManager(System.java:286)
+                        <br>
+                        	at forest.ExampleTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                    </code>Setting a Security Manager is not supported<code>
+                        <br>
+                        <br>
+                        java.lang.UnsupportedOperationException: Setting a Security Manager is not supported
+                        <br>
+                        	at java.base/java.lang.System.setSecurityManager(System.java:286)
+                        <br>
+                        	at forest.ExampleTest.tearDown(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                    </code></td><td>0.009</td>
+            </tr>
+        </table>
+        <div class="Properties">
+            <a href="javascript:displayProperties('forest.ExampleTest');">
+                    Properties &raquo;
+                </a>
+        </div>
+        <p></p>
+        <a href="#top">Back to top</a><a name="ForestControllerTest"></a>
+        <h3>TestCase ForestControllerTest</h3>
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+            </tr>
+            <tr valign="top" class="">
+                <td>testMouseReleased</td><td>Success</td><td></td><td>4.406</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testMousePressed</td><td>Success</td><td></td><td>0.015</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testToString</td><td>Success</td><td></td><td>0.007</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testMouseClicked</td><td>Success</td><td></td><td>0.058</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testMouseClickedWithNullView</td><td>Failure</td><td>view が null の場合に NullPointerException が発生しました<code>
+                        <br>
+                        <br>
+                        junit.framework.AssertionFailedError: view が null の場合に NullPointerException が発生しました
+                        <br>
+                        	at forest.ForestControllerTest.testMouseClickedWithNullView(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.050</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testScrollBy</td><td>Error</td><td>Cannot read field "x" because "&lt;local5&gt;" is null<code>
+                        <br>
+                        <br>
+                        java.lang.NullPointerException: Cannot read field "x" because "&lt;local5&gt;" is null
+                        <br>
+                        	at forest.ForestController.scrollBy(Unknown Source)
+                        <br>
+                        	at forest.ForestControllerTest.testScrollBy(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.100</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testMouseDragged</td><td>Success</td><td></td><td>0.020</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testMouseWheelMoved</td><td>Success</td><td></td><td>0.020</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testSetView</td><td>Success</td><td></td><td>0.020</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testEmptyMouseMethods</td><td>Success</td><td></td><td>0.009</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testConstructor</td><td>Success</td><td></td><td>0.009</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testSetModel</td><td>Success</td><td></td><td>0.018</td>
+            </tr>
+        </table>
+        <div class="Properties">
+            <a href="javascript:displayProperties('forest.ForestControllerTest');">
+                    Properties &raquo;
+                </a>
+        </div>
+        <p></p>
+        <a href="#top">Back to top</a><a name="ForestModelTest"></a>
+        <h3>TestCase ForestModelTest</h3>
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testAnimate</td><td>Failure</td><td>
+forestModel.changed();
+Wanted 1 time:
+-&gt; at forest.ForestModel.changed(Unknown Source)
+But was 2 times:
+-&gt; at forest.ForestModel.animate(Unknown Source)
+-&gt; at forest.ForestModel.animate(Unknown Source)
+
+<code>
+                        <br>
+                        <br>
+                        junit.framework.AssertionFailedError: 
+                        <br>
+                        forestModel.changed();
+                        <br>
+                        Wanted 1 time:
+                        <br>
+                        -&gt; at forest.ForestModel.changed(Unknown Source)
+                        <br>
+                        But was 2 times:
+                        <br>
+                        -&gt; at forest.ForestModel.animate(Unknown Source)
+                        <br>
+                        -&gt; at forest.ForestModel.animate(Unknown Source)
+                        <br>
+                        <br>
+                        <br>
+                        	at forest.ForestModel.changed(Unknown Source)
+                        <br>
+                        	at forest.ForestModelTest.testAnimate(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>2.036</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testForestAccessor</td><td>Success</td><td></td><td>0.024</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testRead</td><td>Success</td><td></td><td>2.739</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testToString</td><td>Success</td><td></td><td>0.023</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testPicture</td><td>Success</td><td></td><td>0.010</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testConstructorInitialization</td><td>Success</td><td></td><td>0.011</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testArrangeNoArgs</td><td>Success</td><td></td><td>0.007</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testAddAndGetDependents</td><td>Success</td><td></td><td>0.003</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testChanged</td><td>Success</td><td></td><td>0.155</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testRootAndRoots</td><td>Error</td><td>Index 0 out of bounds for length 0<code>
+                        <br>
+                        <br>
+                        java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+                        <br>
+                        	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100)
+                        <br>
+                        	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:106)
+                        <br>
+                        	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:302)
+                        <br>
+                        	at java.base/java.util.Objects.checkIndex(Objects.java:365)
+                        <br>
+                        	at java.base/java.util.ArrayList.get(ArrayList.java:428)
+                        <br>
+                        	at forest.ForestModel.root(Unknown Source)
+                        <br>
+                        	at forest.ForestModelTest.testRootAndRoots(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.113</td>
+            </tr>
+        </table>
+        <div class="Properties">
+            <a href="javascript:displayProperties('forest.ForestModelTest');">
+                    Properties &raquo;
+                </a>
+        </div>
+        <p></p>
+        <a href="#top">Back to top</a><a name="ForestTest"></a>
+        <h3>TestCase ForestTest</h3>
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+            </tr>
+            <tr valign="top" class="">
+                <td>testFlushBounds</td><td>Success</td><td></td><td>1.700</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testAddNode</td><td>Success</td><td></td><td>0.028</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testSubNodes</td><td>Success</td><td></td><td>0.024</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testDraw</td><td>Success</td><td></td><td>0.439</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testPropagateWithNullModel</td><td>Success</td><td></td><td>1.795</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testToString</td><td>Success</td><td></td><td>0.073</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testArrangeNoModel</td><td>Error</td><td>Cannot read field "x" because the return value of "forest.Node.getExtent()" is null<code>
+                        <br>
+                        <br>
+                        java.lang.NullPointerException: Cannot read field "x" because the return value of "forest.Node.getExtent()" is null
+                        <br>
+                        	at forest.Forest.arrange(Unknown Source)
+                        <br>
+                        	at forest.Forest.lambda$arrange$1(Unknown Source)
+                        <br>
+                        	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+                        <br>
+                        	at forest.Forest.arrange(Unknown Source)
+                        <br>
+                        	at forest.Forest.arrange(Unknown Source)
+                        <br>
+                        	at forest.ForestTest.testArrangeNoModel(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.099</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testRootNodes</td><td>Success</td><td></td><td>0.020</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testPropagate</td><td>Failure</td><td>
+forestModel.changed();
+Wanted 1 time:
+-&gt; at forest.ForestModel.changed(Unknown Source)
+But was 7 times:
+-&gt; at forest.Forest.lambda$propagate$2(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+
+<code>
+                        <br>
+                        <br>
+                        junit.framework.AssertionFailedError: 
+                        <br>
+                        forestModel.changed();
+                        <br>
+                        Wanted 1 time:
+                        <br>
+                        -&gt; at forest.ForestModel.changed(Unknown Source)
+                        <br>
+                        But was 7 times:
+                        <br>
+                        -&gt; at forest.Forest.lambda$propagate$2(Unknown Source)
+                        <br>
+                        -&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+                        <br>
+                        -&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+                        <br>
+                        -&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+                        <br>
+                        -&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+                        <br>
+                        -&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+                        <br>
+                        -&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+                        <br>
+                        <br>
+                        <br>
+                        	at forest.ForestModel.changed(Unknown Source)
+                        <br>
+                        	at forest.ForestTest.testPropagate(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.334</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testAddBranch</td><td>Success</td><td></td><td>0.023</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testWhichOfNodes</td><td>Success</td><td></td><td>0.034</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testSortNodes</td><td>Success</td><td></td><td>0.024</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testBounds</td><td>Success</td><td></td><td>0.016</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testSuperNodes</td><td>Success</td><td></td><td>0.021</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testArrangeRecursiveLogic</td><td>Failure</td><td>
+Wanted but not invoked:
+mockNodeB.setStatus(1);
+-&gt; at forest.Node.setStatus(Unknown Source)
+
+However, there were exactly 6 interactions with this mock:
+mockNodeB.getStatus();
+-&gt; at forest.Forest.lambda$arrange$3(Unknown Source)
+
+mockNodeB.setLocation(
+    java.awt.Point[x=75,y=0]
+);
+-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
+
+mockNodeB.getStatus();
+-&gt; at forest.Forest.arrange(Unknown Source)
+
+mockNodeB.getLocation();
+-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
+
+mockNodeB.getExtent();
+-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
+
+mockNodeB.getLocation();
+-&gt; at forest.Forest.lambda$arrange$8(Unknown Source)
+
+<code>
+                        <br>
+                        <br>
+                        junit.framework.AssertionFailedError: 
+                        <br>
+                        Wanted but not invoked:
+                        <br>
+                        mockNodeB.setStatus(1);
+                        <br>
+                        -&gt; at forest.Node.setStatus(Unknown Source)
+                        <br>
+                        <br>
+                        However, there were exactly 6 interactions with this mock:
+                        <br>
+                        mockNodeB.getStatus();
+                        <br>
+                        -&gt; at forest.Forest.lambda$arrange$3(Unknown Source)
+                        <br>
+                        <br>
+                        mockNodeB.setLocation(
+                        <br>
+                            java.awt.Point[x=75,y=0]
+                        <br>
+                        );
+                        <br>
+                        -&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
+                        <br>
+                        <br>
+                        mockNodeB.getStatus();
+                        <br>
+                        -&gt; at forest.Forest.arrange(Unknown Source)
+                        <br>
+                        <br>
+                        mockNodeB.getLocation();
+                        <br>
+                        -&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
+                        <br>
+                        <br>
+                        mockNodeB.getExtent();
+                        <br>
+                        -&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
+                        <br>
+                        <br>
+                        mockNodeB.getLocation();
+                        <br>
+                        -&gt; at forest.Forest.lambda$arrange$8(Unknown Source)
+                        <br>
+                        <br>
+                        <br>
+                        	at forest.Node.setStatus(Unknown Source)
+                        <br>
+                        	at forest.ForestTest.testArrangeRecursiveLogic(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.281</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testConstructor</td><td>Success</td><td></td><td>0.025</td>
+            </tr>
+        </table>
+        <div class="Properties">
+            <a href="javascript:displayProperties('forest.ForestTest');">
+                    Properties &raquo;
+                </a>
+        </div>
+        <p></p>
+        <a href="#top">Back to top</a><a name="ForestViewTest"></a>
+        <h3>TestCase ForestViewTest</h3>
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testToString</td><td>Error</td><td>
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();<code>
+                        <br>
+                        <br>
+                        org.mockito.exceptions.misusing.NotAMockException: 
+                        <br>
+                        Argument passed to verify() is of type ForestView and is not a mock!
+                        <br>
+                        Make sure you place the parenthesis correctly!
+                        <br>
+                        See the examples of correct verifications:
+                        <br>
+                            verify(mock).someMethod();
+                        <br>
+                            verify(mock, times(10)).someMethod();
+                        <br>
+                            verify(mock, atLeastOnce()).someMethod();
+                        <br>
+                        	at forest.ForestViewTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>2.932</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testPaintComponent</td><td>Error</td><td>
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();<code>
+                        <br>
+                        <br>
+                        org.mockito.exceptions.misusing.NotAMockException: 
+                        <br>
+                        Argument passed to verify() is of type ForestView and is not a mock!
+                        <br>
+                        Make sure you place the parenthesis correctly!
+                        <br>
+                        See the examples of correct verifications:
+                        <br>
+                            verify(mock).someMethod();
+                        <br>
+                            verify(mock, times(10)).someMethod();
+                        <br>
+                            verify(mock, atLeastOnce()).someMethod();
+                        <br>
+                        	at forest.ForestViewTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.021</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testScrollAmount</td><td>Error</td><td>
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();<code>
+                        <br>
+                        <br>
+                        org.mockito.exceptions.misusing.NotAMockException: 
+                        <br>
+                        Argument passed to verify() is of type ForestView and is not a mock!
+                        <br>
+                        Make sure you place the parenthesis correctly!
+                        <br>
+                        See the examples of correct verifications:
+                        <br>
+                            verify(mock).someMethod();
+                        <br>
+                            verify(mock, times(10)).someMethod();
+                        <br>
+                            verify(mock, atLeastOnce()).someMethod();
+                        <br>
+                        	at forest.ForestViewTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.033</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testConstructorInitialization</td><td>Error</td><td>
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();<code>
+                        <br>
+                        <br>
+                        org.mockito.exceptions.misusing.NotAMockException: 
+                        <br>
+                        Argument passed to verify() is of type ForestView and is not a mock!
+                        <br>
+                        Make sure you place the parenthesis correctly!
+                        <br>
+                        See the examples of correct verifications:
+                        <br>
+                            verify(mock).someMethod();
+                        <br>
+                            verify(mock, times(10)).someMethod();
+                        <br>
+                            verify(mock, atLeastOnce()).someMethod();
+                        <br>
+                        	at forest.ForestViewTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.020</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testWhichOfNodes</td><td>Error</td><td>
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();<code>
+                        <br>
+                        <br>
+                        org.mockito.exceptions.misusing.NotAMockException: 
+                        <br>
+                        Argument passed to verify() is of type ForestView and is not a mock!
+                        <br>
+                        Make sure you place the parenthesis correctly!
+                        <br>
+                        See the examples of correct verifications:
+                        <br>
+                            verify(mock).someMethod();
+                        <br>
+                            verify(mock, times(10)).someMethod();
+                        <br>
+                            verify(mock, atLeastOnce()).someMethod();
+                        <br>
+                        	at forest.ForestViewTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.010</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testScrollBy</td><td>Error</td><td>
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();<code>
+                        <br>
+                        <br>
+                        org.mockito.exceptions.misusing.NotAMockException: 
+                        <br>
+                        Argument passed to verify() is of type ForestView and is not a mock!
+                        <br>
+                        Make sure you place the parenthesis correctly!
+                        <br>
+                        See the examples of correct verifications:
+                        <br>
+                            verify(mock).someMethod();
+                        <br>
+                            verify(mock, times(10)).someMethod();
+                        <br>
+                            verify(mock, atLeastOnce()).someMethod();
+                        <br>
+                        	at forest.ForestViewTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.021</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testScrollTo</td><td>Error</td><td>
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();<code>
+                        <br>
+                        <br>
+                        org.mockito.exceptions.misusing.NotAMockException: 
+                        <br>
+                        Argument passed to verify() is of type ForestView and is not a mock!
+                        <br>
+                        Make sure you place the parenthesis correctly!
+                        <br>
+                        See the examples of correct verifications:
+                        <br>
+                            verify(mock).someMethod();
+                        <br>
+                            verify(mock, times(10)).someMethod();
+                        <br>
+                            verify(mock, atLeastOnce()).someMethod();
+                        <br>
+                        	at forest.ForestViewTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.031</td>
+            </tr>
+            <tr valign="top" class="Error">
+                <td>testUpdate</td><td>Error</td><td>
+Argument passed to verify() is of type ForestView and is not a mock!
+Make sure you place the parenthesis correctly!
+See the examples of correct verifications:
+    verify(mock).someMethod();
+    verify(mock, times(10)).someMethod();
+    verify(mock, atLeastOnce()).someMethod();<code>
+                        <br>
+                        <br>
+                        org.mockito.exceptions.misusing.NotAMockException: 
+                        <br>
+                        Argument passed to verify() is of type ForestView and is not a mock!
+                        <br>
+                        Make sure you place the parenthesis correctly!
+                        <br>
+                        See the examples of correct verifications:
+                        <br>
+                            verify(mock).someMethod();
+                        <br>
+                            verify(mock, times(10)).someMethod();
+                        <br>
+                            verify(mock, atLeastOnce()).someMethod();
+                        <br>
+                        	at forest.ForestViewTest.setUp(Unknown Source)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+                        <br>
+                        	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+                        <br>
+                        	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+                        <br>
+                        	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+                        <br>
+                    </code></td><td>0.013</td>
+            </tr>
+        </table>
+        <div class="Properties">
+            <a href="javascript:displayProperties('forest.ForestViewTest');">
+                    Properties &raquo;
+                </a>
+        </div>
+        <p></p>
+        <a href="#top">Back to top</a><a name="NodeTest"></a>
+        <h3>TestCase NodeTest</h3>
+        <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+            <tr valign="top">
+                <th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+            </tr>
+            <tr valign="top" class="">
+                <td>testDraw</td><td>Success</td><td></td><td>3.176</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testToString</td><td>Success</td><td></td><td>0.006</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testGetAndSetLocation</td><td>Success</td><td></td><td>0.002</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testGetAndSetName</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testGetAndSetExtent</td><td>Success</td><td></td><td>0.002</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testStringHeight</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testGetBounds</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testGetAndSetStatus</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testConstructor</td><td>Success</td><td></td><td>0.001</td>
+            </tr>
+            <tr valign="top" class="">
+                <td>testStringWidth</td><td>Success</td><td></td><td>0.002</td>
+            </tr>
+        </table>
+        <div class="Properties">
+            <a href="javascript:displayProperties('forest.NodeTest');">
+                    Properties &raquo;
+                </a>
+        </div>
+        <p></p>
+        <a href="#top">Back to top</a>
+    </body>
+</html>

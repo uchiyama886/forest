@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="1" failures="2" hostname="tampnend.local" name="forest.ForestTest" skipped="0" tests="16" time="6.881" timestamp="2025-07-26T15:41:46">
+  <properties>
+    <property name="ant.library.dir" value="/usr/local/ant/lib" />
+    <property name="mockitojar" value="mockito-core-5.18.0.jar" />
+    <property name="copyright" value="Copyright 2025 TEAM JavaGrove. All Rights Reserved." />
+    <property name="ant.file.type" value="file" />
+    <property name="java.specification.version" value="24" />
+    <property name="ant.project.name" value="Forest" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="java.class.path" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/Classes:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/hamcrest-core-1.3.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/junit-4.13.1.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/mockito-core-5.18.0.jar:/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/objenesis-3.4.jar:/usr/local/apache-ant-1.10.15/lib/ant-launcher.jar:/usr/local/ant/lib/ant.jar:/usr/local/ant/lib/ant-junit.jar:/usr/local/ant/lib/ant-junit4.jar" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="ant.file.type.Forest" value="file" />
+    <property name="java.vendor.url" value="https://java.oracle.com/" />
+    <property name="java.vm.specification.version" value="24" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="bytebuddyagentjar" value="byte-buddy-agent-1.17.6.jar" />
+    <property name="srcdir" value="src/main/java" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="user.country" value="JP" />
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home/lib" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner forest.ForestTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/test-report/TEST-forest.ForestTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junitvmwatcher12091986996843793609.properties propsfile=/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/junit1541443416641523709.properties" />
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="jdk.debug" value="release" />
+    <property name="package" value="forest" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="user.home" value="/Users/tamp" />
+    <property name="user.language" value="ja" />
+    <property name="packagenames" value="forest,mvc,utility" />
+    <property name="reportdir" value="./test-report" />
+    <property name="instdir" value="./Forest.app/Contents/Resources/Java" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="libdir" value="./lib" />
+    <property name="resourcedir" value="src/main/resources" />
+    <property name="java.version.date" value="2025-03-18" />
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home" />
+    <property name="objenesisjar" value="objenesis-3.4.jar" />
+    <property name="basedir" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program" />
+    <property name="file.separator" value="/" />
+    <property name="java.vm.compressedOopsMode" value="Zero based" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="ant.java.version" value="24" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="bytebuddyjar" value="byte-buddy-1.17.6.jar" />
+    <property name="ant.file.Forest" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml" />
+    <property name="docdir" value="./JavaDoc" />
+    <property name="apple.awt.application.name" value="JUnitTestRunner" />
+    <property name="junitjar" value="junit-4.13.1.jar" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="hamcrestjar" value="hamcrest-core-1.3.jar" />
+    <property name="doc-title" value="Forest Documant" />
+    <property name="java.runtime.version" value="24+36-3646" />
+    <property name="utility" value="utility" />
+    <property name="user.name" value="tamp" />
+    <property name="ant.file" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/build.xml" />
+    <property name="stdout.encoding" value="UTF-8" />
+    <property name="path.separator" value=":" />
+    <property name="os.version" value="15.4" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="ant.project.invoked-targets" value="unittest" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="mvc" value="mvc" />
+    <property name="ant.core.lib" value="/usr/local/ant/lib/ant.jar" />
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
+    <property name="java.io.tmpdir" value="/var/folders/15/8xpws36j4zx9cx_0h90s8cjh0000gn/T/" />
+    <property name="java.version" value="24" />
+    <property name="user.dir" value="/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program" />
+    <property name="os.arch" value="x86_64" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.home" value="/usr/local/ant" />
+    <property name="zipname" value="Forest" />
+    <property name="native.encoding" value="UTF-8" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.10.15 compiled on August 25 2024" />
+    <property name="java.library.path" value="/Users/tamp/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="stderr.encoding" value="UTF-8" />
+    <property name="java.vm.info" value="mixed mode, sharing" />
+    <property name="java.vm.version" value="24+36-3646" />
+    <property name="destdir" value="./Classes" />
+    <property name="sun.io.unicode.encoding" value="UnicodeBig" />
+    <property name="java.class.version" value="68.0" />
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="ant.project.default-target" value="all" />
+  </properties>
+  <testcase classname="forest.ForestTest" name="testFlushBounds" time="1.7" />
+  <testcase classname="forest.ForestTest" name="testAddNode" time="0.028" />
+  <testcase classname="forest.ForestTest" name="testSubNodes" time="0.024" />
+  <testcase classname="forest.ForestTest" name="testDraw" time="0.439" />
+  <testcase classname="forest.ForestTest" name="testPropagateWithNullModel" time="1.795" />
+  <testcase classname="forest.ForestTest" name="testToString" time="0.073" />
+  <testcase classname="forest.ForestTest" name="testArrangeNoModel" time="0.099">
+    <error message="Cannot read field &quot;x&quot; because the return value of &quot;forest.Node.getExtent()&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot read field &quot;x&quot; because the return value of &quot;forest.Node.getExtent()&quot; is null
+	at forest.Forest.arrange(Unknown Source)
+	at forest.Forest.lambda$arrange$1(Unknown Source)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at forest.Forest.arrange(Unknown Source)
+	at forest.Forest.arrange(Unknown Source)
+	at forest.ForestTest.testArrangeNoModel(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+</error>
+  </testcase>
+  <testcase classname="forest.ForestTest" name="testRootNodes" time="0.02" />
+  <testcase classname="forest.ForestTest" name="testPropagate" time="0.334">
+    <failure message="&#xa;forestModel.changed();&#xa;Wanted 1 time:&#xa;-&gt; at forest.ForestModel.changed(Unknown Source)&#xa;But was 7 times:&#xa;-&gt; at forest.Forest.lambda$propagate$2(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)&#xa;&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+forestModel.changed();
+Wanted 1 time:
+-&gt; at forest.ForestModel.changed(Unknown Source)
+But was 7 times:
+-&gt; at forest.Forest.lambda$propagate$2(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+-&gt; at forest.ForestTest.lambda$testPropagate$1(Unknown Source)
+
+
+	at forest.ForestModel.changed(Unknown Source)
+	at forest.ForestTest.testPropagate(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+</failure>
+  </testcase>
+  <testcase classname="forest.ForestTest" name="testAddBranch" time="0.023" />
+  <testcase classname="forest.ForestTest" name="testWhichOfNodes" time="0.034" />
+  <testcase classname="forest.ForestTest" name="testSortNodes" time="0.024" />
+  <testcase classname="forest.ForestTest" name="testBounds" time="0.016" />
+  <testcase classname="forest.ForestTest" name="testSuperNodes" time="0.021" />
+  <testcase classname="forest.ForestTest" name="testArrangeRecursiveLogic" time="0.281">
+    <failure message="&#xa;Wanted but not invoked:&#xa;mockNodeB.setStatus(1);&#xa;-&gt; at forest.Node.setStatus(Unknown Source)&#xa;&#xa;However, there were exactly 6 interactions with this mock:&#xa;mockNodeB.getStatus();&#xa;-&gt; at forest.Forest.lambda$arrange$3(Unknown Source)&#xa;&#xa;mockNodeB.setLocation(&#xa;    java.awt.Point[x=75,y=0]&#xa;);&#xa;-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)&#xa;&#xa;mockNodeB.getStatus();&#xa;-&gt; at forest.Forest.arrange(Unknown Source)&#xa;&#xa;mockNodeB.getLocation();&#xa;-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)&#xa;&#xa;mockNodeB.getExtent();&#xa;-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)&#xa;&#xa;mockNodeB.getLocation();&#xa;-&gt; at forest.Forest.lambda$arrange$8(Unknown Source)&#xa;&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+Wanted but not invoked:
+mockNodeB.setStatus(1);
+-&gt; at forest.Node.setStatus(Unknown Source)
+
+However, there were exactly 6 interactions with this mock:
+mockNodeB.getStatus();
+-&gt; at forest.Forest.lambda$arrange$3(Unknown Source)
+
+mockNodeB.setLocation(
+    java.awt.Point[x=75,y=0]
+);
+-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
+
+mockNodeB.getStatus();
+-&gt; at forest.Forest.arrange(Unknown Source)
+
+mockNodeB.getLocation();
+-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
+
+mockNodeB.getExtent();
+-&gt; at forest.Forest.lambda$arrange$4(Unknown Source)
+
+mockNodeB.getLocation();
+-&gt; at forest.Forest.lambda$arrange$8(Unknown Source)
+
+
+	at forest.Node.setStatus(Unknown Source)
+	at forest.ForestTest.testArrangeRecursiveLogic(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:55)
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:100)
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:107)
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:42)
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)
+</failure>
+  </testcase>
+  <testcase classname="forest.ForestTest" name="testConstructor" time="0.025" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/tamp/Desktop/Forest_Develop/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException: Cannot invoke "forest.ForestModel.changed()" because "<parameter1>" is null
+	at forest.Forest.lambda$propagate$2(Unknown Source)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+]]></system-err>
+</testsuite>

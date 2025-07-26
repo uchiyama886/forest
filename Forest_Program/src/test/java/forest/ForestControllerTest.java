@@ -62,22 +62,22 @@ public class ForestControllerTest {
 
     // テストメソッド
 
-    /// コンストラクタのテスト
+    // コンストラクタのテスト
     /**
      * {@code ForestController} コンストラクタがフィールドを正しく初期化することを確認します。
      */
     @Test
     public void testConstructor() {
         ForestController newController = new ForestController(); // 新しいインスタンスをテスト
-        assertNull("model が null で初期化されること", newController.model);
-        assertNull("view が null で初期化されること", newController.view);
-        assertNull("previous が null で初期化されること", newController.previous);
-        assertNull("current が null で初期化されること", newController.current);
+        assertNull("model が null で初期化されること", newController.getModel());
+        assertNull("view が null で初期化されること", newController.getView());
+        assertNull("previous が null で初期化されること", newController.getPrevious());
+        assertNull("current が null で初期化されること", newController.getCurrent());
     }
 
     
 
-    /// `setModel()` のテスト
+    // `setModel()` のテスト
     /**
      * {@code setModel()} メソッドがモデルを正しく設定することを確認します。
      */
@@ -85,12 +85,12 @@ public class ForestControllerTest {
     public void testSetModel() {
         ForestModel anotherMockModel = mock(ForestModel.class);
         controller.setModel(anotherMockModel);
-        assertEquals("setModel() がモデルを正しく設定すること", anotherMockModel, controller.model);
+        assertEquals("setModel() がモデルを正しく設定すること", anotherMockModel, controller.getModel());
     }
 
     
 
-    /// `setView()` のテスト
+    // `setView()` のテスト
     /**
      * {@code setView()} メソッドがビューを正しく設定し、
      * マウスリスナー、マウスモーションリスナー、マウスホイールリスナーをビューに追加することを確認します。
@@ -100,7 +100,7 @@ public class ForestControllerTest {
         ForestView anotherMockView = mock(ForestView.class);
         controller.setView(anotherMockView); // 新しいビューを設定
 
-        assertEquals("setView() がビューを正しく設定すること", anotherMockView, controller.view);
+        assertEquals("setView() がビューを正しく設定すること", anotherMockView, controller.getView());
         // 各リスナーがビューに追加されたことを検証
         verify(anotherMockView).addMouseListener(controller);
         verify(anotherMockView).addMouseMotionListener(controller);
@@ -109,7 +109,7 @@ public class ForestControllerTest {
 
     
 
-    /// `mouseClicked()` のテスト
+    // `mouseClicked()` のテスト
     /**
      * {@code mouseClicked()} メソッドが、クリックされた座標とノード情報を正しく処理し、標準出力に出力することを確認します。
      * ノードが見つかった場合と見つからなかった場合の両方をテストします。
@@ -184,7 +184,7 @@ public class ForestControllerTest {
 
     
 
-    /// `mouseDragged()` のテスト
+    // `mouseDragged()` のテスト
     /**
      * {@code mouseDragged()} メソッドが、マウスカーソルを移動カーソルに変更し、
      * ビューのスクロールを依頼し、その後にビューの再描画を依頼することを確認します。
@@ -207,12 +207,12 @@ public class ForestControllerTest {
         verify(mockView).scrollBy(new Point(10, 10));
 
         // 3. previous が current (10,10) に更新されたことを検証
-        assertEquals("previous が current に更新されていること", new Point(10, 10), controller.previous);
+        assertEquals("previous が current に更新されていること", new Point(10, 10), controller.getPrevious());
     }
 
     
 
-    /// `mouseEntered()`, `mouseExited()`, `mouseMoved()` のテスト
+    // `mouseEntered()`, `mouseExited()`, `mouseMoved()` のテスト
     /**
      * これらのメソッドが何もしないことを確認します。
      */
@@ -233,7 +233,7 @@ public class ForestControllerTest {
 
     
 
-    /// `mousePressed()` のテスト
+    // `mousePressed()` のテスト
     /**
      * {@code mousePressed()} メソッドが、マウスカーソルを十字カーソルに変更し、
      * {@code current} と {@code previous} の位置をイベントの位置に設定することを確認します。
@@ -250,13 +250,13 @@ public class ForestControllerTest {
         verify(mockComponent).setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 
         // 2. current と previous が正しい位置に設定されたことを検証
-        assertEquals("current が正しい位置に設定されていること", pressPoint, controller.current);
-        assertEquals("previous が current と同じ位置に設定されていること", pressPoint, controller.previous);
+        assertEquals("current が正しい位置に設定されていること", pressPoint, controller.getCurrent());
+        assertEquals("previous が current と同じ位置に設定されていること", pressPoint, controller.getPrevious());
     }
 
     
 
-    /// `mouseReleased()` のテスト
+    // `mouseReleased()` のテスト
     /**
      * {@code mouseReleased()} メソッドが、マウスカーソルをデフォルトに戻し、
      * {@code current} と {@code previous} の位置をイベントの位置に設定することを確認します。
@@ -273,13 +273,13 @@ public class ForestControllerTest {
         verify(mockComponent).setCursor(Cursor.getDefaultCursor());
 
         // 2. current と previous が正しい位置に設定されたことを検証
-        assertEquals("current が正しい位置に設定されていること", releasePoint, controller.current);
-        assertEquals("previous が current と同じ位置に設定されていること", releasePoint, controller.previous);
+        assertEquals("current が正しい位置に設定されていること", releasePoint, controller.getCurrent());
+        assertEquals("previous が current と同じ位置に設定されていること", releasePoint, controller.getPrevious());
     }
 
     
 
-    /// `mouseWheelMoved()` のテスト
+    // `mouseWheelMoved()` のテスト
     /**
      * {@code mouseWheelMoved()} メソッドが、マウスホイールの回転量に基づいて
      * ビューのスクロールを依頼し、ビューの再描画を依頼することを確認します。
@@ -322,7 +322,7 @@ public class ForestControllerTest {
 
     
 
-    /// `scrollBy()` のテスト
+    // `scrollBy()` のテスト
     /**
      * {@code scrollBy()} メソッドが、指定された量だけビューをスクロールし、
      * シフトキーの状態と他の修飾キーの状態に応じて、他のビューを連動スクロールすることを確認します。
@@ -393,7 +393,7 @@ public class ForestControllerTest {
 
     
 
-    /// `toString()` のテスト
+    // `toString()` のテスト
     /**
      * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すことを確認します。
      */
