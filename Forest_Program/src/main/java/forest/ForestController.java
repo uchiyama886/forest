@@ -257,6 +257,38 @@ public class ForestController extends MouseInputAdapter //implements MouseWheelL
 		return;
 	}
 
+	/**
+     * 樹状整列におけるMVCのモデル（M）を記憶するフィールドを返すメソッドです。
+	 * @return 樹状整列におけるMVCのモデル（M）を記憶するフィールド {@code ForestModel}。
+     */
+    public ForestModel getModel() {
+		return this.model;
+	}
+
+    /**
+     * 樹状整列におけるMVCのビュー（V）を記憶するフィールドを返すメソッドです。
+	 * @return 樹状整列におけるMVCのビュー（V）を記憶するフィールド {@code ForestView}。
+     */
+    public ForestView getView() {
+		return this.view;
+	}
+
+    /**
+     * マウスの直近の位置を記憶するフィールドを返すメソッドです。
+	 * @return マウスの直近の位置を記憶するフィールド {@code Point}。
+     */
+    public Point getPrevious () {
+		return this.previous;
+	}
+
+    /**
+     * マウスの現在の位置を記憶するフィールドを返すメソッドです。
+	 * @return マウスの現在の位置を記憶するフィールド {@code Point}。
+     */
+    public Point getCurrent() {
+		return this.current;
+	}
+
     /**
      * 自分自身を文字列に変換するメソッドです。
      */
