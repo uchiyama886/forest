@@ -1,317 +1,700 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<meta http-equiv="Content-Script-Type" content="text/javascript">
-<meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
-<meta name="description" content="ソフトウェア工学IIのホームページ">
-<meta name="author" content="AOKI Atsushi">
-<link rev="made" href="index.html">
-<link rel="index" href="index.html">
-<style type="text/css">
-<!--
-body {
-  background-color : #ffffff;
-  margin : 20px;
-  padding : 10px;
-  font-family : serif;
-  font-size : 10pt;
-}
-a {
-  text-decoration : underline;
-  color : #000000;
-}
-a:link {
-  background-color : #ffddbb;
-}
-a:visited {
-  background-color : #ccffcc;
-}
-a:hover {
-  background-color : #dddddd;
-}
-a:active {
-  background-color : #dddddd;
-}
-div.belt {
-  background-color : #eeeeee;
-  padding : 0px 4px;
-}
-div.belt-yellow {
-  background-color : #ffffcc;
-  padding : 0px 4px;
-}
-div.belt-blue {
-  background-color : #ddeeff;
-  padding : 0px 4px;
-}
-div.right-small {
-  text-align : right;
-  font-size : 8pt;
-}
-img.border {
-  border-width : 1px;
-  border-color : #000000;
-  vertical-align : middle;
-}
-img.borderless {
-  border-width : 0px;
-  vertical-align : middle;
-}
-p.belt {
-  background-color : #ffeedd;
-  padding : 4px 8px;
-}
-p.belt-blue {
-  background-color : #ddeeff;
-  padding : 4px 8px;
-}
-pre.belt {
-  background-color : #ddeeff;
-  padding : 4px 8px;
-}
-pre.belt-yellow {
-  background-color : #ffffcc;
-  padding : 4px 8px;
-}
-table {
-  border-style : solid;
-  border-width : 0px;
-  border-color : #000000;
-  font-family : serif;
-  font-size : 10pt;
-}
-table.profile {
-  border-style : solid;
-  border-width : 0px;
-  border-color : #000000;
-  font-family : serif;
-  font-size : 10pt;
-  margin-top : 8px;
-  margin-left : 8px;
-  margin-right : 8px;
-  margin-bottom : 8px;
-}
-table.belt {
-  border-style : solid;
-  border-width : 0px;
-  border-color : #000000;
-  background-color : #ffeedd;
-  padding : 0px 0px;
-  width : 100%;
-}
-table.content {
-  border-style : solid;
-  border-width : 0px;
-  border-color : #000000;
-  padding : 2px 4px;
-}
-table.font-fixed {
-  border-style : solid;
-  border-width : 0px;
-  border-color : #000000;
-  padding : 2px 4px;
-  font-family : monospace;
-}
-table.nest {
-  border-style : solid;
-  border-width : 0px;
-  border-color : #000000;
-  padding : 0px 0px;
-}
-td {
-  padding : 0px 0px;
-  vertical-align : middle;
-}
-td.center {
-  text-align : center;
-}
-td.center-half {
-  text-align : center;
-  width : 50%;
-  font-size : 8pt;
-}
-td.center-small {
-  text-align : center;
-  font-size : 8pt;
-  padding : 0px 4px;
-}
-td.center-small-nopadding {
-  text-align : center;
-  font-size : 8pt;
-  padding : 0px 0px;
-}
-td.center-white {
-  text-align : center;
-  background-color : #ffffff;
-}
-td.center-small-white {
-  text-align : center;
-  font-size : 8pt;
-  background-color : #ffffff;
-}
-td.center-border1 {
-  text-align : center;
-  vertical-align : middle;
-  empty-cells : show;
-  border-style : solid;
-  border-width : 1px;
-  border-color : #ffc080;
-  width : 22px;
-  height : 22px;
-}
-td.left-small {
-  text-align : left;
-  font-size : 8pt;
-  padding : 0px 4px;
-}
-td.left-small-white {
-  text-align : left;
-  font-size : 8pt;
-  padding : 0px 4px;
-  background-color : #ffffff;
-}
-td.right-small {
-  text-align : right;
-  font-size : 8pt;
-  padding : 0px 4px;
-}
-td.right-small-white {
-  text-align : right;
-  font-size : 8pt;
-  padding : 0px 4px;
-  background-color : #ffffff;
-}
-th {
-  padding : 0px 0px;
-  vertical-align : middle;
-}
-#menu {
-  margin: 0px 0px 0px 0px;
-  padding: 0px;
-  height: 32px;
-}
-#menu ul {
-  margin: 0px;
-  padding: 0px;
-  list-style: none;
-  text-align: center;
-  clear: both;
-}
-#menu li {
-  margin: 0px 5px 0px 0px;
-  padding: 0px;
-  float: left;
-}
-#menu a {
-  display: block;
-  padding: 2px 4px;
-  text-decoration: none;
-  margin: 0px;
-  font-weight: bold;
-  background: #FFFFFF;
-  color: #333333;
-  border: 1px solid #666666;
-}
-#menu a:hover {
-  display: block;
-  padding: 2px 4px;
-  border-bottom: 1px solid #000000;
-  text-decoration: none;
-  background: #FFCC66;
-}
-#menu .current {
-  background-color: #F45F57;
-  font-weight: bold;
-  color: #FFFFFF;
-  border: 1px solid #333333;
-}
--->
-</style>
-<title>ソフトウェア工学II「樹状整列」テスト仕様書</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+  <meta name="description" content="ソフトウェア工学IIのホームページ">
+  <meta name="author" content="AOKI Atsushi">
+  <link rev="made" href="index.html">
+  <link rel="index" href="index.html">
+  <style type="text/css">
+    <!--
+    body {
+      background-color: #ffffff;
+      margin: 20px;
+      padding: 10px;
+      font-family: serif;
+      font-size: 10pt;
+    }
+
+    a {
+      text-decoration: underline;
+      color: #000000;
+    }
+
+    a:link {
+      background-color: #ffddbb;
+    }
+
+    a:visited {
+      background-color: #ccffcc;
+    }
+
+    a:hover {
+      background-color: #dddddd;
+    }
+
+    a:active {
+      background-color: #dddddd;
+    }
+
+    div.belt {
+      background-color: #eeeeee;
+      padding: 0px 4px;
+    }
+
+    div.belt-yellow {
+      background-color: #ffffcc;
+      padding: 0px 4px;
+    }
+
+    div.belt-blue {
+      background-color: #ddeeff;
+      padding: 0px 4px;
+    }
+
+    div.right-small {
+      text-align: right;
+      font-size: 8pt;
+    }
+
+    img.border {
+      border-width: 1px;
+      border-color: #000000;
+      vertical-align: middle;
+    }
+
+    img.borderless {
+      border-width: 0px;
+      vertical-align: middle;
+    }
+
+    p.belt {
+      background-color: #ffeedd;
+      padding: 4px 8px;
+    }
+
+    p.belt-blue {
+      background-color: #ddeeff;
+      padding: 4px 8px;
+    }
+
+    pre.belt {
+      background-color: #ddeeff;
+      padding: 4px 8px;
+    }
+
+    pre.belt-yellow {
+      background-color: #ffffcc;
+      padding: 4px 8px;
+    }
+
+    table {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      font-family: serif;
+      font-size: 10pt;
+    }
+
+    table.profile {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      font-family: serif;
+      font-size: 10pt;
+      margin-top: 8px;
+      margin-left: 8px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    table.belt {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      background-color: #ffeedd;
+      padding: 0px 0px;
+      width: 100%;
+    }
+
+    table.content {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 2px 4px;
+    }
+
+    table.font-fixed {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 2px 4px;
+      font-family: monospace;
+    }
+
+    table.nest {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 0px 0px;
+    }
+
+    td {
+      padding: 0px 0px;
+      vertical-align: middle;
+    }
+
+    td.center {
+      text-align: center;
+    }
+
+    td.center-half {
+      text-align: center;
+      width: 50%;
+      font-size: 8pt;
+    }
+
+    td.center-small {
+      text-align: center;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.center-small-nopadding {
+      text-align: center;
+      font-size: 8pt;
+      padding: 0px 0px;
+    }
+
+    td.center-white {
+      text-align: center;
+      background-color: #ffffff;
+    }
+
+    td.center-small-white {
+      text-align: center;
+      font-size: 8pt;
+      background-color: #ffffff;
+    }
+
+    td.center-border1 {
+      text-align: center;
+      vertical-align: middle;
+      empty-cells: show;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #ffc080;
+      width: 22px;
+      height: 22px;
+    }
+
+    td.left-small {
+      text-align: left;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.left-small-white {
+      text-align: left;
+      font-size: 8pt;
+      padding: 0px 4px;
+      background-color: #ffffff;
+    }
+
+    td.right-small {
+      text-align: right;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.right-small-white {
+      text-align: right;
+      font-size: 8pt;
+      padding: 0px 4px;
+      background-color: #ffffff;
+    }
+
+    th {
+      padding: 0px 0px;
+      vertical-align: middle;
+    }
+
+    #menu {
+      margin: 0px 0px 0px 0px;
+      padding: 0px;
+      height: 32px;
+    }
+
+    #menu ul {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+      text-align: center;
+      clear: both;
+    }
+
+    #menu li {
+      margin: 0px 5px 0px 0px;
+      padding: 0px;
+      float: left;
+    }
+
+    #menu a {
+      display: block;
+      padding: 2px 4px;
+      text-decoration: none;
+      margin: 0px;
+      font-weight: bold;
+      background: #FFFFFF;
+      color: #333333;
+      border: 1px solid #666666;
+    }
+
+    #menu a:hover {
+      display: block;
+      padding: 2px 4px;
+      border-bottom: 1px solid #000000;
+      text-decoration: none;
+      background: #FFCC66;
+    }
+
+    #menu .current {
+      background-color: #F45F57;
+      font-weight: bold;
+      color: #FFFFFF;
+      border: 1px solid #333333;
+    }
+    -->
+  </style>
+  <title>ソフトウェア工学II「樹状整列」テスト仕様書</title>
 </head>
+
 <body>
-<div id="menu">
-<ul>
-  <li><a href="../index.html">ホーム</a></li>
-  <li><a href="../Requirement/index.html">要求仕様書</a></li>
-  <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
-  <li><a href="../BasicDesign/index.html">基本設計書</a></li>
-  <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
-  <li><a href="../TestSpecification/index.html" class="current">テスト仕様書</a></li>
-  <li><a href="../TestResult/index.html">テスト結果</a></li>
-  <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
-  <li><a href="../Program/index.html">プログラム</a></li>
-  <li><a href="../Manual/index.html">マニュアル</a></li>
-</ul>
-</div>
-<hr>
-<h2>ソフトウェア工学II「樹状整列」テスト仕様書</h2>
-<div class="belt">
-<h3><a name="KanseiSaseteKudasai">完成させてください</a></h3>
-</div>
-<ul>
-  <li><a href="#Example">Example</a>（メインクラス）
-  <li>…
-</ul>
-<div class="belt">
-<h3><a name="Example" href="../Program/index.html#Example">Example（メインクラス）</a></h3>
-</div>
-<table summary="table">
-  <tbody>
-    <tr>
-      <td>
-      <table border="1" summary="table">
-        <tbody>
-          <tr>
-            <th class="left-padding" abbr="1">フィールド（属性：インスタンス変数）</th>
-            <th class="left-padding" abbr="2">束縛</th>
-            <th class="left-padding" abbr="3">分類</th>
-            <th class="left-padding" abbr="4">説明</th>
-            <th class="left-padding" abbr="5">テスト結果</th>
-          </tr>
-          <tr>
-            <td class="left-padding"><code>なし</code></td>
-            <td class="left-padding"><code>なし</code></td>
-            <td class="left-padding"><code>なし</code></td>
-            <td class="left-padding">なし</td>
-            <td class="left-padding">なし</td>
-          </tr>
-        </tbody>
-      </table>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table summary="table">
-  <tbody>
-    <tr>
-      <td>
-      <table border="1" summary="table">
-        <tbody>
-          <tr>
-            <th class="left-padding" abbr="1">メソッド（操作）</th>
-            <th class="left-padding" abbr="2">応答</th>
-            <th class="left-padding" abbr="3">分類</th>
-            <th class="left-padding" abbr="4">説明</th>
-            <th class="left-padding" abbr="5">テスト結果</th>
-          </tr>
-          <tr>
-            <td class="left-padding"><code><a href="../Program/index.html#Example-main">main(String[] arguments)</a></code></td>
-            <td class="left-padding"><code>void</code></td>
-            <td class="left-padding"><code>public static</code></td>
-            <td class="left-padding">コマンドラインを引数として受け取り、…、…。</td>
-            <td class="left-padding">バグ（2010年7月21日）</td>
-            <td class="left-padding">良好（2010年7月21日）</td>
-          </tr>
-        </tbody>
-      </table>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<hr>
-<div class="right-small">Copyright 20xx Project xx, Updated: 2017/03/13 (Created: 2009/11/11)</div>
+  <div id="menu">
+    <ul>
+      <li><a href="../index.html">ホーム</a></li>
+      <li><a href="../Requirement/index.html">要求仕様書</a></li>
+      <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+      <li><a href="../BasicDesign/index.html">基本設計書</a></li>
+      <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+      <li><a href="../TestSpecification/index.html" class="current">テスト仕様書</a></li>
+      <li><a href="../TestResult/index.html">テスト結果</a></li>
+      <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+      <li><a href="../Program/index.html">プログラム</a></li>
+      <li><a href="../Manual/index.html">マニュアル</a></li>
+    </ul>
+  </div>
+  <hr>
+  <h2>ソフトウェア工学II「樹状整列」テスト仕様書</h2>
+  <p>
+    単体テスト、結合テストで使用したライブラリは<a href="../Program/lib.html">ここから</a>確認できる。
+  </p>
+
+  <div class="belt">
+    <h3 class="class">
+      単体テスト
+    </h3>
+  </div>
+  <p>
+    単体テストは、全てのソースプログラムのクラスのフィールド変数、メソッドを対象にJUnitを用いて行った。
+    以下に、検査に使用したクラスとその手順、結果を示す。
+  </p>
+  <div class="belt">
+    <h3>
+      単体テストの実行手順
+    </h3>
+  </div>
+  <ol>
+    <li><a href="https://github.com/uchiyama886/forest/tree/main/Forest_Program">forest</a>のルートディレクトリに移動する。
+      <pre class="belt">$ cd Forest_Program</pre>
+    </li>
+    <li>単体テストコマンドを実行する
+      <pre class="belt">$ make unittest
+env LC_ALL=ja_JP.UTF-8 ant unittest
+Buildfile: /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/build.xml
+
+prepare:
+     [exec] #午後
+
+compile:
+     [exec] #午後
+
+compile-test:
+     [exec] #午後
+
+unittest:
+   [delete] Deleting directory /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/test-report/unit
+    [mkdir] Created dir: /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/test-report/unit
+    [junit] Running forest.BranchTest
+    [junit] Testsuite: forest.BranchTest
+    [junit] Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+    [junit] WARNING: A Java agent has been loaded dynamically (/Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar)
+    [junit] WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+    [junit] WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+    [junit] WARNING: Dynamic loading of agents will be disallowed by default in a future release
+    [junit] Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+    [junit] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.333 sec
+    [junit] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.333 sec
+    [junit] ------------- Standard Error -----------------
+    [junit] Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+    [junit] WARNING: A Java agent has been loaded dynamically (/Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar)
+    [junit] WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+    [junit] WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+    [junit] WARNING: Dynamic loading of agents will be disallowed by default in a future release
+    [junit] ------------- ---------------- ---------------
+    [junit] 
+    [junit] Testcase: testDrawMethod took 1.88 sec
+    [junit] Testcase: testStartMethod took 0.015 sec
+    [junit] Testcase: testConstructor took 0.005 sec
+    [junit] Testcase: testToStringMethod took 0.006 sec
+    [junit] Testcase: testEndMethod took 0.004 sec
+    [junit] Running forest.ConstantsTest
+    [junit] Testsuite: forest.ConstantsTest
+    [junit] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.233 sec
+    [junit] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.233 sec
+    [junit] 
+    [junit] Testcase: testTagOfNodes took 0.006 sec
+    [junit] Testcase: testTagOfTrees took 0 sec
+    [junit] Testcase: testDefaultFont took 0.021 sec
+    [junit] Testcase: testTagOfBranches took 0.001 sec
+    [junit] Testcase: testForegroundColor took 0.001 sec
+    [junit] Testcase: testUnKnown took 0 sec
+    [junit] Testcase: testVisited took 0 sec
+    [junit] Testcase: testUnVisited took 0.001 sec
+    [junit] Testcase: testSleepTick took 0 sec
+    [junit] Testcase: testPrivateConstructor took 0.001 sec
+    [junit] Testcase: testBackgroundColor took 0.001 sec
+    [junit] Testcase: testInterval took 0 sec
+    [junit] Testcase: testMargin took 0.001 sec
+    [junit] Running forest.ExampleTest
+    [junit] Testsuite: forest.ExampleTest
+    [junit] Tests run: 4, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 2.974 sec
+    [junit] Tests run: 4, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 2.974 sec
+    ~~中略~~
+    [junit]   at forest.Forest.lambda$propagate$2(Unknown Source)
+    [junit]   at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+    [junit]   at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+    [junit]   at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+    [junit]   at forest.Forest.lambda$propagate$2(Unknown Source)
+    [junit]   at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+    [junit]   at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+    [junit]   at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+    [junit]   at forest.Forest.lambda$propagate$2(Unknown Source)
+    [junit]   at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+    [junit]   at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+    [junit]   at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+    [junit]   at forest.Forest.lambda$propagate$2(Unknown Source)
+    [junit]   at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+    [junit]   at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+    [junit]   at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+    [junit]   at forest.Forest.lambda$propagate$2(Unknown Source)
+    [junit]   at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+    [junit]   at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+    [junit]   at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+    [junit]   at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+[junitreport] Transform time: 646ms
+     [exec] #午後
+
+BUILD SUCCESSFUL
+Total time: 7 seconds
+        </pre>
+    </li>
+  </ol>
+  <div class="belt">
+    <h3>
+      クラス一覧
+    </h3>
+  </div>
+  <ul>
+    <li>
+      <a href="./forest.html"> forest（単体テスト） </a>
+      <ul>
+        <li> <a href="./forest.html#BranchTest" title="forest/ BranchTest"> BranchTest </a></li>
+        <li> <a href="./forest.html#ConstantsTest" title="forest/ ConstantsTest"> ConstantsTest </a></li>
+        <li> <a href="./forest.html#ExampleTest" title="forest/ ExampleTest"> ExampleTest </a></li>
+        <li> <a href="./forest.html#ExitExceptionTest" title="forest/ ExitExceptionTest"> ExitExceptionTest </a></li>
+        <li> <a href="./forest.html#ForestControllerTest" title="forest/ ForestControllerTest"> ForestControllerTest
+          </a></li>
+        <li> <a href="./forest.html#ForestModelTest" title="forest/ ForestModelTest"> ForestModelTest </a></li>
+        <li> <a href="./forest.html#ForestTest" title="forest/ ForestTest"> ForestTest </a></li>
+        <li> <a href="./forest.html#ForestViewTest" title="forest/ ForestViewTest"> ForestViewTest </a></li>
+        <li> <a href="./forest.html#NoExitSecurityManagerTest" title="forest/ NoExitSecurityManagerTest">
+            NoExitSecurityManagerTest </a></li>
+        <li> <a href="./forest.html#NodeTest" title="forest/ NodeTest"> NodeTest </a></li>
+      </ul>
+    </li>
+  </ul>
+  <div class="belt">
+    <h3 class="class">
+      結合テスト
+    </h3>
+  </div>
+  <p>
+    結合テストは、パッケージforestに対してJUnitを用いて行った。
+    以下に、検査に使用したクラスとその手順、結果を示す。
+  </p>
+  <div class="belt">
+    <h3>
+      結合テストの実行手順
+    </h3>
+  </div>
+  <ol>
+    <li><a href="https://github.com/uchiyama886/forest/tree/main/Forest_Program">forest</a>のルートディレクトリに移動する。
+      <pre class="belt">$ cd Forest_Program</pre>
+    </li>
+    <li>結合テストコマンドを実行する
+      <pre class="belt">$ make integrationtest
+env LC_ALL=ja_JP.UTF-8 ant integrationtest
+Buildfile: /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/build.xml
+
+prepare:
+    [mkdir] Created dir: /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/Classes
+     [exec] #午後
+
+compile:
+    [javac] Compiling 13 source files to /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/Classes
+    [javac] /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/src/main/java/forest/Node.java:13: 警告: [serial] 直列化可能なクラスNodeには、serialVersionUIDが定義されていません
+    [javac] public class Node extends Component {
+    [javac]        ^
+    [javac] /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/src/main/java/forest/Node.java:45: 警告: [this-escape] サブクラスが初期化される前の'this'エスケープの可能性があります
+    [javac]         this.extent.x = this.stringWidth(aString) + Constants.Margin.x * 2;
+    [javac]                                         ^
+    [javac] /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/src/main/java/forest/ForestModel.java:58: 警告: [this-escape] サブクラスが初期化される前の'this'エスケープの可能性があります
+    [javac]         this.read(aFile);
+    [javac]                  ^
+    [javac] /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/src/main/java/forest/ForestView.java:47: 警告: [this-escape] サブクラスが初期化される前の'this'エスケープの可能性があります
+    [javac]         this.model.addDependent(this);
+    [javac]                                 ^
+    [javac] 警告4個
+    [javac] Creating empty /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/Classes/forest/package-info.class
+    [javac] Creating empty /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/Classes/utility/package-info.class
+     [exec] #午後
+
+compile-test:
+    [javac] Compiling 11 source files to /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/Classes
+    [javac] /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/src/test/java/forest/ExitException.java:7: 警告: [serial] 直列化可能なクラスExitExceptionには、serialVersionUIDが定義されていません
+    [javac] public class ExitException extends SecurityException {
+    [javac]        ^
+    [javac] /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/src/test/java/forest/NoExitSecurityManager.java:11: 警告: [removal] java.langのSecurityManagerは推奨されておらず、削除用にマークされています
+    [javac] public class NoExitSecurityManager extends SecurityManager {
+    [javac]                                            ^
+    [javac] 警告2個
+     [exec] #午後
+
+integrationtest:
+    [mkdir] Created dir: /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/test-report/integration
+    [junit] Running forest.ForestIntegrationTest
+    [junit] Testsuite: forest.ForestIntegrationTest
+    [junit] Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+    [junit] WARNING: A Java agent has been loaded dynamically (/Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/lib/byte-buddy-agent-1.17.6.jar)
+    [junit] WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+    [junit] WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+    [junit] WARNING: Dynamic loading of agents will be disallowed by default in a future release
+    [junit] Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+    [junit] 
+    [junit] --- testArrangeWithTreeData ---
+    [junit] Nodes loaded: 212
+    [junit]    at forest.Forest.lambda$propagate$2(Unknown Source)
+    [junit]    at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+    [junit]    at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+    [junit]    at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+    ~~中略~~
+    [junit]    at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+    [junit]    at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+    [junit]    at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+    [junit]    at forest.Forest.lambda$propagate$2(Unknown Source)
+    [junit]    at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+    [junit]    at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+    [junit]    at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+    [junit]    at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+    [junit] ------------- ---------------- ---------------
+    [junit] 
+    [junit] Testcase: testArrangeWithTreeData took 2.746 sec
+    [junit] Testcase: testArrangeWithSemilatticeData took 0.369 sec
+    [junit] Testcase: testArrangeWithForestData took 0.347 sec
+[junitreport] Processing /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/test-report/integration/TESTS-TestSuites.xml to /Users/fukudaayaka/Desktop/forest3/forest/Forest_Program/test-report/integration/html/junit-noframes.html
+[junitreport] Loading stylesheet ile:/usr/local/ant/lib/ant-junit.jar!/org/apache/tools/ant/taskdefs/optional/junit/xsl/junit-noframes.xsl
+[junitreport] Transform time: 728ms
+     [exec] #午後
+
+BUILD SUCCESSFUL
+Total time: 17 seconds
+        </pre>
+    </li>
+  </ol>
+  <div class="belt">
+    <h3>
+      クラス一覧
+    </h3>
+  </div>
+  <ul>
+    <li>
+      <a href="./ForestIntegrationTest.html"> forest（結合テスト） </a>
+      <ul>
+        <li>
+          <a href="./ForestIntegrationTest.html#ForestIntegrationTest" title="forest/ ForestIntegrationTest">
+            ForestIntegrationTest </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="belt">
+    <h3 class="class">耐久テスト</h3>
+  </div>
+  <p>
+    耐久テストは、プログラムを対象に<a
+      href="https://docs.oracle.com/en/java/javase/15/management/using-jconsole.html">jconsole</a>を用いてメトリクスを収集し、分析した。
+    以下に検査した手順を示す。
+  </p>
+  <div class="belt">
+    <h3>
+      耐久テストの実行手順
+    </h3>
+  </div>
+  <ol>
+    <li><a href="https://github.com/uchiyama886/ProjectPractice">Forest_Program</a>のルートディレクトリに移動する。
+      <pre class="belt">$ cd Forest_Program</pre>
+    </li>
+    <li>
+      <p> jconsoleを起動する</p>
+      <pre class="belt">$ sh ./jconsole.sh ./  src/main/java/ Classes/Wavelet.jar
+env LC_ALL=ja_JP.UTF-8 ant test
+Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
+Buildfile: /Users/uchiyama/CLASS/projectExercises/Wavelet/ProjectPractice/build.xml
+
+prepare:
+     [exec] #午後
+
+compile:
+     [exec] #午後
+
+jar:
+     [exec] #午後
+
+all:
+     [exec] #午後
+
+test:
+     [exec] Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
+Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
+     [exec] 画像が正常にロードされました: SampleImages/imageSmalltalkBalloon256x256.jpg
+     [exec] 画像が正常にロードされました: SampleImages/imageEarth512x512.jpg
+2025-07-11 07:09:00.706 jconsole[27537:223777] TSM AdjustCapsLockLEDForKeyTransitionHandling - _ISSetPhysicalKeyboardCapsLockLED Inhibit
+2025-07-11 07:09:00.714 jconsole[27537:223777] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+      </pre>
+    </li>
+  </ol>
+  <p>
+    以下に実行例と、その結果を示す。
+  </p>
+  <blockquote>
+    <table class="belt" summary="table">
+      <tbody>
+        <tr>
+          <td>
+            <table class="content" summary="table">
+              <tbody>
+                <tr>
+                  <td class="center-small"><a href="b.png"><img class="borderless" src="b.png" width="375" height="400"
+                        alt="Snapshot1"></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="belt" summary="table">
+      <tbody>
+        <tr>
+          <td>
+            <table class="content" summary="table">
+              <tbody>
+                <tr>
+                  <td class="center-small"><a href="a.png"><img class="borderless" src="a.png" width="480" height="330"
+                        alt="Snapshot2"></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </blockquote>
+  <div class="belt">
+    <h3>
+      耐久テストの結果
+    </h3>
+  </div>
+  <p>耐久テストの結果は次のようになった。</p>
+  <table class="belt" summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table class="content" summary="table">
+            <tbody>
+              <tr>
+                <td class="center-small"><a href="endurace-summary-result.png"><img class="borderless"
+                      src="endurace-summary-result.png" width="480" height="330" alt="Snapshot3"></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <div class="right-small">Copyright 2025 Project JavaGrove, Updated: 2025/07/29 (Created: 2009/11/11)</div>
 </body>
+
 </html>

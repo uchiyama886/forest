@@ -1,0 +1,1626 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+<meta name="description" content="ソフトウェア工学IIのホームページ">
+<meta name="author" content="AOKI Atsushi">
+<link rev="made" href="index.html">
+<link rel="index" href="index.html">
+  <style type="text/css">
+    <!--
+    body {
+      background-color: #ffffff;
+      margin: 20px;
+      padding: 10px;
+      font-family: serif;
+      font-size: 10pt;
+    }
+
+    a {
+      text-decoration: underline;
+      color: #000000;
+    }
+
+    a:link {
+      background-color: #ffddbb;
+    }
+
+    a:visited {
+      background-color: #ccffcc;
+    }
+
+    a:hover {
+      background-color: #dddddd;
+    }
+
+    a:active {
+      background-color: #dddddd;
+    }
+
+
+    div.belt {
+      background-color: #eeeeee;
+      padding: 0px 4px;
+    }
+
+    div.belt-yellow {
+      background-color: #ffffcc;
+      padding: 0px 4px;
+    }
+
+    div.belt-blue {
+      background-color: #ddeeff;
+      padding: 0px 4px;
+    }
+
+    div.right-small {
+      text-align: right;
+      font-size: 8pt;
+    }
+
+    img.border {
+      border-width: 1px;
+      border-color: #000000;
+      vertical-align: middle;
+    }
+
+    img.borderless {
+      border-width: 0px;
+      vertical-align: middle;
+    }
+
+    p.belt {
+      background-color: #ffeedd;
+      padding: 4px 8px;
+    }
+
+    p.belt-blue {
+      background-color: #ddeeff;
+      padding: 4px 8px;
+    }
+
+    pre.belt {
+      background-color: #ddeeff;
+      padding: 4px 8px;
+    }
+
+    pre.belt-yellow {
+      background-color: #ffffcc;
+      padding: 4px 8px;
+    }
+
+    table {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      font-family: serif;
+      font-size: 10pt;
+    }
+
+    table.profile {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      font-family: serif;
+      font-size: 10pt;
+      margin-top: 8px;
+      margin-left: 8px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    table.belt {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      background-color: #ffeedd;
+      padding: 0px 0px;
+      width: 100%;
+    }
+
+    table.content {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 2px 4px;
+    }
+
+    table.font-fixed {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 2px 4px;
+      font-family: monospace;
+    }
+
+    table.nest {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 0px 0px;
+    }
+
+    td {
+      padding: 0px 0px;
+      vertical-align: middle;
+    }
+
+    td.center {
+      text-align: center;
+    }
+
+    td.center-half {
+      text-align: center;
+      width: 50%;
+      font-size: 8pt;
+    }
+
+    td.center-small {
+      text-align: center;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.center-small-nopadding {
+      text-align: center;
+      font-size: 8pt;
+      padding: 0px 0px;
+    }
+
+    td.center-white {
+      text-align: center;
+      background-color: #ffffff;
+    }
+
+    td.center-small-white {
+      text-align: center;
+      font-size: 8pt;
+      background-color: #ffffff;
+    }
+
+    td.center-border1 {
+      text-align: center;
+      vertical-align: middle;
+      empty-cells: show;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #ffc080;
+      width: 22px;
+      height: 22px;
+    }
+
+    td.left-small {
+      text-align: left;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.left-small-white {
+      text-align: left;
+      font-size: 8pt;
+      padding: 0px 4px;
+      background-color: #ffffff;
+    }
+
+    td.right-small {
+      text-align: right;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.right-small-white {
+      text-align: right;
+      font-size: 8pt;
+      padding: 0px 4px;
+      background-color: #ffffff;
+    }
+
+    th {
+      padding: 0px 0px;
+      vertical-align: middle;
+    }
+
+    #current {
+      background-color: #F45F57;
+      font-weight: bold;
+      color: #FFFFFF;
+      border: 1px solid #333333;
+    }
+
+    #menu {
+      margin: 0px 0px 0px 0px;
+      padding: 0px;
+      height: 32px;
+    }
+
+    #menu ul {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+      text-align: center;
+      clear: both;
+    }
+
+    #menu li {
+      margin: 0px 5px 0px 0px;
+      padding: 1px;
+      float: left;
+    }
+
+    #menu a {
+      display: block;
+      padding: 2px 4px;
+      text-decoration: none;
+      margin: 0px;
+      font-weight: bold;
+      background: #FFFFFF;
+      color: #333333;
+      border: 1px solid #666666;
+    }
+
+    #menu a:hover {
+      display: block;
+      padding: 2px 4px;
+      border-bottom: 1px solid #000000;
+      text-decoration: none;
+      background: #FFCC66;
+    }
+
+    #menu .current {
+      background-color: #F45F57;
+      font-weight: bold;
+      color: #FFFFFF;
+      border: 1px solid #333333;
+    }
+
+    .top-fixed {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+      margin: 0;
+      padding: 5px;
+      background: #ffffff;
+      color: #000000;
+      border: thick double #000000;
+    }
+
+    .site-footer {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      font-size: 8pt; 
+      padding: 0px 0; 
+      color: #333;
+    }
+    -->
+  </style>
+  <title>ソフトウェア工学II「樹状整列」プログラム</title>
+</head>
+
+<body>
+  <div>
+    <div id="menu">
+      <ul>
+        <li>
+          <a href="../index.html"> ホーム </a>
+        </li>
+        <li>
+          <a href="../Requirement/index.html"> 要求仕様書 </a>
+        </li>
+        <li>
+          <a href="../DevelopmentPlan/index.html"> 開発計画書 </a>
+        </li>
+        <li>
+          <a href="../BasicDesign/index.html"> 基本設計書 </a>
+        </li>
+        <li>
+          <a href="../DetailDesign/index.html"> 詳細設計書 </a>
+        </li>
+        <li>
+          <a class="current" href="../TestSpecification/index.html">
+            テスト仕様書
+          </a>
+        </li>
+        <li>
+          <a href="../TestResult/index.html"> テスト結果 </a>
+        </li>
+        <li>
+          <a href="../DevelopmentResult/index.html"> 開発実績 </a>
+        </li>
+        <li>
+          <a href="../Program/index.html"> プログラム </a>
+        </li>
+        <li>
+          <a href="../Manual/index.html"> マニュアル </a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <hr>
+    <div>
+      <a href="../TestSpecification/index.html"> クラス一覧 </a>
+      |
+      <a href="../TestSpecification/forest.html" style="background-color: #f45f57; color: #ffffff">forest
+      </a>
+    </div>
+  </div>
+
+  <h2>ソフトウェア工学II「樹状整列」テスト仕様書 ~forest~</h2>
+  <div class="belt">
+    <h3>
+      <a href="./forest.html"> forest（メインクラス） </a>
+    </h3>
+  </div>
+
+  <!-- クラスを列挙する -->
+  <ul>
+    <li>
+      <a href="#Branch" title="class-Branch"> Branch </a>
+    </li>
+    <li>
+      <a href="#Constants" title="class-Constants"> Constants </a>
+    </li>
+    <li>
+      <a href="#Example" title="class-Example"> Example </a>
+    </li>
+        <li>
+      <a href="#Forest" title="class-Forest"> Forest </a>
+    </li>    <li>
+      <a href="#ForestController" title="class-ForestController"> ForestController </a>
+    </li>    <li>
+      <a href="#ForestModel" title="class-ForestModel"> ForestModel </a>
+    </li>    <li>
+      <a href="#ForestView" title="class-ForestView"> ForestView </a>
+    </li>    <li>
+      <a href="#Node" title="class-Node"> Node </a>
+    </li>
+  </ul>
+
+  <div class="belt">
+    <h3>
+      <a name="Branch"
+        href="../Forest_Program/src_main_java_forest_Branch.html#Branch">Branch.java</a>
+    </h3>
+  </div>
+
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">
+                  フィールド（属性：インスタンス変数）
+                </th>
+                <th abbr="2" class="left-padding">束縛</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code> end </code>
+                </td>
+                <td class="left-padding">
+                  <code> Node </code>
+                </td>
+                <td class="left-padding">
+                  <code> private </code>
+                </td>
+                <td class="left-padding">ブランチ（枝）の終点となるノードを記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code> start </code>
+                </td>
+                <td class="left-padding">
+                  <code> Node </code>
+                </td>
+                <td class="left-padding">
+                  <code> private </code>
+                </td>
+                <td class="left-padding">ブランチ（枝）の始点となるノードを記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">メソッド（操作）</th>
+                <th abbr="2" class="left-padding">応答</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>Branch(Node from, Node to)</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">Branch クラスの新しいインスタンスを生成するコンストラクタ。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>draw(Graphics aGraphics)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このブランチ（枝）をグラフィックコンテキストに描画するメソッド。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>end()</code></td>
+                <td class="left-padding"><code>Node</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このブランチ（枝）の終点となるノードを応答するメソッド。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>start()</code></td>
+                <td class="left-padding"><code>Node</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このブランチ（枝）の始点となるノードを応答するメソッド。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>toString()</code></td>
+                <td class="left-padding"><code>String</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このブランチオブジェクトの文字列表現を返す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="belt">
+    <h3>
+      <a name="Constants" href="../Forest_Program/src_main_java_forest_Constants.html#Constants">Constants.java</a>
+    </h3>
+  </div>
+
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">
+                  フィールド（属性：インスタンス変数）
+                </th>
+                <th abbr="2" class="left-padding">束縛</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>TagofTrees</code></td>
+                <td class="left-padding"><code>String</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding">樹状整列データファイル中のタグ「ツリー」を表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>TagOfNodes</code></td>
+                <td class="left-padding"><code>String</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding">樹状整列データファイル中のタグ「ノード」を表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>TagOfBranches</code></td>
+                <td class="left-padding"><code>String</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding"> 樹状整列データファイル中のタグ「ブランチ」を表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>ForegroundColor</code></td>
+                <td class="left-padding"><code>Color</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding"> ノードを描く際のラベルの文字色を表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>BackgroundColor</code></td>
+                <td class="left-padding"><code>Color</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding">  ノードを描く際のラベルの背景色を表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>DefaultFont</code></td>
+                <td class="left-padding"><code>Font</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding">  ノードを描く際のラベルのフォントを表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>Margin</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding">  ノードにおいてラベルを描く際の枠縁から余裕（マージン）を表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>Interval</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding">  ノード群を樹状に整列させる際にノード同士の間隔を表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>UnKnown</code></td>
+                <td class="left-padding"><code>Integer</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding">  ノード群を深さ優先にたどる際の状態「未定」を表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>UnVisited</code></td>
+                <td class="left-padding"><code>Integer</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding">  ノード群を深さ優先にたどる際の状態「未訪問」を表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>Visited</code></td>
+                <td class="left-padding"><code>Integer</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding">  ノード群を深さ優先にたどる際の状態「訪問済み」を表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>SleepTick</code></td>
+                <td class="left-padding"><code>Integer</code></td>
+                <td class="left-padding"><code>public static final</code></td>
+                <td class="left-padding">  樹状整列アニメーションのチックタック：時間間隔：スピードを表す。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">メソッド（操作）</th>
+                <th abbr="2" class="left-padding">応答</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>Constants()</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">Constantsクラスのプライベートコンストラクタ。外部からのインスタンス化を防ぐためにプライベートに宣言されている。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="belt">
+    <h3>
+      <a name="Example" href="../Forest_Program/src_main_java_forest_Example.html#Example">Example.java</a>
+    </h3>
+  </div>
+
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">
+                  フィールド（属性：インスタンス変数）
+                </th>
+                <th abbr="2" class="left-padding">束縛</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding">なし</td>
+                <td class="left-padding">なし</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">メソッド（操作）</th>
+                <th abbr="2" class="left-padding">応答</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>Example()</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">Example クラスのプライベートコンストラクタ。</td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>main(String[] arguments)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public static</code></td>
+                <td class="left-padding">第1引数で樹状整列データファイルを受け取って樹状整列を実行する。
+                </td>
+                <td class="left-padding">良好（2025年7月29日）</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="belt">
+    <h3>
+      <a name="Forest" href="../Forest_Program/src_main_java_forest_Forest.html#Forest">Forest.java</a>
+    </h3>
+  </div>
+
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">
+                  フィールド（属性：インスタンス変数）
+                </th>
+                <th abbr="2" class="left-padding">束縛</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>nodes</code></td>
+                <td class="left-padding"><code>ArrayList</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">ノード（節）群（たち）を記憶するフィールド</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>branches</code></td>
+                <td class="left-padding"><code>ArrayList</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">ブランチ（枝）群（たち）を記憶するフィールド</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>bounds</code></td>
+                <td class="left-padding"><code>Rectangle</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">樹状整列したフォレスト（森）の領域（矩形）を記憶するフィールド</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>actualSleepTick</code></td>
+                <td class="left-padding"><code>long</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">propagate メソッドで使用する実際のスリープ時間（ミリ秒）を記憶するフィールド</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<table summary="table">
+    <tbody>
+        <tr>
+            <td>
+                <table border="1" summary="table">
+                    <tbody>
+                        <tr>
+                            <th abbr="1" class="left-padding">メソッド（操作）</th>
+                            <th abbr="2" class="left-padding">応答</th>
+                            <th abbr="3" class="left-padding">分類</th>
+                            <th abbr="4" class="left-padding">説明</th>
+                            <th abbr="5" class="left-padding">テスト結果</th>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>Forest()</code></td>
+                            <td class="left-padding"><code>なし</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">このクラスのインスタンスを生成するコンストラクタです。デフォルトのスリープ時間を使用します。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>Forest(long testSleepTick)</code></td>
+                            <td class="left-padding"><code>なし</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">このクラスのインスタンスを生成するコンストラクタです。テスト目的などで、propagate メソッドのスリープ時間を上書きできます。
+                            </td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>addBranch(Branch aBranch)</code></td>
+                            <td class="left-padding"><code>void</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">ブランチ（枝）を追加するメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>addNode(Node aNode)</code></td>
+                            <td class="left-padding"><code>void</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">ノード（節）を追加するメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>arrange()</code></td>
+                            <td class="left-padding"><code>void</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">樹状整列するトップ（一番上位）のメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>arrange(ForestModel aModel)</code></td>
+                            <td class="left-padding"><code>void</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">樹状整列するセカンドレベル（二番階層）のメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>arrange(Node aNode, Point aPoint, ForestModel aModel)</code>
+                            </td>
+                            <td class="left-padding"><code>Point</code></td>
+                            <td class="left-padding"><code>protected</code></td>
+                            <td class="left-padding">樹状整列する再帰レベル（N番階層）のメソッドです。このノードから再帰的にたどって下位のものたちも整列します。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>bounds()</code></td>
+                            <td class="left-padding"><code>Rectangle</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">フォレスト（木・林・森・亜格子状の森）の領域（矩形）を応答するメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>draw(java.awt.Graphics aGraphics)</code></td>
+                            <td class="left-padding"><code>void</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">フォレスト（木・林・森・亜格子状の森）を描画するメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>flushBounds()</code></td>
+                            <td class="left-padding"><code>void</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">フォレスト（木・林・森・亜格子状の森）の領域（矩形）を水に流す（チャラにする）メソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>propagate(ForestModel aModel)</code></td>
+                            <td class="left-padding"><code>void</code></td>
+                            <td class="left-padding"><code>protected</code></td>
+                            <td class="left-padding">チックタックの間、スリープし、モデルが変化した、と騒ぐ（広める：放送する）メソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>rootNodes()</code></td>
+                            <td class="left-padding"><code>ArrayList&lt;Node&gt;</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">フォレストの根元（ルート）となるノード群を応答するメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>sortNodes(ArrayList&lt;Node&gt; nodeCollection)</code></td>
+                            <td class="left-padding"><code>ArrayList&lt;Node&gt;</code></td>
+                            <td class="left-padding"><code>protected</code></td>
+                            <td class="left-padding">引数で指定されたノード群をノード名でソート（並び替えを）するメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>subNodes(Node aNode)</code></td>
+                            <td class="left-padding"><code>ArrayList&lt;Node&gt;</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">引数で指定されたノードのサブノード群を応答するメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>superNodes(Node aNode)</code></td>
+                            <td class="left-padding"><code>ArrayList&lt;Node&gt;</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">引数で指定されたノードのスーパーノード群を応答するメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>getNodes()</code></td>
+                            <td class="left-padding"><code>ArrayList&lt;Node&gt;</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">ノード（節）群（たち）を記憶するフィールドを返すメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>getBranches()</code></td>
+                            <td class="left-padding"><code>ArrayList&lt;Branch&gt;</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">ブランチ（枝）群（たち）を記憶するフィールドを返すメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>getBounds()</code></td>
+                            <td class="left-padding"><code>Rectangle</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">樹状整列したフォレスト（森）の領域（矩形）を記憶するフィールドを返すメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>toString()</code></td>
+                            <td class="left-padding"><code>String</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">自分自身を文字列に変換するメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                        <tr>
+                            <td class="left-padding"><code>whichOfNodes(Point aPoint)</code></td>
+                            <td class="left-padding"><code>Node</code></td>
+                            <td class="left-padding"><code>public</code></td>
+                            <td class="left-padding">指定された位置（座標）にノードが存在するかを調べるメソッドです。</td>
+                            <td class="left-padding">良好（2025年7月28日）</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="belt">
+    <h3>
+      <a name="ForestController" href="../Forest_Program/src_main_java_forest_ForestController.html#ForestController">ForestController.java</a>
+    </h3>
+  </div>
+
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">
+                  フィールド（属性：インスタンス変数）
+                </th>
+                <th abbr="2" class="left-padding">束縛</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>model</code></td>
+                <td class="left-padding"><code>ForestModel</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">樹状整列におけるMVCのモデル（M）を記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>view</code></td>
+                <td class="left-padding"><code>ForestView</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">樹状整列におけるMVCのビュー（V）を記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>previous</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">マウスの直近の位置を記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>current</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">マウスの現在の位置を記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">メソッド（操作）</th>
+                <th abbr="2" class="left-padding">応答</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>ForestController()</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このクラスのインスタンスを生成するコンストラクタです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseClicked(MouseEvent aMouseEvent)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">指定されたマウスイベントからマウスカーサの位置を獲得して、モデル座標系でのクリック位置を割り出して標準出力に出力する。さらに、クリックされたノードが存在すればそのノードを緑色にする。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mousePressed(MouseEvent aMouseEvent)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスボタンが押下されたときに実行されます。マウスの現在の位置を記憶し、クリックされたノードがあればそのノードを強調表示し、マウスカーソルを移動カーソルに変更します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseReleased(MouseEvent aMouseEvent)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスボタンが離されたときに実行されます。マウスカーソルをデフォルトのカーソルに戻します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseDragged(MouseEvent aMouseEvent)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスがドラッグされたときに実行されます。ビューのオフセットを更新して、フォレストの表示位置を移動させます。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseWheelMoved(MouseWheelEvent aMouseWheelEvent)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスホイールが回転されたときに実行されます。ホイールの回転量に基づいてビューのズームレベルを調整します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>ForestController(ForestModel aModel, ForestView aView)</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このクラスのインスタンスを生成するコンストラクタです。指定されたモデルとビューでコントローラを初期化します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>setModel(ForestModel aModel)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">指定されたモデルをインスタンス変数modelに設定する。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>setView(ForestView aView)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">指定されたビューをインスタンス変数viewに設定し、ビューのマウスのリスナおよびモーションリスナそしてホイールリスナをこのコントローラにする。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getModel()</code></td>
+                <td class="left-padding"><code>ForestModel</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列におけるMVCのモデル（M）を記憶するフィールドを返すメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getView()</code></td>
+                <td class="left-padding"><code>ForestView</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列におけるMVCのビュー（V）を記憶するフィールドを返すメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getPrevious()</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスの直近の位置を記憶するフィールドを返すメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getCurrent()</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスの現在の位置を記憶するフィールドを返すメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="belt">
+    <h3>
+      <a name="ForestModel" href="../Forest_Program/src_main_java_forest_ForestModel.html#ForestModel">ForestModel.java</a>
+    </h3>
+  </div>
+
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">
+                  フィールド（属性：インスタンス変数）
+                </th>
+                <th abbr="2" class="left-padding">束縛</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>dependants</code></td>
+                <td class="left-padding"><code>ArrayList</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">自分の依存物（ビューたち）を記憶しておくフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>forest</code></td>
+                <td class="left-padding"><code>Forest</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">樹状整列それ自身を記憶しておくフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>picture</code></td>
+                <td class="left-padding"><code>BufferedImage</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">樹状整列それ自身を画像にして記憶しておくフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">メソッド（操作）</th>
+                <th abbr="2" class="left-padding">応答</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getDependents()</code></td>
+                <td class="left-padding"><code>java.util.List&lt;ForestView&gt;</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このモデルに依存するビューのリストを応答します。このメソッドは、内部の依存リストのコピーを返すことで、外部からの直接的なリストの変更を防ぎ、モデルのカプセル化を維持します。返されるリストは変更不可能ではありませんが、元の内部リストとは異なるオブジェクトです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>ForestModel(File aFile)</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このクラスのインスタンスを生成するコンストラクタです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>ForestModel()</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このクラスのインスタンスを生成するコンストラクタです。デフォルトのForestオブジェクトで初期化されます。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>ForestModel(Forest aForest)</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このクラスのインスタンスを生成するコンストラクタです。指定されたForestオブジェクトで初期化されます。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>addDependant(ForestView aView)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このモデルに依存するビューを追加するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>changed()</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">モデルが変更されたことを全てのビューに通知するメソッドです。ビューの再描画を促し、モデルの状態が更新されたことを反映させます。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>nextStep()</code></td>
+                <td class="left-padding"><code>boolean</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列アニメーションを次の一歩に進めるメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>bounds()</code></td>
+                <td class="left-padding"><code>Rectangle</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列の描画領域のバウンド（矩形）を応答するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>draw(Graphics aGraphics)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列アニメーションを次の一歩に進めるメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>flush()</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">モデルを初期状態に戻すメソッドです。フォレストのバウンドをリセットし、ビューに再描画を促します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getForest()</code></td>
+                <td class="left-padding"><code>Forest</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列それ自身を応答するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>setSelectedNode(Node aNode)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ユーザーがクリックしたノードを強調表示するために、選択されたノードを設定するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>changeNodeColor(Node aNode, int colorIndex)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ノードの色を変更するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>updatePicture()</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">描画領域を更新するために新しい BufferedImage を作成し、Forest の draw メソッドを呼び出します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>loadFromFile(File aFile)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">ファイルからデータをロードし、フォレストを構築するメソッドです。このメソッドは、指定されたファイルの内容をパースし、Forest オブジェクトにノードとブランチを追加します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>root()</code></td>
+                <td class="left-padding"><code>Node</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列の根元（ルート）になるノードを探し出して応答するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>roots()</code></td>
+                <td class="left-padding"><code>ArrayList&lt;Node&gt;</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列の根元（ルート）になるノードたちを探し出して応答するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getDependants()</code></td>
+                <td class="left-padding"><code>ArrayList&lt;ForestView&gt;</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">自分の依存物（ビューたち）を返すメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getPicture()</code></td>
+                <td class="left-padding"><code>BufferedImage</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列それ自身の画像を返すメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>toString()</code></td>
+                <td class="left-padding"><code>String</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">自分自身を文字列に変換するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<div class="belt">
+    <h3>
+      <a name="ForestView" href="../Forest_Program/src_main_java_forest_ForestView.html#ForestView">ForestView.java</a>
+    </h3>
+  </div>
+
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">
+                  フィールド（属性：インスタンス変数）
+                </th>
+                <th abbr="2" class="left-padding">束縛</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>serialVersionUID</code></td>
+                <td class="left-padding"><code>long</code></td>
+                <td class="left-padding"><code>private static final</code></td>
+                <td class="left-padding">シリアル化の際に使用されるバージョンUID。クラスの互換性を保証するために定義される。</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>model</code></td>
+                <td class="left-padding"><code>ForestModel</code></td>
+                <td class="left-padding"><code>private transient</code></td>
+                <td class="left-padding">樹状整列におけるMVCのモデル（M）を記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>controller</code></td>
+                <td class="left-padding"><code>ForestController</code></td>
+                <td class="left-padding"><code>private transient</code></td>
+                <td class="left-padding"> 樹状整列におけるMVCのコントローラ（C）を記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>offset</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding"> スクロール量（どこから描き出すのかを表す座標）を記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">メソッド（操作）</th>
+                <th abbr="2" class="left-padding">応答</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>ForestView(ForestModel aModel)</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このクラスのインスタンスを生成するコンストラクタです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>paintComponent(Graphics aGraphics)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このビューをグラフィックコンテキストに描画するメソッドです。モデルの画像を描画し、ズームレベルとスクロールオフセットを適用します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>calculateColorFor(Node aNode)</code></td>
+                <td class="left-padding"><code>java.awt.Color</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列を描く際にノードを強調させるための色を決めるメソッドです。ノードの状態に基づいて色を決定します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getPreferredSize()</code></td>
+                <td class="left-padding"><code>java.awt.Dimension</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このビューの推奨サイズを応答するメソッドです。モデルのバウンドに基づいて推奨サイズを計算します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>zoomIn()</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このビューのズームレベルを上げるメソッドです。ズームイン操作を行い、モデルの描画範囲を拡大します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>zoomOut()</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このビューのズームレベルを下げるメソッドです。ズームアウト操作を行い、モデルの描画範囲を縮小します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>setOffset(Point aPoint)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">スクロール量（どこから描き出すのかを表す座標）を設定するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getModel()</code></td>
+                <td class="left-padding"><code>ForestModel</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列におけるMVCのモデル（M）を返すメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getController()</code></td>
+                <td class="left-padding"><code>ForestController</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">樹状整列におけるMVCのコントローラ（C）を返すメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getOffset()</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">スクロール量（どこから描き出すのかを表す座標）を返すメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>toString()</code></td>
+                <td class="left-padding"><code>String</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">自分自身を文字列に変換するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>update(Object anObject)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">依存物として依存するものからの放送を受けたときに動作するメソッドです。その際には再描画します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<div class="belt">
+    <h3>
+      <a name="Node" href="../Forest_Program/src_main_java_forest_Node.html#Node">Node.java</a>
+    </h3>
+  </div>
+
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">
+                  フィールド（属性：インスタンス変数）
+                </th>
+                <th abbr="2" class="left-padding">束縛</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>name</code></td>
+                <td class="left-padding"><code>String</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">ラベル文字列を記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>location</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">ノードの場所（位置：座標）を記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>extent</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding"> ノードの大きさ（幅と高さ）を記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>status</code></td>
+                <td class="left-padding"><code>Integer</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding"> 樹状整列する際のノードの状態を記憶するフィールド</td>
+                <td class="left-padding">なし</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">メソッド（操作）</th>
+                <th abbr="2" class="left-padding">応答</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>Node(String aString)</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">このクラスのインスタンスを生成するコンストラクタです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>draw(Graphics aGraphics)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ノード（節）を描画するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getName()</code></td>
+                <td class="left-padding"><code>String</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ノード名：ラベル文字列を応答するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getLocation()</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ノードの場所（位置：座標）を応答するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getExtent()</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ノードの大きさ（幅と高さ）を応答するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>getStatus()</code></td>
+                <td class="left-padding"><code>Integer</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ノードの状態を応答するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>setLocation(Point aPoint)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ノードの場所（位置：座標）を設定するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>setExtent(Point anExtent)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ノードの大きさ（幅と高さ）を設定するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>setStatus(Integer anInteger)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ノードの状態を設定するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>stringHeight(String string)</code></td>
+                <td class="left-padding"><code>int</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">文字列の高さを応答するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>stringWidth(String string)</code></td>
+                <td class="left-padding"><code>int</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">文字列の幅を応答するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>toString()</code></td>
+                <td class="left-padding"><code>String</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">自分自身を文字列に変換するメソッドです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <div class="site-footer">
+      <div class="left-small">
+        <div id="date">
+          <script type="text/javascript">
+            <!-- 
+              clock();
+                function clock() {
+                var JST = new Date();
+                var date = document.getElementById("date");
+                date.innerHTML =
+                JST.toLocaleDateString() + " " + JST.toLocaleTimeString();}
+                setInterval("clock()", 1000); 
+            -->
+          </script>
+        </div>
+      </div>
+  <div class="right-small">Copyright 2025 Project JavaGrove, Updated: 2025/07/29 (Created: 2009/11/11)</div>
+    </div>
+</body>
+
+</html>

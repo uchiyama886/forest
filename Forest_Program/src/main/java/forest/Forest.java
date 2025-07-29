@@ -35,13 +35,32 @@ public class Forest extends Object
     private Rectangle bounds;
 
     /**
+     * propagate メソッドで使用する実際のスリープ時間（ミリ秒）を記憶するフィールドです。
+     * テスト時に上書き可能です。
+     */
+    private long actualSleepTick; // 追加
+
+    /**
      * このクラスのインスタンスを生成するコンストラクタです。
+     * デフォルトのスリープ時間を使用します。
      */
     public Forest()
     {
         nodes =  new ArrayList<>();
         branches = new ArrayList<>();
         bounds = new Rectangle();
+        this.actualSleepTick = Constants.SleepTick; // 追加: デフォルト値を設定
+    }
+
+    /**
+     * このクラスのインスタンスを生成するコンストラクタです。
+     * テスト目的などで、propagate メソッドのスリープ時間を上書きできます。
+     * @param testSleepTick propagate メソッドで使用するスリープ時間（ミリ秒）
+     */
+    public Forest(long testSleepTick) // 追加: テスト用コンストラクタ
+    {
+        this(); // デフォルトコンストラクタを呼び出す
+        this.actualSleepTick = testSleepTick; // 指定されたスリープ時間で上書き
     }
 
     /**
@@ -79,6 +98,12 @@ public class Forest extends Object
      */
     public void arrange(ForestModel aModel)
     {
+        // 既存の arrange(ForestModel) メソッドは、内部で propagate を呼ぶ際に
+        // propagate(ForestModel aModel) のみを呼び出すため、その propagate が
+        // 新しい actualSleepTick フィールドを使用するように修正します。
+        // arrange() --> arrange(null)
+        // arrange(ForestModel) --ここまでは既存の呼び出しフローを変えない
+
         nodes.forEach(node -> {
             node.setStatus(Constants.UnVisited);
         });
@@ -87,6 +112,8 @@ public class Forest extends Object
         AtomicInteger y = new AtomicInteger(0);
         Consumer<Node> aConsumer = (Node root) -> {
             Point newPoint = new Point(x.get(), y.get());
+            // propagate のスリープ時間は、Forest インスタンスの actualSleepTick に依存するため、
+            // arrange(Node, Point, ForestModel) の呼び出しはそのままにできます。
             Point subTreeBottomRight = arrange(root, newPoint, aModel);
             y.set(root.getExtent().y + subTreeBottomRight.y + Constants.Interval.y);
         };
@@ -121,7 +148,7 @@ public class Forest extends Object
                 subPoint[0] = new Point(subX[0], nextY[0]);
                 sub.setLocation(subPoint[0]);
            
-                this.propagate(aModel);
+                this.propagate(aModel); // propagate が actualSleepTick を使用するようになったため、引数は変更なし
                 
                 Point next = arrange(sub, subPoint[0], aModel);
 
@@ -150,7 +177,7 @@ public class Forest extends Object
             maxY[0] = aPoint.y;
 ;       });
         aNode.setLocation(new Point(aPoint.x, y[0]));
-        this.propagate(aModel);
+        this.propagate(aModel); // propagate が actualSleepTick を使用するようになったため、引数は変更なし
 
         return new Point(aPoint.x, maxY[0]);
     }
@@ -235,7 +262,7 @@ public class Forest extends Object
         new Condition(() -> aModel == null).ifTrue(() -> {return;});
 
         try {
-            Thread.sleep(Constants.SleepTick);
+            Thread.sleep(this.actualSleepTick); // 変更: actualSleepTick を使用
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

@@ -1,0 +1,484 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+<meta name="description" content="ソフトウェア工学IIのホームページ">
+<meta name="author" content="AOKI Atsushi">
+<link rev="made" href="index.html">
+<link rel="index" href="index.html">
+<style type="text/css">
+    <!--
+    body {
+      background-color: #ffffff;
+      margin: 20px;
+      padding: 10px;
+      font-family: serif;
+      font-size: 10pt;
+    }
+
+    a {
+      text-decoration: underline;
+      color: #000000;
+    }
+
+    a:link {
+      background-color: #ffddbb;
+    }
+
+    a:visited {
+      background-color: #ccffcc;
+    }
+
+    a:hover {
+      background-color: #dddddd;
+    }
+
+    a:active {
+      background-color: #dddddd;
+    }
+
+
+    div.belt {
+      background-color: #eeeeee;
+      padding: 0px 4px;
+    }
+
+    div.belt-yellow {
+      background-color: #ffffcc;
+      padding: 0px 4px;
+    }
+
+    div.belt-blue {
+      background-color: #ddeeff;
+      padding: 0px 4px;
+    }
+
+    div.right-small {
+      text-align: right;
+      font-size: 8pt;
+    }
+
+    img.border {
+      border-width: 1px;
+      border-color: #000000;
+      vertical-align: middle;
+    }
+
+    img.borderless {
+      border-width: 0px;
+      vertical-align: middle;
+    }
+
+    p.belt {
+      background-color: #ffeedd;
+      padding: 4px 8px;
+    }
+
+    p.belt-blue {
+      background-color: #ddeeff;
+      padding: 4px 8px;
+    }
+
+    pre.belt {
+      background-color: #ddeeff;
+      padding: 4px 8px;
+    }
+
+    pre.belt-yellow {
+      background-color: #ffffcc;
+      padding: 4px 8px;
+    }
+
+    table {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      font-family: serif;
+      font-size: 10pt;
+    }
+
+    table.profile {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      font-family: serif;
+      font-size: 10pt;
+      margin-top: 8px;
+      margin-left: 8px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    table.belt {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      background-color: #ffeedd;
+      padding: 0px 0px;
+      width: 100%;
+    }
+
+    table.content {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 2px 4px;
+    }
+
+    table.font-fixed {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 2px 4px;
+      font-family: monospace;
+    }
+
+    table.nest {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 0px 0px;
+    }
+
+    td {
+      padding: 0px 0px;
+      vertical-align: middle;
+    }
+
+    td.center {
+      text-align: center;
+    }
+
+    td.center-half {
+      text-align: center;
+      width: 50%;
+      font-size: 8pt;
+    }
+
+    td.center-small {
+      text-align: center;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.center-small-nopadding {
+      text-align: center;
+      font-size: 8pt;
+      padding: 0px 0px;
+    }
+
+    td.center-white {
+      text-align: center;
+      background-color: #ffffff;
+    }
+
+    td.center-small-white {
+      text-align: center;
+      font-size: 8pt;
+      background-color: #ffffff;
+    }
+
+    td.center-border1 {
+      text-align: center;
+      vertical-align: middle;
+      empty-cells: show;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #ffc080;
+      width: 22px;
+      height: 22px;
+    }
+
+    td.left-small {
+      text-align: left;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.left-small-white {
+      text-align: left;
+      font-size: 8pt;
+      padding: 0px 4px;
+      background-color: #ffffff;
+    }
+
+    td.right-small {
+      text-align: right;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.right-small-white {
+      text-align: right;
+      font-size: 8pt;
+      padding: 0px 4px;
+      background-color: #ffffff;
+    }
+
+    th {
+      padding: 0px 0px;
+      vertical-align: middle;
+    }
+
+    #current {
+      background-color: #F45F57;
+      font-weight: bold;
+      color: #FFFFFF;
+      border: 1px solid #333333;
+    }
+
+    #menu {
+      margin: 0px 0px 0px 0px;
+      padding: 0px;
+      height: 32px;
+    }
+
+    #menu ul {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+      text-align: center;
+      clear: both;
+    }
+
+    #menu li {
+      margin: 0px 5px 0px 0px;
+      padding: 1px;
+      float: left;
+    }
+
+    #menu a {
+      display: block;
+      padding: 2px 4px;
+      text-decoration: none;
+      margin: 0px;
+      font-weight: bold;
+      background: #FFFFFF;
+      color: #333333;
+      border: 1px solid #666666;
+    }
+
+    #menu a:hover {
+      display: block;
+      padding: 2px 4px;
+      border-bottom: 1px solid #000000;
+      text-decoration: none;
+      background: #FFCC66;
+    }
+
+    #menu .current {
+      background-color: #F45F57;
+      font-weight: bold;
+      color: #FFFFFF;
+      border: 1px solid #333333;
+    }
+
+    .top-fixed {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+      margin: 0;
+      padding: 5px;
+      background: #ffffff;
+      color: #000000;
+      border: thick double #000000;
+    }
+
+    .site-footer {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      font-size: 8pt; 
+      padding: 0px 0; 
+      color: #333;
+    }
+    -->
+  </style>
+  <title>プロジェクト演習「ウェーブレット画像処理」開発</title>
+</head>
+
+<body>
+  <div>
+    <div id="menu">
+      <ul>
+        <li>
+          <a href="../index.html"> ホーム </a>
+        </li>
+        <li>
+          <a href="../Requirement/index.html"> 要求仕様書 </a>
+        </li>
+        <li>
+          <a href="../DevelopmentPlan/index.html"> 開発計画書 </a>
+        </li>
+        <li>
+          <a href="../BasicDesign/index.html"> 基本設計書 </a>
+        </li>
+        <li>
+          <a href="../DetailDesign/index.html"> 詳細設計書 </a>
+        </li>
+        <li>
+          <a class="current" href="../TestSpecification/index.html">
+            テスト仕様書
+          </a>
+        </li>
+        <li>
+          <a href="../TestResult/index.html"> テスト結果 </a>
+        </li>
+        <li>
+          <a href="../DevelopmentResult/index.html"> 開発実績 </a>
+        </li>
+        <li>
+          <a href="../Program/index.html"> プログラム </a>
+        </li>
+        <li>
+          <a href="../Manual/index.html"> マニュアル </a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <hr>
+    <div>
+      <a href="../TestSpecification/index.html"> クラス一覧 </a>
+      |
+      <a href="../TestSpecification/ForestIntegrationTest.html" style="background-color: #f45f57; color: #ffffff">
+        ForestIntegrationTest
+      </a>
+    </div>
+  </div>
+
+  <h2>ソフトウェア工学II「樹状整列」プログラム ~forest~</h2>
+  <div class="belt">
+    <h3>
+      <a href="./forest.html"> forest（メインクラス） </a>
+    </h3>
+  </div>
+
+  <!-- クラスを列挙する -->
+  <ul>
+    <li>
+      <a href="#ForestIntegrationTest" title="class-ForestIntegrationTest"> ForestIntegrationTest </a>
+    </li>
+  </ul>
+
+  <div class="belt">
+    <h3>
+      <a name="ForestIntegrationTest"
+        href="../Forest_Program/src_main_java_forest.html#ForestIntegrationTest">ForestIntegrationTest.java</a>
+    </h3>
+  </div>
+
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">
+                  フィールド（属性：インスタンス変数）
+                </th>
+                <th abbr="2" class="left-padding">束縛</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code> なし </code>
+                </td>
+                <td class="left-padding">
+                  <code> なし </code>
+                </td>
+                <td class="left-padding">
+                  <code> なし </code>
+                </td>
+                <td class="left-padding">なし</td>
+                <td class="left-padding">なし</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th abbr="1" class="left-padding">メソッド（操作）</th>
+                <th abbr="2" class="left-padding">応答</th>
+                <th abbr="3" class="left-padding">分類</th>
+                <th abbr="4" class="left-padding">説明</th>
+                <th abbr="5" class="left-padding">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>setUp()</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">各テストの前に実行されるセットアップメソッド。SecurityManager の設定は、最新のJavaバージョンではサポートされなくなりました。そのため、関連するコードは削除します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>loadForestFromFile(String fileName, long sleepTickOverride)</code></td>
+                <td class="left-padding"><code>Forest</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">指定されたファイルパスから Forest オブジェクトをロードおよびパースするヘルパーメソッドです。このメソッドは、提供されたデータファイルの具体的なフォーマットに従って実装する必要があります。現在はプレースホルダーのロジックです。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>testArrangeWithTreeData()</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">'data/tree.txt' を使用して Forest の結合テストを行います。整列後、フォレストのバウンドが正しく計算されることを確認します。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>testArrangeWithForestData()</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">'data/forest.txt' を使用して Forest の結合テストを行います。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>testArrangeWithSemilatticeData()</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">'data/semilattice.txt' を使用して Forest の結合テストを行います。</td>
+                <td class="left-padding">良好（2025年7月28日）</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+  <div class="site-footer">
+      <div class="left-small">
+        <div id="date">
+          <script type="text/javascript">
+            <!-- 
+              clock();
+                function clock() {
+                var JST = new Date();
+                var date = document.getElementById("date");
+                date.innerHTML =
+                JST.toLocaleDateString() + " " + JST.toLocaleTimeString();}
+                setInterval("clock()", 1000); 
+            -->
+          </script>
+        </div>
+      </div>
+  <div class="right-small">Copyright 2025 Project JavaGrove, Updated: 2025/07/29 (Created: 2009/11/11)</div>
+    </div>
+</body>
+
+</html>
