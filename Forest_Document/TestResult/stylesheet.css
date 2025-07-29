@@ -1,0 +1,114 @@
+body {
+  font:normal 68% verdana,arial,helvetica;
+  color:#000000;
+}
+table tr td, table tr th {
+    font-size: 68%;
+}
+table.details tr th{
+  font-weight: bold;
+  text-align:left;
+  background:#a6caf0;
+}
+table.details tr td{
+  background:#eeeee0;
+}
+
+p {
+  line-height:1.5em;
+  margin-top:0.5em; margin-bottom:1.0em;
+}
+h1 {
+  margin: 0px 0px 5px; font: 165% verdana,arial,helvetica
+}
+h2 {
+  margin-top: 1em; margin-bottom: 0.5em; font: bold 125% verdana,arial,helvetica
+}
+h3 {
+  margin-bottom: 0.5em; font: bold 115% verdana,arial,helvetica
+}
+h4 {
+  margin-bottom: 0.5em; font: bold 100% verdana,arial,helvetica
+}
+h5 {
+  margin-bottom: 0.5em; font: bold 100% verdana,arial,helvetica
+}
+h6 {
+  margin-bottom: 0.5em; font: bold 100% verdana,arial,helvetica
+}
+.Error {
+  font-weight:bold; color:red;
+}
+.Failure {
+  font-weight:bold; color:purple;
+}
+.Properties {
+  text-align:right;
+}
+.right-align {
+  text-align: right;
+}
+.left-align {
+  text-align: left;
+}
+.justify-text {
+  text-align: justify;
+}
+table.summary, table.packages, table.package-details, table.testcase-details {
+  width: 95%; /* 既存のwidth属性をCSSで再現 */
+  border-collapse: collapse; /* cellpaddingとcellspacingの代替 */
+  /* border属性の代替（必要に応じて追加） */
+  /* 例: border: 1px solid #000; */
+}
+table.summary th, table.summary td,
+table.packages th, table.packages td,
+table.package-details th, table.package-details td,
+table.testcase-details th, table.testcase-details td {
+  padding: 5px; /* cellpaddingの代替 */
+  /* cellspacingの代替はborder-spacingプロパティを使用するか、borderで調整 */
+}
+.nowrap {
+  white-space: nowrap; /* nowrap属性の代替 */
+}
+
+/* HRのSIZE属性の代替 */
+.hr-style {
+  height: 1px; /* size="1" の代替 */
+  border: none;
+  background-color: #000; /* 必要に応じて色を変更 */
+  width: 100%; /* デフォルトで100% */
+  margin-left: 0; /* align="left" の代替 */
+}
+/* width="95%" のHR用 */
+.hr-style.left-align {
+    width: 95%;
+}
+
+/* TABLEのborder, cellpadding, cellspacingの代替はtable.*の定義で対応済み */
+
+/* TRのCLASS属性値が空の代替 */
+.data-row {
+    /* 特にスタイルがない場合は空で構いませんが、存在しないクラスよりは良いです。 */
+    /* 例えば、偶数行と奇数行で背景色を変える場合などに利用できます。 */
+}
+
+/* displayProperties関数内で動的に生成されるテーブルのスタイル */
+table.properties {
+  border-collapse:collapse;
+  border-left:solid 1px #cccccc; /* border:solid 1 #cccccc; の代替 */
+  border-top:solid 1px #cccccc; /* border:solid 1 #cccccc; の代替 */
+  padding:5px;
+}
+table.properties th {
+  text-align:left;
+  border-right:solid 1px #cccccc;
+  border-bottom:solid 1px #cccccc;
+  background-color:#eeeeee;
+}
+table.properties td {
+  font:normal;
+  text-align:left;
+  border-right:solid 1px #cccccc;
+  border-bottom:solid 1px #cccccc;
+  background-color:#ffffff;
+}

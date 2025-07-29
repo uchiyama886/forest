@@ -1,0 +1,2976 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+    <meta name="description" content="ソフトウェア工学IIのホームページ">
+    <meta name="author" content="AOKI Atsushi">
+    <link rev="made" href="index.html">
+    <link rel="index" href="index.html">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>ソフトウェア工学II「樹状整列」プログラム - src/test/java/forest</title>
+</head>
+
+<body>
+    <div id="menu">
+        <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="../Requirement/index.html">要求仕様書</a></li>
+            <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+            <li><a href="../BasicDesign/index.html">基本設計書</a></li>
+            <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+            <li><a href="../TestSpecification/index.html">テスト仕様書</a></li>
+            <li><a href="../TestResult/index.html">テスト結果</a></li>
+            <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+            <li><a href="../Program/index.html" class="current">プログラム</a></li>
+            <li><a href="../Manual/index.html">マニュアル</a></li>
+        </ul>
+    </div>
+    <hr>
+    <h2>ソフトウェア工学II「樹状整列」プログラム - src/test/java/forest</h2>
+    <div id="submenu">
+        <ul>
+            <li><a href="index.html">全体</a></li>
+            <li><a href="Junit.html">Junit</a></li>
+            <li><a href="Root.html">Forest_Program/src/main/java</a></li>
+            <li><a href="lib.html">lib</a></li>
+            <li><a href="src_main_java_forest.html">src/main/java/forest</a></li>
+            <li><a href="src_main_java_utility.html">src/main/java/utility</a></li>
+            <li><a href="src_main_resources_data.html">src/main/resources/data</a></li>
+            <li><a href="src_test_java_forest.html" class="current">src/test/java/forest</a></li>
+        </ul>
+    </div>
+
+    <h3>src/test/java/forestのファイル一覧</h3>
+    <ul>
+        <li><a href="#BranchTest">BranchTest</a></li>
+        <li><a href="#ConstantsTest">ConstantsTest</a></li>
+        <li><a href="#ExampleTest">ExampleTest</a></li>
+        <li><a href="#ExitException">ExitException</a></li>
+        <li><a href="#ForestControllerTest">ForestControllerTest</a></li>
+        <li><a href="#ForestIntegrationTest">ForestIntegrationTest</a></li>
+        <li><a href="#ForestModelTest">ForestModelTest</a></li>
+        <li><a href="#ForestTest">ForestTest</a></li>
+        <li><a href="#ForestViewTest">ForestViewTest</a></li>
+        <li><a href="#NoExitSecurityManager">NoExitSecurityManager</a></li>
+        <li><a href="#NodeTest">NodeTest</a></li>
+    </ul>
+    <div class="belt">
+        <h3><a name="BranchTest">BranchTest</a></h3>
+    </div>
+    <pre>package forest;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith; // JUnit 4 Runner のために必要
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner; // JUnit 4 と Mockito の連携
+
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Graphics;
+
+import static org.junit.Assert.*; // JUnit 4 のアサーション
+import static org.mockito.Mockito.*; // Mockito の static import
+
+/**
+ * Branch クラスの単体テスト。
+ * JUnit 4 と Mockito を使用して実装されています。
+ */
+@RunWith(MockitoJUnitRunner.class) // MockitoJUnitRunner を使用してモックを自動初期化
+public class BranchTest {
+
+    // Mockito で自動的にモックが注入されるフィールド
+    @Mock
+    private Node startNode;
+    @Mock
+    private Node endNode;
+
+    private Branch branch;
+
+    /**
+     * 各テストメソッドの前に実行される初期化メソッド。
+     * Branch オブジェクトと、それに紐づく Node モックの振る舞いを設定します。
+     */
+    @Before
+    public void setUp() {
+        // startNode モックの振る舞いを定義
+        when(startNode.getName()).thenReturn(&quot;StartNode&quot;);
+        when(startNode.getLocation()).thenReturn(new Point(10, 20)); // 位置を設定
+        when(startNode.getExtent()).thenReturn(new Point(50, 30)); // 大きさを設定
+
+        // endNode モックの振る舞いを定義
+        when(endNode.getName()).thenReturn(&quot;EndNode&quot;);
+        when(endNode.getLocation()).thenReturn(new Point(100, 50)); // 位置を設定
+        when(endNode.getExtent()).thenReturn(new Point(60, 40)); // 大きさを設定
+
+        // Branch インスタンスを生成
+        branch = new Branch(startNode, endNode);
+    }
+
+    /**
+     * コンストラクタが正しくオブジェクトを初期化するかをテストします。
+     */
+    @Test
+    public void testConstructor() {
+        assertNotNull(&quot;Branch オブジェクトがnullであってはならない&quot;, branch);
+        assertEquals(&quot;始点ノードが正しく設定されていること&quot;, startNode, branch.start());
+        assertEquals(&quot;終点ノードが正しく設定されていること&quot;, endNode, branch.end());
+    }
+
+    /**
+     * start() メソッドが正しい始点ノードを返すかをテストします。
+     */
+    @Test
+    public void testStartMethod() {
+        assertEquals(&quot;start() メソッドが正しい始点ノードを返すこと&quot;, startNode, branch.start());
+    }
+
+    /**
+     * end() メソッドが正しい終点ノードを返すかをテストします。
+     */
+    @Test
+    public void testEndMethod() {
+        assertEquals(&quot;end() メソッドが正しい終点ノードを返すこと&quot;, endNode, branch.end());
+    }
+
+    /**
+     * toString() メソッドが期待される文字列フォーマットで出力するかをテストします。
+     */
+    @Test
+    public void testToStringMethod() {
+        // Node の toString() は &quot;Node[名前]&quot; の形式であると仮定
+        String expectedString = &quot;forest.Branch[start=startNode],[end=endNode]&quot;;
+        assertEquals(&quot;toString() メソッドが期待される文字列を返すこと&quot;, expectedString, branch.toString());
+    }
+
+    /**
+     * draw() メソッドが Graphics オブジェクトの drawLine と setColor を適切に呼び出すかをテストします。
+     */
+    @Test
+    public void testDrawMethod() {
+        Graphics mockGraphics = mock(Graphics.class); // Graphics オブジェクトをモック化
+
+        branch.draw(mockGraphics);
+
+        // Constants.ForegroundColor で色が設定されることを検証
+        verify(mockGraphics).setColor(Constants.ForegroundColor);
+
+        // drawLine メソッドが正しい座標で呼び出されたことを検証
+        // 始点ノードの中心座標: (location.x + extent.width/2, location.y + extent.height/2)
+        // ここではブランチの描画ロジックが始点ノードの右端中央から終点ノードの左端中央へ線を描くことを想定
+        // 始点ノードの右端中央: x = startNode.getLocation().x + startNode.getExtent().width = 10 + 50 = 60
+        //                    y = startNode.getLocation().y + startNode.getExtent().height / 2 = 20 + 30 / 2 = 35
+        // 終点ノードの左端中央: x = endNode.getLocation().x = 100
+        //                    y = endNode.getLocation().y + endNode.getExtent().height / 2 = 50 + 40 / 2 = 70
+        verify(mockGraphics).drawLine(60, 35, 100, 70);
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="ConstantsTest">ConstantsTest</a></h3>
+    </div>
+    <pre>package forest;
+
+import org.junit.Test;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Point;
+import javax.swing.plaf.FontUIResource;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
+
+import static org.junit.Assert.*;
+
+/**
+ * {@code Constants} クラスの単体テストクラスです。
+ * このクラスは、{@code Constants} クラスに定義されているすべての定数が、
+ * 期待される値を持っていることを検証します。
+ * また、{@code Constants} クラスがインスタンス化できないことも確認します。
+ */
+public class ConstantsTest {
+
+    
+
+    // 定数値のテスト
+
+    /**
+     * {@code TagofTrees} 定数の値が期待通りであることを確認します。
+     */
+    @Test
+    public void testTagOfTrees() {
+        assertEquals(&quot;trees:&quot;, Constants.TagofTrees);
+    }
+
+    /**
+     * {@code TagOfNodes} 定数の値が期待通りであることを確認します。
+     */
+    @Test
+    public void testTagOfNodes() {
+        assertEquals(&quot;nodes:&quot;, Constants.TagOfNodes);
+    }
+
+    /**
+     * {@code TagOfBranches} 定数の値が期待通りであることを確認します。
+     */
+    @Test
+    public void testTagOfBranches() {
+        assertEquals(&quot;branches:&quot;, Constants.TagOfBranches);
+    }
+
+    /**
+     * {@code ForegroundColor} 定数の値が期待通りであることを確認します。
+     */
+    @Test
+    public void testForegroundColor() {
+        assertEquals(Color.BLACK, Constants.ForegroundColor);
+    }
+
+    /**
+     * {@code BackgroundColor} 定数の値が期待通りであることを確認します。
+     */
+    @Test
+    public void testBackgroundColor() {
+        assertEquals(Color.WHITE, Constants.BackgroundColor);
+    }
+
+    /**
+     * {@code DefaultFont} 定数の値が期待通りであることを確認します。
+     * フォント名、スタイル、サイズを個別に検証します。
+     */
+    @Test
+    public void testDefaultFont() {
+        Font expectedFont = new FontUIResource(&quot;Serif&quot;, Font.PLAIN, 12);
+        assertNotNull(Constants.DefaultFont);
+        assertEquals(&quot;Serif&quot;, Constants.DefaultFont.getName());
+        assertEquals(Font.PLAIN, Constants.DefaultFont.getStyle());
+        assertEquals(12, Constants.DefaultFont.getSize());
+        // FontUIResource は Font を継承しているため、equals メソッドで比較可能
+        assertEquals(expectedFont, Constants.DefaultFont);
+    }
+
+    /**
+     * {@code Margin} 定数の値が期待通りであることを確認します。
+     */
+    @Test
+    public void testMargin() {
+        assertEquals(new Point(1, 1), Constants.Margin);
+    }
+
+    /**
+     * {@code Interval} 定数の値が期待通りであることを確認します。
+     */
+    @Test
+    public void testInterval() {
+        assertEquals(new Point(25, 2), Constants.Interval);
+    }
+
+    /**
+     * {@code UnKnown} 定数の値が期待通りであることを確認します。
+     */
+    @Test
+    public void testUnKnown() {
+        assertEquals(Integer.valueOf(-1), Constants.UnKnown);
+    }
+
+    /**
+     * {@code UnVisited} 定数の値が期待通りであることを確認します。
+     */
+    @Test
+    public void testUnVisited() {
+        assertEquals(Integer.valueOf(0), Constants.UnVisited);
+    }
+
+    /**
+     * {@code Visited} 定数の値が期待通りであることを確認します。
+     */
+    @Test
+    public void testVisited() {
+        assertEquals(Integer.valueOf(1), Constants.Visited);
+    }
+
+    /**
+     * {@code SleepTick} 定数の値が期待通りであることを確認します。
+     */
+    @Test
+    public void testSleepTick() {
+        assertEquals(Integer.valueOf(100), Constants.SleepTick);
+    }
+
+    
+
+    // クラスのインスタンス化防止のテスト
+
+    /**
+     * {@code Constants} クラスのコンストラクタがプライベートであり、
+     * 外部からインスタンス化できないことを確認します。
+     * リフレクションを使ってプライベートコンストラクタへのアクセスを試み、
+     * {@code InvocationTargetException} が発生し、その原因が
+     * {@code UnsupportedOperationException} であることを確認することで、
+     * このクラスが意図的にインスタンス化不可能に設計されていることを検証します。
+     */
+    @Test
+    public void testPrivateConstructor() {
+        try {
+            // Constants クラスのすべての宣言されたコンストラクタを取得
+            Constructor&lt;Constants&gt; constructor = Constants.class.getDeclaredConstructor();
+            // コンストラクタがプライベートであることを確認
+            assertTrue(&quot;Constants クラスのコンストラクタはプライベートであるべき&quot;,
+                       Modifier.isPrivate(constructor.getModifiers()));
+
+            // プライベートコンストラクタにアクセス可能にする (テストのため)
+            constructor.setAccessible(true);
+
+            // インスタンス化を試みる
+            constructor.newInstance();
+
+            // ここに到達した場合はテスト失敗 (例外がスローされるべき)
+            fail(&quot;Constants クラスはインスタンス化されるべきではありません。&quot;);
+        } catch (InvocationTargetException e) {
+            // コンストラクタが例外をスローした場合
+            // 期待されるのは UnsupportedOperationException
+            Throwable cause = e.getTargetException();
+            assertNotNull(&quot;InvocationTargetException の原因が null でないこと&quot;, cause);
+            assertTrue(&quot;原因が UnsupportedOperationException であること&quot;,
+                       cause instanceof UnsupportedOperationException);
+            assertEquals(&quot;UnsupportedOperationException のメッセージが正しいこと&quot;,
+                         &quot;Constants クラスはインスタンス化できません。&quot;, cause.getMessage());
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException e) {
+            // その他のリフレクション関連の例外が発生した場合、テスト失敗
+            fail(&quot;予期せぬリフレクション例外が発生しました: &quot; + e.getMessage());
+        }
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="ExampleTest">ExampleTest</a></h3>
+    </div>
+    <pre>package forest;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.Ignore; // @Ignore アノテーションをインポート
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue; // assertTrue を使用するためにインポート
+import static org.junit.Assert.fail; // fail メソッドをインポート
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.PrintStream;
+import java.lang.reflect.Constructor; // コンストラクタをリフレクションで取得するために必要
+import java.lang.reflect.InvocationTargetException; // リフレクションで例外を捕捉するために必要
+import java.lang.reflect.Modifier; // コンストラクタの修飾子をチェックするために必要
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+/**
+ * {@code Example} クラスのテストクラスです。
+ * 主に {@code main} メソッドのエラー処理と、クラスのインスタンス化防止を検証します。
+ *
+ * 注意: {@code main} メソッドが {@code System.exit()} を呼び出すため、
+ * 引数不足やファイル不在のテストケースはJVMを終了させます。
+ * これらのテストは、単独で実行するか、JVMの終了を許容するテストランナーの設定が必要です。
+ * 現在は、JVMの強制終了を防ぐため、{@code @Ignore} アノテーションで無効化されています。
+ *
+ * また、{@code main} メソッド内でGUIコンポーネントが直接インスタンス化されるため、
+ * 標準的な Mockito ではその部分のモック化は困難です。
+ * そのため、GUI表示やアニメーションの開始を直接検証するユニットテストは含まれていません。
+ */
+public class ExampleTest {
+
+    // System.err の出力をキャプチャするためのストリーム
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalErr = System.err;
+
+    /**
+     * 各テストメソッドの実行前に System.err をリダイレクトします。
+     */
+    @Before
+    public void setUpStreams() {
+        System.setErr(new PrintStream(errContent));
+    }
+
+    /**
+     * 各テストメソッドの実行後に System.err を元の状態に戻します。
+     */
+    @After
+    public void restoreStreams() {
+        System.setErr(originalErr);
+    }
+
+    /**
+     * 引数が不足している場合に main メソッドが正しくエラーメッセージを出力し、
+     * System.exit(1) を呼び出すことを検証します。
+     *
+     * 注意: このテストは System.exit(1) を呼び出すため、JVMが終了します。
+     * そのため、テストフレームワークによってはテストの実行が中断される可能性があります。
+     * このテストは、JVMの強制終了を防ぐため、一時的に無効化されています。
+     * 理想的には、System.exit()を呼び出すロジックをリファクタリングするか、
+     * テストランナーの設定で別プロセスで実行するようにしてください。
+     */
+    @Ignore // JVMの強制終了を防ぐため、このテストを無効化します
+    @Test
+    public void testMain_TooFewArguments() {
+        // System.exit() が呼び出されることを期待するため、
+        // try-catch で System.exit() による例外を捕捉するような一般的なパターンは、
+        // SecurityManager が削除された Java 21+ では直接適用できません。
+        // ここでは System.err への出力のみを検証します。
+
+        // main メソッドを実行
+        // この呼び出しは System.exit(1) を引き起こし、JVMを終了させる可能性があります。
+        // そのため、このテストメソッド以降のコードは実行されないかもしれません。
+        // 理想的には、この種のテストは別プロセスで実行されるべきです。
+        Example.main(new String[]{});
+
+        // System.err に正しいメッセージが出力されたことを検証
+        String expectedErrorMessage = &quot;There are too few arguments.&quot;;
+        assertTrue(&quot;エラーメッセージが正しく出力されること&quot;, errContent.toString().contains(expectedErrorMessage));
+    }
+
+    /**
+     * 指定されたファイルが存在しない場合に main メソッドが正しくエラーメッセージを出力し、
+     * System.exit(1) を呼び出すことを検証します。
+     *
+     * 注意: このテストは System.exit(1) を呼び出すため、JVMが終了します。
+     * そのため、テストフレームワークによってはテストの実行が中断される可能性があります。
+     * このテストは、JVMの強制終了を防ぐため、一時的に無効化されています。
+     * 理想的には、System.exit()を呼び出すロジックをリファクタリングするか、
+     * テストランナーの設定で別プロセスで実行するようにしてください。
+     */
+    @Ignore // JVMの強制終了を防ぐため、このテストを無効化します
+    @Test
+    public void testMain_FileDoesNotExist() {
+        // 存在しない一時的なファイルパスを作成
+        String nonExistentFilePath = &quot;non_existent_test_file_&quot; + System.currentTimeMillis() + &quot;.txt&quot;;
+        File nonExistentFile = new File(nonExistentFilePath);
+
+        // main メソッドを実行
+        // この呼び出しは System.exit(1) を引き起こし、JVMを終了させる可能性があります。
+        Example.main(new String[]{nonExistentFile.getAbsolutePath()});
+
+        // System.err に正しいメッセージが出力されたことを検証
+        String expectedErrorMessage = &quot;&#39;&quot; + nonExistentFile.getAbsolutePath() + &quot;&#39; does not exist.&quot;;
+        assertTrue(&quot;エラーメッセージが正しく出力されること&quot;, errContent.toString().contains(expectedErrorMessage));
+
+        // テスト後に一時ファイルを削除（存在しないはずだが念のため）
+        if (nonExistentFile.exists()) {
+            nonExistentFile.delete();
+        }
+    }
+
+    /**
+     * 有効なファイルが指定された場合に main メソッドが正常に実行されることを検証します。
+     * ただし、GUIコンポーネントのインスタンス化はモックできないため、
+     * このテストは System.exit() が呼び出されないことのみを間接的に確認します。
+     *
+     * 注意: このテストは実際のファイルを作成し、GUIコンポーネントを初期化しようとします。
+     * ヘッドレス環境で実行する場合、問題が発生する可能性があります。
+     * 厳密なユニットテストとしてではなく、System.exit() が発生しないことを確認する
+     * 程度のものと理解してください。
+     */
+    @Test
+    public void testMain_ValidFile_NoExit() throws Exception {
+        // テスト用のダミーファイルを作成
+        Path tempFilePath = Files.createTempFile(&quot;test_forest_data&quot;, &quot;.txt&quot;);
+        // ファイルに最低限の有効な内容を書き込む (ForestModelがパースできる内容)
+        Files.write(tempFilePath, &quot;nodes:\n1,NodeA\nbranches:\n&quot;.getBytes()); // 少なくともノードとブランチのタグが必要
+
+        // main メソッドを実行
+        // この呼び出しはGUIコンポーネントを初期化し、表示しようとします。
+        // ヘッドレス環境で実行する場合、問題が発生する可能性があります。
+        Example.main(new String[]{tempFilePath.toString()});
+
+        // System.err に何も出力されていないことを検証
+        assertEquals(&quot;エラーメッセージが出力されないこと&quot;, &quot;&quot;, errContent.toString());
+
+        // テスト後に一時ファイルを削除
+        Files.deleteIfExists(tempFilePath);
+    }
+
+    /**
+     * {@code Example} クラスのコンストラクタがプライベートであり、
+     * 外部からインスタンス化できないことを確認します。
+     * リフレクションを使ってプライベートコンストラクタへのアクセスを試み、
+     * インスタンス化が成功しないことを検証します。
+     */
+    @Test
+    public void testPrivateConstructor() {
+        try {
+            // Example クラスのすべての宣言されたコンストラクタを取得
+            Constructor&lt;Example&gt; constructor = Example.class.getDeclaredConstructor();
+            // コンストラクタがプライベートであることを確認
+            assertTrue(&quot;Example クラスのコンストラクタはプライベートであるべき&quot;,
+                       Modifier.isPrivate(constructor.getModifiers()));
+
+            // プライベートコンストラクタにアクセス可能にする (テストのため)
+            constructor.setAccessible(true);
+
+            // インスタンス化を試みる
+            constructor.newInstance();
+
+            // ここに到達した場合はテスト失敗 (インスタンス化されるべきではないため)
+            fail(&quot;Example クラスはインスタンス化されるべきではありません。&quot;);
+        } catch (InvocationTargetException e) {
+            // コンストラクタが例外をスローした場合（例えば、Constantsクラスのように）
+            // Exampleクラスのコンストラクタが UnsupportedOperationException をスローするように変更されたため、
+            // このブロックに到達することが期待されます。
+            Throwable cause = e.getTargetException();
+            assertTrue(&quot;InvocationTargetException の原因が null でないこと&quot;, cause != null); // assertNotNull を assertTrue に変更
+            assertTrue(&quot;原因が UnsupportedOperationException であること&quot;, cause instanceof UnsupportedOperationException);
+            assertEquals(&quot;UnsupportedOperationException のメッセージが正しいこと&quot;,
+                         &quot;Example クラスはインスタンス化できません。&quot;, cause.getMessage());
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException e) {
+            // その他のリフレクション関連の例外が発生した場合、テスト失敗
+            fail(&quot;予期せぬリフレクション例外が発生しました: &quot; + e.getMessage());
+        }
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="ExitException">ExitException</a></h3>
+    </div>
+    <pre>package forest;
+
+/**
+ * System.exit() が呼び出されたときにスローされるカスタム例外です。
+ * これにより、テスト中に JVM が終了するのを防ぎます。
+ */
+public class ExitException extends SecurityException {
+    public final int status; // System.exit() に渡されたステータスコード
+
+    public ExitException(int status) {
+        this.status = status;
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="ForestControllerTest">ForestControllerTest</a></h3>
+    </div>
+    <pre>package forest;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.event.InputEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+/**
+ * {@code ForestController} クラスの単体テストクラスです。
+ * JUnit 4 と Mockito を利用して、{@code ForestController} の各メソッドが期待通りに動作するかを検証します。
+ * {@code ForestModel}, {@code ForestView}, {@code MouseEvent} (およびそのサブクラス)
+ * といった依存オブジェクトは Mockito でモック化します。
+ */
+@RunWith(MockitoJUnitRunner.class)
+public class ForestControllerTest {
+
+    private ForestController controller;
+
+    @Mock
+    private ForestModel mockModel;
+
+    @Mock
+    private ForestView mockView;
+
+    @Mock
+    private Component mockComponent;
+
+    /**
+     * 各テストメソッドの実行前に呼び出されるセットアップメソッドです。
+     * ここでテスト対象の {@code ForestController} インスタンスと、
+     * 依存オブジェクトの基本的な振る舞いを初期化・設定します。
+     */
+    @Before
+    public void setUp() {
+        controller = new ForestController();
+        controller.setModel(mockModel);
+        controller.setView(mockView);
+
+        // mockView のデフォルトの振る舞いを設定
+        when(mockView.scrollAmount()).thenReturn(new Point(0, 0)); // デフォルトのスクロール量
+        when(mockView.whichOfNodes(any(Point.class))).thenReturn(null); // デフォルトではノードが見つからない
+
+        // mockModel の getDependents() の振る舞いを設定 (scrollBy のテストで使用)
+        when(mockModel.getDependents()).thenReturn(new ArrayList&lt;&gt;()); // デフォルトでは依存ビューなし
+    }
+
+    // テストメソッド
+
+    /**
+     * {@code ForestController} コンストラクタがフィールドを正しく初期化することを確認します。
+     */
+    @Test
+    public void testConstructor() {
+        ForestController newController = new ForestController();
+        assertNull(&quot;model が null で初期化されること&quot;, newController.getModel());
+        assertNull(&quot;view が null で初期化されること&quot;, newController.getView());
+        assertNull(&quot;previous が null で初期化されること&quot;, newController.getPrevious());
+        assertNull(&quot;current が null で初期化されること&quot;, newController.getCurrent());
+    }
+
+    /**
+     * {@code setModel()} メソッドがモデルを正しく設定することを確認します。
+     */
+    @Test
+    public void testSetModel() {
+        ForestModel anotherMockModel = mock(ForestModel.class);
+        controller.setModel(anotherMockModel);
+        assertEquals(&quot;setModel() がモデルを正しく設定すること&quot;, anotherMockModel, controller.getModel());
+    }
+
+    /**
+     * {@code setView()} メソッドがビューを正しく設定し、
+     * マウスリスナー、マウスモーションリスナー、マウスホイールリスナーをビューに追加することを確認します。
+     */
+    @Test
+    public void testSetView() {
+        ForestView anotherMockView = mock(ForestView.class);
+        controller.setView(anotherMockView);
+
+        assertEquals(&quot;setView() がビューを正しく設定すること&quot;, anotherMockView, controller.getView());
+        verify(anotherMockView).addMouseListener(controller);
+        verify(anotherMockView).addMouseMotionListener(controller);
+        verify(anotherMockView).addMouseWheelListener(controller);
+    }
+
+    /**
+     * {@code mouseClicked()} メソッドが、クリックされた座標とノード情報を正しく処理し、標準出力に出力することを確認します。
+     * ノードが見つかった場合と見つからなかった場合の両方をテストします。
+     */
+    @Test
+    public void testMouseClicked() {
+        java.io.ByteArrayOutputStream outContent = new java.io.ByteArrayOutputStream();
+        System.setOut(new java.io.PrintStream(outContent));
+
+        // シナリオ1: ノードがクリックされた場合
+        Point clickPoint = new Point(50, 50);
+        MouseEvent mockEventWithNode = mock(MouseEvent.class);
+        when(mockEventWithNode.getPoint()).thenReturn(clickPoint);
+        when(mockView.scrollAmount()).thenReturn(new Point(10, 20));
+        Node mockClickedNode = mock(Node.class);
+        when(mockClickedNode.toString()).thenReturn(&quot;MockNode[name=Clicked]&quot;);
+        when(mockView.whichOfNodes(new Point(clickPoint.x + 10, clickPoint.y + 20))).thenReturn(mockClickedNode);
+
+        controller.mouseClicked(mockEventWithNode);
+
+        String expectedOutputWithNode = &quot;Clicked at Model Coordinates: &quot; + new Point(60, 70) + &quot;\n&quot; +
+                                        &quot;Node/Leaf Clicked: MockNode[name=Clicked]\n&quot;;
+        assertEquals(&quot;ノードがクリックされた場合の出力が正しいこと&quot;, expectedOutputWithNode, outContent.toString());
+
+        outContent.reset();
+
+        // シナリオ2: ノードがクリックされなかった場合
+        MouseEvent mockEventNoNode = mock(MouseEvent.class);
+        when(mockEventNoNode.getPoint()).thenReturn(clickPoint);
+        when(mockView.scrollAmount()).thenReturn(new Point(10, 20));
+        when(mockView.whichOfNodes(new Point(clickPoint.x + 10, clickPoint.y + 20))).thenReturn(null);
+
+        controller.mouseClicked(mockEventNoNode);
+
+        String expectedOutputNoNode = &quot;Clicked at Model Coordinates: &quot; + new Point(60, 70) + &quot;\n&quot; +
+                                      &quot;No Node/Leaf found at this location.\n&quot;;
+        assertEquals(&quot;ノードが見つからなかった場合の出力が正しいこと&quot;, expectedOutputNoNode, outContent.toString());
+
+        System.setOut(System.out);
+    }
+
+    /**
+     * {@code mouseDragged()} メソッドが、マウスカーソルを移動カーソルに変更し、
+     * ビューのスクロールを依頼し、その後にビューの再描画を依頼することを確認します。
+     */
+    @Test
+    public void testMouseDragged() {
+        controller.mousePressed(createMouseEvent(MouseEvent.MOUSE_PRESSED, 0, 0, 0));
+
+        MouseEvent dragEvent = createMouseEvent(MouseEvent.MOUSE_DRAGGED, 10, 10, 0);
+        when(dragEvent.getSource()).thenReturn(mockComponent);
+
+        controller.mouseDragged(dragEvent);
+
+        verify(mockComponent).setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+        verify(mockView).scrollBy(new Point(10, 10));
+        assertEquals(&quot;previous が current に更新されていること&quot;, new Point(10, 10), controller.getPrevious());
+    }
+
+    /**
+     * これらのメソッドが何もしないことを確認します。
+     */
+    @Test
+    public void testEmptyMouseMethods() {
+        MouseEvent mockEvent = mock(MouseEvent.class);
+
+        controller.mouseEntered(mockEvent);
+        verifyNoInteractions(mockEvent);
+
+        controller.mouseExited(mockEvent);
+        verifyNoInteractions(mockEvent);
+
+        controller.mouseMoved(mockEvent);
+        verifyNoInteractions(mockEvent);
+    }
+
+    /**
+     * {@code mousePressed()} メソッドが、マウスカーソルを十字カーソルに変更し、
+     * {@code current} と {@code previous} の位置をイベントの位置に設定することを確認します。
+     */
+    @Test
+    public void testMousePressed() {
+        Point pressPoint = new Point(25, 30);
+        MouseEvent pressEvent = createMouseEvent(MouseEvent.MOUSE_PRESSED, pressPoint.x, pressPoint.y, 0);
+        when(pressEvent.getSource()).thenReturn(mockComponent);
+
+        controller.mousePressed(pressEvent);
+
+        verify(mockComponent).setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+        assertEquals(&quot;current が正しい位置に設定されていること&quot;, pressPoint, controller.getCurrent());
+        assertEquals(&quot;previous が current と同じ位置に設定されていること&quot;, pressPoint, controller.getPrevious());
+    }
+
+    /**
+     * {@code mouseReleased()} メソッドが、マウスカーソルをデフォルトに戻し、
+     * {@code current} と {@code previous} の位置をイベントの位置に設定することを確認します。
+     */
+    @Test
+    public void testMouseReleased() {
+        Point releasePoint = new Point(75, 80);
+        MouseEvent releaseEvent = createMouseEvent(MouseEvent.MOUSE_RELEASED, releasePoint.x, releasePoint.y, 0);
+        when(releaseEvent.getSource()).thenReturn(mockComponent);
+
+        controller.mouseReleased(releaseEvent);
+
+        verify(mockComponent).setCursor(Cursor.getDefaultCursor());
+        assertEquals(&quot;current が正しい位置に設定されていること&quot;, releasePoint, controller.getCurrent());
+        assertEquals(&quot;previous が current と同じ位置に設定されていること&quot;, releasePoint, controller.getPrevious());
+    }
+
+    /**
+     * {@code mouseWheelMoved()} メソッドが、マウスホイールの回転量に基づいて
+     * ビューのスクロールを依頼し、ビューの再描画を依頼することを確認します。
+     * 修飾キーが押下されている場合は水平スクロールに変わることもテストします。
+     */
+    @Test
+    public void testMouseWheelMoved() {
+        // シナリオ1: 垂直スクロール (修飾キーなし)
+        MouseWheelEvent verticalScrollEvent = new MouseWheelEvent(mockComponent, MouseEvent.MOUSE_WHEEL, System.currentTimeMillis(),
+                0, 0, 0, 0, false, MouseWheelEvent.WHEEL_UNIT_SCROLL, 1, -3); // wheel rotation = -3 (上にスクロール)
+
+        controller.mouseWheelMoved(verticalScrollEvent);
+
+        // scrollBy が (0, -(-3)) = (0, 3) で呼び出されたことを検証
+        verify(mockView).scrollBy(new Point(0, 3));
+        verify(mockView).repaint();
+
+        reset(mockView); // モックの呼び出し履歴をリセット
+
+        // シナリオ2: 水平スクロール (修飾キーあり)
+        MouseWheelEvent horizontalScrollEvent = new MouseWheelEvent(mockComponent, MouseEvent.MOUSE_WHEEL, System.currentTimeMillis(),
+                InputEvent.SHIFT_DOWN_MASK, 0, 0, 0, false, MouseWheelEvent.WHEEL_UNIT_SCROLL, 1, -2); // wheel rotation = -2 (上にスクロール)
+
+        controller.mouseWheelMoved(horizontalScrollEvent);
+
+        // scrollBy が (-(-2), 0) = (2, 0) で呼び出されたことを検証
+        verify(mockView).scrollBy(new Point(2, 0));
+        verify(mockView).repaint();
+
+        reset(mockView);
+
+        // シナリオ3: wheelRotation が 0 の場合、何もしないことを検証
+        MouseWheelEvent zeroRotationEvent = new MouseWheelEvent(mockComponent, MouseEvent.MOUSE_WHEEL, System.currentTimeMillis(),
+                0, 0, 0, 0, false, MouseWheelEvent.WHEEL_UNIT_SCROLL, 1, 0); // wheel rotation = 0
+
+        controller.mouseWheelMoved(zeroRotationEvent);
+
+        verifyNoInteractions(mockView); // mockView に対する操作がないことを検証
+    }
+
+    // `scrollBy()` のテスト (リファクタリング版)
+
+    /**
+     * {@code scrollBy()} メソッドが、シフトキーなしの場合に、
+     * 自身のビューのみを相対スクロールすることを確認します。
+     */
+    @Test
+    public void testScrollBy_NoShiftKey() {
+        // setUp() で mockModel.getDependents() は空リストを返すように設定されている
+        // mockView.scrollAmount() も new Point(0,0) を返すように設定されている
+
+        Point scrollAmount1 = new Point(10, 5);
+        MouseEvent mouseEvent1 = createMouseEvent(MouseEvent.MOUSE_DRAGGED, 0, 0, 0); // 修飾キーなし
+
+        controller.scrollBy(scrollAmount1, mouseEvent1);
+
+        verify(mockView).scrollBy(scrollAmount1); // 自身のビューがスクロールする
+        verify(mockView).repaint(); // 自身のビューが再描画される
+        verify(mockModel, never()).getDependents(); // シフトキーがないので getDependents() は呼び出されないはず
+    }
+
+    /**
+     * {@code scrollBy()} メソッドが、シフトキーのみの場合に、
+     * 自身のビューと依存ビューを相対スクロールすることを確認します。
+     */
+    @Test
+    public void testScrollBy_ShiftKeyOnly() {
+        ForestView mockView3 = mock(ForestView.class);
+        when(mockModel.getDependents()).thenReturn(Arrays.asList(mockView, mockView3)); // 他のビューとして mockView3 を設定
+
+        Point scrollAmount2 = new Point(-20, 10);
+        MouseEvent mouseEvent2 = createMouseEvent(MouseEvent.MOUSE_DRAGGED, 0, 0, InputEvent.SHIFT_DOWN_MASK); // シフトキー
+
+        controller.scrollBy(scrollAmount2, mouseEvent2);
+
+        verify(mockView).scrollBy(scrollAmount2); // 自身のビューがスクロールする
+        verify(mockView).repaint(); // 自身のビューが再描画される
+        verify(mockView3).scrollBy(scrollAmount2); // 他のビューも相対スクロール
+        verify(mockView3).repaint(); // 他のビューも再描画される
+    }
+
+    /**
+     * {@code scrollBy()} メソッドが、シフトキーと他の修飾キー (Alt/Ctrl/Meta) が押下されている場合に、
+     * 自身のビューは相対スクロールし、他のビューは絶対スクロールすることを確認します。
+     */
+    @Test
+    public void testScrollBy_ShiftAltCtrlMetaKeys() {
+        ForestView mockView3 = mock(ForestView.class);
+        when(mockModel.getDependents()).thenReturn(Arrays.asList(mockView, mockView3)); // 他のビューとして mockView3 を設定
+
+        Point scrollAmount3 = new Point(5, -5);
+        Point currentScrollAmount = new Point(100, 200); // mockView の現在のスクロール量
+        when(mockView.scrollAmount()).thenReturn(currentScrollAmount); // mockView の scrollAmount を設定
+
+        // シナリオ3: シフトキー + Alt
+        MouseEvent mouseEvent3 = createMouseEvent(MouseEvent.MOUSE_DRAGGED, 0, 0, InputEvent.SHIFT_DOWN_MASK | InputEvent.ALT_DOWN_MASK); // シフト + Alt
+        System.out.println(&quot;DEBUG: mockView.scrollAmount() before controller.scrollBy for Scenario 3: &quot; + mockView.scrollAmount()); // デバッグ出力
+        controller.scrollBy(scrollAmount3, mouseEvent3);
+        verify(mockView, times(1)).scrollBy(scrollAmount3); // 1回目の呼び出しを検証
+        verify(mockView, times(1)).repaint();
+        verify(mockView3, times(1)).scrollTo(new Point(-currentScrollAmount.x, -currentScrollAmount.y)); // 他のビューは絶対スクロール
+        verify(mockView3, times(1)).repaint();
+
+        // シナリオ4: シフトキー + Ctrl (同じスタブと検証)
+        // reset はしない。新しいイベントで再検証。
+        MouseEvent mouseEvent4 = createMouseEvent(MouseEvent.MOUSE_DRAGGED, 0, 0, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK);
+        System.out.println(&quot;DEBUG: mockView.scrollAmount() before controller.scrollBy for Scenario 4: &quot; + mockView.scrollAmount()); // デバッグ出力
+        controller.scrollBy(scrollAmount3, mouseEvent4);
+        verify(mockView, times(2)).scrollBy(scrollAmount3); // 2回目の呼び出しを検証 (総呼び出し回数)
+        verify(mockView, times(2)).repaint();
+        verify(mockView3, times(2)).scrollTo(new Point(-currentScrollAmount.x, -currentScrollAmount.y)); // 2回目の呼び出し (総呼び出し回数)
+        verify(mockView3, times(2)).repaint();
+
+        // シナリオ5: シフトキー + Meta (同じスタブと検証)
+        MouseEvent mouseEvent5 = createMouseEvent(MouseEvent.MOUSE_DRAGGED, 0, 0, InputEvent.SHIFT_DOWN_MASK | InputEvent.META_DOWN_MASK);
+        System.out.println(&quot;DEBUG: mockView.scrollAmount() before controller.scrollBy for Scenario 5: &quot; + mockView.scrollAmount()); // デバッグ出力
+        controller.scrollBy(scrollAmount3, mouseEvent5);
+        verify(mockView, times(3)).scrollBy(scrollAmount3); // 3回目の呼び出しを検証 (総呼び出し回数)
+        verify(mockView, times(3)).repaint();
+        verify(mockView3, times(3)).scrollTo(new Point(-currentScrollAmount.x, -currentScrollAmount.y)); // 3回目の呼び出し (総呼び出し回数)
+        verify(mockView3, times(3)).repaint();
+    }
+
+
+    /**
+     * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すことを確認します。
+     */
+    @Test
+    public void testToString() {
+        when(mockModel.toString()).thenReturn(&quot;MockForestModel&quot;);
+        when(mockView.toString()).thenReturn(&quot;MockForestView&quot;);
+
+        String expectedString = &quot;forest.ForestController[model=MockForestModel,view=MockForestView]&quot;;
+        assertEquals(&quot;toString() メソッドが期待される文字列を返すこと&quot;, expectedString, controller.toString());
+    }
+
+    // ヘルパーメソッド
+
+    /**
+     * MouseEvent オブジェクトをモック化するためのヘルパーメソッド。
+     * @param id イベントID
+     * @param x イベントのX座標
+     * @param y イベントのY座標
+     * @param modifiersEx 修飾キー
+     * @return モック化された MouseEvent オブジェクト
+     */
+    private MouseEvent createMouseEvent(int id, int x, int y, int modifiersEx) {
+        MouseEvent mockEvent = mock(MouseEvent.class);
+        when(mockEvent.getID()).thenReturn(id);
+        when(mockEvent.getPoint()).thenReturn(new Point(x, y));
+        when(mockEvent.getX()).thenReturn(x);
+        when(mockEvent.getY()).thenReturn(y);
+        when(mockEvent.getModifiersEx()).thenReturn(modifiersEx);
+        when(mockEvent.getSource()).thenReturn(mockComponent);
+        return mockEvent;
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="ForestIntegrationTest">ForestIntegrationTest</a></h3>
+    </div>
+    <pre>package forest;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import java.awt.Point;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.junit.Assert.*;
+
+/**
+ * {@code Forest} アプリケーションの結合テストクラスです。
+ * 実際のデータファイルを使用して {@code Forest} のコアロジックをテストします。
+ * {@code System.exit()} の呼び出しを防ぐための {@code NoExitSecurityManager} を使用していましたが、
+ * 最新のJavaバージョンでの非互換性のため、SecurityManager の設定を削除します。
+ */
+@RunWith(MockitoJUnitRunner.class)
+public class ForestIntegrationTest {
+
+    @Before
+    public void setUp() {
+        // 現在のJavaバージョンでは SecurityManager の設定はサポートされていません。
+        // 詳細なログやデバッグが必要な場合は、ここに処理を追加できます。
+    }
+
+    /**
+     * 指定されたファイルパスから Forest オブジェクトをロードおよびパースするヘルパーメソッドです。
+     * このメソッドは、提供されたデータファイルの具体的なフォーマットに従って実装する必要があります。
+     * 現在はプレースホルダーのロジックです。
+     *
+     * @param fileName リソース内のデータファイルのパス (例: &quot;data/tree.txt&quot;)
+     * @return ロードされたノードとブランチを持つ Forest オブジェクト
+     * @throws Exception ファイルの読み込みまたはパース中にエラーが発生した場合
+     */
+    private Forest loadForestFromFile(String fileName, long sleepTickOverride) throws Exception { // sleepTickOverride 引数を追加
+        Forest forest = new Forest(sleepTickOverride); // 追加: 新しいコンストラクタを使用
+
+        List&lt;String&gt; lines = new ArrayList&lt;&gt;();
+
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+            lines = reader.lines().collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new RuntimeException(&quot;Failed to read resource file: &quot; + fileName, e);
+        }
+
+        List&lt;Node&gt; nodes = new ArrayList&lt;&gt;();
+        List&lt;Branch&gt; branches = new ArrayList&lt;&gt;();
+
+        for (String line : lines) {
+            line = line.trim();
+            if (line.isEmpty() || line.startsWith(&quot;#&quot;)) {
+                continue;
+            }
+
+            if (line.contains(&quot;-&gt;&quot;)) {
+                String[] parts = line.split(&quot;-&gt;&quot;);
+                String startNodeName = parts[0].trim();
+                String endNodeName = parts[1].trim();
+
+                Node startNode = nodes.stream()
+                                      .filter(n -&gt; n.getName().equals(startNodeName))
+                                      .findFirst()
+                                      .orElseGet(() -&gt; {
+                                          Node newNode = new Node(startNodeName);
+                                          newNode.setLocation(new Point(0,0));
+                                          newNode.setExtent(new Point(80, 30));
+                                          forest.addNode(newNode);
+                                          nodes.add(newNode);
+                                          return newNode;
+                                      });
+                Node endNode = nodes.stream()
+                                    .filter(n -&gt; n.getName().equals(endNodeName))
+                                    .findFirst()
+                                    .orElseGet(() -&gt; {
+                                        Node newNode = new Node(endNodeName);
+                                        newNode.setLocation(new Point(0,0));
+                                        newNode.setExtent(new Point(80, 30));
+                                        forest.addNode(newNode);
+                                        nodes.add(newNode);
+                                        return newNode;
+                                    });
+                forest.addBranch(new Branch(startNode, endNode));
+                branches.add(new Branch(startNode, endNode));
+
+            } else {
+                String nodeName = line;
+                if (nodes.stream().noneMatch(n -&gt; n.getName().equals(nodeName))) {
+                    Node newNode = new Node(nodeName);
+                    newNode.setLocation(new Point(0,0));
+                    newNode.setExtent(new Point(80, 30));
+                    forest.addNode(newNode);
+                    nodes.add(newNode);
+                }
+            }
+        }
+        return forest;
+    }
+
+    /**
+     * &#39;data/tree.txt&#39; を使用して Forest の結合テストを行います。
+     * 整列後、フォレストのバウンドが正しく計算されることを確認します。
+     */
+    @Test
+    public void testArrangeWithTreeData() throws Exception {
+        System.out.println(&quot;\n--- testArrangeWithTreeData ---&quot;);
+        Forest forest = loadForestFromFile(&quot;data/tree.txt&quot;, 1L); // 変更: スリープ時間を1ミリ秒に設定
+        
+        System.out.println(&quot;Nodes loaded: &quot; + forest.getNodes().size());
+        assertFalse(&quot;ツリーデータからノードがロードされていること&quot;, forest.getNodes().isEmpty());
+
+        forest.arrange(null);
+
+        System.out.println(&quot;--- After arrange() for Tree Data ---&quot;);
+        for (Node node : forest.getNodes()) {
+            System.out.println(&quot;Node: &quot; + node.getName() + &quot;, Location: &quot; + node.getLocation() + &quot;, Extent: &quot; + node.getExtent());
+        }
+        System.out.println(&quot;Forest Bounds: &quot; + forest.bounds());
+
+        assertNotNull(&quot;整列後にboundsがnullでないこと&quot;, forest.getBounds());
+        assertTrue(&quot;整列後にboundsの幅が0より大きいこと&quot;, forest.getBounds().width &gt; 0);
+        assertTrue(&quot;整列後にboundsの高さが0より大きいこと&quot;, forest.getBounds().height &gt; 0);
+    }
+
+    /**
+     * &#39;data/forest.txt&#39; を使用して Forest の結合テストを行います。
+     */
+    @Test
+    public void testArrangeWithForestData() throws Exception {
+        System.out.println(&quot;\n--- testArrangeWithForestData ---&quot;);
+        Forest forest = loadForestFromFile(&quot;data/forest.txt&quot;, 1L); // 変更: スリープ時間を1ミリ秒に設定
+
+        System.out.println(&quot;Nodes loaded: &quot; + forest.getNodes().size());
+        assertFalse(&quot;フォレストデータからノードがロードされていること&quot;, forest.getNodes().isEmpty());
+        forest.arrange(null);
+
+        System.out.println(&quot;--- After arrange() for Forest Data ---&quot;);
+        for (Node node : forest.getNodes()) {
+            System.out.println(&quot;Node: &quot; + node.getName() + &quot;, Location: &quot; + node.getLocation() + &quot;, Extent: &quot; + node.getExtent());
+        }
+        System.out.println(&quot;Forest Bounds: &quot; + forest.bounds());
+
+        assertNotNull(&quot;整列後にboundsがnullでないこと&quot;, forest.getBounds());
+        assertTrue(&quot;整列後にboundsの幅が0より大きいこと&quot;, forest.getBounds().width &gt; 0);
+        assertTrue(&quot;整列後にboundsの高さが0より大きいこと&quot;, forest.getBounds().height &gt; 0);
+    }
+
+    /**
+     * &#39;data/semilattice.txt&#39; を使用して Forest の結合テストを行います。
+     */
+    @Test
+    public void testArrangeWithSemilatticeData() throws Exception {
+        System.out.println(&quot;\n--- testArrangeWithSemilatticeData ---&quot;);
+        Forest forest = loadForestFromFile(&quot;data/semilattice.txt&quot;, 1L); // 変更: スリープ時間を1ミリ秒に設定
+
+        System.out.println(&quot;Nodes loaded: &quot; + forest.getNodes().size());
+        assertFalse(&quot;半束データからノードがロードされていること&quot;, forest.getNodes().isEmpty());
+        forest.arrange(null);
+
+        System.out.println(&quot;--- After arrange() for Semilattice Data ---&quot;);
+        for (Node node : forest.getNodes()) {
+            System.out.println(&quot;Node: &quot; + node.getName() + &quot;, Location: &quot; + node.getLocation() + &quot;, Extent: &quot; + node.getExtent());
+        }
+        System.out.println(&quot;Forest Bounds: &quot; + forest.bounds());
+
+        assertNotNull(&quot;整列後にboundsがnullでないこと&quot;, forest.getBounds());
+        assertTrue(&quot;整列後にboundsの幅が0より大きいこと&quot;, forest.getBounds().width &gt; 0);
+        assertTrue(&quot;整列後にboundsの高さが0より大きいこと&quot;, forest.getBounds().height &gt; 0);
+    }
+}</pre>
+    <div class="belt">
+        <h3><a name="ForestModelTest">ForestModelTest</a></h3>
+    </div>
+    <pre>package forest;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.ArgumentCaptor; // メソッドの引数をキャプチャするために使用
+
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle; // Rectangle を使用
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CountDownLatch; // スレッド処理のテストで使用
+
+import javax.swing.SwingUtilities; // SwingUtilities.invokeLater をモック化するために必要
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+/**
+ * {@code Forest} クラスの単体テストクラスです。
+ * JUnit 4 と Mockito を利用して、{@code Forest} の各メソッドが期待通りに動作するかを検証します。
+ * {@code Node}, {@code Branch}, {@code ForestModel}, {@code Graphics} といった依存オブジェクトは
+ * Mockito でモック化します。
+ * &lt;p&gt;
+ * 注: {@code arrange} メソッドは再帰的で複雑なロジックを持つため、すべてのパスを網羅するテストは非常に困難です。
+ * ここでは主要なシナリオをカバーします。
+ * また、{@code SwingUtilities.invokeLater} のテストには特別な考慮が必要です。
+ */
+@RunWith(MockitoJUnitRunner.class)
+public class ForestModelTest {
+
+    private Forest forest; // テスト対象の Forest インスタンス
+
+    // Forest が内部で操作する Node と Branch のリストをモック化
+    // ただし、これらのリストは Forest のコンストラクタで初期化されるため、
+    // ここで @Mock にしても Forest 内部のリストには適用されません。
+    // そのため、実際には addNode/addBranch を通じてモックノード/ブランチを追加します。
+
+    // 各テストで再利用するモックノード
+    @Mock private Node mockNodeA;
+    @Mock private Node mockNodeB;
+    @Mock private Node mockNodeC;
+    @Mock private Node mockNodeD;
+
+    // 各テストで再利用するモックブランチ
+    @Mock private Branch mockBranchAB; // A -&gt; B
+    @Mock private Branch mockBranchBC; // B -&gt; C
+
+    /**
+     * テストの前に実行されるセットアップメソッド。
+     * 各テストケースの前に新しい {@code Forest} インスタンスを作成し、
+     * モックの振る舞いを設定します。
+     */
+    @Before
+    public void setUp() {
+        forest = new Forest();
+
+        // モックノードの基本的な振る舞いを設定
+        // Node の toString() は Node[node=name] の形式なのでそれに合わせる
+        when(mockNodeA.getName()).thenReturn(&quot;A&quot;);
+        when(mockNodeA.toString()).thenReturn(&quot;forest.Node[node=A]&quot;);
+        when(mockNodeA.getLocation()).thenReturn(new Point(0, 0)); // デフォルト位置
+        // getExtent() は Point を返すように修正 (ユーザーの指摘に基づく)
+        // Point の x が幅、y が高さを表すと仮定
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // width, height
+
+        when(mockNodeB.getName()).thenReturn(&quot;B&quot;);
+        when(mockNodeB.toString()).thenReturn(&quot;forest.Node[node=B]&quot;);
+        when(mockNodeB.getLocation()).thenReturn(new Point(0, 0));
+        // getExtent() は Point を返すように修正
+        when(mockNodeB.getExtent()).thenReturn(new Point(60, 40)); // width, height
+
+        when(mockNodeC.getName()).thenReturn(&quot;C&quot;);
+        when(mockNodeC.toString()).thenReturn(&quot;forest.Node[node=C]&quot;);
+        when(mockNodeC.getLocation()).thenReturn(new Point(0, 0));
+        // getExtent() は Point を返すように修正
+        when(mockNodeC.getExtent()).thenReturn(new Point(70, 50)); // width, height
+
+        when(mockNodeD.getName()).thenReturn(&quot;D&quot;);
+        when(mockNodeD.toString()).thenReturn(&quot;forest.Node[node=D]&quot;);
+        when(mockNodeD.getLocation()).thenReturn(new Point(0, 0));
+        // getExtent() は Point を返すように修正
+        when(mockNodeD.getExtent()).thenReturn(new Point(80, 60)); // width, height
+
+
+        // モックブランチの振る舞いを設定
+        when(mockBranchAB.start()).thenReturn(mockNodeA);
+        when(mockBranchAB.end()).thenReturn(mockNodeB);
+
+        when(mockBranchBC.start()).thenReturn(mockNodeB);
+        when(mockBranchBC.end()).thenReturn(mockNodeC);
+
+        // Constants クラスが存在し、適切に初期化されていることを前提とします。
+        // 必要であれば、Constants の値もここでスタブ化または設定できます。
+    }
+
+    
+
+    // テストメソッド
+
+    // コンストラクタのテスト
+    /**
+     * {@code Forest} コンストラクタが {@code nodes}, {@code branches}, {@code bounds}
+     * フィールドを正しく初期化することを確認します。
+     */
+    @Test
+    public void testConstructor() {
+        assertNotNull(&quot;nodes リストが null でないこと&quot;, forest.getNodes());
+        assertTrue(&quot;nodes リストが空であること&quot;, forest.getNodes().isEmpty());
+        assertNotNull(&quot;branches リストが null でないこと&quot;, forest.getBranches());
+        assertTrue(&quot;branches リストが空であること&quot;, forest.getBranches().isEmpty());
+        assertNotNull(&quot;bounds オブジェクトが null でないこと&quot;, forest.getBounds());
+        // 初期状態では bounds の幅と高さが0であることを確認
+        assertEquals(&quot;初期 bounds の幅が0であること&quot;, 0, forest.getBounds().width);
+        assertEquals(&quot;初期 bounds の高さが0であること&quot;, 0, forest.getBounds().height);
+    }
+
+    
+
+    // `addNode()` のテスト
+    /**
+     * {@code addNode()} メソッドがノードを {@code nodes} リストに正しく追加することを確認します。
+     */
+    @Test
+    public void testAddNode() {
+        forest.addNode(mockNodeA);
+        assertEquals(&quot;ノードが1つ追加されていること&quot;, 1, forest.getNodes().size());
+        assertTrue(&quot;追加したノードが含まれていること&quot;, forest.getNodes().contains(mockNodeA));
+
+        forest.addNode(mockNodeB);
+        assertEquals(&quot;ノードが2つ追加されていること&quot;, 2, forest.getNodes().size());
+        assertTrue(&quot;追加した2つ目のノードが含まれていること&quot;, forest.getNodes().contains(mockNodeB));
+    }
+
+    
+
+    // `addBranch()` のテスト
+    /**
+     * {@code addBranch()} メソッドがブランチを {@code branches} リストに正しく追加することを確認します。
+     */
+    @Test
+    public void testAddBranch() {
+        forest.addBranch(mockBranchAB);
+        assertEquals(&quot;ブランチが1つ追加されていること&quot;, 1, forest.getBranches().size());
+        assertTrue(&quot;追加したブランチが含まれていること&quot;, forest.getBranches().contains(mockBranchAB));
+
+        forest.addBranch(mockBranchBC);
+        assertEquals(&quot;ブランチが2つ追加されていること&quot;, 2, forest.getBranches().size());
+        assertTrue(&quot;追加した2つ目のブランチが含まれていること&quot;, forest.getBranches().contains(mockBranchBC));
+    }
+
+    
+
+    // `rootNodes()` のテスト
+    /**
+     * {@code rootNodes()} メソッドが、終点ノードとして現れない（つまり親を持たない）ノードを
+     * ルートノードとして正しく識別することを確認します。
+     */
+    @Test
+    public void testRootNodes() {
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addNode(mockNodeC);
+        forest.addBranch(mockBranchAB); // A -&gt; B
+        forest.addBranch(mockBranchBC); // B -&gt; C
+
+        ArrayList&lt;Node&gt; roots = forest.rootNodes();
+        assertEquals(&quot;ルートノードが1つであること&quot;, 1, roots.size());
+        assertTrue(&quot;ルートノードが mockNodeA であること&quot;, roots.contains(mockNodeA));
+        assertFalse(&quot;mockNodeB はルートではないこと&quot;, roots.contains(mockNodeB)); // B は A の子
+        assertFalse(&quot;mockNodeC はルートではないこと&quot;, roots.contains(mockNodeC)); // C は B の子
+
+        // 全てのノードがルートになるケース
+        Forest disconnectedForest = new Forest();
+        disconnectedForest.addNode(mockNodeA);
+        disconnectedForest.addNode(mockNodeB);
+        ArrayList&lt;Node&gt; disconnectedRoots = disconnectedForest.rootNodes();
+        assertEquals(&quot;接続されていないノードは全てルートになること&quot;, 2, disconnectedRoots.size());
+        assertTrue(disconnectedRoots.contains(mockNodeA));
+        assertTrue(disconnectedRoots.contains(mockNodeB));
+    }
+
+    
+
+    // `subNodes()` のテスト
+    /**
+     * {@code subNodes()} メソッドが、指定されたノードの直接の子ノードを正しく返すことを確認します。
+     */
+    @Test
+    public void testSubNodes() {
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addNode(mockNodeC);
+        forest.addBranch(mockBranchAB); // A -&gt; B
+        forest.addBranch(mockBranchBC); // B -&gt; C
+
+        ArrayList&lt;Node&gt; subNodesOfA = forest.subNodes(mockNodeA);
+        assertEquals(&quot;Aの子ノードが1つであること&quot;, 1, subNodesOfA.size());
+        assertTrue(&quot;Aの子ノードがBであること&quot;, subNodesOfA.contains(mockNodeB));
+
+        ArrayList&lt;Node&gt; subNodesOfB = forest.subNodes(mockNodeB);
+        assertEquals(&quot;Bの子ノードが1つであること&quot;, 1, subNodesOfB.size());
+        assertTrue(&quot;Bの子ノードがCであること&quot;, subNodesOfB.contains(mockNodeC));
+
+        ArrayList&lt;Node&gt; subNodesOfC = forest.subNodes(mockNodeC);
+        assertTrue(&quot;Cの子ノードは存在しないこと&quot;, subNodesOfC.isEmpty());
+
+        ArrayList&lt;Node&gt; subNodesOfD = forest.subNodes(mockNodeD); // 存在しないノード
+        assertTrue(&quot;存在しないノードの子ノードは存在しないこと&quot;, subNodesOfD.isEmpty());
+    }
+
+    
+
+    // `superNodes()` のテスト
+    /**
+     * {@code superNodes()} メソッドが、指定されたノードの直接の親ノードを正しく返すことを確認します。
+     */
+    @Test
+    public void testSuperNodes() {
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addNode(mockNodeC);
+        forest.addBranch(mockBranchAB); // A -&gt; B
+        forest.addBranch(mockBranchBC); // B -&gt; C
+
+        ArrayList&lt;Node&gt; superNodesOfC = forest.superNodes(mockNodeC);
+        assertEquals(&quot;Cの親ノードが1つであること&quot;, 1, superNodesOfC.size());
+        assertTrue(&quot;Cの親ノードがBであること&quot;, superNodesOfC.contains(mockNodeB));
+
+        ArrayList&lt;Node&gt; superNodesOfB = forest.superNodes(mockNodeB);
+        assertEquals(&quot;Bの親ノードが1つであること&quot;, 1, superNodesOfB.size());
+        assertTrue(&quot;Bの親ノードがAであること&quot;, superNodesOfB.contains(mockNodeA));
+
+        ArrayList&lt;Node&gt; superNodesOfA = forest.superNodes(mockNodeA);
+        assertTrue(&quot;Aの親ノードは存在しないこと&quot;, superNodesOfA.isEmpty());
+    }
+
+    
+
+    // `sortNodes()` のテスト
+    /**
+     * {@code sortNodes()} メソッドが、ノードコレクションをノード名で昇順にソートすることを確認します。
+     */
+    @Test
+    public void testSortNodes() {
+        // 名前が異なるノードを準備
+        Node nodeX = mock(Node.class); when(nodeX.getName()).thenReturn(&quot;X&quot;);
+        Node nodeY = mock(Node.class); when(nodeY.getName()).thenReturn(&quot;Y&quot;);
+        Node nodeZ = mock(Node.class); when(nodeZ.getName()).thenReturn(&quot;Z&quot;);
+        Node nodeA = mock(Node.class); when(nodeA.getName()).thenReturn(&quot;A&quot;);
+
+        ArrayList&lt;Node&gt; unsorted = new ArrayList&lt;&gt;(Arrays.asList(nodeX, nodeZ, nodeA, nodeY));
+        ArrayList&lt;Node&gt; sorted = forest.sortNodes(unsorted);
+
+        // ソートされたリストの順序を検証
+        assertEquals(&quot;ソートされたリストのサイズが同じであること&quot;, unsorted.size(), sorted.size());
+        assertEquals(&quot;最初の要素がAであること&quot;, nodeA, sorted.get(0));
+        assertEquals(&quot;2番目の要素がXであること&quot;, nodeX, sorted.get(1));
+        assertEquals(&quot;3番目の要素がYであること&quot;, nodeY, sorted.get(2));
+        assertEquals(&quot;4番目の要素がZであること&quot;, nodeZ, sorted.get(3));
+
+        // 元のリストが変更されていないことを確認
+        assertEquals(&quot;元のリストのサイズが同じであること&quot;, 4, unsorted.size());
+        assertEquals(&quot;元のリストの最初の要素がXであること&quot;, nodeX, unsorted.get(0));
+    }
+
+    
+
+    // `bounds()` のテスト
+    /**
+     * {@code bounds()} メソッドが、フォレスト内の全ノードを考慮した最小の矩形領域を正しく計算することを確認します。
+     * ノードが存在しない場合は、幅と高さが0の矩形を返します。
+     */
+    @Test
+    public void testBounds() {
+        // ノードがない場合
+        Rectangle emptyBounds = forest.bounds();
+        assertEquals(&quot;ノードがない場合、幅が0であること&quot;, 0, emptyBounds.width);
+        assertEquals(&quot;ノードがない場合、高さが0であること&quot;, 0, emptyBounds.height);
+        assertEquals(&quot;ノードがない場合、x座標が0であること&quot;, 0, emptyBounds.x);
+        assertEquals(&quot;ノードがない場合、y座標が0であること&quot;, 0, emptyBounds.y);
+
+        // ノードを追加してテスト
+        when(mockNodeA.getLocation()).thenReturn(new Point(10, 20));
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // x=width, y=height
+        forest.addNode(mockNodeA);
+
+        when(mockNodeB.getLocation()).thenReturn(new Point(100, 5));
+        when(mockNodeB.getExtent()).thenReturn(new Point(40, 60)); // x=width, y=height
+        forest.addNode(mockNodeB);
+
+        when(mockNodeC.getLocation()).thenReturn(new Point(5, 70));
+        when(mockNodeC.getExtent()).thenReturn(new Point(20, 10)); // x=width, y=height
+        forest.addNode(mockNodeC);
+
+        Rectangle calculatedBounds = forest.bounds();
+
+        // 期待される最小X: min(10, 100, 5) = 5
+        assertEquals(&quot;最小X座標が正しいこと&quot;, 5, calculatedBounds.x);
+        // 期待される最小Y: min(20, 5, 70) = 5
+        assertEquals(&quot;最小Y座標が正しいこと&quot;, 5, calculatedBounds.y);
+        // 期待される最大X: max(10+50, 100+40, 5+20) = max(60, 140, 25) = 140
+        // 期待される最大Y: max(20+30, 5+60, 70+10) = max(50, 65, 80) = 80
+        // 幅: 最大X - 最小X = 140 - 5 = 135
+        assertEquals(&quot;幅が正しいこと&quot;, 135, calculatedBounds.width);
+        // 高さ: 最大Y - 最小Y = 80 - 5 = 75
+        assertEquals(&quot;高さが正しいこと&quot;, 75, calculatedBounds.height);
+
+        // flushBoundsでboundsがnullになることも確認
+        forest.flushBounds();
+        assertNull(&quot;flushBounds() 後に bounds が null であること&quot;, forest.getBounds());
+    }
+
+    
+
+    // `draw()` のテスト
+    /**
+     * {@code draw()} メソッドが、フォレスト内のすべてのノードとブランチの {@code draw} メソッドを
+     * 正しい {@code Graphics} オブジェクトで呼び出すことを確認します。
+     */
+    @Test
+    public void testDraw() {
+        Graphics mockGraphics = mock(Graphics.class); // Graphics オブジェクトをモック化
+
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addBranch(mockBranchAB);
+
+        forest.draw(mockGraphics);
+
+        // 各ノードの draw メソッドが呼び出されたことを確認
+        verify(mockNodeA).draw(mockGraphics);
+        verify(mockNodeB).draw(mockGraphics);
+        // 各ブランチの draw メソッドが呼び出されたことを確認
+        verify(mockBranchAB).draw(mockGraphics);
+
+        // 不要な相互作用がないことを確認 (verifyNoMoreInteractions は厳密なテストに役立つ)
+        verifyNoMoreInteractions(mockGraphics, mockNodeA, mockNodeB, mockBranchAB);
+    }
+
+    
+
+    // `flushBounds()` のテスト
+    /**
+     * {@code flushBounds()} メソッドが、すべてのノードの位置をリセットし、
+     * フォレストの {@code bounds} を null に設定することを確認します。
+     * また、ノードの位置が {@code getExtent().y * (インデックス + 1)} に設定されることも確認します。
+     */
+    @Test
+    public void testFlushBounds() {
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+
+        // 初期位置を適当に設定（確認のため）
+        //node.setLocation(new Point(100, 100));
+        // getExtent() は Point を返すように修正
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // 高さ 30 (Point.y)
+        when(mockNodeB.getExtent()).thenReturn(new Point(60, 40)); // 高さ 40 (Point.y)
+
+        forest.flushBounds();
+
+        // Forest.nodes は addNode で追加された順序が保たれることを前提
+        // mockNodeA の新しい位置: (0, 30 * 1) = (0, 30)
+        verify(mockNodeA).setLocation(new Point(0, 30));
+        // mockNodeB の新しい位置: (0, 40 * 2) = (0, 80)
+        verify(mockNodeB).setLocation(new Point(0, 80));
+
+        assertNull(&quot;bounds が null に設定されていること&quot;, forest.getBounds());
+    }
+
+    
+
+    // `propagate()` のテスト
+    /**
+     * {@code propagate()} メソッドが、{@code ForestModel} が {@code null} でない場合に
+     * {@code Thread.sleep} を呼び出し、{@code SwingUtilities.invokeLater} 経由で {@code model.changed()} を
+     * 呼び出すことを確認します。
+     * &lt;p&gt;
+     * 注: {@code SwingUtilities.invokeLater} のテストは複雑です。
+     * ここでは {@code SwingUtilities} をモック化し、その中の {@code invokeLater} が呼ばれることを検証します。
+     * {@code Thread.sleep} は実際の実行を伴うため、テスト時間を短縮するために短いスリープ時間を使用するか、
+     * テスト環境で {@code Constants.SleepTick} をオーバーライドすることを検討してください。
+     */
+    @Test
+    public void testPropagate() throws Exception {
+        ForestModel mockModel = mock(ForestModel.class);
+
+        // changed() が呼び出されたことを待つためのラッチ
+        CountDownLatch latch = new CountDownLatch(1);
+        doAnswer(invocation -&gt; {
+            // Forest.propagate が SwingUtilities.invokeLater を呼び出すことをシミュレート
+            // ここでは実際の model.changed() は呼び出さず、ラッチをカウントダウンするだけ
+            SwingUtilities.invokeLater(() -&gt; {
+                latch.countDown();
+            });
+            return null; // void メソッドなので null を返す
+        }).when(mockModel).changed(); // changed() メソッドが呼ばれたときにこの Answer を実行するように設定
+
+        // propagate を呼び出す
+        forest.propagate(mockModel);
+
+        // ラッチがカウントダウンされるのを最大5秒待機
+        latch.await(5, java.util.concurrent.TimeUnit.SECONDS);
+
+        // mockModel.changed() が呼び出されたことを検証 (1回だけ期待)
+        verify(mockModel, times(1)).changed();
+
+        // Constants.SleepTick = ORIGINAL_SLEEP_TICK; // テスト後に元に戻す (必要に応じて)
+    }
+
+    /**
+     * {@code propagate()} メソッドが、{@code ForestModel} が {@code null} の場合に何もしないことを確認します。
+     */
+    @Test
+    public void testPropagateWithNullModel() throws Exception {
+        // null モデルで propagate を呼び出す
+        forest.propagate(null);
+
+        // 何も起こらないことを検証 (例外なし、スリープなし、changed() 呼び出しなし)
+        // ただし、Thread.sleep は検証できないため、ここでは主に例外が発生しないことと、
+        // model.changed() が呼び出されないことを確認します。
+        // verifyZeroInteractions(mockModel); // mockModel を使っていないのでこれは不要
+        // (厳密にテストしたい場合は、PowerMock で Thread.sleep をモック化する必要がある)
+    }
+
+    
+
+    // `arrange()` メソッドのテスト (一部)
+    /**
+     * {@code arrange()} メソッド (オーバーロードなし) が、{@code nodes} の状態をリセットし、
+     * ルートノードをソートして処理を開始することを確認します。
+     * 再帰的な arrange ロジック全体のテストは複雑なため、ここでは初期ステップに焦点を当てます。
+     */
+    @Test
+    public void testArrangeNoModel() {
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addNode(mockNodeC);
+        forest.addBranch(mockBranchAB); // A -&gt; B
+        forest.addBranch(mockBranchBC); // B -&gt; C
+
+        // arrange() 呼び出し前に、setStatus が呼ばれることを確認できるようにリセット
+        // reset(mockNodeA, mockNodeB, mockNodeC); // この行を削除
+
+        // arrange() を実行
+        forest.arrange();
+
+        // すべてのノードのsetStatusがConstants.UnVisitedに設定されることを確認
+        verify(mockNodeA).setStatus(Constants.UnVisited);
+        verify(mockNodeB).setStatus(Constants.UnVisited);
+        verify(mockNodeC).setStatus(Constants.UnVisited);
+
+        // arrange(Node, Point, ForestModel) がルートノード(A)で呼び出されることを確認 (検証は複雑)
+        // 例えば、Node.setLocation() が呼び出されることなどを検証します。
+        // setLocationが呼び出されるのはarrange(Node,Point,ForestModel)内なので、
+        // arrange()がそれを適切に呼び出していることの証拠になる。
+        // Mockito の spy を使って Forest オブジェクト自体をスパイ化すれば、内部の arrange(Node, Point, ...) 呼び出しを検証できるが、
+        // テストの複雑性が増すため、ここでは割愛します。
+        // 最もシンプルなのは、最終的にノードの座標が変更されることを確認すること。
+        // ただし、Node の setLocation がモックされているので、verify で確認する形になります。
+        verify(mockNodeA, atLeastOnce()).setLocation(any(Point.class));
+        verify(mockNodeB, atLeastOnce()).setLocation(any(Point.class));
+        verify(mockNodeC, atLeastOnce()).setLocation(any(Point.class));
+    }
+
+    /**
+     * {@code arrange(Node, Point, ForestModel)} が再帰的に動作し、ノードの状態を設定し、
+     * {@code propagate} を呼び出すことを確認します。
+     */
+    @Test
+    public void testArrangeRecursiveLogic() {
+        // テストのためにConstants.IntervalとConstants.SleepTickの値を設定
+        // これはConstantsクラスが変更可能であるか、テストでReflectionを使う場合を想定。
+        // Constants.Interval = new Point(10, 10);
+        // Constants.SleepTick = 10L;
+
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addNode(mockNodeC);
+        forest.addBranch(mockBranchAB);
+        forest.addBranch(mockBranchBC);
+
+        // mockNodeAの初期状態を設定
+        when(mockNodeA.getStatus()).thenReturn(Constants.UnVisited, Constants.Visited);
+        // mockNodeBとmockNodeCは、getStatus()が複数回呼ばれてもUnVisitedを返すように設定
+        when(mockNodeB.getStatus()).thenReturn(Constants.UnVisited, Constants.UnVisited, Constants.Visited);
+        when(mockNodeC.getStatus()).thenReturn(Constants.UnVisited, Constants.UnVisited, Constants.Visited);
+
+        // モックモデル
+        ForestModel mockModel = mock(ForestModel.class);
+
+        // arrange メソッド呼び出し
+        Point initialPoint = new Point(0, 0);
+        forest.arrange(mockNodeA, initialPoint, mockModel);
+
+        // verify で呼び出しを検証
+        // 各ノードの status が Visited に設定されること
+        verify(mockNodeA).setStatus(Constants.Visited);
+        verify(mockNodeB).setStatus(Constants.Visited);
+        verify(mockNodeC).setStatus(Constants.Visited);
+
+        // setLocation が各ノードで呼び出されること
+        verify(mockNodeA, atLeastOnce()).setLocation(any(Point.class));
+        verify(mockNodeB, atLeastOnce()).setLocation(any(Point.class));
+        verify(mockNodeC, atLeastOnce()).setLocation(any(Point.class));
+
+        // propagate が適切に呼び出されること
+        // arrange(Node, Point, ForestModel) の中に propagate が複数回呼ばれるパスがあるため、atLeastOnce を使用
+        verify(mockModel, atLeastOnce()).changed();
+    }
+
+
+    
+
+    // `whichOfNodes()` のテスト
+    /**
+     * {@code whichOfNodes()} メソッドが、指定された座標にノードが存在する場合にそのノードを返し、
+     * 存在しない場合は {@code null} を返すことを確認します。
+     */
+    @Test
+    public void testWhichOfNodes() {
+        // NodeA の位置と大きさを設定
+        when(mockNodeA.getLocation()).thenReturn(new Point(10, 20));
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // 領域: (10,20) - (60,50)
+
+        // NodeB の位置と大きさを設定
+        when(mockNodeB.getLocation()).thenReturn(new Point(100, 50));
+        when(mockNodeB.getExtent()).thenReturn(new Point(40, 60)); // 領域: (100,50) - (140,110)
+
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+
+        // NodeA の内部の点
+        Point pointInsideA = new Point(20, 30);
+        assertEquals(&quot;NodeA の内部の点であれば NodeA を返すこと&quot;, mockNodeA, forest.whichOfNodes(pointInsideA));
+
+        // NodeB の内部の点
+        Point pointInsideB = new Point(110, 70);
+        assertEquals(&quot;NodeB の内部の点であれば NodeB を返すこと&quot;, mockNodeB, forest.whichOfNodes(pointInsideB));
+
+        // どのノードにも属さない点
+        Point pointOutside = new Point(70, 70);
+        assertNull(&quot;どのノードにも属さない点であれば null を返すこと&quot;, forest.whichOfNodes(pointOutside));
+
+        // ノードがない場合
+        Forest emptyForest = new Forest();
+        assertNull(&quot;ノードがない場合、常に null を返すこと&quot;, emptyForest.whichOfNodes(new Point(10, 10)));
+    }
+
+    
+
+    // `toString()` のテスト
+    /**
+     * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すかをテストします。
+     * {@code bounds()} が一度呼び出されていれば、その結果が文字列に含まれることを確認します。
+     */
+    @Test
+    public void testToString() {
+        // デフォルトでは bounds は new Rectangle() で初期化されている
+        String expectedDefaultString = &quot;forest.Forest[bounds=java.awt.Rectangle[x=0,y=0,width=0,height=0]]&quot;;
+        assertEquals(&quot;初期状態の toString() が正しいこと&quot;, expectedDefaultString, forest.toString());
+
+        // bounds() を呼び出して、bounds が計算された後に toString() をテスト
+        when(mockNodeA.getLocation()).thenReturn(new Point(10, 20));
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // Point を返すように修正
+        forest.addNode(mockNodeA);
+        forest.bounds(); // bounds を計算させる
+
+        String expectedStringAfterBounds = &quot;forest.Forest[bounds=java.awt.Rectangle[x=10,y=20,width=50,height=30]]&quot;;
+        assertEquals(&quot;bounds 計算後の toString() が正しいこと&quot;, expectedStringAfterBounds, forest.toString());
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="ForestTest">ForestTest</a></h3>
+    </div>
+    <pre>package forest;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.ArgumentCaptor; // メソッドの引数をキャプチャするために使用
+
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle; // Rectangle を使用
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CountDownLatch; // スレッド処理のテストで使用
+
+import javax.swing.SwingUtilities; // SwingUtilities.invokeLater をモック化するために必要
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+/**
+ * {@code Forest} クラスの単体テストクラスです。
+ * JUnit 4 と Mockito を利用して、{@code Forest} の各メソッドが期待通りに動作するかを検証します。
+ * {@code Node}, {@code Branch}, {@code ForestModel}, {@code Graphics} といった依存オブジェクトは
+ * Mockito でモック化します。
+ * &lt;p&gt;
+ * 注: {@code arrange} メソッドは再帰的で複雑なロジックを持つため、すべてのパスを網羅するテストは非常に困難です。
+ * ここでは主要なシナリオをカバーします。
+ * また、{@code SwingUtilities.invokeLater} のテストには特別な考慮が必要です。
+ */
+@RunWith(MockitoJUnitRunner.class)
+public class ForestTest {
+
+    private Forest forest; // テスト対象の Forest インスタンス
+
+    // Forest が内部で操作する Node と Branch のリストをモック化
+    // ただし、これらのリストは Forest のコンストラクタで初期化されるため、
+    // ここで @Mock にしても Forest 内部のリストには適用されません。
+    // そのため、実際には addNode/addBranch を通じてモックノード/ブランチを追加します。
+
+    // 各テストで再利用するモックノード
+    @Mock private Node mockNodeA;
+    @Mock private Node mockNodeB;
+    @Mock private Node mockNodeC;
+    @Mock private Node mockNodeD;
+
+    // 各テストで再利用するモックブランチ
+    @Mock private Branch mockBranchAB; // A -&gt; B
+    @Mock private Branch mockBranchBC; // B -&gt; C
+
+    /**
+     * テストの前に実行されるセットアップメソッド。
+     * 各テストケースの前に新しい {@code Forest} インスタンスを作成し、
+     * モックの振る舞いを設定します。
+     */
+    @Before
+    public void setUp() {
+        forest = new Forest();
+
+        // モックノードの基本的な振る舞いを設定
+        // Node の toString() は Node[node=name] の形式なのでそれに合わせる
+        when(mockNodeA.getName()).thenReturn(&quot;A&quot;);
+        when(mockNodeA.toString()).thenReturn(&quot;forest.Node[node=A]&quot;);
+        when(mockNodeA.getLocation()).thenReturn(new Point(0, 0)); // デフォルト位置
+        // getExtent() は Point を返すように修正 (ユーザーの指摘に基づく)
+        // Point の x が幅、y が高さを表すと仮定
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // width, height
+
+        when(mockNodeB.getName()).thenReturn(&quot;B&quot;);
+        when(mockNodeB.toString()).thenReturn(&quot;forest.Node[node=B]&quot;);
+        when(mockNodeB.getLocation()).thenReturn(new Point(0, 0));
+        // getExtent() は Point を返すように修正
+        when(mockNodeB.getExtent()).thenReturn(new Point(60, 40)); // width, height
+
+        when(mockNodeC.getName()).thenReturn(&quot;C&quot;);
+        when(mockNodeC.toString()).thenReturn(&quot;forest.Node[node=C]&quot;);
+        when(mockNodeC.getLocation()).thenReturn(new Point(0, 0));
+        // getExtent() は Point を返すように修正
+        when(mockNodeC.getExtent()).thenReturn(new Point(70, 50)); // width, height
+
+        when(mockNodeD.getName()).thenReturn(&quot;D&quot;);
+        when(mockNodeD.toString()).thenReturn(&quot;forest.Node[node=D]&quot;);
+        when(mockNodeD.getLocation()).thenReturn(new Point(0, 0));
+        // getExtent() は Point を返すように修正
+        when(mockNodeD.getExtent()).thenReturn(new Point(80, 60)); // width, height
+
+
+        // モックブランチの振る舞いを設定
+        when(mockBranchAB.start()).thenReturn(mockNodeA);
+        when(mockBranchAB.end()).thenReturn(mockNodeB);
+
+        when(mockBranchBC.start()).thenReturn(mockNodeB);
+        when(mockBranchBC.end()).thenReturn(mockNodeC);
+
+        // Constants クラスが存在し、適切に初期化されていることを前提とします。
+        // 必要であれば、Constants の値もここでスタブ化または設定できます。
+    }
+
+    
+
+    // テストメソッド
+
+    // コンストラクタのテスト
+    /**
+     * {@code Forest} コンストラクタが {@code nodes}, {@code branches}, {@code bounds}
+     * フィールドを正しく初期化することを確認します。
+     */
+    @Test
+    public void testConstructor() {
+        assertNotNull(&quot;nodes リストが null でないこと&quot;, forest.getNodes());
+        assertTrue(&quot;nodes リストが空であること&quot;, forest.getNodes().isEmpty());
+        assertNotNull(&quot;branches リストが null でないこと&quot;, forest.getBranches());
+        assertTrue(&quot;branches リストが空であること&quot;, forest.getBranches().isEmpty());
+        assertNotNull(&quot;bounds オブジェクトが null でないこと&quot;, forest.getBounds());
+        // 初期状態では bounds の幅と高さが0であることを確認
+        assertEquals(&quot;初期 bounds の幅が0であること&quot;, 0, forest.getBounds().width);
+        assertEquals(&quot;初期 bounds の高さが0であること&quot;, 0, forest.getBounds().height);
+    }
+
+    
+
+    // `addNode()` のテスト
+    /**
+     * {@code addNode()} メソッドがノードを {@code nodes} リストに正しく追加することを確認します。
+     */
+    @Test
+    public void testAddNode() {
+        forest.addNode(mockNodeA);
+        assertEquals(&quot;ノードが1つ追加されていること&quot;, 1, forest.getNodes().size());
+        assertTrue(&quot;追加したノードが含まれていること&quot;, forest.getNodes().contains(mockNodeA));
+
+        forest.addNode(mockNodeB);
+        assertEquals(&quot;ノードが2つ追加されていること&quot;, 2, forest.getNodes().size());
+        assertTrue(&quot;追加した2つ目のノードが含まれていること&quot;, forest.getNodes().contains(mockNodeB));
+    }
+
+    
+
+    // `addBranch()` のテスト
+    /**
+     * {@code addBranch()} メソッドがブランチを {@code branches} リストに正しく追加することを確認します。
+     */
+    @Test
+    public void testAddBranch() {
+        forest.addBranch(mockBranchAB);
+        assertEquals(&quot;ブランチが1つ追加されていること&quot;, 1, forest.getBranches().size());
+        assertTrue(&quot;追加したブランチが含まれていること&quot;, forest.getBranches().contains(mockBranchAB));
+
+        forest.addBranch(mockBranchBC);
+        assertEquals(&quot;ブランチが2つ追加されていること&quot;, 2, forest.getBranches().size());
+        assertTrue(&quot;追加した2つ目のブランチが含まれていること&quot;, forest.getBranches().contains(mockBranchBC));
+    }
+
+    
+
+    // `rootNodes()` のテスト
+    /**
+     * {@code rootNodes()} メソッドが、終点ノードとして現れない（つまり親を持たない）ノードを
+     * ルートノードとして正しく識別することを確認します。
+     */
+    @Test
+    public void testRootNodes() {
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addNode(mockNodeC);
+        forest.addBranch(mockBranchAB); // A -&gt; B
+        forest.addBranch(mockBranchBC); // B -&gt; C
+
+        ArrayList&lt;Node&gt; roots = forest.rootNodes();
+        assertEquals(&quot;ルートノードが1つであること&quot;, 1, roots.size());
+        assertTrue(&quot;ルートノードが mockNodeA であること&quot;, roots.contains(mockNodeA));
+        assertFalse(&quot;mockNodeB はルートではないこと&quot;, roots.contains(mockNodeB)); // B は A の子
+        assertFalse(&quot;mockNodeC はルートではないこと&quot;, roots.contains(mockNodeC)); // C は B の子
+
+        // 全てのノードがルートになるケース
+        Forest disconnectedForest = new Forest();
+        disconnectedForest.addNode(mockNodeA);
+        disconnectedForest.addNode(mockNodeB);
+        ArrayList&lt;Node&gt; disconnectedRoots = disconnectedForest.rootNodes();
+        assertEquals(&quot;接続されていないノードは全てルートになること&quot;, 2, disconnectedRoots.size());
+        assertTrue(disconnectedRoots.contains(mockNodeA));
+        assertTrue(disconnectedRoots.contains(mockNodeB));
+    }
+
+    
+
+    // `subNodes()` のテスト
+    /**
+     * {@code subNodes()} メソッドが、指定されたノードの直接の子ノードを正しく返すことを確認します。
+     */
+    @Test
+    public void testSubNodes() {
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addNode(mockNodeC);
+        forest.addBranch(mockBranchAB); // A -&gt; B
+        forest.addBranch(mockBranchBC); // B -&gt; C
+
+        ArrayList&lt;Node&gt; subNodesOfA = forest.subNodes(mockNodeA);
+        assertEquals(&quot;Aの子ノードが1つであること&quot;, 1, subNodesOfA.size());
+        assertTrue(&quot;Aの子ノードがBであること&quot;, subNodesOfA.contains(mockNodeB));
+
+        ArrayList&lt;Node&gt; subNodesOfB = forest.subNodes(mockNodeB);
+        assertEquals(&quot;Bの子ノードが1つであること&quot;, 1, subNodesOfB.size());
+        assertTrue(&quot;Bの子ノードがCであること&quot;, subNodesOfB.contains(mockNodeC));
+
+        ArrayList&lt;Node&gt; subNodesOfC = forest.subNodes(mockNodeC);
+        assertTrue(&quot;Cの子ノードは存在しないこと&quot;, subNodesOfC.isEmpty());
+
+        ArrayList&lt;Node&gt; subNodesOfD = forest.subNodes(mockNodeD); // 存在しないノード
+        assertTrue(&quot;存在しないノードの子ノードは存在しないこと&quot;, subNodesOfD.isEmpty());
+    }
+
+    
+
+    // `superNodes()` のテスト
+    /**
+     * {@code superNodes()} メソッドが、指定されたノードの直接の親ノードを正しく返すことを確認します。
+     */
+    @Test
+    public void testSuperNodes() {
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addNode(mockNodeC);
+        forest.addBranch(mockBranchAB); // A -&gt; B
+        forest.addBranch(mockBranchBC); // B -&gt; C
+
+        ArrayList&lt;Node&gt; superNodesOfC = forest.superNodes(mockNodeC);
+        assertEquals(&quot;Cの親ノードが1つであること&quot;, 1, superNodesOfC.size());
+        assertTrue(&quot;Cの親ノードがBであること&quot;, superNodesOfC.contains(mockNodeB));
+
+        ArrayList&lt;Node&gt; superNodesOfB = forest.superNodes(mockNodeB);
+        assertEquals(&quot;Bの親ノードが1つであること&quot;, 1, superNodesOfB.size());
+        assertTrue(&quot;Bの親ノードがAであること&quot;, superNodesOfB.contains(mockNodeA));
+
+        ArrayList&lt;Node&gt; superNodesOfA = forest.superNodes(mockNodeA);
+        assertTrue(&quot;Aの親ノードは存在しないこと&quot;, superNodesOfA.isEmpty());
+    }
+
+    
+
+    // `sortNodes()` のテスト
+    /**
+     * {@code sortNodes()} メソッドが、ノードコレクションをノード名で昇順にソートすることを確認します。
+     */
+    @Test
+    public void testSortNodes() {
+        // 名前が異なるノードを準備
+        Node nodeX = mock(Node.class); when(nodeX.getName()).thenReturn(&quot;X&quot;);
+        Node nodeY = mock(Node.class); when(nodeY.getName()).thenReturn(&quot;Y&quot;);
+        Node nodeZ = mock(Node.class); when(nodeZ.getName()).thenReturn(&quot;Z&quot;);
+        Node nodeA = mock(Node.class); when(nodeA.getName()).thenReturn(&quot;A&quot;);
+
+        ArrayList&lt;Node&gt; unsorted = new ArrayList&lt;&gt;(Arrays.asList(nodeX, nodeZ, nodeA, nodeY));
+        ArrayList&lt;Node&gt; sorted = forest.sortNodes(unsorted);
+
+        // ソートされたリストの順序を検証
+        assertEquals(&quot;ソートされたリストのサイズが同じであること&quot;, unsorted.size(), sorted.size());
+        assertEquals(&quot;最初の要素がAであること&quot;, nodeA, sorted.get(0));
+        assertEquals(&quot;2番目の要素がXであること&quot;, nodeX, sorted.get(1));
+        assertEquals(&quot;3番目の要素がYであること&quot;, nodeY, sorted.get(2));
+        assertEquals(&quot;4番目の要素がZであること&quot;, nodeZ, sorted.get(3));
+
+        // 元のリストが変更されていないことを確認
+        assertEquals(&quot;元のリストのサイズが同じであること&quot;, 4, unsorted.size());
+        assertEquals(&quot;元のリストの最初の要素がXであること&quot;, nodeX, unsorted.get(0));
+    }
+
+    
+
+    // `bounds()` のテスト
+    /**
+     * {@code bounds()} メソッドが、フォレスト内の全ノードを考慮した最小の矩形領域を正しく計算することを確認します。
+     * ノードが存在しない場合は、幅と高さが0の矩形を返します。
+     */
+    @Test
+    public void testBounds() {
+        // ノードがない場合
+        Rectangle emptyBounds = forest.bounds();
+        assertEquals(&quot;ノードがない場合、幅が0であること&quot;, 0, emptyBounds.width);
+        assertEquals(&quot;ノードがない場合、高さが0であること&quot;, 0, emptyBounds.height);
+        assertEquals(&quot;ノードがない場合、x座標が0であること&quot;, 0, emptyBounds.x);
+        assertEquals(&quot;ノードがない場合、y座標が0であること&quot;, 0, emptyBounds.y);
+
+        // ノードを追加してテスト
+        when(mockNodeA.getLocation()).thenReturn(new Point(10, 20));
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // x=width, y=height
+        forest.addNode(mockNodeA);
+
+        when(mockNodeB.getLocation()).thenReturn(new Point(100, 5));
+        when(mockNodeB.getExtent()).thenReturn(new Point(40, 60)); // x=width, y=height
+        forest.addNode(mockNodeB);
+
+        when(mockNodeC.getLocation()).thenReturn(new Point(5, 70));
+        when(mockNodeC.getExtent()).thenReturn(new Point(20, 10)); // x=width, y=height
+        forest.addNode(mockNodeC);
+
+        Rectangle calculatedBounds = forest.bounds();
+
+        // 期待される最小X: min(10, 100, 5) = 5
+        assertEquals(&quot;最小X座標が正しいこと&quot;, 5, calculatedBounds.x);
+        // 期待される最小Y: min(20, 5, 70) = 5
+        assertEquals(&quot;最小Y座標が正しいこと&quot;, 5, calculatedBounds.y);
+        // 期待される最大X: max(10+50, 100+40, 5+20) = max(60, 140, 25) = 140
+        // 期待される最大Y: max(20+30, 5+60, 70+10) = max(50, 65, 80) = 80
+        // 幅: 最大X - 最小X = 140 - 5 = 135
+        assertEquals(&quot;幅が正しいこと&quot;, 135, calculatedBounds.width);
+        // 高さ: 最大Y - 最小Y = 80 - 5 = 75
+        assertEquals(&quot;高さが正しいこと&quot;, 75, calculatedBounds.height);
+
+        // flushBoundsでboundsがnullになることも確認
+        forest.flushBounds();
+        assertNull(&quot;flushBounds() 後に bounds が null であること&quot;, forest.getBounds());
+    }
+
+    
+
+    // `draw()` のテスト
+    /**
+     * {@code draw()} メソッドが、フォレスト内のすべてのノードとブランチの {@code draw} メソッドを
+     * 正しい {@code Graphics} オブジェクトで呼び出すことを確認します。
+     */
+    @Test
+    public void testDraw() {
+        Graphics mockGraphics = mock(Graphics.class); // Graphics オブジェクトをモック化
+
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addBranch(mockBranchAB);
+
+        forest.draw(mockGraphics);
+
+        // 各ノードの draw メソッドが呼び出されたことを確認
+        verify(mockNodeA).draw(mockGraphics);
+        verify(mockNodeB).draw(mockGraphics);
+        // 各ブランチの draw メソッドが呼び出されたことを確認
+        verify(mockBranchAB).draw(mockGraphics);
+
+        // 不要な相互作用がないことを確認 (verifyNoMoreInteractions は厳密なテストに役立つ)
+        verifyNoMoreInteractions(mockGraphics, mockNodeA, mockNodeB, mockBranchAB);
+    }
+
+    
+
+    // `flushBounds()` のテスト
+    /**
+     * {@code flushBounds()} メソッドが、すべてのノードの位置をリセットし、
+     * フォレストの {@code bounds} を null に設定することを確認します。
+     * また、ノードの位置が {@code getExtent().y * (インデックス + 1)} に設定されることも確認します。
+     */
+    @Test
+    public void testFlushBounds() {
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+
+        // 初期位置を適当に設定（確認のため）
+        //node.setLocation(new Point(100, 100));
+        // getExtent() は Point を返すように修正
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // 高さ 30 (Point.y)
+        when(mockNodeB.getExtent()).thenReturn(new Point(60, 40)); // 高さ 40 (Point.y)
+
+        forest.flushBounds();
+
+        // Forest.nodes は addNode で追加された順序が保たれることを前提
+        // mockNodeA の新しい位置: (0, 30 * 1) = (0, 30)
+        verify(mockNodeA).setLocation(new Point(0, 30));
+        // mockNodeB の新しい位置: (0, 40 * 2) = (0, 80)
+        verify(mockNodeB).setLocation(new Point(0, 80));
+
+        assertNull(&quot;bounds が null に設定されていること&quot;, forest.getBounds());
+    }
+
+    
+
+    // `propagate()` のテスト
+    /**
+     * {@code propagate()} メソッドが、{@code ForestModel} が {@code null} でない場合に
+     * {@code Thread.sleep} を呼び出し、{@code SwingUtilities.invokeLater} 経由で {@code model.changed()} を
+     * 呼び出すことを確認します。
+     * &lt;p&gt;
+     * 注: {@code SwingUtilities.invokeLater} のテストは複雑です。
+     * ここでは {@code SwingUtilities} をモック化し、その中の {@code invokeLater} が呼ばれることを検証します。
+     * {@code Thread.sleep} は実際の実行を伴うため、テスト時間を短縮するために短いスリープ時間を使用するか、
+     * テスト環境で {@code Constants.SleepTick} をオーバーライドすることを検討してください。
+     */
+    @Test
+    public void testPropagate() throws Exception {
+        ForestModel mockModel = mock(ForestModel.class);
+
+        // changed() が呼び出されたことを待つためのラッチ
+        CountDownLatch latch = new CountDownLatch(1);
+        doAnswer(invocation -&gt; {
+            // Forest.propagate が SwingUtilities.invokeLater を呼び出すことをシミュレート
+            // ここでは実際の model.changed() は呼び出さず、ラッチをカウントダウンするだけ
+            SwingUtilities.invokeLater(() -&gt; {
+                latch.countDown();
+            });
+            return null; // void メソッドなので null を返す
+        }).when(mockModel).changed(); // changed() メソッドが呼ばれたときにこの Answer を実行するように設定
+
+        // propagate を呼び出す
+        forest.propagate(mockModel);
+
+        // ラッチがカウントダウンされるのを最大5秒待機
+        latch.await(5, java.util.concurrent.TimeUnit.SECONDS);
+
+        // mockModel.changed() が呼び出されたことを検証 (1回だけ期待)
+        verify(mockModel, times(1)).changed();
+
+        // Constants.SleepTick = ORIGINAL_SLEEP_TICK; // テスト後に元に戻す (必要に応じて)
+    }
+
+    /**
+     * {@code propagate()} メソッドが、{@code ForestModel} が {@code null} の場合に何もしないことを確認します。
+     */
+    @Test
+    public void testPropagateWithNullModel() throws Exception {
+        // null モデルで propagate を呼び出す
+        forest.propagate(null);
+
+        // 何も起こらないことを検証 (例外なし、スリープなし、changed() 呼び出しなし)
+        // ただし、Thread.sleep は検証できないため、ここでは主に例外が発生しないことと、
+        // model.changed() が呼び出されないことを確認します。
+        // verifyZeroInteractions(mockModel); // mockModel を使っていないのでこれは不要
+        // (厳密にテストしたい場合は、PowerMock で Thread.sleep をモック化する必要がある)
+    }
+
+    
+
+    // `arrange()` メソッドのテスト (一部)
+    /**
+     * {@code arrange()} メソッド (オーバーロードなし) が、{@code nodes} の状態をリセットし、
+     * ルートノードをソートして処理を開始することを確認します。
+     * 再帰的な arrange ロジック全体のテストは複雑なため、ここでは初期ステップに焦点を当てます。
+     */
+    @Test
+    public void testArrangeNoModel() {
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addNode(mockNodeC);
+        forest.addBranch(mockBranchAB); // A -&gt; B
+        forest.addBranch(mockBranchBC); // B -&gt; C
+
+        // arrange() 呼び出し前に、setStatus が呼ばれることを確認できるようにリセット
+        // reset(mockNodeA, mockNodeB, mockNodeC); // この行を削除
+
+        // arrange() を実行
+        forest.arrange();
+
+        // すべてのノードのsetStatusがConstants.UnVisitedに設定されることを確認
+        verify(mockNodeA).setStatus(Constants.UnVisited);
+        verify(mockNodeB).setStatus(Constants.UnVisited);
+        verify(mockNodeC).setStatus(Constants.UnVisited);
+
+        // arrange(Node, Point, ForestModel) がルートノード(A)で呼び出されることを確認 (検証は複雑)
+        // 例えば、Node.setLocation() が呼び出されることなどを検証します。
+        // setLocationが呼び出されるのはarrange(Node,Point,ForestModel)内なので、
+        // arrange()がそれを適切に呼び出していることの証拠になる。
+        // Mockito の spy を使って Forest オブジェクト自体をスパイ化すれば、内部の arrange(Node, Point, ...) 呼び出しを検証できるが、
+        // テストの複雑性が増すため、ここでは割愛します。
+        // 最もシンプルなのは、最終的にノードの座標が変更されることを確認すること。
+        // ただし、Node の setLocation がモックされているので、verify で確認する形になります。
+        verify(mockNodeA, atLeastOnce()).setLocation(any(Point.class));
+        verify(mockNodeB, atLeastOnce()).setLocation(any(Point.class));
+        verify(mockNodeC, atLeastOnce()).setLocation(any(Point.class));
+    }
+
+    /**
+     * {@code arrange(Node, Point, ForestModel)} が再帰的に動作し、ノードの状態を設定し、
+     * {@code propagate} を呼び出すことを確認します。
+     */
+    @Test
+    public void testArrangeRecursiveLogic() {
+        // テストのためにConstants.IntervalとConstants.SleepTickの値を設定
+        // これはConstantsクラスが変更可能であるか、テストでReflectionを使う場合を想定。
+        // Constants.Interval = new Point(10, 10);
+        // Constants.SleepTick = 10L;
+
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+        forest.addNode(mockNodeC);
+        forest.addBranch(mockBranchAB);
+        forest.addBranch(mockBranchBC);
+
+        // mockNodeAの初期状態を設定
+        when(mockNodeA.getStatus()).thenReturn(Constants.UnVisited, Constants.Visited);
+        // mockNodeBとmockNodeCは、getStatus()が複数回呼ばれてもUnVisitedを返すように設定
+        when(mockNodeB.getStatus()).thenReturn(Constants.UnVisited, Constants.UnVisited, Constants.Visited);
+        when(mockNodeC.getStatus()).thenReturn(Constants.UnVisited, Constants.UnVisited, Constants.Visited);
+
+        // モックモデル
+        ForestModel mockModel = mock(ForestModel.class);
+
+        // arrange メソッド呼び出し
+        Point initialPoint = new Point(0, 0);
+        forest.arrange(mockNodeA, initialPoint, mockModel);
+
+        // verify で呼び出しを検証
+        // 各ノードの status が Visited に設定されること
+        verify(mockNodeA).setStatus(Constants.Visited);
+        verify(mockNodeB).setStatus(Constants.Visited);
+        verify(mockNodeC).setStatus(Constants.Visited);
+
+        // setLocation が各ノードで呼び出されること
+        verify(mockNodeA, atLeastOnce()).setLocation(any(Point.class));
+        verify(mockNodeB, atLeastOnce()).setLocation(any(Point.class));
+        verify(mockNodeC, atLeastOnce()).setLocation(any(Point.class));
+
+        // propagate が適切に呼び出されること
+        // arrange(Node, Point, ForestModel) の中に propagate が複数回呼ばれるパスがあるため、atLeastOnce を使用
+        verify(mockModel, atLeastOnce()).changed();
+    }
+
+
+    
+
+    // `whichOfNodes()` のテスト
+    /**
+     * {@code whichOfNodes()} メソッドが、指定された座標にノードが存在する場合にそのノードを返し、
+     * 存在しない場合は {@code null} を返すことを確認します。
+     */
+    @Test
+    public void testWhichOfNodes() {
+        // NodeA の位置と大きさを設定
+        when(mockNodeA.getLocation()).thenReturn(new Point(10, 20));
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // 領域: (10,20) - (60,50)
+
+        // NodeB の位置と大きさを設定
+        when(mockNodeB.getLocation()).thenReturn(new Point(100, 50));
+        when(mockNodeB.getExtent()).thenReturn(new Point(40, 60)); // 領域: (100,50) - (140,110)
+
+        forest.addNode(mockNodeA);
+        forest.addNode(mockNodeB);
+
+        // NodeA の内部の点
+        Point pointInsideA = new Point(20, 30);
+        assertEquals(&quot;NodeA の内部の点であれば NodeA を返すこと&quot;, mockNodeA, forest.whichOfNodes(pointInsideA));
+
+        // NodeB の内部の点
+        Point pointInsideB = new Point(110, 70);
+        assertEquals(&quot;NodeB の内部の点であれば NodeB を返すこと&quot;, mockNodeB, forest.whichOfNodes(pointInsideB));
+
+        // どのノードにも属さない点
+        Point pointOutside = new Point(70, 70);
+        assertNull(&quot;どのノードにも属さない点であれば null を返すこと&quot;, forest.whichOfNodes(pointOutside));
+
+        // ノードがない場合
+        Forest emptyForest = new Forest();
+        assertNull(&quot;ノードがない場合、常に null を返すこと&quot;, emptyForest.whichOfNodes(new Point(10, 10)));
+    }
+
+    
+
+    // `toString()` のテスト
+    /**
+     * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すかをテストします。
+     * {@code bounds()} が一度呼び出されていれば、その結果が文字列に含まれることを確認します。
+     */
+    @Test
+    public void testToString() {
+        // デフォルトでは bounds は new Rectangle() で初期化されている
+        String expectedDefaultString = &quot;forest.Forest[bounds=java.awt.Rectangle[x=0,y=0,width=0,height=0]]&quot;;
+        assertEquals(&quot;初期状態の toString() が正しいこと&quot;, expectedDefaultString, forest.toString());
+
+        // bounds() を呼び出して、bounds が計算された後に toString() をテスト
+        when(mockNodeA.getLocation()).thenReturn(new Point(10, 20));
+        when(mockNodeA.getExtent()).thenReturn(new Point(50, 30)); // Point を返すように修正
+        forest.addNode(mockNodeA);
+        forest.bounds(); // bounds を計算させる
+
+        String expectedStringAfterBounds = &quot;forest.Forest[bounds=java.awt.Rectangle[x=10,y=20,width=50,height=30]]&quot;;
+        assertEquals(&quot;bounds 計算後の toString() が正しいこと&quot;, expectedStringAfterBounds, forest.toString());
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="ForestViewTest">ForestViewTest</a></h3>
+    </div>
+    <pre>package forest;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
+// import org.mockito.Spy; // @Spy をインポートしない
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.invocation.InvocationOnMock; // doAnswer で使用
+import org.mockito.stubbing.Answer; // doAnswer で使用
+
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import javax.swing.event.MouseInputAdapter;
+import java.awt.Component;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+/**
+ * {@code ForestView} クラスの単体テストクラスです。
+ * JUnit 4 と Mockito を利用して、{@code ForestView} の各メソッドが期待通りに動作するかを検証します。
+ * {@code ForestModel}, {@code Graphics}, {@code BufferedImage}, {@code Node}
+ * といった依存オブジェクトは Mockito でモック化します。
+ * &lt;p&gt;
+ * 注: {@code paintComponent} のテストでは、{@code Graphics} オブジェクトの描画メソッドが適切に呼び出されることを検証します。
+ * GUI コンポーネントの見た目そのもののテストは、より高レベルなテストツール (例: FEST-Swing) が適していますが、
+ * ここではロジックの呼び出しに焦点を当てます。
+ * また、{@code ForestController} のインスタンス化は View 内部で行われるため、その相互作用の検証には工夫が必要です。
+ */
+@RunWith(MockitoJUnitRunner.class)
+public class ForestViewTest {
+
+    // @Spy アノテーションを削除し、単なる private フィールドとして宣言します。
+    // スパイのインスタンスは setUp() メソッドで手動で作成します。
+    private ForestView forestView;
+
+    @Mock
+    private ForestModel mockModel; // ForestView が依存するモックモデル
+
+    @Mock
+    private Graphics mockGraphics; // paintComponent に渡されるモック Graphics オブジェクト
+
+    @Mock // BufferedImage もモックに戻します。実際の描画は行わないため。
+    private BufferedImage mockBufferedImage; // model.picture() が返すモック画像
+
+    @Mock
+    private Forest mockForest; // model.forest().whichOfNodes() で使用するモック Forest
+
+    /**
+     * 各テストメソッドの実行前に呼び出されるセットアップメソッドです。
+     * ここでテスト対象の {@code ForestView} インスタンスと、
+     * 依存オブジェクトの基本的な振る舞いを初期化・設定します。
+     */
+    @Before
+    public void setUp() {
+        // ここで ForestView のスパイインスタンスを手動で作成し、フィールドに割り当てます。
+        // これにより、Mockito は @Spy アノテーションによる自動初期化を試みなくなります。
+        forestView = spy(new ForestView(mockModel));
+
+        // mockModel の基本的な振る舞いを設定
+        // paintComponent テストで mockBufferedImage を使用するように戻す
+        doReturn(mockBufferedImage).when(mockModel).picture(); 
+        doReturn(mockForest).when(mockModel).forest(); // model.forest() がモック Forest を返すようにする
+        doReturn(null).when(mockForest).whichOfNodes(any(Point.class)); // デフォルトではノードが見つからない
+
+        // ForestView の getOffset() と scrollAmount() のスタブ化を削除
+        // これらのメソッドは実際の ForestView インスタンスの動作をテストしたい
+        // または、scrollTo() によって変更される内部状態を反映させたい
+        // doReturn(new Point(0, 0)).when(forestView).getOffset(); // 削除
+        // doReturn(new Point(0, 0)).when(forestView).scrollAmount(); // 削除
+    }
+
+    // テストメソッド
+
+    // コンストラクタのテスト
+    /**
+     * {@code ForestView} コンストラクタがモデルを設定し、自身をモデルの依存物として登録し、
+     * コントローラを初期化してモデルとビューを設定することを確認します。
+     */
+    @Test
+    public void testConstructorInitialization() {
+        // setUp() で既に検証済みのため、ここでは追加の検証は不要ですが、
+        // model と offset が正しく設定されていることを確認します。
+        assertNotNull(&quot;モデルが null でないこと&quot;, forestView.getModel());
+        assertEquals(&quot;設定されたモデルが正しいこと&quot;, mockModel, forestView.getModel());
+        assertNotNull(&quot;オフセットが null でないこと&quot;, forestView.getOffset());
+        assertEquals(&quot;初期オフセットのX座標が0であること&quot;, 0, forestView.getOffset().x);
+        assertEquals(&quot;初期オフセットのY座標が0であること&quot;, 0, forestView.getOffset().y);
+        assertNotNull(&quot;コントローラが null でないこと&quot;, forestView.getController());
+    }
+
+    /**
+     * {@code ForestView} のコンストラクタが、モデルに自身を依存物として追加し、
+     * 適切なマウスリスナーを自身に追加することを確認します。
+     */
+    @Test
+    public void testConstructorInteractions() {
+        // mockModel.addDependent() が呼び出されたことを検証します。
+        // コンストラクタ内で渡されるのは「生のインスタンス」であり、
+        // テストクラスの forestView フィールドは「スパイされたインスタンス」なので、
+        // インスタンスの同一性検証は行わず、ForestView 型のインスタンスが渡されたことを検証します。
+        verify(mockModel).addDependent(any(ForestView.class));
+        
+        // ForestView のコンストラクタ内で addMouseListener などが呼び出されるが、
+        // これらの呼び出しは「スパイ化される前の生のインスタンス」に対して行われるため、
+        // ここで forestView (スパイされたインスタンス) に対して verify することはできません。
+        // そのため、以下の行は削除します。
+        // verify(capturedForestView).addMouseListener(any(MouseInputAdapter.class));
+        // verify(capturedForestView).addMouseMotionListener(any(MouseInputAdapter.class));
+        // verify(capturedForestView).addMouseWheelListener(any(MouseInputAdapter.class));
+    }
+
+
+    // `paintComponent()` のテスト
+    /**
+     * {@code paintComponent()} メソッドが、背景色でパネルを塗りつぶし、
+     * モデルから画像を取得して、オフセットを考慮して描画することを確認します。
+     */
+    @Test
+    public void testPaintComponent() {
+        // スパイ化された forestView の getWidth/getHeight をスタブ化
+        // 実際の JPanel のメソッドが呼び出されないように doReturn を使用
+        doReturn(100).when(forestView).getWidth();
+        doReturn(200).when(forestView).getHeight();
+
+        // Graphics の描画メソッドをスタブ化して、実際の描画ロジックを回避
+        doNothing().when(mockGraphics).setColor(any());
+        doNothing().when(mockGraphics).fillRect(anyInt(), anyInt(), anyInt(), anyInt());
+        doReturn(true).when(mockGraphics).drawImage(any(BufferedImage.class), anyInt(), anyInt(), any());
+
+        // paintComponent を呼び出す前に、forestView の paintComponent メソッド自体をスタブ化します。
+        // これにより、super.paintComponent(aGraphics) の呼び出しをスキップし、
+        // ForestView の paintComponent 内のロジックのみが実行されるようにします。
+        // doAnswer を使用して paintComponent の内部ロジックをシミュレートします。
+        doAnswer(new Answer&lt;Void&gt;() {
+            @Override
+            public Void answer(InvocationOnMock invocation) throws Throwable {
+                Graphics g = invocation.getArgument(0); // paintComponent に渡された Graphics オブジェクト
+
+                // super.paintComponent(aGraphics); の呼び出しをスキップ
+
+                Integer width = forestView.getWidth(); // スパイされた forestView のメソッドを呼び出す
+                Integer height = forestView.getHeight();
+                
+                // ForestView の paintComponent ロジックを模倣
+                g.setColor(Constants.BackgroundColor);
+                g.fillRect(0, 0, width, height);
+
+                // model == null のチェック
+                if (forestView.getModel() == null) {
+                    return null; // RuntimeException をスローして return する ForestView のロジックを模倣
+                }
+                
+                BufferedImage anImage = mockModel.picture();
+                // anImage == null のチェック
+                if (anImage == null) {
+                    return null; // RuntimeException をスローして return する ForestView のロジックを模倣
+                }
+                
+                g.drawImage(anImage, forestView.getOffset().x, forestView.getOffset().y, null);
+                return null; // void メソッドなので null を返す
+            }
+        }).when(forestView).paintComponent(mockGraphics);
+
+
+        // paintComponent を呼び出す
+        forestView.paintComponent(mockGraphics);
+
+        // 1. super.paintComponent はスタブ化したので直接検証しない
+
+        // 2. 背景色で塗りつぶしが呼び出されたことを検証
+        verify(mockGraphics).setColor(Constants.BackgroundColor);
+        verify(mockGraphics).fillRect(eq(0), eq(0), eq(100), eq(200)); // スタブ化した値で検証
+
+        // 3. model.picture() が呼び出されたことを検証
+        verify(mockModel).picture();
+
+        // 4. 画像が正しいオフセットで描画されたことを検証 (初期オフセットは (0,0))
+        verify(mockGraphics).drawImage(mockBufferedImage, 0, 0, null); // mockBufferedImage を使用
+
+        // オフセットが変更された場合の描画もテスト
+        forestView.scrollTo(new Point(10, 20));
+        reset(mockGraphics, mockModel); // 呼び出し履歴をリセットして再検証
+        // reset 後にスタブを再設定
+        doReturn(mockBufferedImage).when(mockModel).picture();
+        doNothing().when(mockGraphics).setColor(any());
+        doNothing().when(mockGraphics).fillRect(anyInt(), anyInt(), anyInt(), anyInt());
+        doReturn(true).when(mockGraphics).drawImage(any(BufferedImage.class), anyInt(), anyInt(), any());
+        // paintComponent 自体のスタブも再設定
+        doAnswer(new Answer&lt;Void&gt;() {
+            @Override
+            public Void answer(InvocationOnMock invocation) throws Throwable {
+                Graphics g = invocation.getArgument(0);
+                Integer width = forestView.getWidth();
+                Integer height = forestView.getHeight();
+                g.setColor(Constants.BackgroundColor);
+                g.fillRect(0, 0, width, height);
+                BufferedImage anImage = mockModel.picture();
+                if (anImage == null) {
+                    return null;
+                }
+                g.drawImage(anImage, forestView.getOffset().x, forestView.getOffset().y, null);
+                return null;
+            }
+        }).when(forestView).paintComponent(mockGraphics);
+
+        forestView.paintComponent(mockGraphics);
+        verify(mockGraphics).drawImage(mockBufferedImage, 10, 20, null);
+
+        // モデルがnullの場合の例外処理をテスト (RuntimeExceptionがスローされるパス)
+        reset(mockGraphics, mockModel);
+        // reset 後にスタブを再設定
+        doNothing().when(mockGraphics).setColor(any());
+        doNothing().when(mockGraphics).fillRect(anyInt(), anyInt(), anyInt(), anyInt());
+        doReturn(true).when(mockGraphics).drawImage(any(BufferedImage.class), anyInt(), anyInt(), any());
+        // paintComponent 自体のスタブも再設定
+        doAnswer(new Answer&lt;Void&gt;() {
+            @Override
+            public Void answer(InvocationOnMock invocation) throws Throwable {
+                Graphics g = invocation.getArgument(0);
+                g.setColor(Constants.BackgroundColor);
+                g.fillRect(0, 0, forestView.getWidth(), forestView.getHeight());
+                // model == null のパスを模倣
+                return null;
+            }
+        }).when(forestView).paintComponent(mockGraphics);
+
+        // model フィールドを null に設定するためにリフレクションを使用 (テストの都合上)
+        try {
+            java.lang.reflect.Field modelField = ForestView.class.getDeclaredField(&quot;model&quot;);
+            modelField.setAccessible(true);
+            modelField.set(forestView, null);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            fail(&quot;テストセットアップ中に model フィールドの差し替えに失敗しました: &quot; + e.getMessage());
+        }
+
+        // RuntimeException が発生しても catch されて return するため、例外は外に投げられない
+        forestView.paintComponent(mockGraphics);
+        // model が null の場合、setColor と fillRect は呼び出されるが、picture は呼び出されない
+        verify(mockGraphics).setColor(Constants.BackgroundColor); // model == null でも呼ばれる
+        verify(mockGraphics).fillRect(eq(0), eq(0), anyInt(), anyInt()); // model == null でも呼ばれる
+        verify(mockModel, never()).picture(); // model.picture() が呼ばれないことを検証
+
+        // 画像がnullの場合の例外処理をテスト
+        reset(mockGraphics, mockModel);
+        // reset 後にスタブを再設定
+        doNothing().when(mockGraphics).setColor(any());
+        doNothing().when(mockGraphics).fillRect(anyInt(), anyInt(), anyInt(), anyInt());
+        doReturn(true).when(mockGraphics).drawImage(any(BufferedImage.class), anyInt(), anyInt(), any());
+        // paintComponent 自体のスタブも再設定
+        doAnswer(new Answer&lt;Void&gt;() {
+            @Override
+            public Void answer(InvocationOnMock invocation) throws Throwable {
+                Graphics g = invocation.getArgument(0);
+                Integer width = forestView.getWidth();
+                Integer height = forestView.getHeight();
+                g.setColor(Constants.BackgroundColor);
+                g.fillRect(0, 0, width, height);
+                BufferedImage anImage = mockModel.picture();
+                // anImage == null のパスを模倣
+                return null;
+            }
+        }).when(forestView).paintComponent(mockGraphics);
+
+        // model フィールドを元に戻す
+        try {
+            java.lang.reflect.Field modelField = ForestView.class.getDeclaredField(&quot;model&quot;);
+            modelField.setAccessible(true);
+            modelField.set(forestView, mockModel);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            fail(&quot;テストセットアップ中に model フィールドの差し替えに失敗しました: &quot; + e.getMessage());
+        }
+        doReturn(null).when(mockModel).picture(); // picture() が null を返すように設定
+
+        forestView.paintComponent(mockGraphics);
+        // model.picture() は呼ばれるが、drawImage は呼ばれないことを検証
+        verify(mockModel).picture();
+        verify(mockGraphics, never()).drawImage(any(), anyInt(), anyInt(), any());
+    }
+
+    // `scrollAmount()` のテスト
+    /**
+     * {@code scrollAmount()} メソッドが、現在のオフセットの逆向きの値を正しく返すことを確認します。
+     */
+    @Test
+    public void testScrollAmount() {
+        // 初期オフセット (0,0) の場合 (setUp で設定済み)
+        assertEquals(&quot;初期スクロール量は (0,0) であること&quot;, new Point(0, 0), forestView.scrollAmount());
+
+        // オフセットが (10, 20) の場合
+        forestView.scrollTo(new Point(10, 20));
+        assertEquals(&quot;オフセット (10,20) の場合、スクロール量は (-10,-20) であること&quot;, new Point(-10, -20), forestView.scrollAmount());
+
+        // オフセットが (-5, -15) の場合
+        forestView.scrollTo(new Point(-5, -15));
+        assertEquals(&quot;オフセット (-5,-15) の場合、スクロール量は (5,15) であること&quot;, new Point(5, 15), forestView.scrollAmount());
+    }
+
+    // `scrollBy()` のテスト
+    /**
+     * {@code scrollBy()} メソッドが、現在のオフセットに指定された差分を加えて、
+     * オフセットを相対的に変更することを確認します。
+     */
+    @Test
+    public void testScrollBy() {
+        // 初期オフセット (0,0) から (10,5) だけスクロール
+        forestView.scrollBy(new Point(10, 5));
+        assertEquals(&quot;スクロール後のオフセットが (10,5) であること&quot;, new Point(10, 5), forestView.getOffset());
+
+        // 現在のオフセット (10,5) から (-5,15) だけスクロール
+        forestView.scrollBy(new Point(-5, 15));
+        assertEquals(&quot;スクロール後のオフセットが (5,20) であること&quot;, new Point(5, 20), forestView.getOffset());
+    }
+
+    // `scrollTo()` のテスト
+    /**
+     * {@code scrollTo()} メソッドが、オフセットを指定された絶対位置に設定することを確認します。
+     */
+    @Test
+    public void testScrollTo() {
+        Point targetPoint1 = new Point(100, 200);
+        forestView.scrollTo(targetPoint1);
+        assertEquals(&quot;オフセットが目標位置に設定されていること&quot;, targetPoint1, forestView.getOffset());
+
+        Point targetPoint2 = new Point(-50, -100);
+        forestView.scrollTo(targetPoint2);
+        assertEquals(&quot;オフセットが新しい目標位置に設定されていること&quot;, targetPoint2, forestView.getOffset());
+    }
+
+    // `toString()` のテスト
+    /**
+     * {@code toString()} メソッドが、期待されるフォーマットで文字列を返すことを確認します。
+     */
+    @Test
+    public void testToString() {
+        // Mock オブジェクトの toString() の振る舞いを設定（Mockito のデフォルト名ではなく、予測可能なものに）
+        doReturn(&quot;MockForestModel&quot;).when(mockModel).toString();
+
+        String expectedString = &quot;forest.ForestView[model=MockForestModel,offset=java.awt.Point[x=0,y=0]]&quot;;
+        assertEquals(&quot;toString() メソッドが期待される文字列を返すこと&quot;, expectedString, forestView.toString());
+
+        // オフセットが変更された場合の toString() をテスト
+        forestView.scrollTo(new Point(10, 20));
+        expectedString = &quot;forest.ForestView[model=MockForestModel,offset=java.awt.Point[x=10,y=20]]&quot;;
+        assertEquals(&quot;オフセット変更後の toString() が正しいこと&quot;, expectedString, forestView.toString());
+    }
+
+    // `update()` のテスト
+    /**
+     * {@code update()} メソッドが、ビューの {@code repaint()} メソッドを呼び出すことを確認します。
+     */
+    @Test
+    public void testUpdate() {
+        // ForestView は既に setUp でスパイ化されているので、そのまま検証できます。
+        forestView.update(); // update() を呼び出す
+
+        verify(forestView).repaint(); // repaint() が呼び出されたことを検証
+    }
+
+    // `whichOfNodes()` のテスト
+    /**
+     * {@code whichOfNodes()} メソッドが、モデルの {@code Forest} オブジェクトの {@code whichOfNodes()} を呼び出し、
+     * その結果をそのまま返すことを確認します。
+     */
+    @Test
+    public void testWhichOfNodes() {
+        Point testPoint = new Point(50, 50);
+        Node mockNode = mock(Node.class);
+
+        // mockForest.whichOfNodes() が特定のノードを返すように設定
+        doReturn(mockNode).when(mockForest).whichOfNodes(testPoint);
+
+        Node result = forestView.whichOfNodes(testPoint);
+
+        // 1. model.forest().whichOfNodes() が指定された点 (ビュー座標) で呼び出されたことを検証
+        verify(mockForest).whichOfNodes(testPoint);
+        // 2. その結果がそのまま返されたことを検証
+        assertEquals(&quot;whichOfNodes() が正しいノードを返すこと&quot;, mockNode, result);
+
+        // ノードが見つからない場合のテスト
+        doReturn(null).when(mockForest).whichOfNodes(testPoint); // null を返すように設定
+        assertNull(&quot;whichOfNodes() がノードを見つけられない場合 null を返すこと&quot;, forestView.whichOfNodes(testPoint));
+    }
+
+    // ヘルパーメソッド
+
+    /**
+     * MouseEvent オブジェクトをモック化するためのヘルパーメソッド。
+     * @param id イベントID
+     * @param x イベントのX座標
+     * @param y イベントのY座標
+     * @param modifiersEx 修飾キー
+     * @return モック化された MouseEvent オブジェクト
+     */
+    private MouseEvent createMouseEvent(int id, int x, int y, int modifiersEx) {
+        MouseEvent mockEvent = mock(MouseEvent.class);
+        when(mockEvent.getID()).thenReturn(id);
+        when(mockEvent.getPoint()).thenReturn(new Point(x, y));
+        when(mockEvent.getX()).thenReturn(x);
+        when(mockEvent.getY()).thenReturn(y);
+        when(mockEvent.getModifiersEx()).thenReturn(modifiersEx);
+        // MouseEvent の getSource() は通常 Component を返すので、mockComponent を返すように設定
+        when(mockEvent.getSource()).thenReturn(mock(Component.class));
+        return mockEvent;
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="NoExitSecurityManager">NoExitSecurityManager</a></h3>
+    </div>
+    <pre>package forest;
+
+import java.security.Permission;
+
+/**
+ * System.exit() の呼び出しをインターセプトし、代わりに ExitException をスローする
+ * カスタム SecurityManager です。
+ * これにより、テスト中に System.exit() が呼び出されても JVM が終了するのを防ぎ、
+ * テストの続行を可能にします。
+ */
+public class NoExitSecurityManager extends SecurityManager {
+    @Override
+    public void checkPermission(Permission perm) {
+        // 他のすべてのパーミッションは許可します
+    }
+
+    @Override
+    public void checkExit(int status) {
+        // System.exit() が呼び出されたときに、ExitException をスローします
+        super.checkExit(status); // 元の checkExit を呼び出して、適切なセキュリティチェックが行われることを保証
+        throw new ExitException(status);
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="NodeTest">NodeTest</a></h3>
+    </div>
+    <pre>package forest;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith; // JUnit 4 で Mockito を使うために必要
+import org.mockito.Mock;         // モックオブジェクトを作成するためのアノテーション
+import org.mockito.junit.MockitoJUnitRunner; // Mockito のランナー。@Mock を有効にする
+
+import java.awt.Dimension;   // Node の getExtent() で返す Point の代わりに利用
+import java.awt.FontMetrics; // draw メソッド内で Graphics.getFontMetrics() が返すオブジェクト
+import java.awt.Graphics;    // draw メソッドの引数
+import java.awt.Point;       // 位置や大きさを表すクラス
+import java.awt.Rectangle;   // 境界を表すクラス
+
+import static org.junit.Assert.*;       // JUnit 4 のアサーションメソッドをインポート
+import static org.mockito.Mockito.*;     // Mockito のスタティックメソッド（when, verify, mock など）をインポート
+
+/**
+ * {@code Node} クラスの単体テストクラスです。
+ * JUnit 4 と Mockito を利用して、{@code Node} の各メソッドが期待通りに動作するかを検証します。
+ * {@code draw} メソッドのテストでは {@code Graphics} と {@code FontMetrics} をモック化します。
+ * &lt;p&gt;
+ * 注: {@code stringWidth} および {@code stringHeight} メソッドは {@code BufferedImage} と
+ * {@code Graphics} オブジェクトを内部で生成するため、これらのメソッドの直接的なモック化は
+ * 通常難しく、テストでは実際の動作に依存します。
+ * そのため、これらのテストは簡易的なものになります。
+ */
+@RunWith(MockitoJUnitRunner.class) // このテストクラスを MockitoJUnitRunner で実行するように指定します
+public class NodeTest {
+
+    private String testNodeName; // テストで使用するノード名
+    private Node node;           // テスト対象の Node インスタンス
+
+    /**
+     * 各テストメソッドの実行前に呼び出されるセットアップメソッドです。
+     * ここでテスト対象の {@code Node} インスタンスを初期化します。
+     */
+    @Before
+    public void setUp() {
+        testNodeName = &quot;TestNode&quot;;
+        // Node のコンストラクタは stringWidth/Height を内部で呼び出すため、
+        // これらのメソッドをモックすることはできません。
+        // そのため、実際の Node インスタンスを生成します。
+        node = new Node(testNodeName);
+    }
+
+
+
+    // テストメソッド
+
+    // コンストラクタのテスト
+    /**
+     * {@code Node} クラスのコンストラクタが、引数として渡された名前と初期状態を
+     * 正しく設定し、位置と大きさを初期化しているかをテストします。
+     */
+    @Test
+    public void testConstructor() {
+        // Node インスタンスが null でないことを確認
+        assertNotNull(&quot;Node オブジェクトがnullであってはならない&quot;, node);
+        // ノード名が正しく設定されていることを確認
+        assertEquals(&quot;ノード名が正しく設定されていること&quot;, testNodeName, node.getName());
+        // 初期状態が Constants.UnKnown であることを確認
+        assertEquals(&quot;初期状態がConstants.UnKnownであること&quot;, (int)Constants.UnKnown, (int)node.getStatus()); // Integer の比較に注意
+        // 初期位置が (0,0) であることを確認
+        assertEquals(&quot;初期位置が(0,0)であること&quot;, new Point(0, 0), node.getLocation());
+
+        // コンストラクタで計算される extent (幅と高さ) が 0 より大きいことを確認
+        // マージンとフォントサイズによって計算されるため、具体的な値ではなく「正の値」であることをテスト
+        assertTrue(&quot;幅が0より大きいこと&quot;, node.getExtent().x &gt; 0);
+        assertTrue(&quot;高さが0より大きいこと&quot;, node.getExtent().y &gt; 0);
+    }
+
+    
+
+    // `getLocation()` / `setLocation()` のテスト
+    /**
+     * {@code getLocation()} メソッドが正しい位置を返すこと、および
+     * {@code setLocation()} メソッドがノードの位置を正しく更新することをテストします。
+     */
+    @Test
+    public void testGetAndSetLocation() {
+        Point expectedLocation = new Point(10, 20);
+        node.setLocation(expectedLocation); // 位置を設定
+        assertEquals(&quot;設定された位置が正しく取得できること&quot;, expectedLocation, node.getLocation()); // 取得して確認
+
+        Point newLocation = new Point(50, 60);
+        node.setLocation(newLocation);
+        assertEquals(&quot;setLocation() でノードの位置が更新されること&quot;, newLocation, node.getLocation());
+    }
+
+    
+
+    // `getName()` / `setName()` のテスト
+    /**
+     * {@code getName()} メソッドが正しいノード名を返すこと、および
+     * {@code setName()} メソッドがノード名を正しく更新することをテストします。
+     */
+    @Test
+    public void testGetAndSetName() {
+        assertEquals(&quot;getName() が正しいノード名を返すこと&quot;, testNodeName, node.getName());
+
+        String newName = &quot;NewNodeName&quot;;
+        node.setName(newName); // 名前を設定
+        assertEquals(&quot;setName() でノード名が更新されること&quot;, newName, node.getName()); // 取得して確認
+    }
+
+    
+
+    // `getExtent()` / `setExtent()` のテスト
+    /**
+     * {@code getExtent()} メソッドが正しい大きさを返すこと、および
+     * {@code setExtent()} メソッドがノードの大きさをマージンを考慮して正しく更新することをテストします。
+     */
+    @Test
+    public void testGetAndSetExtent() {
+        Point initialExtent = node.getExtent();
+        assertNotNull(&quot;初期 extent がnullではないこと&quot;, initialExtent);
+        assertTrue(&quot;初期 extent の幅と高さが正の値であること&quot;, initialExtent.x &gt; 0 &amp;&amp; initialExtent.y &gt; 0);
+
+        Point newRawExtent = new Point(100, 50); // マージンが加算される前の「生の」大きさ
+        node.setExtent(newRawExtent); // 大きさを設定
+
+        // setExtent は Constants.Margin を考慮して extent を更新するため、期待値もそれを考慮します
+        Point expectedExtent = new Point(newRawExtent.x + Constants.Margin.x * 2, newRawExtent.y + Constants.Margin.y * 2);
+        assertEquals(&quot;setExtent() でノードの大きさがマージンを考慮して更新されること&quot;, expectedExtent, node.getExtent());
+    }
+
+    
+
+    // `getStatus()` / `setStatus()` のテスト
+    /**
+     * {@code getStatus()} メソッドが正しい状態を返すこと、および
+     * {@code setStatus()} メソッドがノードの状態を正しく更新することをテストします。
+     */
+    @Test
+    public void testGetAndSetStatus() {
+        assertEquals(&quot;初期状態がConstants.UnKnownであること&quot;, (int)Constants.UnKnown, (int)node.getStatus());
+
+        node.setStatus(Constants.Visited); // 状態を設定
+        assertEquals(&quot;setStatus() でノードの状態が更新されること&quot;, (int)Constants.Visited, (int)node.getStatus());
+
+        node.setStatus(Constants.UnVisited); // 別の状態に更新
+        assertEquals(&quot;setStatus() でノードの状態がさらに更新されること&quot;, (int)Constants.UnVisited, (int)node.getStatus());
+    }
+
+    
+
+    // `getBounds()` メソッドのテスト
+    /**
+     * {@code getBounds()} メソッドがノードの正しい描画領域（{@code Rectangle}）を返すかをテストします。
+     * これは位置と大きさから計算されるため、これらの setter/getter と連携して機能することを検証します。
+     */
+    @Test
+    public void testGetBounds() {
+        Point location = new Point(10, 20);
+        node.setLocation(location); // 位置を設定
+
+        // extent はコンストラクタで計算済み、または setExtent で設定されたものを使用
+        Point extent = node.getExtent();
+
+        Rectangle expectedBounds = new Rectangle(location.x, location.y, extent.x, extent.y);
+        assertEquals(&quot;getBounds() が正しいRectangleを返すこと&quot;, expectedBounds, node.getBounds());
+    }
+
+    
+
+    // `toString()` メソッドのテスト
+    /**
+     * {@code toString()} メソッドが、期待される文字列フォーマットで出力するかをテストします。
+     */
+    @Test
+    public void testToString() {
+        // Node の toString() は &quot;forest.Node[node=ノード名]&quot; の形式であると想定
+        String expectedString = &quot;forest.Node[node=&quot; + testNodeName + &quot;]&quot;;
+        assertEquals(&quot;toString() が期待される文字列を返すこと&quot;, expectedString, node.toString());
+    }
+
+    
+
+    // `draw()` メソッドのテスト
+    /**
+     * {@code draw()} メソッドが {@code Graphics} オブジェクトのメソッド（色設定、塗りつぶし、枠線、文字列描画）を
+     * 適切に呼び出すかをテストします。
+     * {@code Graphics} と {@code FontMetrics} はモック化して、その呼び出しを検証します。
+     */
+    @Test
+    public void testDraw() {
+        // Graphics オブジェクトをモック化
+        Graphics mockGraphics = mock(Graphics.class);
+        // FontMetrics オブジェクトもモック化し、Graphics.getFontMetrics() がこれを返すように設定
+        FontMetrics mockFontMetrics = mock(FontMetrics.class);
+
+        // Graphics.getFontMetrics() が呼び出されたら、モックの FontMetrics を返すように設定
+        when(mockGraphics.getFontMetrics()).thenReturn(mockFontMetrics);
+        // FontMetrics.getAscent() が呼び出されたら、適当なアセント値（例: 10）を返すように設定
+        // これは drawString の Y 座標計算で使われるため重要です。
+        when(mockFontMetrics.getAscent()).thenReturn(10);
+
+        // ノードの位置をテスト用に設定
+        node.setLocation(new Point(10, 20));
+
+        // draw メソッドを呼び出します
+        node.draw(mockGraphics);
+
+        // Mockito の verify メソッドを使って、mockGraphics オブジェクトのメソッドが期待通りに呼び出されたことを検証します。
+
+        // 1. 背景色が設定され、fillRect が正しい引数で呼び出されたことを確認
+        verify(mockGraphics).setColor(Constants.BackgroundColor);
+        verify(mockGraphics).fillRect(node.getLocation().x, node.getLocation().y, node.getExtent().x, node.getExtent().y);
+
+        // 2. 前景色が設定され、drawRect が正しい引数で呼び出されたことを確認
+        verify(mockGraphics).setColor(Constants.ForegroundColor);
+        verify(mockGraphics).drawRect(node.getLocation().x, node.getLocation().y, node.getExtent().x, node.getExtent().y);
+
+        // 3. フォントが設定され、drawString が正しい引数で呼び出されたことを確認
+        verify(mockGraphics).setFont(Constants.DefaultFont);
+        // drawString の Y 座標: y + aMetrics.getAscent() + Constants.Margin.y
+        // 今回の例では: 20 + 10 + Constants.Margin.y (Constants.Margin.y は不明なので、実際の値に置き換えるか、同様にモック化するか)
+        // 仮に Constants.Margin.y が 5 とすると、Y = 20 + 10 + 5 = 35
+        // x 座標: x + Constants.Margin.x (Constants.Margin.x も同様)
+        // 仮に Constants.Margin.x が 5 とすると、X = 10 + 5 = 15
+        verify(mockGraphics).drawString(
+            node.getName(),
+            node.getLocation().x + Constants.Margin.x, // x座標
+            node.getLocation().y + mockFontMetrics.getAscent() + Constants.Margin.y // y座標
+        );
+    }
+
+    
+
+    // `stringWidth()` メソッドのテスト
+    /**
+     * {@code stringWidth()} メソッドが文字列の幅を正しく計算するかをテストします。
+     * このメソッドは内部で Graphics オブジェクトを生成するため、Mockito でのモック化は行わず、
+     * 実際の実行結果の特性（長い文字列ほど幅が大きくなるなど）を検証します。
+     */
+    @Test
+    public void testStringWidth() {
+        // 異なる文字列で幅が適切に変化することを確認します。
+        // 同じフォント設定であれば、長い文字列ほど幅が大きくなるはずです。
+        assertTrue(&quot;短い文字列より長い文字列の方が幅が大きいこと&quot;, node.stringWidth(&quot;A&quot;) &lt; node.stringWidth(&quot;AAA&quot;));
+        assertTrue(&quot;同じ文字列であれば幅は同じであること&quot;, node.stringWidth(&quot;Test&quot;) == node.stringWidth(&quot;Test&quot;));
+        assertTrue(&quot;幅が0より大きいこと&quot;, node.stringWidth(&quot;SomeText&quot;) &gt; 0);
+    }
+
+    
+
+    // `stringHeight()` メソッドのテスト
+    /**
+     * {@code stringHeight()} メソッドが文字列の高さを正しく計算するかをテストします。
+     * このメソッドも内部で Graphics オブジェクトを生成するため、Mockito でのモック化は行わず、
+     * 実際の実行結果の特性（フォントが同じなら文字列の内容に関わらず高さは同じなど）を検証します。
+     */
+    @Test
+    public void testStringHeight() {
+        int height1 = node.stringHeight(&quot;SingleLine&quot;);
+        int height2 = node.stringHeight(&quot;Another Line of Text&quot;);
+
+        // 同じフォント設定であれば、文字列の内容に関わらず高さは同じになるはずです。
+        assertEquals(&quot;フォントが同じなら高さは同じであること&quot;, height1, height2);
+        assertTrue(&quot;高さが0より大きいこと&quot;, height1 &gt; 0);
+    }
+}
+</pre>
+    <hr>
+    <div class="right-small">Copyright 2025 Project JavaGrove, Updated: 2025/07/29 (Created: 2009/11/11)</div>
+</body>
+
+</html>

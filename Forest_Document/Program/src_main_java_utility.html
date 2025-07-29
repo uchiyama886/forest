@@ -1,0 +1,528 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+    <meta name="description" content="ソフトウェア工学IIのホームページ">
+    <meta name="author" content="AOKI Atsushi">
+    <link rev="made" href="index.html">
+    <link rel="index" href="index.html">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>ソフトウェア工学II「樹状整列」プログラム - src/main/java/utility</title>
+</head>
+
+<body>
+    <div id="menu">
+        <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="../Requirement/index.html">要求仕様書</a></li>
+            <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+            <li><a href="../BasicDesign/index.html">基本設計書</a></li>
+            <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+            <li><a href="../TestSpecification/index.html">テスト仕様書</a></li>
+            <li><a href="../TestResult/index.html">テスト結果</a></li>
+            <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+            <li><a href="../Program/index.html" class="current">プログラム</a></li>
+            <li><a href="../Manual/index.html">マニュアル</a></li>
+        </ul>
+    </div>
+    <hr>
+    <h2>ソフトウェア工学II「樹状整列」プログラム - src/main/java/utility</h2>
+    <div id="submenu">
+        <ul>
+            <li><a href="index.html">全体</a></li>
+            <li><a href="Junit.html">Junit</a></li>
+            <li><a href="Root.html">Forest_Program/src/main/java</a></li>
+            <li><a href="lib.html">lib</a></li>
+            <li><a href="src_main_java_forest.html">src/main/java/forest</a></li>
+            <li><a href="src_main_java_utility.html" class="current">src/main/java/utility</a></li>
+            <li><a href="src_main_resources_data.html">src/main/resources/data</a></li>
+            <li><a href="src_test_java_forest.html">src/test/java/forest</a></li>
+        </ul>
+    </div>
+
+    <h3>src/main/java/utilityのファイル一覧</h3>
+    <ul>
+        <li><a href="#Condition">Condition</a></li>
+        <li><a href="#Loop">Loop</a></li>
+        <li><a href="#ValueHolder">ValueHolder</a></li>
+        <li><a href="#package-info">package-info</a></li>
+    </ul>
+    <div class="belt">
+        <h3><a name="Condition">Condition</a></h3>
+    </div>
+    <pre>package utility;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
+
+/**
+ * 条件分岐をメッセージで行うためのクラス
+ */
+public class Condition extends Object
+{
+    /**
+    * 条件を供給者として保持するフィールドです。
+    */
+    private Supplier&lt;Boolean&gt; condition = null;
+
+    /**
+    * 条件分岐のコンストラクタです。
+    * @param conditionPassage 条件を表すラムダ式
+    */
+    public Condition(Supplier&lt;Boolean&gt; conditionPassage)
+    {
+        this.condition = conditionPassage;
+        return;
+    }
+
+    /**
+    * 条件分岐を行います。
+    * @param conditionPassage 自分の条件の評価が真のときに実行する条件ラムダ式
+    * @return 論理積の真偽
+    */
+    public Boolean and(Supplier&lt;Boolean&gt; conditionPassage)
+    {
+        Boolean aBoolean = this.condition.get();
+        if (aBoolean) { aBoolean = conditionPassage.get(); } else { ; }
+        return aBoolean;
+    }
+
+    /**
+    * 条件分岐を行います。
+    * @param aCondition 条件を表すラムダ式
+    * @param conditionPassage 上記の条件の評価が真のときに実行するラムダ式
+    * @return 論理積の真偽
+    */
+    public static Boolean and(Supplier&lt;Boolean&gt; aCondition, Supplier&lt;Boolean&gt; conditionPassage)
+    {
+        Boolean aBoolean = new Condition(aCondition).and(conditionPassage);
+        return aBoolean;
+    }
+
+    /**
+     * 条件が真である時に指定されたアクションを実行するラムダ式
+     * @param thenPassage 条件が真である時に実行するアクション
+     */
+    public void ifTrue(Runnable thenPassage)
+    {
+        if (this.condition.get())
+        {
+            thenPassage.run();
+        }
+    }
+    
+    /**
+     * 条件が真である場合に指定されたアクションを実行するラムダ式
+     * @param aCondition 条件を表すラムダ式
+     * @param thenPassage 条件の評価が真のときに実行するアクション  
+     */
+    public static void ifTrue(Supplier&lt;Boolean&gt; aCondition, Runnable thenPassage)
+    {
+        new Condition(aCondition).ifTrue(thenPassage);
+        return;
+    }
+
+    /**
+    * 条件分岐を行います。
+    * @param conditionPassage 自分の条件の評価が偽のときに実行する条件ラムダ式
+    * @return 論理和の真偽
+    */
+    public Boolean or(Supplier&lt;Boolean&gt; conditionPassage)
+    {
+        Boolean aBoolean = this.condition.get();
+        if (aBoolean) { ; } else { aBoolean = conditionPassage.get(); }
+        return aBoolean;
+    }
+
+    /**
+    * 条件分岐を行います。
+    * @param aCondition 条件を表すラムダ式
+    * @param conditionPassage 上記の条件の評価が偽のときに実行するラムダ式
+    * @return 論理和の真偽
+    */
+    public static Boolean or(Supplier&lt;Boolean&gt; aCondition, Supplier&lt;Boolean&gt; conditionPassage)
+    {
+        Boolean aBoolean = new Condition(aCondition).or(conditionPassage);
+        return aBoolean;
+    }
+
+    /**
+     * 条件が偽である場合に指定されたアクションを実行する
+     * @param elsePassage 条件の評価が偽のときに実行するアクション
+     */
+    public void ifFalse(Runnable elsePassage)
+    {
+        if (!this.condition.get()) { // 条件が偽の場合
+            elsePassage.run();
+        }
+        return;
+    }
+
+    /**
+     * 条件が偽である場合に指定されたアクションを実行する
+     * @param aCondition 条件を表すラムダ式
+     * @param elsePassage 条件の評価が偽のときに実行するアクション
+     */
+    public static void ifFalse(Supplier&lt;Boolean&gt; aCondition, Runnable elsePassage)
+    {
+        new Condition(aCondition).ifFalse(elsePassage);
+        return;
+    }
+
+
+    /**
+    * 条件分岐を行います。
+    * @param elsePassage 自分の条件の評価が偽のときに実行するラムダ式
+    */
+    public void ifElse(Runnable elsePassage)
+    {
+        this.ifThenElse(() -&gt; { ; }, elsePassage);
+        return;
+    }
+
+    /**
+    * 条件分岐を行います。
+    * @param aCondition 条件を表すラムダ式
+    * @param elsePassage 上記の条件の評価が偽のときに実行するラムダ式
+    */
+    public static void ifElse(Supplier&lt;Boolean&gt; aCondition, Runnable elsePassage)
+    {
+        Condition.ifThenElse(aCondition, () -&gt; { ; }, elsePassage);
+        return;
+    }
+
+    /**
+    * 条件分岐を行います。
+    * @param thenPassage 自分の条件の評価が真のときに実行するラムダ式
+    */
+    public void ifThen(Runnable thenPassage)
+    {
+        this.ifThenElse(thenPassage, () -&gt; { ; });
+        return;
+    }
+
+    /**
+    * 条件分岐を行います。
+    * @param aCondition 条件を表すラムダ式
+    * @param thenPassage 上記の条件の評価が真のときに実行するラムダ式
+    */
+    public static void ifThen(Supplier&lt;Boolean&gt; aCondition, Runnable thenPassage)
+    {
+        Condition.ifThenElse(aCondition, thenPassage, () -&gt; { ; });
+        return;
+    }
+    
+    /**
+    * 条件分岐を行います。
+    * @param thenPassage 自分の条件の評価が真のときに実行するラムダ式
+    * @param elsePassage 自分の条件の評価が偽のときに実行するラムダ式
+    */
+    public void ifThenElse(Runnable thenPassage, Runnable elsePassage)
+    {
+        if (this.condition.get()) { thenPassage.run(); } else { elsePassage.run(); }
+        return;
+    }
+
+    /**
+    * 条件分岐を行います。
+    * @param aCondition 条件を表すラムダ式
+    * @param thenPassage 上記の条件の評価が真のときに実行するラムダ式
+    * @param elsePassage 上記の条件の評価が偽のときに実行するラムダ式
+    */
+    public static void ifThenElse(Supplier&lt;Boolean&gt; aCondition, Runnable thenPassage, Runnable elsePassage)
+    {
+        new Condition(aCondition).ifThenElse(thenPassage, elsePassage);
+        return;
+    }
+
+    /**
+     * 条件が真である限り指定されたアクションを実行する
+     * ループの各イテレーションで条件を再評価する
+     * @param loopBody 各イテレーションで実行されるループ本体のアクション
+     */
+    public void whileTrue(Runnable loopBody)
+    {
+        while (this.condition.get()) {
+            try {
+                loopBody.run(); // ループ本体の処理を実行
+            } catch (RuntimeException e) {
+                throw e; // RuntimeExceptionをスロー
+            }
+            
+        }
+    }
+
+    /**
+     * Case文の選択肢を表す内部クラス
+     * Case文の追加、Default Case、
+     */
+    public static class Case {
+        /**
+         * このCaseの条件を表す{@code Supplier&lt;Boolean&gt;}。
+         */
+        private Supplier&lt;Boolean&gt; condition;
+
+        /**
+         * このCaseが選択されたときに実行されるアクション。
+         */
+        private Runnable action;
+
+        /**
+         * Case文の選択肢を表す内部クラス
+         * このクラスは、特定の条件と、その条件が真であった場合に実行されるアクションを保持します。
+         * @param condition このケースの条件を表す {@code Supplier&lt;Boolean&gt;}。
+         * @param action このケースが選択されたときに実行する {@code Runnable} （コードブロック）。
+         */
+        public Case(final Supplier&lt;Boolean&gt; condition, final Runnable action) {
+            this.condition = condition;
+            this.action = action;
+        }
+
+        /**
+         * このCaseの条件が真かどうかを評価します。
+         * @return 条件が真の場合true
+         */
+        public boolean evaluate() {
+            return condition.get();
+        }
+
+        /**
+         * このCaseに関連付けられたアクションを実行します。
+         */
+        public void execute() {
+            action.run();
+        }
+    }
+
+    /**
+     * 複数の条件とそれに対応するアクションを処理するためのクラスです。
+     */
+    public static class Switch {
+        /**
+         * 登録されたCaseオブジェクトのリスト。
+         */
+        private List&lt;Case&gt; cases;
+
+        /**
+         * どのケースもマッチしなかった場合に実行されるデフォルトアクション。
+         */
+        private Runnable defaultAction;
+
+        /**
+         * いずれかのケースが実行されたかどうかを追跡するフラグ。
+         */
+        private boolean executed; // 最初のマッチしたケースが実行されたかを追跡する
+
+        /**
+         * 複数の条件とそれに対応するアクションを処理するためのクラス
+         * 従来の {@code switch} 文に似た機能を提供しますが、より柔軟な条件指定が可能です。
+         * 最初に見つかった真の条件に対応するアクションが実行されます。
+         */
+        public Switch() {
+            this.cases = new ArrayList&lt;&gt;();
+            this.defaultAction = () -&gt; {};
+            this.executed = false;
+        }
+
+        /**
+         * 新しいCaseを追加する。
+         * @param condition このケースの条件
+         * @param action このケースが選択されたときに実行するアクション
+         * @return このSwitchインスタンス
+         */
+        public Switch addCase(Supplier&lt;Boolean&gt; condition, Runnable action) {
+            this.cases.add(new Case(condition, action));
+            return this;
+        }
+
+        /**
+         * デフォルトのアクションを設定する。どのケースもマッチしなかった場合に実行される。
+         * @param action デフォルトのアクション
+         * @return このSwitchインスタンス
+         */
+        public Switch defaultCase(Runnable action) {
+            this.defaultAction = action;
+            return this;
+        }
+
+        /**
+         * ケースを評価し、最初に見つかった真の条件に対応するアクションを実行します。
+         * どのケースもマッチしない場合は、デフォルトアクションを実行します。
+         */
+        public void evaluate() {
+            executed = false; // 評価前にリセット
+            for (Case singleCase : cases) {
+                if (singleCase.evaluate()) {
+                    singleCase.execute();
+                    executed = true; // 実行されたことをマーク
+                    break; // 最初のマッチしたケースで終了
+                }
+            }
+            // どのケースも実行されなかった場合、デフォルトアクションを実行
+            if (!executed) {
+                defaultAction.run();
+            }
+        }
+    }
+    
+}</pre>
+    <div class="belt">
+        <h3><a name="Loop">Loop</a></h3>
+    </div>
+    <pre>package utility;
+
+import java.util.function.Supplier;
+
+/**
+ * ループをメッセージ式で行うためのクラス
+ */
+public class Loop {
+
+    /**
+     * ループの実行を制御する条件を供給するSupplier。
+     */
+    private Supplier&lt;Boolean&gt; condition = null;
+
+    /**
+     * Loopクラスの新しいインスタンスを生成します。
+     * @param conditionPassage ループが続行されるべきか（true）または停止されるべきか（false）を決定する論理条件を提供するSupplier。
+     */
+    public Loop(Supplier&lt;Boolean&gt; conditionPassage) {
+        this.condition = conditionPassage;
+    }
+
+    /**
+     * コンストラクタで指定された条件が真である限り、指定されたコードブロックを繰り返し実行します。
+     * @param body 条件が真である限り実行されるRunnable（コードブロック）。
+     */
+    public void whileTrue(Runnable body) {
+        while(this.condition.get()) {
+            body.run();
+        }
+    }
+
+    /**
+     * 指定された条件が真である限り、指定されたコードブロックを繰り返し実行する静的ユーティリティメソッドです。
+     * @param aCondition ループが続行されるべきか（true）または停止されるべきか（false）を決定する論理条件を提供するSupplier。
+     * @param body 条件が真である限り実行されるRunnable（コードブロック）。
+     */
+    public static void whileTrue(Supplier&lt;Boolean&gt; aCondition, Runnable body) {
+        while(aCondition.get()) {
+            body.run();
+        }
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="ValueHolder">ValueHolder</a></h3>
+    </div>
+    <pre>package utility;
+
+import java.util.function.Function;
+//import java.util.function.Consumer;
+
+/**
+ * ジェネリクスを活用する例題クラス: ある値を保持します。
+ * クラス宣言の {@code &lt;V&gt;} は「形式型パラメータ」と呼ばれ、
+ * {@code ValueHolder} クラスが任意の型の値を保持できることを示します。
+ * 例えば、{@code ValueHolder&lt;String&gt;} は文字列を、{@code ValueHolder&lt;Integer&gt;} は整数を保持できます。
+ * @param &lt;V&gt; このValueHolderが保持する値の型。
+ */
+public class ValueHolder&lt;V&gt; extends Object
+{
+    /**
+     * 形式型 {@code &lt;V&gt;} で宣言された、この {@code ValueHolder} が保持する値のフィールド。
+     * このフィールドの型は、{@code ValueHolder} オブジェクトが生成される際に指定される型によって決定されます。
+     */
+    private V value;
+
+    /**
+     * コンストラクタ
+     */
+    public ValueHolder()
+    {
+        this.value = null;
+        return;
+    }
+
+    /**
+     * 受け取った値で初期化するコンストラクタ
+     * @param initialValue この {@code ValueHolder} に初期値として設定される、型 {@code V} の値。
+     */
+    public ValueHolder(V initialValue)
+    {
+        this.value = initialValue;
+        return;
+    }
+
+    /**
+     * 保持してオブジェクトの値
+     * @return この {@code ValueHolder} が保持している、形式型 {@code &lt;V&gt;} の値。
+     */
+    public V get()
+    {
+        return this.value;
+    }
+    /**
+     * 引数で渡された値を保持する
+     * @param anObject 新しく保持される、形式型 {@code &lt;V&gt;} の値。
+     * @return 値が更新される前に以前に保持していた、形式型 {@code &lt;V&gt;} の値。
+     */
+    public V set(V anObject)
+    {
+        V previousValue = this.value;
+        this.value = anObject;
+        return previousValue;
+    }
+
+    /**
+     * 保持している値を指定された関数で計算した値に更新する。
+     * @param aFunction 現在の値を引数にとり、新しい値を返す関数
+     */
+    public void setDo(Function&lt;V, V&gt; aFunction) {
+        this.value = aFunction.apply(this.value);
+    }
+
+    /**
+     * 自分自身を文字列にして応答する
+     * @return このオブジェクトを表す文字列
+     */
+    @Override
+    public String toString()
+    {
+        StringBuffer aBuffer = new StringBuffer();
+        Class&lt;?&gt; aClass = this.getClass();
+        aBuffer.append(aClass.getName());
+        aBuffer.append(&quot;[&quot;);
+        aBuffer.append(this.value);
+        aBuffer.append(&quot;]&quot;);
+        return aBuffer.toString();
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="package-info">package-info</a></h3>
+    </div>
+    <pre>/**
+ * このパッケージは、樹状整列アプリケーションで利用される汎用的なユーティリティクラスを提供します。
+ * 主に、関数型インターフェース（{@code Supplier}, {@code Runnable}, {@code Function}）を
+ * 活用した条件分岐やループ処理の抽象化、および汎用的な値の保持機能が含まれています。
+ *
+ * &lt;p&gt;主なクラス:&lt;/p&gt;
+ * &lt;ul&gt;
+ * &lt;li&gt;{@link utility.Condition}: 条件分岐と論理演算を関数型スタイルで扱うためのユーティリティを提供します。&lt;/li&gt;
+ * &lt;li&gt;{@link utility.Loop}: 条件が真である限りブロックを実行する &#39;while&#39; ループのラッパーを提供します。&lt;/li&gt;
+ * &lt;li&gt;{@link utility.ValueHolder}: ジェネリクスを活用し、任意の型の単一の値を保持するクラスです。&lt;/li&gt;
+ * &lt;/ul&gt;
+ */
+package utility;</pre>
+    <hr>
+    <div class="right-small">Copyright 2025 Project JavaGrove, Updated: 2025/07/29 (Created: 2009/11/11)</div>
+</body>
+
+</html>

@@ -1,0 +1,1676 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+    <meta name="description" content="ソフトウェア工学IIのホームページ">
+    <meta name="author" content="AOKI Atsushi">
+    <link rev="made" href="index.html">
+    <link rel="index" href="index.html">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>ソフトウェア工学II「樹状整列」プログラム - forest</title>
+</head>
+
+<body>
+    <div id="menu">
+        <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="../Requirement/index.html">要求仕様書</a></li>
+            <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+            <li><a href="../BasicDesign/index.html">基本設計書</a></li>
+            <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+            <li><a href="../TestSpecification/index.html">テスト仕様書</a></li>
+            <li><a href="../TestResult/index.html">テスト結果</a></li>
+            <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+            <li><a href="../Program/index.html" class="current">プログラム</a></li>
+            <li><a href="../Manual/index.html">マニュアル</a></li>
+        </ul>
+    </div>
+    <div id="submenu">
+        <ul>
+            <li><a href="index.html">全体</a></li>
+            <li><a href="Junit.html">Junit</a></li>
+            <li><a href="Root.html" class="current">Forest_Program/src/main/java</a></li>
+            <li><a href="lib.html">lib</a></li>
+            <li><a href="src_main_java_forest.html">src/main/java/forest</a></li>
+            <li><a href="src_main_java_utility.html">src/main/java/utility</a></li>
+            <li><a href="src_main_resources_data.html">src/main/resources/data</a></li>
+            <li><a href="src_test_java_forest.html">src/test/java/forest</a></li>
+        </ul>
+    </div>
+    <hr>
+    <h2>ソフトウェア工学II「樹状整列」プログラム - forest</h2>
+    <h3>forestのファイル一覧</h3>
+    <ul>
+        <li><a href="#Branch">Branch</a></li>
+        <li><a href="#Constants">Constants</a></li>
+        <li><a href="#Example">Example</a></li>
+        <li><a href="#Forest">Forest</a></li>
+        <li><a href="#ForestController">ForestController</a></li>
+        <li><a href="#ForestModel">ForestModel</a></li>
+        <li><a href="#ForestView">ForestView</a></li>
+        <li><a href="#Node">Node</a></li>
+        <li><a href="#package-info">package-info</a></li>
+    </ul>
+    <div class="belt">
+        <h3><a name="Branch">Branch</a></h3>
+    </div>
+    <pre>package forest;
+
+import java.awt.Graphics;
+
+/**
+ * 樹状整列におけるブランチ（枝）を担うクラスになります。
+ */
+public class Branch extends Object {
+    /**
+     * ブランチ（枝）の終点となるノードを記憶するフィールドです。
+     */
+    private Node end;
+
+    /**
+     * ブランチ（枝）の始点となるノードを記憶するフィールドです。
+     */
+    private Node start;
+
+    /**
+     * Branch クラスの新しいインスタンスを生成するコンストラクタです。
+     * 枝の始点と終点を指定して、枝の関係を確立します。
+     * @param from 枝の始点となる {@code Node} オブジェクト。
+     * @param to 枝の終点となる {@code Node} オブジェクト。
+     */
+    public Branch(Node from, Node to) {
+        super();
+        this.start = from;
+        this.end = to;
+    }
+
+    /**
+     * このブランチ（枝）をグラフィックコンテキストに描画するメソッドです。
+     * 枝は、始点ノードの右端中央から終点ノードの左端中央へと線で描画されます。
+     * @param aGraphics 描画を行うための {@code Graphics} オブジェクト。
+     */
+    public void draw(Graphics aGraphics) {
+        int fromX = this.start.getLocation().x + this.start.getExtent().x;
+        int fromY = this.start.getLocation().y + this.start.getExtent().y / 2;
+        int toX = this.end.getLocation().x;
+        int toY = this.end.getLocation().y + this.end.getExtent().y / 2;
+
+        aGraphics.setColor(Constants.ForegroundColor);
+        aGraphics.drawLine(fromX, fromY, toX, toY);
+        return;
+    }
+
+    /**
+     * このブランチ（枝）の終点となるノードを応答するメソッドです。
+     * @return この枝が指し示す終点となる {@code Node} オブジェクト。
+     */
+    public Node end() {
+        return this.end;
+    }
+
+    /**
+     * このブランチ（枝）の始点となるノードを応答するメソッドです。
+     * @return この枝の開始点となる {@code Node} オブジェクト。
+     */
+    public Node start() {
+        return this.start;
+    }
+
+     /**
+     * この {@code Branch} オブジェクトの文字列表現を返します。
+     * 通常は「クラス名[start=始点ノードの文字列表現,end=終点ノードの文字列表現]」の形式になります。
+     * @return このオブジェクトを表す文字列。
+     */
+    @Override
+    public String toString() {
+        StringBuffer aBuffer = new StringBuffer();
+        Class&lt;?&gt; aClass = this.getClass();
+        aBuffer.append(aClass.getName());
+        aBuffer.append(&quot;[start=&quot;);
+        aBuffer.append(this.start);
+        aBuffer.append(&quot;],[end=&quot;);
+        aBuffer.append(this.end);
+        aBuffer.append(&quot;]&quot;);
+        return aBuffer.toString();
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="Constants">Constants</a></h3>
+    </div>
+    <pre>package forest;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Point;
+import javax.swing.plaf.FontUIResource;
+
+/**
+ * 定数たち：すべてパブリック＆スタティック＆ファイナルの宣言で、
+ * このクラスのクラス変数（フィールド）としてアクセス（読み取りが）できます。 
+ * 樹状整列で用いるリテラル（定数）項の散在を防止するために、このクラスにまとめています。
+ */
+public class Constants extends Object
+{
+    /**
+     * 樹状整列データファイル中のタグ「ツリー」を表します。
+     */
+    public static final String TagofTrees = &quot;trees:&quot;;
+
+    /**
+     * 樹状整列データファイル中のタグ「ノード」を表します。
+     */
+    public static final String TagOfNodes = &quot;nodes:&quot;;
+
+    /**
+     * 樹状整列データファイル中のタグ「ブランチ」を表します。
+     */
+    public static final String TagOfBranches = &quot;branches:&quot;;
+
+
+    /**
+     * ノードを描く際のラベルの文字色を表します。
+     */
+    public static final Color ForegroundColor = Color.BLACK;
+
+    /**
+     * ノードを描く際のラベルの背景色を表します。
+     */
+    public static final Color BackgroundColor = Color.WHITE;
+
+    /**
+     * ノードを描く際のラベルのフォントを表します。
+     */
+    public static final Font DefaultFont = new FontUIResource(&quot;Serif&quot;, Font.PLAIN, 12);
+
+    /**
+     * ノードにおいてラベルを描く際の枠縁から余裕（マージン）を表します。
+     */
+    public static final Point Margin = new Point(1,1);
+
+    /**
+     * ノード群を樹状に整列させる際にノード同士の間隔を表します。
+     */
+    public static final Point Interval = new Point(25,2);
+
+    /**
+     * ノード群を深さ優先にたどる際の状態「未定」を表します。
+     */
+    public static final Integer UnKnown = -1;
+
+    /**
+     * ノード群を深さ優先にたどる際の状態「未訪問」を表します。
+     */
+    public static final Integer UnVisited = 0;
+
+    /**
+     * ノード群を深さ優先にたどる際の状態「訪問済」を表します。
+     */
+    public static final Integer Visited = 1;
+
+    /**
+     * 樹状整列アニメーションのチックタック：時間間隔：スピードを表します。
+     */
+    public static final Integer SleepTick = 100;
+
+    /**
+     * Constantsクラスのプライベートコンストラクタ。
+     * 外部からのインスタンス化を防ぐためにプライベートに宣言されています。
+     */
+    private Constants() {
+        throw new UnsupportedOperationException(&quot;Constants クラスはインスタンス化できません。&quot;);
+    }
+
+} 
+</pre>
+    <div class="belt">
+        <h3><a name="Example">Example</a></h3>
+    </div>
+    <pre>package forest;
+
+import java.awt.Dimension;
+import java.io.File;
+import javax.swing.JFrame;
+
+/**
+ * 樹状整列の例題クラス：使い方の典型を示すのが目的のプログラムです。&lt;br&gt;
+ * Makefileを用いた実行方法は以下の通りです。&lt;br&gt;
+ * $ make test # 全ての木・森・亜格子状の森を整列描画&lt;br&gt;
+ * $ make tree  # 木を整列描画&lt;br&gt;
+ * $ make forest  # 森を整列描画&lt;br&gt;
+ * $ make semilattice  # 亜格子状の森を整列描画&lt;br&gt;
+ */
+public class Example extends Object
+{
+    /**
+     * {@code Example} クラスのプライベートコンストラクタ。
+     * このクラスはユーティリティクラスであり、すべてのメソッドが静的であるため、
+     * インスタンス化されることを意図していません。
+     * したがって、デフォルトコンストラクタをプライベートにすることで、
+     * 外部からの誤ったインスタンス化を防ぎます。
+     * また、リフレクションによるインスタンス化も防ぐために例外をスローします。
+     */
+    private Example() {
+        throw new UnsupportedOperationException(&quot;Example クラスはインスタンス化できません。&quot;);
+    }
+
+    /**
+     * 第1引数で樹状整列データファイルを受け取って樹状整列を実行します。&lt;br&gt;
+     * $ java -Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar forest.jar resources/data/tree.txt&lt;br&gt;
+     * $ java -Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar forest.jar resources/data/forest.txt&lt;br&gt;
+     * $ java -Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar forest.jar resources/data/semilattice.txt&lt;br&gt;
+     * @param arguments 樹状整列データファイルを第1引数とする引数文字列群
+     */
+       public static void main(String[] arguments)
+    {
+        // 引数が無い（樹状整列データファイルの在り処がわからない）をチェックする。
+        if (arguments.length &lt; 1)
+        {
+            System.err.println(&quot;There are too few arguments.&quot;);
+            System.exit(1);
+        }
+
+        // 第1引数で指定された樹状整列データファイルの存在をチェックする。
+        File aFile = new File(arguments[0]);
+        if (!(aFile.exists()))
+        {
+            System.err.println(&quot;&#39;&quot; + aFile + &quot;&#39; does not exist.&quot;);
+            System.exit(1);
+        }
+
+        // MVCを作成する。
+        ForestModel aModel = new ForestModel(aFile);
+        ForestView aView = new ForestView(aModel);
+
+        // ウィンドウを生成して開く。
+        JFrame aWindow = new JFrame(aFile.getName());
+        aWindow.getContentPane().add(aView);
+        aWindow.setMinimumSize(new Dimension(400, 300));
+        aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        aWindow.setSize(800, 600);
+        aWindow.setLocationRelativeTo(null);
+        aWindow.setVisible(true);
+
+        // 樹状整列のアニメーションを行う。
+        aModel.animate();
+        
+
+        return;
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="Forest">Forest</a></h3>
+    </div>
+    <pre>package forest;
+
+import utility.Condition;
+import utility.ValueHolder;
+
+import java.util.function.Consumer;
+
+import javax.swing.SwingUtilities;
+
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+
+/**
+ * 樹状整列におけるフォレスト（木・林・森・亜格子状の森）を担うクラスになります。
+ */
+public class Forest extends Object
+{
+    /**
+     * ノード（節）群（たち）を記憶するフィールドです。
+     */
+    private ArrayList&lt;Node&gt; nodes;
+
+    /**
+     * ブランチ（枝）群（たち）を記憶するフィールドです。
+     */
+    private ArrayList&lt;Branch&gt; branches;
+
+    /**
+     * 樹状整列したフォレスト（森）の領域（矩形）を記憶するフィールドです。
+     */
+    private Rectangle bounds;
+
+    /**
+     * propagate メソッドで使用する実際のスリープ時間（ミリ秒）を記憶するフィールドです。
+     * テスト時に上書き可能です。
+     */
+    private long actualSleepTick; // 追加
+
+    /**
+     * このクラスのインスタンスを生成するコンストラクタです。
+     * デフォルトのスリープ時間を使用します。
+     */
+    public Forest()
+    {
+        nodes =  new ArrayList&lt;&gt;();
+        branches = new ArrayList&lt;&gt;();
+        bounds = new Rectangle();
+        this.actualSleepTick = Constants.SleepTick; // 追加: デフォルト値を設定
+    }
+
+    /**
+     * このクラスのインスタンスを生成するコンストラクタです。
+     * テスト目的などで、propagate メソッドのスリープ時間を上書きできます。
+     * @param testSleepTick propagate メソッドで使用するスリープ時間（ミリ秒）
+     */
+    public Forest(long testSleepTick) // 追加: テスト用コンストラクタ
+    {
+        this(); // デフォルトコンストラクタを呼び出す
+        this.actualSleepTick = testSleepTick; // 指定されたスリープ時間で上書き
+    }
+
+    /**
+     * ブランチ（枝）を追加するメソッドです。
+     * @param aBranch ブランチ（枝）
+     */
+    public void addBranch(Branch aBranch)
+    {
+        branches.add(aBranch);
+        return;
+    }
+
+    /**
+     * ノード（節）を追加するメソッドです。
+     * @param aNode ノード（節）
+     */
+    public void addNode(Node aNode)
+    {
+        nodes.add(aNode);
+        return;
+    }
+
+    /**
+     * 樹状整列するトップ（一番上位）のメソッドです。
+     */
+    public void arrange()
+    {
+        arrange(null);
+        return;
+    }
+
+    /**
+     * 樹状整列するセカンドレベル（二番階層）のメソッドです。
+     * @param aModel モデル
+     */
+    public void arrange(ForestModel aModel)
+    {
+        // 既存の arrange(ForestModel) メソッドは、内部で propagate を呼ぶ際に
+        // propagate(ForestModel aModel) のみを呼び出すため、その propagate が
+        // 新しい actualSleepTick フィールドを使用するように修正します。
+        // arrange() --&gt; arrange(null)
+        // arrange(ForestModel) --ここまでは既存の呼び出しフローを変えない
+
+        nodes.forEach(node -&gt; {
+            node.setStatus(Constants.UnVisited);
+        });
+        ArrayList&lt;Node&gt; roots = this.sortNodes(this.rootNodes());
+        AtomicInteger x = new AtomicInteger(0);
+        AtomicInteger y = new AtomicInteger(0);
+        Consumer&lt;Node&gt; aConsumer = (Node root) -&gt; {
+            Point newPoint = new Point(x.get(), y.get());
+            // propagate のスリープ時間は、Forest インスタンスの actualSleepTick に依存するため、
+            // arrange(Node, Point, ForestModel) の呼び出しはそのままにできます。
+            Point subTreeBottomRight = arrange(root, newPoint, aModel);
+            y.set(root.getExtent().y + subTreeBottomRight.y + Constants.Interval.y);
+        };
+        roots.forEach(aConsumer);
+        return;
+    }
+
+    /**
+     * 樹状整列する再帰レベル（N番階層）のメソッドです。
+     * @param aNode ノード（このノードから再帰的にたどって下位のものたちも整列する）
+     * @param aPoint ノードの位置（座標）
+     * @param aModel モデル（nullのときはアニメーションを行わない）
+     * @return 整列されたサブツリーの右下隅の座標。
+     */
+    protected Point arrange(Node aNode, Point aPoint, ForestModel aModel)
+    {
+        if(aNode.getStatus() == Constants.Visited) {return aPoint;} 
+        aNode.setStatus(Constants.Visited);
+
+        ArrayList&lt;Node&gt; subNodes = this.sortNodes(this.subNodes(aNode));
+
+        int[] subX = {aPoint.x + aNode.getExtent().x + Constants.Interval.x};
+        int[] nextY = {aPoint.y};
+
+        int[] minY = {Integer.MAX_VALUE};
+        int[] maxY = {Integer.MIN_VALUE};
+
+        Consumer&lt;Node&gt; aConsumer = (Node sub) -&gt; {
+            Point[] subPoint = {new Point(0,0)};
+            new Condition(() -&gt; sub.getStatus() != Constants.Visited).ifTrue(() -&gt; {
+            
+                subPoint[0] = new Point(subX[0], nextY[0]);
+                sub.setLocation(subPoint[0]);
+           
+                this.propagate(aModel); // propagate が actualSleepTick を使用するようになったため、引数は変更なし
+                
+                Point next = arrange(sub, subPoint[0], aModel);
+
+                int subBottom = next.y;
+                int subTop = sub.getLocation().y;
+
+                minY[0] = Math.min(minY[0], subTop);
+                maxY[0] = Math.max(maxY[0], subBottom);
+
+                nextY[0] = subBottom + Constants.Interval.y + sub.getExtent().y;
+            });
+            
+        };
+        subNodes.forEach(aConsumer);
+
+        int[] y = {0};
+        new Condition(() -&gt; (!subNodes.isEmpty() &amp;&amp; minY[0] != Integer.MAX_VALUE &amp;&amp; maxY[0] != Integer.MIN_VALUE)).ifThenElse(() -&gt; {    
+            new Condition(() -&gt; (subNodes.size() == 1)).ifThenElse(() -&gt; {
+                y[0] = subNodes.get(0).getLocation().y;
+            }, () -&gt; {
+                y[0] = (minY[0] + maxY[0]) / 2;
+            });
+        }, () -&gt; {
+            y[0] = aPoint.y;
+            minY[0] = aPoint.y;
+            maxY[0] = aPoint.y;
+;       });
+        aNode.setLocation(new Point(aPoint.x, y[0]));
+        this.propagate(aModel); // propagate が actualSleepTick を使用するようになったため、引数は変更なし
+
+        return new Point(aPoint.x, maxY[0]);
+    }
+
+    /**
+     * フォレスト（木・林・森・亜格子状の森）の領域（矩形）を応答するメソッドです。
+     * @return フォレストの境界を表す {@code Rectangle} オブジェクト。
+     * ノードが一つも存在しない場合は、幅と高さが0の矩形を返します。
+     */
+    public Rectangle bounds()
+    {
+        AtomicReference&lt;Rectangle&gt; result = new AtomicReference&lt;&gt;();
+
+        Runnable notEmptyNodes = () -&gt; {
+            AtomicInteger minX = new AtomicInteger(Integer.MAX_VALUE);
+            AtomicInteger minY = new AtomicInteger(Integer.MAX_VALUE);
+            AtomicInteger maxX = new AtomicInteger(Integer.MIN_VALUE);
+            AtomicInteger maxY = new AtomicInteger(Integer.MIN_VALUE);
+
+            Consumer&lt;Node&gt; aConsumer = (Node aNode) -&gt; {
+                Point loc = aNode.getLocation();
+                Point ext = aNode.getExtent();
+
+                minX.set(Math.min(minX.get(), loc.x));
+                minY.set(Math.min(minY.get(), loc.y));
+                maxX.set(Math.max(maxX.get(), loc.x + ext.x));
+                maxY.set(Math.max(maxY.get(), loc.y + ext.y));
+            };
+            nodes.forEach(aConsumer);
+
+            result.set(new Rectangle(minX.get(), minY.get(), maxX.get() - minX.get(), maxY.get() - minY.get()));
+        };
+
+        new Condition(() -&gt; nodes.isEmpty()).ifThenElse(() -&gt; {
+            result.set(new Rectangle(0, 0, 0, 0));
+        }, notEmptyNodes);
+
+        this.bounds = result.get();
+        return this.bounds;
+    }
+
+    /**
+     * フォレスト（木・林・森・亜格子状の森）を描画するメソッドです。
+     * @param aGraphics 描画を行うための {@code Graphics} オブジェクト。
+     */
+    public void draw(java.awt.Graphics aGraphics)
+    {
+        //ノードを書く
+        Consumer&lt;Node&gt; writeNodes = (Node node) -&gt; {
+            node.draw(aGraphics);
+        };
+        nodes.forEach(writeNodes);
+
+        //枝を描く
+        Consumer&lt;Branch&gt; writeBranchs = (Branch branch) -&gt; {
+            branch.draw(aGraphics);
+        };
+        branches.forEach(writeBranchs);
+        return;
+    }
+
+    /**
+     * フォレスト（木・林・森・亜格子状の森）の領域（矩形）を水に流す（チャラにする）メソッドです。
+     */
+    public void flushBounds()
+    {
+        AtomicInteger cnt = new AtomicInteger(1);
+        Consumer&lt;Node&gt; aConsumer = (Node aNode) -&gt; {
+            aNode.setLocation(new Point(0, aNode.getExtent().y*cnt.getAndIncrement()));
+        };
+        nodes.forEach(aConsumer);
+        this.bounds = null;
+        return;
+    }
+
+    /**
+     * チックタックの間、スリープし、モデルが変化した、と騒ぐ（広める：放送する）メソッドです。
+     * @param aModel モデル
+     */
+    protected void propagate(ForestModel aModel)
+    {
+        new Condition(() -&gt; aModel == null).ifTrue(() -&gt; {return;});
+
+        try {
+            Thread.sleep(this.actualSleepTick); // 変更: actualSleepTick を使用
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        SwingUtilities.invokeLater(() -&gt; aModel.changed());
+        return;
+    }
+
+    /**
+     * フォレストの根元（ルート）となるノード群を応答するメソッドです。
+     * @return フォレスト内のルートノードの {@code ArrayList&lt;Node&gt;}。
+     */
+    public ArrayList&lt;Node&gt; rootNodes()
+    {
+        ArrayList&lt;Node&gt; roots = new ArrayList&lt;&gt;(nodes);
+        Consumer&lt;Branch&gt; aConsumer = (Branch aBranch) -&gt; {
+            roots.remove(aBranch.end());
+        };
+        branches.forEach(aConsumer);
+        return roots;
+    }
+
+    /**
+     * 引数で指定されたノード群をノード名でソート（並び替えを）するメソッドです。
+     * @param nodeCollection ノード群
+     * @return ノード名でソートされた新しい {@code ArrayList&lt;Node&gt;}。元のコレクションは変更されません。
+     */
+    protected ArrayList&lt;Node&gt; sortNodes(ArrayList&lt;Node&gt; nodeCollection)
+    {
+        ArrayList&lt;Node&gt; sorted = new ArrayList&lt;&gt;(nodeCollection);
+        sorted.sort(Comparator.comparing(Node::getName));
+        return sorted;
+    }
+
+    /**
+     * 引数で指定されたノードのサブノード群を応答するメソッドです。
+     * @param aNode ノード
+     * @return 指定されたノードの直接の子ノードの {@code ArrayList&lt;Node&gt;}。
+     */
+    public ArrayList&lt;Node&gt; subNodes(Node aNode)
+    {
+        ValueHolder&lt;ArrayList&lt;Node&gt;&gt; aSubNodes = new ValueHolder&lt;&gt;(new ArrayList&lt;&gt;());
+        Consumer&lt;Branch&gt; aConsumer = (Branch aBranch) -&gt; {
+            new Condition(() -&gt;  (aBranch.start() == aNode)).ifTrue(()-&gt; {
+                aSubNodes.get().add(aBranch.end());
+            });
+        };
+        branches.forEach(aConsumer);
+        return aSubNodes.get();
+    }
+
+    /**
+     * 引数で指定されたノードのスーパーノード群を応答するメソッドです。
+     * @param aNode 親ノードを検索する対象の子ノード。
+     * @return 指定されたノードの直接の親ノードの {@code ArrayList&lt;Node&gt;}。
+     */
+    public ArrayList&lt;Node&gt; superNodes(Node aNode)
+    {
+        ValueHolder&lt;ArrayList&lt;Node&gt;&gt; aSuperNodes = new ValueHolder&lt;&gt;(new ArrayList&lt;&gt;());
+        Consumer&lt;Branch&gt; aConsumer = (Branch aBranch) -&gt; {
+            new Condition(() -&gt;  (aBranch.end() == aNode)).ifTrue(()-&gt; {
+                aSuperNodes.get().add(aBranch.start());
+            });
+        };
+        branches.forEach(aConsumer);
+        return aSuperNodes.get();
+    }
+
+    /**
+     * ノード（節）群（たち）を記憶するフィールドを返すメソッドです。
+     * @return ノード（節）群（たち）を記憶するフィールド {@code ArrayList&lt;Node&gt;}。
+     */
+    public ArrayList&lt;Node&gt; getNodes() {
+        return this.nodes;
+    }
+
+    /**
+     * ブランチ（枝）群（たち）を記憶するフィールドを返すメソッドです。
+     * @return ブランチ（枝）群（たち）を記憶するフィールド {@code ArrayList&lt;Branch&gt;}
+     */
+    public ArrayList&lt;Branch&gt; getBranches() {
+        return this.branches;
+    }
+
+    /**
+     * 樹状整列したフォレスト（森）の領域（矩形）を記憶するフィールドを返すメソッドです。
+     * @return 樹状整列したフォレスト（森）の領域（矩形）を記憶するフィールド {@code Rectangle}
+     */
+    public Rectangle getBounds() {
+        return this.bounds;
+    }
+
+    /**
+     * 自分自身を文字列に変換するメソッドです。
+     * @return このオブジェクトを表す文字列。
+     */
+    @Override
+    public String toString()
+    {
+        StringBuffer aBuffer = new StringBuffer();
+        Class&lt;?&gt; aClass = this.getClass();
+        aBuffer.append(aClass.getName());
+        aBuffer.append(&quot;[bounds=&quot;);
+        aBuffer.append(this.bounds);
+        aBuffer.append(&quot;]&quot;);
+        return aBuffer.toString();
+    }
+
+    /**
+     * 指定された位置（座標）にノードが存在するかを調べるメソッドです。
+     * @param aPoint 位置（モデル座標）
+     * @return 指定された位置に存在する {@code Node} オブジェクト。存在しない場合は {@code null} を返します。
+     */
+    public Node whichOfNodes(Point aPoint)
+    {
+        AtomicReference&lt;Node&gt; result = new AtomicReference&lt;&gt;(null);
+        Consumer&lt;Node&gt; aConsumer = (Node aNode) -&gt; {
+            Rectangle rect = new Rectangle(aNode.getLocation().x, aNode.getLocation().y, aNode.getExtent().x, aNode.getExtent().y);
+            new Condition(() -&gt; rect.contains(aPoint)).ifTrue(() -&gt; {
+                result.set(aNode);
+            });
+        };
+        nodes.forEach(aConsumer);
+        return result.get();
+    }
+}</pre>
+    <div class="belt">
+        <h3><a name="ForestController">ForestController</a></h3>
+    </div>
+    <pre>package forest;
+
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.event.InputEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+//import java.awt.event.MouseWheelListener;
+
+import javax.swing.event.MouseInputAdapter;
+//import javax.swing.text.View;
+
+import utility.*;
+
+/**
+ * 樹状整列におけるMVCのコントローラ（C）を担うクラスになります。
+ */
+public class ForestController extends MouseInputAdapter //implements MouseWheelListener
+{
+    /**
+     * 樹状整列におけるMVCのモデル（M）を記憶するフィールドです。
+     */
+    private ForestModel model;
+
+    /**
+     * 樹状整列におけるMVCのビュー（V）を記憶するフィールドです。
+     */
+    private ForestView view;
+
+    /**
+     * マウスの直近の位置を記憶するフィールドです。
+     */
+    private Point previous;
+
+    /**
+     * マウスの現在の位置を記憶するフィールドです。
+     */
+    private Point current;
+
+    /**
+     * このクラスのインスタンスを生成するコンストラクタです。
+     */
+    public ForestController()
+    {
+        super();
+        this.model = null;
+        this.view = null;
+        this.previous = null;
+        this.current = null;
+        return;
+    }
+
+    /**
+     * 指定されたマウスイベントからマウスカーサの位置を獲得して、
+     * モデル座標系でのクリック位置を割り出して標準出力に出力する。
+     * さらに、クリックされたノードまたはリーフの名前を標準出力に出力する。
+     * @param aMouseEvent マウスイベント
+     */
+    @Override
+    public void mouseClicked(MouseEvent aMouseEvent)
+    {
+        // 画面上のクリック位置を取得
+        Point screenPoint = aMouseEvent.getPoint();
+
+        // ビューのスクロール量を考慮してモデル座標に変換
+        Point modelPoint = new Point(screenPoint.x + view.scrollAmount().x,
+                                     screenPoint.y + view.scrollAmount().y);
+        
+
+        // デバッグ用にモデル座標を出力
+        System.out.println(&quot;Clicked at Model Coordinates: &quot; + modelPoint);
+
+        // Viewがnullでないことを確認し、その後の処理を実行
+        // Condition.ifTrue() を使って this.view が null でない場合に処理を実行
+        Condition.ifTrue(() -&gt; this.view != null, () -&gt; {
+            Node nodeOrLeafName = this.view.whichOfNodes(modelPoint);
+            //Node nodeOrLeafName = this.view.whichOfNodes(screenPoint);
+            // 名前が見つかった場合と見つからなかった場合の処理
+            Condition.ifThenElse(() -&gt; nodeOrLeafName != null, /*nodeOrLeafName == null,*/
+                // 名前が見つかった場合
+                () -&gt; {
+                    System.out.println(&quot;Node/Leaf Clicked: &quot; + nodeOrLeafName);
+                },
+                // 名前が見つからなかった場合
+                () -&gt; {
+                    System.out.println(&quot;No Node/Leaf found at this location.&quot;);
+                }
+            );
+        });
+        return;
+    }
+
+    /**
+     * マウスカーサの形状を移動の形に変化させ、指定されたマウスイベントからマウスカーサの位置を獲得して、
+     * インスタンス変数currentに設定すると共に、以前のマウスカーサの位置からの差分を計算する。
+     * そして、その差分だけビューに対してスクロールを依頼し、その後にビューの再描画を依頼する。
+     * 最後にインスタンス変数previousをインスタンス変数currentに更新する。
+     * @param aMouseEvent マウスイベント
+     */
+    @Override
+    public void mouseDragged(MouseEvent aMouseEvent)
+    {
+        Cursor aCursor = Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR);
+        Component aComponent = (Component)aMouseEvent.getSource();
+        aComponent.setCursor(aCursor);
+        this.current = aMouseEvent.getPoint();
+        Integer x = this.current.x - this.previous.x;
+        Integer y = this.current.y - this.previous.y;
+        Point aPoint = new Point(x, y);
+        //this.scrollBy(aPoint, aMouseEvent);
+        view.scrollBy(aPoint);
+        this.previous = this.current;
+        return;
+    }
+
+    /**
+     * 何もしない。
+     * @param aMouseEvent マウスイベント
+     */
+    @Override
+    public void mouseEntered(MouseEvent aMouseEvent)
+    {
+        return;
+    }
+
+    /**
+     * 何もしない。
+     * @param aMouseEvent マウスイベント
+     */
+    @Override
+    public void mouseExited(MouseEvent aMouseEvent)
+    {
+        return;
+    }
+
+    /**
+     * 何もしない。
+     * @param aMouseEvent マウスイベント
+     */
+    @Override
+    public void mouseMoved(MouseEvent aMouseEvent)
+    {
+        return;
+    }
+
+    /**
+     * マウスカーサの形状を十字に変化させ、指定されたマウスイベントからマウスカーサの位置を獲得して、
+     * インスタンス変数currentに設定する共にインスタンス変数previousをインスタンス変数currentに更新する。
+     * @param aMouseEvent マウスイベント
+     */
+    @Override
+    public void mousePressed(MouseEvent aMouseEvent)
+    {
+        Cursor aCursor = Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR);
+        Component aComponent = (Component)aMouseEvent.getSource();
+        aComponent.setCursor(aCursor);
+        this.current = aMouseEvent.getPoint();
+        this.previous = this.current;
+        return;
+    }
+
+    /**
+     * マウスカーサの形状をデフォルトに戻し、指定されたマウスイベントからマウスカーサの位置を獲得して、
+     * インスタンス変数currentに設定する共にインスタンス変数previousをインスタンス変数currentに更新する。
+     * @param aMouseEvent マウスイベント
+     */
+    @Override
+    public void mouseReleased(MouseEvent aMouseEvent)
+    {
+        Cursor aCursor = Cursor.getDefaultCursor();
+        Component aComponent = (Component)aMouseEvent.getSource();
+        aComponent.setCursor(aCursor);
+        this.current = aMouseEvent.getPoint();
+        this.previous = this.current;
+        return;
+    }
+
+    /**
+     * マウスホィールで、縦（垂直）方向のスクロールを行う。
+     * その際に、何らかの修飾があれば、横（水平）方向のスクロールも行う。
+     * @param aMouseWheelEvent マウスホィールイベント
+     */
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent aMouseWheelEvent)
+    {
+        Integer scrollAmount = -(aMouseWheelEvent.getWheelRotation());
+        try { new Condition(() -&gt; scrollAmount == 0).ifTrue(() -&gt; { throw new RuntimeException(); }); }
+        catch (RuntimeException anException) { return; }
+        ValueHolder&lt;Point&gt; aPoint = new ValueHolder&lt;Point&gt;(new Point(0, scrollAmount));
+        Integer someModifiers = aMouseWheelEvent.getModifiersEx();
+        new Condition(() -&gt; someModifiers &gt; 0).ifTrue(() -&gt; { aPoint.set(new Point(scrollAmount, 0)); });
+        this.view.scrollBy(aPoint.get());
+        this.view.repaint();
+        return;
+    }
+
+    /**
+     * スクロール量を指定された座標分だけ相対スクロールして、ビューを再描画する。
+     * その際に、シフトキーが押下されていたら、モデルの依存物となっている全てのビューを連動させて、
+     * 相対（それぞれのビューのスクロール量に見合う分の）スクロールを行う。
+     * さらに、シフトキー押下に加えて、
+     * オブション(alt)キーまたはコントロールキーまたはメタ（コマンド⌘）キーも押下されていたならば、
+     * 全ビュー連動スクロールを、絶対（操作対象ビューのスクロール量を全ビューに適用して）スクロールを行う。
+     * @param aPoint X軸とY軸のスクロール量を表す座標
+     * @param aMouseEvent マウスイベントまたはマウスホィールイベント
+     */
+    public void scrollBy(Point aPoint, MouseEvent aMouseEvent)
+    {
+        this.view.scrollBy(aPoint);
+        this.view.repaint();
+        Integer someModifiers = aMouseEvent.getModifiersEx();
+        Boolean shiftDown = (someModifiers &amp; InputEvent.SHIFT_DOWN_MASK) != 0;
+        try { new Condition(() -&gt; !shiftDown).ifTrue(() -&gt; { throw new RuntimeException(); }); }
+        catch (RuntimeException anException) { return; }
+        Point scrollAmount = this.view.scrollAmount();
+        Point scrollOffset = new Point(0 - scrollAmount.x, 0 - scrollAmount.y);
+        Integer altORctrlORmetaMask = InputEvent.ALT_DOWN_MASK
+                                    | InputEvent.CTRL_DOWN_MASK
+                                    | InputEvent.META_DOWN_MASK
+                                    ;
+        Boolean altORctrlORmetaDown = (someModifiers &amp; altORctrlORmetaMask) != 0;
+            this.model.getDependents().forEach((ForestView aView) -&gt;
+        {
+            new Condition(() -&gt; aView != this.view).ifTrue(() -&gt;
+            {
+                new Condition(() -&gt; !altORctrlORmetaDown).ifThenElse(() -&gt; 
+                { aView.scrollBy(aPoint); }, () -&gt; 
+                { aView.scrollTo(scrollOffset); });
+                aView.repaint();
+            });
+        });
+        return;
+    }
+
+    /**
+     * 指定されたモデルをインスタンス変数modelに設定する。
+     * @param aModel このコントローラのモデル
+     */
+    public void setModel(ForestModel aModel)
+    {
+        this.model = aModel;
+        return;
+    }
+
+    /**
+     * 指定されたビューをインスタンス変数viewに設定し、
+     * ビューのマウスのリスナおよびモーションリスナそしてホイールリスナをこのコントローラにする。
+     * @param aView このコントローラのビュー
+     */
+    public void setView(ForestView aView)
+    {
+        this.view = aView;
+        this.view.addMouseListener(this);
+        this.view.addMouseMotionListener(this);
+        this.view.addMouseWheelListener(this);
+        return;
+    }
+
+    /**
+     * 樹状整列におけるMVCのモデル（M）を記憶するフィールドを返すメソッドです。
+     * @return 樹状整列におけるMVCのモデル（M）を記憶するフィールド {@code ForestModel}。
+     */
+    public ForestModel getModel() {
+        return this.model;
+    }
+
+    /**
+     * 樹状整列におけるMVCのビュー（V）を記憶するフィールドを返すメソッドです。
+     * @return 樹状整列におけるMVCのビュー（V）を記憶するフィールド {@code ForestView}。
+     */
+    public ForestView getView() {
+        return this.view;
+    }
+
+    /**
+     * マウスの直近の位置を記憶するフィールドを返すメソッドです。
+     * @return マウスの直近の位置を記憶するフィールド {@code Point}。
+     */
+    public Point getPrevious () {
+        return this.previous;
+    }
+
+    /**
+     * マウスの現在の位置を記憶するフィールドを返すメソッドです。
+     * @return マウスの現在の位置を記憶するフィールド {@code Point}。
+     */
+    public Point getCurrent() {
+        return this.current;
+    }
+
+    /**
+     * 自分自身を文字列に変換するメソッドです。
+     */
+    @Override
+    public java.lang.String toString()
+    {
+        StringBuffer aBuffer = new StringBuffer();
+        Class&lt;?&gt; aClass = this.getClass();
+        aBuffer.append(aClass.getName());
+        aBuffer.append(&quot;[model=&quot;);
+        aBuffer.append(this.model);
+        aBuffer.append(&quot;,view=&quot;);
+        aBuffer.append(this.view);
+        aBuffer.append(&quot;]&quot;);
+        return aBuffer.toString();
+    }
+
+
+}
+</pre>
+    <div class="belt">
+        <h3><a name="ForestModel">ForestModel</a></h3>
+    </div>
+    <pre>package forest;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicReference;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+import utility.*;
+
+
+/**
+ * 樹状整列におけるMVCのモデル（M）を担うクラスになります。
+ */
+public class ForestModel extends Object {
+    
+    /**
+     * 自分の依存物（ビューたち）を記憶しておくフィールドです。
+     */
+    protected ArrayList&lt;ForestView&gt; dependants;
+
+    /**
+     * 樹状整列それ自身を記憶しておくフィールドです。
+     */
+    private Forest forest;
+
+    /**
+     * 樹状整列それ自身を画像にして記憶しておくフィールドです。
+     */
+    private BufferedImage picture;
+
+    /**
+     * このモデルに依存するビューのリストを応答します。
+     * このメソッドは、内部の依存リストのコピーを返すことで、
+     * 外部からの直接的なリストの変更を防ぎ、モデルのカプセル化を維持します。
+     * 返されるリストは変更不可能ではありませんが、元の内部リストとは異なるオブジェクトです。
+     *
+     * @return このモデルに登録されているForestViewオブジェクトの新しいリストのコピー。
+     */
+    public java.util.List&lt;ForestView&gt; getDependents() {
+        return new ArrayList&lt;&gt;(this.dependants);
+    }
+
+    /**
+     * このクラスのインスタンスを生成するコンストラクタです。
+     * @param aFile 樹状整列データファイル
+     */
+    public ForestModel(java.io.File aFile)
+    {
+        super();
+        forest = new Forest();
+        dependants = new ArrayList&lt;&gt;();
+        //picture = new BufferedImage(0, 0, 0);
+        this.read(aFile);
+    }
+
+    /**
+     * 依存するビューを依存物に登録（加味）します。
+     * @param aView ビュー（Viewのインスタンス）
+     */
+    public void addDependent(ForestView aView)
+    {
+        dependants.add(aView);
+        return;
+    }
+
+    /**
+     * アニメーションを行うメソッドです。
+     */
+    public void animate()
+    {
+        forest.flushBounds();
+        forest.arrange(this);
+
+        this.changed();
+        return;
+    }
+
+    /**
+     * 樹状整列を行うメソッドです。
+     */
+    public void arrange()
+    {
+        forest.arrange();
+        return;
+    }
+
+    /**
+     * 自分自身が変化したことを依存物たちに放送（updateを依頼）するメソッドです。
+     */
+    public void changed() 
+    {
+        this.dependants.forEach(view -&gt; view.update());
+        return;
+    }
+
+    /**
+     * 樹状整列それ自身を応答するメソッドです。
+     * @return このモデルが保持する {@code Forest} オブジェクト。
+     */
+    public Forest forest()
+    {
+        return this.forest;
+    }
+
+    /**
+     * 樹状整列それ自身を画像化したもの（ピクチャ：BufferedImage）を応答するメソッドです。
+     * @return 描画されたフォレストを含む {@code BufferedImage} オブジェクト。
+     */
+    protected BufferedImage picture()
+    {
+        int width = this.forest.bounds().width;
+        int height = this.forest.bounds().height;
+        this.picture = new BufferedImage(width+1, height+1, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = picture.createGraphics();
+        forest.draw(g);
+        return this.picture;
+    }
+
+    /**
+     * 樹状整列データファイルから樹状整列それ自身を生成するメソッドです。
+     * @param aFile 樹状整列データファイル
+     */
+    protected void read(File aFile)
+    {
+        try (BufferedReader reader = new BufferedReader(new FileReader(aFile))) 
+        {
+            HashMap&lt;Integer, Node&gt; nodeMap = new HashMap&lt;&gt;();
+            boolean[] isNode = {false};
+            boolean[] isBranch = {false};
+
+            final String[] lineHolder = new String[1];
+            new Condition(() -&gt; {
+                try {
+                    lineHolder[0] = reader.readLine();
+                    return lineHolder[0] != null;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+            }).whileTrue(() -&gt; {
+                String line = lineHolder[0].trim();
+                Runnable nodeContents = () -&gt; {
+                    String parts[] = line.split(&quot;,&quot;);
+                    int id = Integer.parseInt(parts[0]);
+                    String name = parts[1].trim();
+                    Node aNode = new Node(name);
+                    forest.addNode(aNode);
+                    nodeMap.put(id, aNode);
+                };
+                Runnable branchContents = () -&gt; {
+                    String parts[] = line.split(&quot;,&quot;);
+                    int startId = Integer.parseInt(parts[0].trim());
+                    int endId = Integer.parseInt(parts[1].trim());
+                    Node start = nodeMap.get(startId);
+                    Node end = nodeMap.get(endId);
+                    new Condition(() -&gt; (start != null &amp;&amp; end != null)).ifTrue(() -&gt; {
+                        forest.addBranch(new Branch(start, end));
+                    });
+                };
+                new Condition.Switch()
+                    .addCase(() -&gt; line.isEmpty(), () -&gt; {})
+                    .addCase(() -&gt; line.equalsIgnoreCase(Constants.TagOfNodes), () -&gt; {
+                        isNode[0] = true;
+                        isBranch[0] = false;
+                    })
+                    .addCase(() -&gt; line.equalsIgnoreCase(Constants.TagOfBranches), () -&gt; {
+                        isNode[0] = false;
+                        isBranch[0] = true;
+                    })
+                    .defaultCase(() -&gt; {
+                        new Condition(() -&gt; isNode[0]).ifTrue(nodeContents);
+                        new Condition(() -&gt; isBranch[0]).ifTrue(branchContents);
+                    })
+                    .evaluate();    
+            });
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return;
+    }
+
+    /** 
+     * 樹状整列の根元（ルート）になるノードを探し出して応答するメソッドです。
+     * @return このフォレストのルートノードの一つ、または {@code null}。
+    */
+    public Node root()
+    {
+        ArrayList&lt;Node&gt; rootNodes = roots();
+        AtomicReference&lt;Node&gt; result = new AtomicReference&lt;&gt;(rootNodes.get(0));
+        new Condition(() -&gt; rootNodes.isEmpty()).ifTrue(() -&gt; {result.set(null);});
+        return result.get();
+    }
+
+    /**
+     *  樹状整列の根元（ルート）になるノードたちを探し出して応答するメソッドです。
+     * @return このフォレスト内のすべてのルートノードの {@code ArrayList&lt;Node&gt;}。
+     * @see Forest#rootNodes()
+     */
+    public ArrayList&lt;Node&gt; roots()
+    {
+        return forest.rootNodes();
+    }
+
+    /**
+     * 自分の依存物（ビューたち）を返すメソッドです。
+     * @return 自分の依存物（ビューたち) {@code ArrayList&lt;ForestView&gt;}。
+     */
+    public ArrayList&lt;ForestView&gt; getDependants() {
+        return this.dependants;
+    }
+
+    /**
+     * 樹状整列それ自身の画像を返すメソッドです。
+     * @return 樹状整列それ自身の画像 {@code BufferdImage}。
+     */
+    public BufferedImage getPicture() {
+        return this.picture;
+    }
+
+    /**
+     * 自分自身を文字列に変換するメソッドです。
+     * @return このオブジェクトを表す文字列。
+     */
+    @Override
+    public String toString() {
+        StringBuffer aBuffer = new StringBuffer();
+        Class&lt;?&gt; aClass = this.getClass();
+        aBuffer.append(aClass.getName());
+        aBuffer.append(&quot;[picture=&quot;);
+        aBuffer.append(this.picture);
+        aBuffer.append(&quot;]&quot;);
+        return aBuffer.toString();
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="ForestView">ForestView</a></h3>
+    </div>
+    <pre>package forest;
+
+import javax.swing.JPanel;
+
+import utility.Condition;
+
+//import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.awt.Point;
+import java.awt.Graphics;
+import java.lang.String;
+
+/**
+ * 樹状整列におけるMVCのビュー（V）を担うクラスになります。
+ */
+public class ForestView extends JPanel
+{
+    /**
+     * シリアル化の際に使用されるバージョンUIDです。
+     * クラスの互換性を保証するために定義されます。
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 樹状整列におけるMVCのモデル（M）を記憶するフィールドです。
+     */
+    private transient ForestModel model;
+
+    /**
+     * 樹状整列におけるMVCのコントローラ（C）を記憶するフィールドです。
+     */
+    private transient ForestController controller;
+
+    /**
+     * スクロール量（どこから描き出すのかを表す座標）を記憶するフィールドです。
+     */
+    private Point offset;
+
+    /**
+     * このクラスのインスタンスを生成するコンストラクタです。
+     * @param aModel モデル（ForestModelのインスタンス）
+     */
+    public ForestView(ForestModel aModel)
+    {
+        super();
+        this.model = aModel;
+        this.model.addDependent(this);
+        this.controller = new ForestController();
+        this.controller.setModel(this.model);
+        this.controller.setView(this);
+        this.offset = new Point(0, 0);
+        return;
+    }
+
+    /**
+     * このパネル（ビュー）の描画が必要になったときに動作するメソッドです。
+     * @param aGraphics グラフィクス（描画コンテクスト）
+     */
+    @Override
+    public void paintComponent(Graphics aGraphics)
+    {
+        super.paintComponent(aGraphics);
+        Integer width = this.getWidth();
+        Integer height = this.getHeight();
+        aGraphics.setColor(Constants.BackgroundColor);
+        aGraphics.fillRect(0, 0, width, height);
+        try { new Condition(() -&gt; this.model == null).ifTrue(() -&gt; { throw new RuntimeException(); }); }
+        catch(RuntimeException anException) { return; }
+        BufferedImage anImage = this.model.picture();
+        try { new Condition(() -&gt; anImage == null).ifTrue(() -&gt; { throw new RuntimeException(); }); }
+        catch(RuntimeException anException) { return; }
+        aGraphics.drawImage(anImage, this.offset.x, this.offset.y, null);
+        return;
+    }
+
+    /**
+     * スクロール量（offsetの逆向きの大きさ）を応答する。
+     * @return X軸とY軸のスクロール量を表す座標
+     */
+    public Point scrollAmount()
+    {
+        Integer x = 0 - this.offset.x;
+        Integer y = 0 - this.offset.y;
+        return (new Point(x, y));
+    }
+
+    /**
+     * 相対スクロールを行うメソッドです。
+     * @param aPoint 相対スクロール量（現在のスクロール量に対する差分）
+     */
+    public void scrollBy(Point aPoint)
+    {
+        Integer x = this.offset.x + aPoint.x;
+        Integer y = this.offset.y + aPoint.y;
+        this.scrollTo(new Point(x, y));
+        return;
+    }
+
+    /**
+     * 絶対スクロールを行うメソッドです。
+     * @param aPoint スクロール先の絶対位置（描画オフセット）。
+     */
+    public void scrollTo(Point aPoint)
+    {
+        this.offset = aPoint;
+        return;
+    }
+
+    /**
+     * 樹状整列におけるMVCのモデル（M）を返すメソッドです。
+     * @return 樹状整列におけるMVCのモデル（M） {@code ForestModel}。
+     */
+    public ForestModel getModel() {
+        return this.model;
+    }
+
+    /**
+     * 樹状整列におけるMVCのコントローラ（C）を返すメソッドです。
+     * @return 樹状整列におけるMVCのコントローラ（C） {@code ForestController}
+     */
+    public ForestController getController() {
+        return this.controller;
+    }
+
+    /**
+     * スクロール量（どこから描き出すのかを表す座標）を返すメソッドです。
+     * @return スクロール量（どこから描き出すのかを表す座標）{@code Point}。
+     */
+    public Point getOffset() {
+        return this.offset;
+    }
+
+    /**
+     * 自分自身を文字列に変換するメソッドです。
+     * @return このオブジェクトを表す文字列。
+     */
+    @Override
+    public String toString() {
+        StringBuffer aBuffer = new StringBuffer();
+        Class&lt;?&gt; aClass = this.getClass();
+        aBuffer.append(aClass.getName());
+        aBuffer.append(&quot;[model=&quot;);
+        aBuffer.append(this.model);
+        aBuffer.append(&quot;,offset=&quot;);
+        aBuffer.append(this.offset);
+        aBuffer.append(&quot;]&quot;);
+        return aBuffer.toString();
+    }
+
+    /**
+     * 依存物として依存するものからの放送を受けたときに動作するメソッドです。 その際には再描画します。
+     */
+    public void update()
+    {
+        this.repaint();
+        return;
+    }
+
+    /**
+     * 指定された位置（座標）にノードが存在するかを調べるメソッドです。
+     * @param aPoint 位置（ビュー座標）
+     * @return 指定された位置に存在する {@code Node} オブジェクト。存在しない場合は {@code null} を返します。
+     */
+    public Node whichOfNodes(Point aPoint)
+    {
+        return model.forest().whichOfNodes(aPoint);
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="Node">Node</a></h3>
+    </div>
+    <pre>package forest;
+
+import java.awt.Component;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+
+/**
+ * 樹状整列におけるノード（節）を担うクラスになります。
+ */
+public class Node extends Component {
+    
+    /**
+     * ノード名：ラベル文字列を記憶するフィールドです。
+     */
+    private String name;
+
+    /**
+     * ノードの場所（位置：座標）を記憶するフィールドです。
+     */
+    private Point location;
+
+    /**
+     * ノードの大きさ（幅と高さ）を記憶するフィールドです。
+     */
+    private Point extent;
+
+    /**
+     * 樹状整列する際のノードの状態を記憶するフィールドです。
+     */
+    private Integer status;
+
+    /**
+     * このクラスのインスタンスを生成するコンストラクタです。
+     * @param aString ノード名：ラベル文字列
+     */
+    public Node(String aString)
+    {
+        this.name = aString;
+        this.status = Constants.UnKnown;
+        this.location = new Point(0,0);
+        this.extent = new Point(0,0);
+        this.extent.x = this.stringWidth(aString) + Constants.Margin.x * 2;
+        this.extent.y = this.stringHeight(aString) + Constants.Margin.y * 2;
+        return;
+    }
+
+    /**
+     * ノード（節）を描画するメソッドです。
+     * @param aGraphics グラフィクス（描画コンテクスト）
+     */
+    public void draw(Graphics aGraphics)
+    {
+        int x = this.location.x;
+        int y = this.location.y;
+        int dx = this.extent.x;
+        int dy = this.extent.y;
+
+        //背景色を塗りつぶす
+        aGraphics.setColor(Constants.BackgroundColor);
+        aGraphics.fillRect(x, y, dx, dy);
+
+        //枠線を書く
+        aGraphics.setColor(Constants.ForegroundColor);
+        aGraphics.drawRect(x, y, dx, dy);
+
+        //ノード名を書く
+        FontMetrics aMetrics = aGraphics.getFontMetrics();
+        aGraphics.setFont(Constants.DefaultFont);
+        aGraphics.drawString(this.name, x+Constants.Margin.x, y + aMetrics.getAscent()+Constants.Margin.y);
+        return;
+    }
+
+    /**
+     * ノード（節）の描画領域を応答するメソッドです。
+     * @return このノードの境界を表す {@code Rectangle} オブジェクト。
+     */
+    public Rectangle getBounds()
+    {
+        return new Rectangle(location.x, location.y, extent.x, extent.y);
+    }
+
+    /**
+     * ノード（節）の大きさを応答するメソッドです。
+     * @return ノードの大きさを表す {@code Point} オブジェクト（{@code x} が幅、{@code y} が高さ）。
+     */
+    public Point getExtent()
+    {
+        return extent;
+    }
+
+    /**
+     * ノード（節）の位置を応答するメソッドです。
+     * @return ノードの位置を表す {@code Point} オブジェクト。
+     */
+    public Point getLocation()
+    {
+        return location;
+    }
+
+    /**
+     * ノード（節）の名前を応答するメソッドです。
+     * @return ノードの名前を表す文字列。
+     */
+    public String getName()
+    {
+        return name;
+    }
+
+    /**
+     * ノード（節）の状態を応答するメソッドです。
+     * @return ノードの状態を表す {@code Integer} 値。
+     * @see Constants#UnKnown
+     * @see Constants#UnVisited
+     * @see Constants#Visited
+     */
+    public Integer getStatus()
+    {
+        return status;
+    }
+
+    /**
+     * ノード（節）の大きさを設定するメソッドです。
+     * @param aPoint ノードの新しい大きさを表す {@code Point} オブジェクト（{@code x} が幅、{@code y} が高さ）。
+     */
+    public void setExtent(Point aPoint)
+    {
+        extent = new Point(aPoint.x + Constants.Margin.x*2, aPoint.y + Constants.Margin.y*2);
+        return;
+    }
+
+    /**
+     * ノード（節）の位置を設定するメソッドです。
+     * @param aPoint ノードの位置（座標）
+     */
+    @Override
+    public void setLocation(Point aPoint)
+    {
+        location = aPoint;
+        return;
+    }
+
+    /**
+     * ノード（節）の名前を設定するメソッドです。
+     * @param aString ノードに設定する新しい名前を表す文字列。
+     */
+    @Override
+    public void setName(String aString)
+    {
+        this.name = aString;
+        return;
+    }
+
+    /**
+     * ノード（節）の状態を設定するメソッドです。
+     * @param anInteger ノードの状態
+     * @see Constants#UnKnown
+     * @see Constants#UnVisited
+     * @see Constants#Visited
+     */
+    public void setStatus(Integer anInteger)
+    {
+        status = anInteger;
+        return;
+    }
+
+    /**
+     * 文字列の高さを応答するメソッドです。
+     * @param string 文字列
+     * @return 文字列の描画に必要な高さ（ピクセル単位）。
+     */
+    protected int stringHeight(String string)
+    {
+        BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = img.createGraphics();
+        g.setFont(Constants.DefaultFont);
+
+        FontMetrics aMetrics = g.getFontMetrics();
+        int height = aMetrics.getHeight();
+
+        return height;
+    }
+
+    /**
+     * 文字列の幅を応答するメソッドです。
+     * @param string 文字列
+     * @return 文字列の描画に必要な幅（ピクセル単位）。
+     */
+    protected int stringWidth(String string)
+    {
+        BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = img.createGraphics();
+        g.setFont(Constants.DefaultFont);
+
+        FontMetrics aMetrics = g.getFontMetrics();
+        int width = aMetrics.stringWidth(string);
+
+        return width;
+    }
+
+    /**
+     * 自分自身を文字列に変換するメソッドです。
+     * @return このオブジェクトを表す文字列。
+     */
+    @Override
+    public String toString()
+    {
+        StringBuffer aBuffer = new StringBuffer();
+        Class&lt;?&gt; aClass = this.getClass();
+        aBuffer.append(aClass.getName());
+        aBuffer.append(&quot;[node=&quot;);
+        aBuffer.append(this.name);
+        aBuffer.append(&quot;]&quot;);
+        return aBuffer.toString();
+    }
+}
+</pre>
+    <div class="belt">
+        <h3><a name="package-info">package-info</a></h3>
+    </div>
+    <pre>/**
+ * このパッケージは、樹状整列アプリケーションの主要な構成要素（フォレスト、ノード、ブランチ、モデル、ビュー、コントローラ）を提供します。
+ * ツリー構造のデータの読み込み、整列、描画、ユーザーインタラクションの処理など、アプリケーションの中核となる機能が含まれています。
+ * MVC（Model-View-Controller）デザインパターンに基づいて設計されており、各コンポーネントが明確な役割を担っています。
+ *
+ * &lt;p&gt;主なクラス:&lt;/p&gt;
+ * &lt;ul&gt;
+ * &lt;li&gt;{@link forest.Forest}: ノードとブランチの集合であるツリー構造そのものを管理し、整列ロジックを提供します。&lt;/li&gt;
+ * &lt;li&gt;{@link forest.Node}: ツリー構造の個々の要素（節）を表し、名前、位置、大きさ、状態を持ちます。&lt;/li&gt;
+ * &lt;li&gt;{@link forest.Branch}: ツリー構造内の2つのノード間の接続（枝）を表します。&lt;/li&gt;
+ * &lt;li&gt;{@link forest.ForestModel}: アプリケーションのデータとビジネスロジックを管理するモデルです。&lt;/li&gt;
+ * &lt;li&gt;{@link forest.ForestView}: モデルのデータをグラフィカルに表示するビューです。&lt;/li&gt;
+ * &lt;li&gt;{@link forest.ForestController}: ユーザー入力イベントを処理し、モデルとビューを連携させるコントローラです。&lt;/li&gt;
+ * &lt;li&gt;{@link forest.Constants}: アプリケーション全体で共有される定数を定義します。&lt;/li&gt;
+ * &lt;li&gt;{@link forest.Example}: アプリケーションのエントリポイントであり、典型的な使用方法を示します。&lt;/li&gt;
+ * &lt;/ul&gt;
+ */
+package forest;</pre>
+    <hr>
+    <div class="right-small">Copyright 2025 Project JavaGrove, Updated: 2025/07/29 (Created: 2009/11/11)</div>
+</body>
+
+</html>

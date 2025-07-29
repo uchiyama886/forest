@@ -17,6 +17,9 @@ test:
 unittest:
 	$(ANT) unittest
 
+integrationtest:
+	$(ANT) integrationtest
+
 tree:
 	$(ANT) tree
 
@@ -39,3 +42,4 @@ format:
 	@rm -f $(STYLE_CONF) ; ln -s $(STYLE_YAML) $(STYLE_CONF)
 	for each in $(SOURCES) ; do echo ---[$${each}]--- ; clang-format -style=file $${each} ; echo ; done
 	@rm -f $(STYLE_CONF)
+	

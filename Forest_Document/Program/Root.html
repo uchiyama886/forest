@@ -1,0 +1,479 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Style-Type" content="text/css">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+	<meta name="description" content="ソフトウェア工学IIのホームページ">
+	<meta name="author" content="AOKI Atsushi">
+	<link rev="made" href="index.html">
+	<link rel="index" href="index.html">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>ソフトウェア工学II「樹状整列」プログラム - Forest_Program/src/main/java</title>
+</head>
+
+<body>
+	<div id="menu">
+		<ul>
+			<li><a href="../index.html">ホーム</a></li>
+			<li><a href="../Requirement/index.html">要求仕様書</a></li>
+			<li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+			<li><a href="../BasicDesign/index.html">基本設計書</a></li>
+			<li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+			<li><a href="../TestSpecification/index.html">テスト仕様書</a></li>
+			<li><a href="../TestResult/index.html">テスト結果</a></li>
+			<li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+			<li><a href="../Program/index.html" class="current">プログラム</a></li>
+			<li><a href="../Manual/index.html">マニュアル</a></li>
+		</ul>
+	</div>
+	<hr>
+	<h2>ソフトウェア工学II「樹状整列」プログラム - Forest_Program/src/main/java</h2>
+	<div id="submenu">
+		<ul>
+			<li><a href="index.html">全体</a></li>
+			<li><a href="Junit.html">Junit</a></li>
+			<li><a href="Root.html" class="current">Forest_Program/src/main/java</a></li>
+			<li><a href="lib.html">lib</a></li>
+			<li><a href="src_main_java_forest.html">src/main/java/forest</a></li>
+			<li><a href="src_main_java_utility.html">src/main/java/utility</a></li>
+			<li><a href="src_main_resources_data.html">src/main/resources/data</a></li>
+			<li><a href="src_test_java_forest.html">src/test/java/forest</a></li>
+		</ul>
+	</div>
+	<h3>Forest_Program/src/main/javaのファイル一覧</h3>
+	<ul>
+		<li><a href="#Makefile">Makefile</a></li>
+		<li><a href="#build">build</a></li>
+		<li><a href="#clang-format-for-java">clang-format-for-java</a></li>
+	</ul>
+
+	<div class="belt">
+		<h3><a name="Makefile">Makefile</a></h3>
+	</div>
+	<pre>ANT  = env LC_ALL=ja_JP.UTF-8 ant
+ARCHIVE = $(shell basename `pwd`)
+SOURCES = $(shell find . -name &quot;*.java&quot;)
+STYLE_YAML = clang-format-for-java.yaml
+STYLE_CONF = _clang-format
+
+
+all:
+    $(ANT) all
+
+clean:
+    $(ANT) clean
+
+test:
+    $(ANT) test
+
+unittest:
+    $(ANT) unittest
+
+integrationtest:
+    $(ANT) integrationtest
+
+tree:
+    $(ANT) tree
+
+forest:
+    $(ANT) forest
+
+semilattice:
+    $(ANT) semilattice
+
+install:
+    $(ANT) install
+
+doc:
+    $(ANT) doc
+
+zip:
+    $(ANT) zip
+
+format:
+    @rm -f $(STYLE_CONF) ; ln -s $(STYLE_YAML) $(STYLE_CONF)
+    for each in $(SOURCES) ; do echo ---[$${each}]--- ; clang-format -style=file $${each} ; echo ; done
+    @rm -f $(STYLE_CONF)
+    </pre>
+	<div class="belt">
+		<h3><a name="build">build</a></h3>
+	</div>
+	<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project name=&quot;Forest&quot; default=&quot;all&quot; basedir=&quot;.&quot;&gt;
+
+    &lt;property name=&quot;srcdir&quot; value=&quot;src/main/java&quot; /&gt;
+    &lt;property name=&quot;resourcedir&quot; value=&quot;src/main/resources&quot; /&gt;
+    &lt;property name=&quot;package&quot; value=&quot;forest&quot; /&gt;
+    &lt;property name=&quot;mvc&quot; value=&quot;mvc&quot; /&gt;
+    &lt;property name=&quot;utility&quot; value=&quot;utility&quot; /&gt;
+    &lt;property name=&quot;packagenames&quot; value=&quot;${package},${mvc},${utility}&quot; /&gt;
+
+    &lt;property name=&quot;destdir&quot; value=&quot;./Classes&quot; /&gt;
+    &lt;property name=&quot;docdir&quot; value=&quot;./JavaDoc&quot; /&gt;
+    &lt;property name=&quot;instdir&quot; value=&quot;./${ant.project.name}.app/Contents/Resources/Java&quot; /&gt;
+    &lt;property name=&quot;copyright&quot; value=&quot;Copyright 2025 TEAM JavaGrove. All Rights Reserved.&quot; /&gt;
+    &lt;property name=&quot;zipname&quot; value=&quot;${ant.project.name}&quot; /&gt;
+    &lt;property name=&quot;doc-title&quot; value=&quot;Forest Documant&quot; /&gt;
+
+    &lt;property name=&quot;libdir&quot; value=&quot;./lib&quot; /&gt; &lt;property name=&quot;junitjar&quot; value=&quot;junit-4.13.1.jar&quot; /&gt;
+    &lt;property name=&quot;hamcrestjar&quot; value=&quot;hamcrest-core-1.3.jar&quot; /&gt;
+    &lt;property name=&quot;mockitojar&quot; value=&quot;mockito-core-5.18.0.jar&quot; /&gt;
+    &lt;property name=&quot;bytebuddyjar&quot; value=&quot;byte-buddy-1.17.6.jar&quot; /&gt;
+    &lt;property name=&quot;bytebuddyagentjar&quot; value=&quot;byte-buddy-agent-1.17.6.jar&quot; /&gt;
+    &lt;property name=&quot;objenesisjar&quot; value=&quot;objenesis-3.4.jar&quot; /&gt;
+
+    &lt;property name=&quot;reportdir&quot; value=&quot;./test-report&quot; /&gt;
+    &lt;property name=&quot;unittest.reportdir&quot; value=&quot;${reportdir}/unit&quot; /&gt;
+    &lt;property name=&quot;integrationtest.reportdir&quot; value=&quot;${reportdir}/integration&quot; /&gt;
+
+    &lt;fail message=&quot;Apache Ant 1.10.4+ is required.&quot;&gt;
+        &lt;condition&gt;
+            &lt;not&gt;
+                &lt;antversion atleast=&quot;1.10.4&quot; /&gt;
+            &lt;/not&gt;
+        &lt;/condition&gt;
+    &lt;/fail&gt;
+
+    &lt;path id=&quot;classpath.test&quot;&gt;
+        &lt;pathelement location=&quot;${destdir}&quot;/&gt;
+        &lt;pathelement location=&quot;${resourcedir}&quot;/&gt; &lt;fileset dir=&quot;${libdir}&quot;&gt;
+            &lt;include name=&quot;${junitjar}&quot;/&gt;
+            &lt;include name=&quot;${hamcrestjar}&quot;/&gt;
+            &lt;include name=&quot;${mockitojar}&quot;/&gt;
+            &lt;include name=&quot;${bytebuddyjar}&quot;/&gt;
+            &lt;include name=&quot;${bytebuddyagentjar}&quot;/&gt;
+            &lt;include name=&quot;${objenesisjar}&quot;/&gt;
+        &lt;/fileset&gt;
+    &lt;/path&gt;
+
+    &lt;target name=&quot;integrationtest&quot; depends=&quot;compile-test&quot; description=&quot;run integration tests&quot;&gt;
+        &lt;delete dir=&quot;${integrationtest.reportdir}&quot; /&gt; &lt;mkdir dir=&quot;${integrationtest.reportdir}&quot;/&gt;    &lt;junit printsummary=&quot;yes&quot; haltonfailure=&quot;no&quot; showoutput=&quot;true&quot;&gt;
+            &lt;classpath refid=&quot;classpath.test&quot;/&gt;
+            &lt;formatter type=&quot;xml&quot;/&gt;
+            &lt;formatter type=&quot;plain&quot; usefile=&quot;false&quot;/&gt;
+            &lt;batchtest fork=&quot;yes&quot; todir=&quot;${integrationtest.reportdir}&quot;&gt; &lt;fileset dir=&quot;${destdir}&quot;&gt;
+                    &lt;include name=&quot;forest/*IntegrationTest.class&quot; /&gt; &lt;/fileset&gt;
+            &lt;/batchtest&gt;
+        &lt;/junit&gt;
+        &lt;junitreport todir=&quot;${integrationtest.reportdir}&quot;&gt; 
+            &lt;fileset dir=&quot;${integrationtest.reportdir}&quot;&gt; 
+                &lt;include name=&quot;TEST-*.xml&quot; /&gt;
+            &lt;/fileset&gt;
+            &lt;report format=&quot;noframes&quot; todir=&quot;${integrationtest.reportdir}/html&quot; /&gt; 
+        &lt;/junitreport&gt;
+        &lt;exec executable=&quot;open&quot; spawn=&quot;true&quot;&gt;
+            &lt;arg line=&quot;-a &#39;Safari&#39; ${integrationtest.reportdir}/html/junit-noframes.html&quot; /&gt; &lt;/exec&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+
+    &lt;target name=&quot;all&quot; depends=&quot;jar&quot; description=&quot;build all&quot;&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;prepare&quot; description=&quot;prepare to compile&quot;&gt;
+        &lt;mkdir dir=&quot;${destdir}&quot; /&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;compile&quot; depends=&quot;prepare&quot; description=&quot;compile all main sources&quot;&gt;
+        &lt;javac
+            fork=&quot;true&quot;
+            srcdir=&quot;${srcdir}&quot;
+            destdir=&quot;${destdir}&quot;
+            includeAntRuntime=&quot;false&quot;
+            encoding=&quot;UTF-8&quot;
+            deprecation=&quot;on&quot;
+            verbose=&quot;false&quot;&gt;
+            &lt;compilerarg value=&quot;-J-Dfile.encoding=UTF8&quot; /&gt;
+            &lt;compilerarg value=&quot;-Xlint:all&quot; /&gt;
+        &lt;/javac&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;compile-test&quot; depends=&quot;compile&quot; description=&quot;compile all test sources&quot;&gt;
+        &lt;mkdir dir=&quot;${destdir}&quot; /&gt;
+        &lt;javac
+            fork=&quot;true&quot;
+            srcdir=&quot;src/test/java&quot; destdir=&quot;${destdir}&quot;
+            includeAntRuntime=&quot;false&quot;
+            encoding=&quot;UTF-8&quot;
+            deprecation=&quot;on&quot;
+            verbose=&quot;false&quot;&gt;
+            &lt;compilerarg value=&quot;-J-Dfile.encoding=UTF8&quot; /&gt;
+            &lt;compilerarg value=&quot;-Xlint:all&quot; /&gt;
+            &lt;classpath refid=&quot;classpath.test&quot;/&gt; &lt;/javac&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;jar&quot; depends=&quot;compile&quot; description=&quot;make jar file&quot;&gt;
+        &lt;jar
+            destfile=&quot;${destdir}/${ant.project.name}.jar&quot;
+            basedir=&quot;${destdir}&quot;
+            includes=&quot;**/*.class&quot;
+        &gt;
+            &lt;manifest&gt;
+                &lt;attribute name=&quot;Project&quot; value=&quot;TreeSort Animator&quot; /&gt;
+                &lt;attribute name=&quot;Main-Class&quot; value=&quot;forest.Example&quot; /&gt;
+                &lt;section name=&quot;Shared&quot;&gt;
+                    &lt;attribute name=&quot;Title&quot; value=&quot;Forest&quot; /&gt;
+                    &lt;attribute name=&quot;Vender&quot; value=&quot;JavaGrove&quot; /&gt;
+                &lt;/section&gt;
+                &lt;section name=&quot;Copyright&quot;&gt;
+                    &lt;attribute name=&quot;Copy&quot; value=&quot;Project: TreeSort Animator&quot; /&gt;
+                &lt;/section&gt;
+            &lt;/manifest&gt;
+
+            &lt;fileset dir=&quot;src/main/resources&quot;&gt;
+                &lt;include name=&quot;**/*.txt&quot; /&gt;
+            &lt;/fileset&gt;
+
+        &lt;/jar&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;clean&quot; description=&quot;cleaning&quot;&gt;
+        &lt;delete dir=&quot;${destdir}&quot; /&gt;
+        &lt;delete dir=&quot;${docdir}&quot; /&gt;
+        &lt;delete dir=&quot;${instdir}&quot; /&gt;
+        &lt;delete file=&quot;../${zipname}.zip&quot; /&gt;
+        &lt;delete dir=&quot;${reportdir}&quot; /&gt; &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;test&quot; depends=&quot;all&quot; description=&quot;test&quot;&gt;
+        &lt;exec executable=&quot;java&quot; spawn=&quot;false&quot;&gt;
+            &lt;arg line=&quot;-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${ant.project.name}.jar&quot; /&gt;
+            &lt;arg value=&quot;${srcdir}/../resources/data/tree.txt&quot; /&gt;
+            &lt;arg value=&quot;${srcdir}/../resources/data/forest.txt&quot; /&gt;
+            &lt;arg value=&quot;${srcdir}/../resources/data/semilattice.txt&quot; /&gt;
+        &lt;/exec&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;unittest&quot; depends=&quot;compile-test&quot; description=&quot;run unit tests&quot;&gt;
+        &lt;delete dir=&quot;${unittest.reportdir}&quot; /&gt; &lt;mkdir dir=&quot;${unittest.reportdir}&quot;/&gt;    &lt;junit printsummary=&quot;yes&quot; haltonfailure=&quot;no&quot; showoutput=&quot;true&quot;&gt; &lt;classpath refid=&quot;classpath.test&quot;/&gt;
+            &lt;formatter type=&quot;xml&quot;/&gt; &lt;formatter type=&quot;plain&quot; usefile=&quot;false&quot;/&gt; &lt;batchtest fork=&quot;yes&quot; todir=&quot;${unittest.reportdir}&quot;&gt; &lt;fileset dir=&quot;${destdir}&quot;&gt;
+                    &lt;include name=&quot;forest/*Test.class&quot; /&gt;
+                &lt;/fileset&gt;
+            &lt;/batchtest&gt;
+        &lt;/junit&gt;
+        &lt;junitreport todir=&quot;${unittest.reportdir}&quot;&gt; &lt;fileset dir=&quot;${unittest.reportdir}&quot;&gt; &lt;include name=&quot;TEST-*.xml&quot; /&gt;
+            &lt;/fileset&gt;
+            &lt;report format=&quot;noframes&quot; todir=&quot;${unittest.reportdir}/html&quot; /&gt; &lt;/junitreport&gt;
+        &lt;exec executable=&quot;open&quot; spawn=&quot;true&quot;&gt;
+            &lt;arg line=&quot;-a &#39;Safari&#39; ${unittest.reportdir}/html/junit-noframes.html&quot; /&gt; &lt;/exec&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;tree&quot; depends=&quot;all&quot; description=&quot;tree&quot;&gt;
+        &lt;exec executable=&quot;java&quot; spawn=&quot;false&quot;&gt;
+            &lt;arg line=&quot;-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${package}.jar ${srcdir}/../resources/data/tree.txt&quot; /&gt; &lt;/exec&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;forest&quot; depends=&quot;all&quot; description=&quot;forest&quot;&gt;
+        &lt;exec executable=&quot;java&quot; spawn=&quot;false&quot;&gt;
+            &lt;arg line=&quot;-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${package}.jar ${srcdir}/../resources/data/forest.txt&quot; /&gt; &lt;/exec&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;semilattice&quot; depends=&quot;all&quot; description=&quot;semilattice&quot;&gt;
+        &lt;exec executable=&quot;java&quot; spawn=&quot;false&quot;&gt;
+            &lt;arg line=&quot;-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${destdir}/${package}.jar ${srcdir}/../resources/data/semilattice.txt&quot; /&gt; &lt;/exec&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+&lt;target name=&quot;install&quot; depends=&quot;all&quot; description=&quot;install into application&quot;&gt;
+        &lt;mkdir dir=&quot;${ant.project.name}.app/Contents/MacOS&quot; /&gt;
+        &lt;mkdir dir=&quot;${ant.project.name}.app/Contents/Resources/Java&quot; /&gt;
+        &lt;mkdir dir=&quot;${ant.project.name}.app/Contents/Resources/data&quot; /&gt; &lt;copy
+            file=&quot;${basedir}/${destdir}/${ant.project.name}.jar&quot;
+            todir=&quot;${instdir}&quot;
+        /&gt;
+
+        &lt;copy
+            file=&quot;${resourcedir}/data/tree.txt&quot;
+            todir=&quot;${ant.project.name}.app/Contents/Resources/data/&quot;
+        /&gt;
+
+        &lt;echo file=&quot;${ant.project.name}.app/Contents/Info.plist&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
+&amp;lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&amp;gt;
+&amp;lt;plist version=&quot;1.0&quot;&amp;gt;
+&amp;lt;dict&amp;gt;
+    &amp;lt;key&amp;gt;CFBundleExecutable&amp;lt;/key&amp;gt;
+    &amp;lt;string&amp;gt;${ant.project.name}&amp;lt;/string&amp;gt;
+    &amp;lt;key&amp;gt;CFBundleIdentifier&amp;lt;/key&amp;gt;
+    &amp;lt;string&amp;gt;com.example.${ant.project.name}&amp;lt;/string&amp;gt;
+    &amp;lt;key&amp;gt;CFBundleName&amp;lt;/key&amp;gt;
+    &amp;lt;string&amp;gt;${ant.project.name}&amp;lt;/string&amp;gt;
+    &amp;lt;key&amp;gt;CFBundlePackageType&amp;lt;/key&amp;gt;
+    &amp;lt;string&amp;gt;APPL&amp;lt;/string&amp;gt;
+    &amp;lt;key&amp;gt;CFBundleShortVersionString&amp;lt;/key&amp;gt;
+    &amp;lt;string&amp;gt;1.0&amp;lt;/string&amp;gt;
+    &amp;lt;key&amp;gt;CFBundleVersion&amp;lt;/key&amp;gt;
+    &amp;lt;string&amp;gt;1&amp;lt;/string&amp;gt;
+&amp;lt;/dict&amp;gt;
+&amp;lt;/plist&amp;gt;&lt;/echo&gt;
+
+        &lt;echo file=&quot;${ant.project.name}.app/Contents/MacOS/${ant.project.name}&quot;&gt;#!/bin/bash
+cd &quot;$(dirname &quot;$0&quot;)/../Resources/Java&quot;
+
+DEFAULT_DATA_FILE=&quot;../data/tree.txt&quot; # MacOSから見た相対パス
+
+if [ &quot;$#&quot; -eq 0 ]; then
+    java -Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${ant.project.name}.jar &quot;$DEFAULT_DATA_FILE&quot;
+else
+    java -Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${ant.project.name}.jar &quot;$@&quot;
+fi
+&lt;/echo&gt;
+
+        &lt;chmod file=&quot;${ant.project.name}.app/Contents/MacOS/${ant.project.name}&quot; perm=&quot;755&quot; /&gt;
+
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;doc&quot; depends=&quot;all&quot; description=&quot;make document (javadoc)&quot;&gt;
+        &lt;mkdir dir=&quot;${docdir}&quot; /&gt;
+        &lt;javadoc
+            locale=&quot;ja_JP&quot;
+            sourcepath=&quot;${srcdir}&quot;
+            destdir=&quot;${docdir}&quot;
+            packagenames=&quot;${packagenames}&quot;
+            author=&quot;true&quot;
+            version=&quot;true&quot;
+            charset=&quot;UTF-8&quot;
+            encoding=&quot;UTF-8&quot;
+            docencoding=&quot;UTF-8&quot;
+            linksource=&quot;yes&quot;
+            additionalparam=&quot;-J-Dfile.encoding=UTF-8&quot;
+            access=&quot;private&quot;&gt;
+            &lt;doctitle&gt;${doc-title}&lt;/doctitle&gt;
+            &lt;bottom&gt;${copyright}&lt;/bottom&gt;
+            &lt;classpath&gt;
+                &lt;pathelement location=&quot;.&quot; /&gt;
+            &lt;/classpath&gt;
+        &lt;/javadoc&gt;
+        &lt;exec executable=&quot;open&quot;&gt;
+            &lt;arg line=&quot;-a &#39;Safari&#39; ${docdir}/index.html&quot; /&gt;
+        &lt;/exec&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;zip&quot; depends=&quot;clean&quot; description=&quot;make zip file&quot;&gt;
+        &lt;delete file=&quot;../${zipname}.zip&quot; /&gt;
+        &lt;zip destfile=&quot;../${zipname}.zip&quot;&gt;
+            &lt;zipfileset dir=&quot;.&quot; prefix=&quot;${zipname}&quot; /&gt;
+        &lt;/zip&gt;
+        &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+    &lt;/target&gt;
+
+&lt;/project&gt;
+</pre>
+	<div class="belt">
+		<h3><a name="clang-format-for-java">clang-format-for-java</a></h3>
+	</div>
+	<pre>---
+Language:        Java
+# BasedOnStyle:  LLVM
+AccessModifierOffset: -2
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignEscapedNewlinesLeft: false
+AlignOperands:   true
+AlignTrailingComments: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: false
+BinPackArguments: true
+BinPackParameters: true
+BraceWrapping:   
+  AfterClass:      false
+  AfterControlStatement: false
+  AfterEnum:       false
+  AfterFunction:   false
+  AfterNamespace:  false
+  AfterObjCDeclaration: false
+  AfterStruct:     false
+  AfterUnion:      false
+  BeforeCatch:     false
+  BeforeElse:      false
+  IndentBraces:    false
+BreakBeforeBinaryOperators: None
+BreakBeforeBraces: Allman
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializersBeforeComma: false
+BreakAfterJavaFieldAnnotations: false
+BreakStringLiterals: true
+ColumnLimit:     0
+CommentPragmas:  &#39;^ IWYU pragma:&#39;
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+ConstructorInitializerIndentWidth: 8
+ContinuationIndentWidth: 8
+Cpp11BracedListStyle: true
+DerivePointerAlignment: false
+DisableFormat:   false
+ExperimentalAutoDetectBinPacking: false
+ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ]
+IncludeCategories: 
+  - Regex:           &#39;^&quot;(llvm|llvm-c|clang|clang-c)/&#39;
+    Priority:        2
+  - Regex:           &#39;^(&lt;|&quot;(gtest|isl|json)/)&#39;
+    Priority:        3
+  - Regex:           &#39;.*&#39;
+    Priority:        1
+IncludeIsMainRegex: &#39;$&#39;
+IndentCaseLabels: false
+IndentWidth:     8
+IndentWrappedFunctionNames: false
+JavaScriptQuotes: Leave
+JavaScriptWrapImports: true
+KeepEmptyLinesAtTheStartOfBlocks: true
+MacroBlockBegin: &#39;&#39;
+MacroBlockEnd:   &#39;&#39;
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: None
+ObjCBlockIndentWidth: 2
+ObjCSpaceAfterProperty: false
+ObjCSpaceBeforeProtocolList: true
+PenaltyBreakBeforeFirstCallParameter: 19
+PenaltyBreakComment: 300
+PenaltyBreakFirstLessLess: 120
+PenaltyBreakString: 1000
+PenaltyExcessCharacter: 1000000
+PenaltyReturnTypeOnItsOwnLine: 60
+PointerAlignment: Left
+ReflowComments:  true
+SortIncludes:    true
+SpaceAfterCStyleCast: false
+SpaceAfterTemplateKeyword: true
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles:  false
+SpacesInContainerLiterals: true
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+Standard:        Auto
+TabWidth:        8
+UseTab:          ForIndentation
+...
+
+</pre>
+	<hr>
+	<div class="right-small">Copyright 2025 Project JavaGrove, Updated: 2025/07/29 (Created: 2009/11/11)</div>
+</body>
+
+</html>

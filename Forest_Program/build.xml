@@ -23,6 +23,8 @@
 	<property name="objenesisjar" value="objenesis-3.4.jar" />
 
 	<property name="reportdir" value="./test-report" />
+	<property name="unittest.reportdir" value="${reportdir}/unit" />
+	<property name="integrationtest.reportdir" value="${reportdir}/integration" />
 
 	<fail message="Apache Ant 1.10.4+ is required.">
 		<condition>
@@ -32,8 +34,10 @@
 		</condition>
 	</fail>
 
-    <path id="classpath.test">
-        <pathelement location="${destdir}"/> <fileset dir="${libdir}"> <include name="${junitjar}"/>
+	<path id="classpath.test">
+        <pathelement location="${destdir}"/>
+        <pathelement location="${resourcedir}"/> <fileset dir="${libdir}">
+            <include name="${junitjar}"/>
             <include name="${hamcrestjar}"/>
             <include name="${mockitojar}"/>
 			<include name="${bytebuddyjar}"/>
@@ -41,6 +45,26 @@
 			<include name="${objenesisjar}"/>
         </fileset>
     </path>
+
+    <target name="integrationtest" depends="compile-test" description="run integration tests">
+		<delete dir="${integrationtest.reportdir}" /> <mkdir dir="${integrationtest.reportdir}"/>    <junit printsummary="yes" haltonfailure="no" showoutput="true">
+            <classpath refid="classpath.test"/>
+			<formatter type="xml"/>
+            <formatter type="plain" usefile="false"/>
+            <batchtest fork="yes" todir="${integrationtest.reportdir}"> <fileset dir="${destdir}">
+                    <include name="forest/*IntegrationTest.class" /> </fileset>
+			</batchtest>
+		</junit>
+        <junitreport todir="${integrationtest.reportdir}"> 
+			<fileset dir="${integrationtest.reportdir}"> 
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="noframes" todir="${integrationtest.reportdir}/html" /> 
+		</junitreport>
+		<exec executable="open" spawn="true">
+			<arg line="-a 'Safari' ${integrationtest.reportdir}/html/junit-noframes.html" /> </exec>
+		<exec executable="date" spawn="false" />
+	</target>
 
 
 	<target name="all" depends="jar" description="build all">
@@ -113,8 +137,7 @@
 		<delete dir="${docdir}" />
 		<delete dir="${instdir}" />
 		<delete file="../${zipname}.zip" />
-		<delete dir="${reportdir}" />
-		<exec executable="date" spawn="false" />
+		<delete dir="${reportdir}" /> <exec executable="date" spawn="false" />
 	</target>
 
 	<target name="test" depends="all" description="test">
@@ -128,24 +151,17 @@
     </target>
 
     <target name="unittest" depends="compile-test" description="run unit tests">
-		<delete dir="${reportdir}" />
-		<mkdir dir="${reportdir}"/>
-		<junit printsummary="yes" haltonfailure="no" showoutput="true"> <classpath refid="classpath.test"/>
-			<formatter type="xml"/> <formatter type="plain" usefile="false"/> <batchtest fork="yes" todir="${reportdir}">
-                <fileset dir="${destdir}">
+		<delete dir="${unittest.reportdir}" /> <mkdir dir="${unittest.reportdir}"/>    <junit printsummary="yes" haltonfailure="no" showoutput="true"> <classpath refid="classpath.test"/>
+			<formatter type="xml"/> <formatter type="plain" usefile="false"/> <batchtest fork="yes" todir="${unittest.reportdir}"> <fileset dir="${destdir}">
                     <include name="forest/*Test.class" />
                 </fileset>
 			</batchtest>
 		</junit>
-        <junitreport todir="${reportdir}">
-			<fileset dir="${reportdir}">
-				<include name="TEST-*.xml" />
+        <junitreport todir="${unittest.reportdir}"> <fileset dir="${unittest.reportdir}"> <include name="TEST-*.xml" />
 			</fileset>
-			<report format="noframes" todir="${reportdir}/html" />
-		</junitreport>
+			<report format="noframes" todir="${unittest.reportdir}/html" /> </junitreport>
 		<exec executable="open" spawn="true">
-			<arg line="-a 'Safari' ${reportdir}/html/junit-noframes.html" />
-		</exec>
+			<arg line="-a 'Safari' ${unittest.reportdir}/html/junit-noframes.html" /> </exec>
 		<exec executable="date" spawn="false" />
 	</target>
 
