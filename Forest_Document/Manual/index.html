@@ -247,10 +247,124 @@ th {
 </ul>
 </div>
 <hr>
-<h2>ソフトウェア工学II「樹状整列」マニュアル</h2>
-<div class="belt">
-<h3><a name="KanseiSaseteKudasai">完成させてください</a></h3>
-</div>
+  <h2>プロジェクト演習「ウェーブレット画像処理」マニュアル</h2>
+  <div class="belt">
+    <h3><a id="Install">ファイルのダウンロード方法</a></h3>
+  </div>
+  <ol>
+    <li><a href="https://github.com/uchiyama886/ProjectPractice">ProjectPractice</a>を適当なディレクトリにクローンする。
+      <pre class="belt">$ git clone https://github.com/uchiyama886/ProjectPractice.git
+Cloning into 'ProjectPractice'...
+remote: Enumerating objects: 1638, done.
+remote: Counting objects: 100% (210/210), done.
+remote: Compressing objects: 100% (142/142), done.
+remote: Total 1638 (delta 91), reused 112 (delta 65), pack-reused 1428 (from 1)
+Receiving objects: 100% (1638/1638), 23.40 MiB | 16.32 MiB/s, done.
+Resolving deltas: 100% (910/910), done.
+  </pre>
+    <li>クローンしたディレクトリに移動する。
+      <pre class="belt">$ cd ProjectPractice</pre>
+    <li>中身を確認する。
+      <pre class="belt">$  ls *
+build.xml                       Dockerfile
+clang-format-for-java.yaml      Makefile
+docker-compose.yml              README.md
+
+lib:
+apiguardian-api-1.1.2.jar               junit-platform-console-1.10.2.jar
+byte-buddy-1.17.6.jar                   junit-platform-engine-1.10.2.jar
+byte-buddy-agent-1.17.6.jar             junit-platform-launcher-1.10.2.jar
+commons-math3-3.6.1.jar                 junit-platform-reporting-1.10.2.jar
+junit-jupiter-api-5.10.2.jar            mockito-core-5.18.0.jar
+junit-jupiter-engine-5.10.2.jar         objenesis-3.3.jar
+junit-platform-commons-1.10.2.jar       opentest4j-1.3.0.jar
+
+src:
+integration-test    main                 test
+</pre>
+  </ol>
+  <div class="belt">
+    <h3><a id="Build">ビルド方法</a>（実行ファイルの作り方）</h3>
+  </div>
+  <p>先ほどクローンしたディレクトリには、docker環境に関する設定ファイルが含まれている。もしJavaの開発環境が整っていなければ、Dockerを使ってビルドを行うことができる。(Javaの開発環境が整っている場合、1,
+    2はスキップして良い)</p>
+  <ol>
+    <li>以下のコマンドでDockerイメージをビルドする。
+      <pre class="belt">$ docker-compose build </pre>
+    <li>ビルドが成功したら、以下のコマンドでコンテナを起動する。
+      <pre class="belt">$ docker-compose run java bash</pre>
+    <li>以下のコマンドを実行して、アプリケーションをビルドする。
+      <pre class="belt">$ make app
+    env LC_ALL=ja_JP.UTF-8 ant install
+Buildfile: /Users/ryo/Desktop/ProjectPractice/build.xml
+
+prepare:
+    [mkdir] Created dir: /Users/ryo/Desktop/ProjectPractice/Classes
+    [mkdir] Created dir: /Users/ryo/Desktop/ProjectPractice/TestReports
+    [mkdir] Created dir: /Users/ryo/Desktop/ProjectPractice/TestClasses
+    [mkdir] Created dir: /Users/ryo/Desktop/ProjectPractice/TestResults
+    [mkdir] Created dir: /Users/ryo/Desktop/ProjectPractice/ResultImages
+    [mkdir] Created dir: /Users/ryo/Desktop/ProjectPractice/ResultImages/ResultImages
+    [mkdir] Created dir: /Users/ryo/Desktop/ProjectPractice/IntegrationTestClasses
+    [mkdir] Created dir: /Users/ryo/Desktop/ProjectPractice/IntegrationTestReports
+    [mkdir] Created dir: /Users/ryo/Desktop/ProjectPractice/IntegrationTestResults
+     [exec] #午後
+
+compile:
+    [javac] Compiling 32 source files to /Users/ryo/Desktop/ProjectPractice/Classes
+    ~~中略~~
+    [javac] Creating empty /Users/ryo/Desktop/ProjectPractice/Classes/wavelet/package-info.class
+    [javac] Creating empty /Users/ryo/Desktop/ProjectPractice/Classes/utility/package-info.class
+    [javac] Creating empty /Users/ryo/Desktop/ProjectPractice/Classes/mvc/package-info.class
+    [javac] Creating empty /Users/ryo/Desktop/ProjectPractice/Classes/pane/package-info.class
+     [exec] #午後
+
+jar:
+      [jar] Building jar: /Users/ryo/Desktop/ProjectPractice/Classes/Wavelet.jar
+     [exec] #午後
+
+all:
+     [exec] #午後
+
+install:
+    [mkdir] Created dir: /Users/ryo/Desktop/ProjectPractice/Wavelet.app/Contents/MacOS
+    [mkdir] Created dir: /Users/ryo/Desktop/ProjectPractice/Wavelet.app/Contents/Resources/Java
+     [copy] Copying 1 file to /Users/ryo/Desktop/ProjectPractice/Wavelet.app/Contents/Resources/Java
+     [exec] #午後
+
+BUILD SUCCESSFUL
+Total time: 6 seconds
+
+  </pre>
+  </ol>
+  <div class="belt">
+    <h3><a id="Execution">実行方法</a>（実行ファイルの動かし方）</h3>
+  </div>
+  <p>実行するためのコマンドは以下の通りである。</p>
+  <blockquote><code>open Wavelet.app</code></blockquote>
+  <p>Mac OS の場合には、アプリケーションWavelet.appをダブルクリックするほうが簡便である。</p>
+  <blockquote>Wavelet.app<img class="borderless" src="contents/WaveletApp.png" width="128" height="128"
+      alt="Wavelet.png"></blockquote>
+  <p>以下に実行例を示す。</p>
+  <blockquote>
+    <table class="belt">
+      <tbody>
+        <tr>
+          <td>
+            <table class="content">
+              <tbody>
+                <tr>
+                  <td class="center-small">
+                    <video width="640" height="480" src="contents/DEMO.mp4" controls></video>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </blockquote>
 <hr>
   <div class="right-small">Copyright 2025 Project JavaGrove, Updated: 2025/07/29 (Created: 2009/11/11)</div>
 </body>
