@@ -164,6 +164,14 @@
       padding: 0px 4px;
     }
 
+    /* 画像を含むリンクの背景色を透明にする */
+    td.center-small a {
+      background-color: transparent !important; /* !important で既存のスタイルを上書き */
+      display: block; /* リンクをブロック要素にして画像のサイズに合わせやすくする */
+      padding: 0;     /* 念のため、リンク自体のパディングをリセット */
+      margin: 0;      /* 念のため、リンク自体のマージンをリセット */
+    }
+
     td.center-small-nopadding {
       text-align: center;
       font-size: 8pt;
@@ -606,11 +614,10 @@ Total time: 17 seconds
       <pre class="belt">$ cd Forest_Program</pre>
     </li>
     <li>
-      <p> jconsoleを起動する</p>
-      <pre class="belt">$ sh ./jconsole.sh ./  src/main/java/ Classes/Wavelet.jar
+      <p>jconsoleを起動する</p>
+      <pre class="belt">$ sh ./jconsole.sh ./  src/main/java/ Classes/Forest.jar
 env LC_ALL=ja_JP.UTF-8 ant test
-Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
-Buildfile: /Users/uchiyama/CLASS/projectExercises/Wavelet/ProjectPractice/build.xml
+Buildfile: /Users/fukudaayaka/Desktop/forest5/forest/Forest_Program/build.xml
 
 prepare:
      [exec] #午後
@@ -625,12 +632,8 @@ all:
      [exec] #午後
 
 test:
-     [exec] Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
-Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
-     [exec] 画像が正常にロードされました: SampleImages/imageSmalltalkBalloon256x256.jpg
-     [exec] 画像が正常にロードされました: SampleImages/imageEarth512x512.jpg
-2025-07-11 07:09:00.706 jconsole[27537:223777] TSM AdjustCapsLockLEDForKeyTransitionHandling - _ISSetPhysicalKeyboardCapsLockLED Inhibit
-2025-07-11 07:09:00.714 jconsole[27537:223777] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+
+2025-07-31 16:11:50.580 jconsole[85638:21178486] error messaging the mach port for IMKCFRunLoopWakeUpReliable
       </pre>
     </li>
   </ol>
@@ -645,24 +648,8 @@ Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
             <table class="content" summary="table">
               <tbody>
                 <tr>
-                  <td class="center-small"><a href="b.png"><img class="borderless" src="b.png" width="375" height="400"
-                        alt="Snapshot1"></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="belt" summary="table">
-      <tbody>
-        <tr>
-          <td>
-            <table class="content" summary="table">
-              <tbody>
-                <tr>
-                  <td class="center-small"><a href="a.png"><img class="borderless" src="a.png" width="480" height="330"
-                        alt="Snapshot2"></a></td>
+                  <td class="center-small"><a href="result.png">
+                    <img class="borderless" src="result.png" width="400" height="400" alt="result"></a></td>
                 </tr>
               </tbody>
             </table>
@@ -685,7 +672,7 @@ Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
             <tbody>
               <tr>
                 <td class="center-small"><a href="endurace-summary-result.png"><img class="borderless"
-                      src="endurace-summary-result.png" width="480" height="330" alt="Snapshot3"></a></td>
+                      src="endurace-summary-result.png" width="480" height="430" alt="Snapshot3"></a></td>
               </tr>
             </tbody>
           </table>

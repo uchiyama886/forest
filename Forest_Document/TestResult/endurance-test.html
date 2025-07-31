@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Endurance Test Result</title>
+    <style type="text/css">
+        <!--
+        body {
+            background-color: #ffffff;
+            margin: 20px;
+            padding: 10px;
+            font-family: serif;
+            font-size: 10pt;
+        }
+
+        a {
+            text-decoration: underline;
+            color: #000000;
+        }
+
+        a:link {
+            background-color: #ffddbb;
+        }
+
+        a:visited {
+            background-color: #ccffcc;
+        }
+
+        a:hover {
+            background-color: #dddddd;
+        }
+
+        a:active {
+            background-color: #dddddd;
+        }
+
+        div.belt {
+            background-color: #eeeeee;
+            padding: 0px 4px;
+        }
+
+        div.belt-yellow {
+            background-color: #ffffcc;
+            padding: 0px 4px;
+        }
+
+        div.belt-blue {
+            background-color: #ddeeff;
+            padding: 0px 4px;
+        }
+
+        div.right-small {
+            text-align: right;
+            font-size: 8pt;
+        }
+
+        img.border {
+            border-width: 1px;
+            border-color: #000000;
+            vertical-align: middle;
+        }
+
+        img.borderless {
+            border-width: 0px;
+            vertical-align: middle;
+        }
+
+        img.expression {
+            border-width: 0px;
+            vertical-align: middle;
+            padding: 4px 2px;
+        }
+
+        p.belt {
+            background-color: #ffeedd;
+            padding: 4px 8px;
+        }
+
+        p.belt-blue {
+            background-color: #ddeeff;
+            padding: 4px 8px;
+        }
+
+        pre.belt {
+            background-color: #ddeeff;
+            padding: 4px 8px;
+        }
+
+        pre.belt-yellow {
+            background-color: #ffffcc;
+            padding: 4px 8px;
+        }
+
+        table {
+            border-style: solid;
+            border-width: 0px;
+            border-color: #000000;
+            font-family: serif;
+            font-size: 10pt;
+        }
+
+        table.profile {
+            border-style: solid;
+            border-width: 0px;
+            border-color: #000000;
+            font-family: serif;
+            font-size: 10pt;
+            margin-top: 8px;
+            margin-left: 8px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        table.belt {
+            border-style: solid;
+            border-width: 0px;
+            border-color: #000000;
+            background-color: #ffeedd;
+            padding: 0px 0px;
+            width: 100%;
+        }
+
+        table.content {
+            border-style: solid;
+            border-width: 0px;
+            border-color: #000000;
+            padding: 2px 4px;
+        }
+
+        table.font-fixed {
+            border-style: solid;
+            border-width: 0px;
+            border-color: #000000;
+            padding: 2px 4px;
+            font-family: monospace;
+        }
+
+        table.nest {
+            border-style: solid;
+            border-width: 0px;
+            border-color: #000000;
+            padding: 0px 0px;
+        }
+
+        td {
+            padding: 0px 0px;
+            vertical-align: middle;
+        }
+
+        td.center {
+            text-align: center;
+        }
+        
+        /* 画像を含むリンクの背景色を透明にする */
+        td.center-small a {
+        background-color: transparent !important; /* !important で既存のスタイルを上書き */
+        display: block; /* リンクをブロック要素にして画像のサイズに合わせやすくする */
+        padding: 0;     /* 念のため、リンク自体のパディングをリセット */
+        margin: 0;      /* 念のため、リンク自体のマージンをリセット */
+        }
+
+        td.center-half {
+            text-align: center;
+            width: 50%;
+            font-size: 8pt;
+        }
+
+        td.center-small {
+            text-align: center;
+            font-size: 8pt;
+            padding: 0px 4px;
+        }
+
+        td.center-small-nopadding {
+            text-align: center;
+            font-size: 8pt;
+            padding: 0px 0px;
+        }
+
+        td.center-white {
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        td.center-small-white {
+            text-align: center;
+            font-size: 8pt;
+            background-color: #ffffff;
+        }
+
+        td.center-border1 {
+            text-align: center;
+            vertical-align: middle;
+            empty-cells: show;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #ffc080;
+            width: 22px;
+            height: 22px;
+        }
+
+        td.left-small {
+            text-align: left;
+            font-size: 8pt;
+            padding: 0px 4px;
+        }
+
+        td.left-small-white {
+            text-align: left;
+            font-size: 8pt;
+            padding: 0px 4px;
+            background-color: #ffffff;
+        }
+
+        td.right-small {
+            text-align: right;
+            font-size: 8pt;
+            padding: 0px 4px;
+        }
+
+        td.right-small-white {
+            text-align: right;
+            font-size: 8pt;
+            padding: 0px 4px;
+            background-color: #ffffff;
+        }
+
+        th {
+            padding: 0px 0px;
+            vertical-align: middle;
+        }
+
+        #menu {
+            margin: 0px 0px 0px 0px;
+            padding: 0px;
+            height: 32px;
+        }
+
+        #menu ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            text-align: center;
+            clear: both;
+        }
+
+        #menu li {
+            margin: 0px 5px 0px 0px;
+            padding: 1px;
+            float: left;
+        }
+
+        #menu a {
+            display: block;
+            padding: 2px 4px;
+            text-decoration: none;
+            margin: 0px;
+            font-weight: bold;
+            background: #FFFFFF;
+            color: #333333;
+            border: 1px solid #666666;
+        }
+
+        #menu a:hover {
+            display: block;
+            padding: 2px 4px;
+            border-bottom: 1px solid #000000;
+            text-decoration: none;
+            background: #FFCC66;
+        }
+
+        #menu .current {
+            background-color: #F45F57;
+            font-weight: bold;
+            color: #FFFFFF;
+            border: 1px solid #333333;
+        }
+
+        .site-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 8pt;
+            padding: 0px 0;
+            color: #333;
+        }
+
+        .left-align-td {
+            text-align: left;
+        }
+
+        .right-align-td {
+            text-align: right;
+        }
+
+        .hr-size-1 {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #000000;
+            /* 必要に応じて色を調整 */
+        }
+
+        .details-table {
+            border: 1px solid #cccccc;
+            /* テーブル全体のボーダーを追加 */
+            border-collapse: collapse;
+            /* セルのボーダーを結合 */
+            width: 95%;
+            /* cellpaddingとcellspacingの代替 */
+            /* tableのpaddingはtd/thに移動するためここでは使用しない */
+        }
+
+        .details-table th,
+        .details-table td {
+            padding: 5px;
+            /* cellpaddingの代替 */
+            text-align: left;
+            /* デフォルトのテキスト配置 */
+            border: 1px solid #eeeeee;
+            /* セルごとのボーダー */
+        }
+
+        .details-table th {
+            background-color: #f2f2f2;
+            /* ヘッダーの背景色 */
+            font-weight: bold;
+        }
+
+        .th-width-80 {
+            width: 80%;
+        }
+
+        .th-nowrap {
+            white-space: nowrap;
+        }
+
+        .tr-valign-top {
+            vertical-align: top;
+        }
+
+        /* 行のストライプ（TableRowColorを維持しつつ、別の色で交互に表示） */
+        .details-table tr.TableRowColor:nth-child(even) {
+            background-color: #f9f9f9;
+            /* 偶数行の背景色 */
+        }
+
+        .details-table tr.TableRowColor:nth-child(odd) {
+            background-color: #ffffff;
+            /* 奇数行の背景色 */
+        }
+
+        /* ホバー効果 */
+        .details-table tr:hover {
+            background-color: #e0e0e0;
+            /* ホバー時の背景色 */
+        }
+        -->
+    </style>
+</head>
+
+
+<body onload="open('allclasses-frame.html','classListFrame')">
+    <h1>耐久テスト結果</h1>
+    <a href="./index.html">テスト結果報告書</a> > <a href="./endurance-test.html">耐久テスト結果</a>
+    <hr class="hr-size-1">
+
+    <h2>jconsole</h2>
+
+    <hr>
+    <div class="belt">
+        <h3>
+            ヒープ・メモリ使用率
+        </h3>
+    </div>
+    <p>
+        ヒープ・メモリ使用率は次のようになった
+    </p>
+    <table class="belt">
+        <tbody>
+            <tr>
+                <td>
+                    <table class="content" >
+                        <tbody>
+                            <tr>
+                                <td class="center-small">
+                                    <a href="endurance-test/endurace-memory-result.png">
+                                        <img class="borderless" src="endurance-test/endurace-memory-result.png" width="160" height="140" alt="Forest01">
+                                    </a>
+                                </td>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        ヒープ・メモリ使用率が時間比例して増えているが、閾値を超えた時にガベージコレクションが作動していることが確認できる。
+    </p>
+    
+    <div class="belt">
+        <h3>
+            ロード済みクラス数
+        </h3>
+    </div>
+    <p>
+        ロード済みクラス数は次のようになった
+    </p>
+    <table class="belt">
+        <tbody>
+            <tr>
+                <td>
+                    <table class="content">
+                        <tbody>
+                            <tr>
+                                <td class="center-small">
+                                    <a href="endurance-test/endurace-class-result.png">
+                                        <img class="borderless" src="endurance-test/endurace-class-result.png" width="160" height="140" alt="Forest02">
+                                    </a>
+                                </td>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        起動時のロード以降で新たにロードされたクラスがほとんどなく、インスタント生成にあまり無駄がないことが確認できる。
+    </p>
+
+    <div class="belt">
+        <h3>
+            スレッド数
+        </h3>
+    </div>
+    <p>
+        スレッド数は次のようになった
+    </p>
+    <table class="belt">
+        <tbody>
+            <tr>
+                <td>
+                    <table class="content" >
+                        <tbody>
+                            <tr>
+                                <td class="center-small">
+                                    <a href="endurance-test/endurace-thread-result.png">
+                                        <img class="borderless" src="endurance-test/endurace-thread-result.png" width="160" height="140" alt="Forest03">
+                                    </a>
+                                </td>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        スレッド数は、起動時以降増えることがほとんどなく、パフォーマンスが低下していないことが確認できる。    
+    </p>
+
+    <hr>
+    <div class="site-footer">
+        <div class="left-small">
+            <div id="date">
+                <script type="text/javascript">
+                    <!--
+                        clock();
+                    function clock() {
+                        var JST = new Date();
+                        var date = document.getElementById("date");
+                        date.innerHTML =
+                            JST.toLocaleDateString() + " " + JST.toLocaleTimeString();
+                    }
+                    setInterval("clock()", 1000);
+                    -->
+                </script>
+            </div>
+        </div>
+        <div class="right-small">Copyright 2025 Project XX, Updated: 2025/07/11 (Created: 2009/11/11)</div>
+    </div>
+</body>
+
+</html>
