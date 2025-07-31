@@ -1,0 +1,10 @@
+#!/bin/bash
+cd "$(dirname "$0")/../Resources/Java"
+
+DEFAULT_DATA_FILE="../data/tree.txt" # MacOSから見た相対パス
+
+if [ "$#" -eq 0 ]; then
+    java -Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar Forest.jar "$DEFAULT_DATA_FILE"
+else
+    java -Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar Forest.jar "$@"
+fi

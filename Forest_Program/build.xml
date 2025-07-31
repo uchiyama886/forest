@@ -195,6 +195,10 @@
             file="${resourcedir}/data/tree.txt"
             todir="${ant.project.name}.app/Contents/Resources/data/"
         />
+		<copy
+        	file="${resourcedir}/${ant.project.name}.icns" 
+        	todir="${ant.project.name}.app/Contents/Resources/"
+    	/>
 
         <echo file="${ant.project.name}.app/Contents/Info.plist">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
@@ -212,6 +216,8 @@
     &lt;string&gt;1.0&lt;/string&gt;
     &lt;key&gt;CFBundleVersion&lt;/key&gt;
     &lt;string&gt;1&lt;/string&gt;
+	&lt;key&gt;CFBundleIconFile&lt;/key&gt;
+    &lt;string&gt;${ant.project.name}.icns&lt;/string&gt;
 &lt;/dict&gt;
 &lt;/plist&gt;</echo>
 
